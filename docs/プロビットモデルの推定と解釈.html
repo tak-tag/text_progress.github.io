@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10.4 プロビットモデルの推定と解釈 | マーケティングリサーチ講義ノート</title>
+  <meta name="description" content="10.4 プロビットモデルの推定と解釈 | マーケティングリサーチ講義ノート" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10.4 プロビットモデルの推定と解釈 | マーケティングリサーチ講義ノート" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10.4 プロビットモデルの推定と解釈 | マーケティングリサーチ講義ノート" />
+  
+  
+  
+
+
+
+<meta name="date" content="2024-12-26" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="離散選択モデル.html"/>
+<link rel="next" href="離散選択モデルへの合理的消費者像の応用.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marketing Research Lecture Note</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本資料について）</a></li>
+<li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
+<li class="chapter" data-level="2.2" data-path="desktop.html"><a href="desktop.html"><i class="fa fa-check"></i><b>2.2</b> （補足）R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.3" data-path="補足デスクトップ版の利用とプロジェクト機能.html"><a href="補足デスクトップ版の利用とプロジェクト機能.html"><i class="fa fa-check"></i><b>2.3</b> （補足）デスクトップ版の利用とプロジェクト機能</a></li>
+<li class="chapter" data-level="2.4" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.4</b> Rの基本操作</a></li>
+<li class="chapter" data-level="2.5" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.5</b> R スクリプトのすゝめ</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html#rスクリプトを書く"><i class="fa fa-check"></i><b>2.5.1</b> Rスクリプトを書く</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="本章のまとめ.html"><a href="本章のまとめ.html"><i class="fa fa-check"></i><b>2.6</b> 本章のまとめ</a></li>
+<li class="chapter" data-level="2.7" data-path="参考文献.html"><a href="参考文献.html"><i class="fa fa-check"></i><b>2.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>3</b> リサーチデザイン</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html"><i class="fa fa-check"></i><b>3.1</b> マーケティング実務とリサーチ</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの異なる視点"><i class="fa fa-check"></i><b>3.1.1</b> 実務とリサーチの異なる視点</a></li>
+<li class="chapter" data-level="3.1.2" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#マーケティングリサーチと実務的含意"><i class="fa fa-check"></i><b>3.1.2</b> マーケティングリサーチと実務的含意</a></li>
+<li class="chapter" data-level="3.1.3" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの分離"><i class="fa fa-check"></i><b>3.1.3</b> 実務とリサーチの分離</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="リサーチデザインと論文の構成.html"><a href="リサーチデザインと論文の構成.html"><i class="fa fa-check"></i><b>3.2</b> リサーチデザインと論文の構成</a></li>
+<li class="chapter" data-level="3.3" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>3.3</b> 研究課題（問い）の設定</a></li>
+<li class="chapter" data-level="3.4" data-path="問題と分析をつなげる仮説の提示.html"><a href="問題と分析をつなげる仮説の提示.html"><i class="fa fa-check"></i><b>3.4</b> 問題と分析をつなげる仮説の提示</a></li>
+<li class="chapter" data-level="3.5" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html"><i class="fa fa-check"></i><b>3.5</b> 学術的研究のための留意点</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="学術的研究のための留意点.html"><a href="学術的研究のための留意点.html#マーケティング研究と科学哲学"><i class="fa fa-check"></i><b>3.5.1</b> マーケティング研究と科学哲学</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="研究における理論の利用と精緻化.html"><a href="研究における理論の利用と精緻化.html"><i class="fa fa-check"></i><b>3.6</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.7" data-path="参考文献-1.html"><a href="参考文献-1.html"><i class="fa fa-check"></i><b>3.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> データの種類とアンケートデザイン</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="記述的リサーチデザイン.html"><a href="記述的リサーチデザイン.html"><i class="fa fa-check"></i><b>4.1</b> 記述的リサーチデザイン</a></li>
+<li class="chapter" data-level="4.2" data-path="アンケート設計.html"><a href="アンケート設計.html"><i class="fa fa-check"></i><b>4.2</b> アンケート設計</a></li>
+<li class="chapter" data-level="4.3" data-path="質問におけるワーディング.html"><a href="質問におけるワーディング.html"><i class="fa fa-check"></i><b>4.3</b> 質問におけるワーディング</a></li>
+<li class="chapter" data-level="4.4" data-path="アンケートデザイン.html"><a href="アンケートデザイン.html"><i class="fa fa-check"></i><b>4.4</b> アンケートデザイン</a></li>
+<li class="chapter" data-level="4.5" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="handling.html"><a href="handling.html"><i class="fa fa-check"></i><b>5</b> データ処理と顧客関係管理（CRM）</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.1</b> データの読み込み</a></li>
+<li class="chapter" data-level="5.2" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.2</b> データの整形</a></li>
+<li class="chapter" data-level="5.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>5.3</b> 統計的検定を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>5.3.1</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="5.3.2" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>5.3.2</b> データ結合</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="おまけ-wide型とlong型データセット.html"><a href="おまけ-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>5.4</b> (おまけ) Wide型とLong型データセット</a></li>
+<li class="chapter" data-level="5.5" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="データの要約と可視化.html"><a href="データの要約と可視化.html"><i class="fa fa-check"></i><b>6</b> データの要約と可視化</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="記述統計.html"><a href="記述統計.html"><i class="fa fa-check"></i><b>6.1</b> 記述統計</a></li>
+<li class="chapter" data-level="6.2" data-path="カテゴリ変数の要約.html"><a href="カテゴリ変数の要約.html"><i class="fa fa-check"></i><b>6.2</b> カテゴリ変数の要約</a></li>
+<li class="chapter" data-level="6.3" data-path="データの可視化.html"><a href="データの可視化.html"><i class="fa fa-check"></i><b>6.3</b> データの可視化</a></li>
+<li class="chapter" data-level="6.4" data-path="二変数間の関係の要約.html"><a href="二変数間の関係の要約.html"><i class="fa fa-check"></i><b>6.4</b> 二変数間の関係の要約</a></li>
+<li class="chapter" data-level="6.5" data-path="参考文献-4.html"><a href="参考文献-4.html"><i class="fa fa-check"></i><b>6.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>7</b> 基礎統計学復習</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html"><i class="fa fa-check"></i><b>7.1</b> 確率モデル、期待値と分散</a></li>
+<li class="chapter" data-level="7.2" data-path="統計的推測.html"><a href="統計的推測.html"><i class="fa fa-check"></i><b>7.2</b> 統計的推測</a></li>
+<li class="chapter" data-level="7.3" data-path="点推定.html"><a href="点推定.html"><i class="fa fa-check"></i><b>7.3</b> 点推定</a></li>
+<li class="chapter" data-level="7.4" data-path="推定量もまた確率変数.html"><a href="推定量もまた確率変数.html"><i class="fa fa-check"></i><b>7.4</b> 推定量もまた確率変数</a></li>
+<li class="chapter" data-level="7.5" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html"><i class="fa fa-check"></i><b>7.5</b> 補足（いくつかの確率分布の関係性）</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#正規分布"><i class="fa fa-check"></i><b>7.5.1</b> 正規分布</a></li>
+<li class="chapter" data-level="7.5.2" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#カイ二乗分布"><i class="fa fa-check"></i><b>7.5.2</b> カイ二乗分布</a></li>
+<li class="chapter" data-level="7.5.3" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#t分布"><i class="fa fa-check"></i><b>7.5.3</b> t分布</a></li>
+<li class="chapter" data-level="7.5.4" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#f分布"><i class="fa fa-check"></i><b>7.5.4</b> F分布</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="区間推定.html"><a href="区間推定.html"><i class="fa fa-check"></i><b>7.6</b> 区間推定</a></li>
+<li class="chapter" data-level="7.7" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html"><i class="fa fa-check"></i><b>7.7</b> 統計的仮説検定</a></li>
+<li class="chapter" data-level="7.8" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html"><i class="fa fa-check"></i><b>7.8</b> 平均値に関するその他の検定</a></li>
+<li class="chapter" data-level="7.9" data-path="分散分析.html"><a href="分散分析.html"><i class="fa fa-check"></i><b>7.9</b> 分散分析</a></li>
+<li class="chapter" data-level="7.10" data-path="参考文献-5.html"><a href="参考文献-5.html"><i class="fa fa-check"></i><b>7.10</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="regintro.html"><a href="regintro.html"><i class="fa fa-check"></i><b>8</b> 回帰分析</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="回帰モデル概要.html"><a href="回帰モデル概要.html"><i class="fa fa-check"></i><b>8.1</b> 回帰モデル概要</a></li>
+<li class="chapter" data-level="8.2" data-path="回帰分析における推定と検定.html"><a href="回帰分析における推定と検定.html"><i class="fa fa-check"></i><b>8.2</b> 回帰分析における推定と検定</a></li>
+<li class="chapter" data-level="8.3" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html"><i class="fa fa-check"></i><b>8.3</b> 重回帰モデル1</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰モデル概要"><i class="fa fa-check"></i><b>8.3.1</b> 重回帰モデル概要</a></li>
+<li class="chapter" data-level="8.3.2" data-path="重回帰モデル1.html"><a href="重回帰モデル1.html#重回帰分析におけるモデル適合度"><i class="fa fa-check"></i><b>8.3.2</b> 重回帰分析におけるモデル適合度</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html"><i class="fa fa-check"></i><b>8.4</b> 重回帰モデル2</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#回帰係数の解釈"><i class="fa fa-check"></i><b>8.4.1</b> 回帰係数の解釈</a></li>
+<li class="chapter" data-level="8.4.2" data-path="重回帰モデル2.html"><a href="重回帰モデル2.html#重回帰モデルにおける変数選択"><i class="fa fa-check"></i><b>8.4.2</b> 重回帰モデルにおける変数選択</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="参考文献-6.html"><a href="参考文献-6.html"><i class="fa fa-check"></i><b>8.5</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="regtechnic.html"><a href="regtechnic.html"><i class="fa fa-check"></i><b>9</b> 回帰分析上の工夫紹介</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="ダミー変数.html"><a href="ダミー変数.html"><i class="fa fa-check"></i><b>9.1</b> ダミー変数</a></li>
+<li class="chapter" data-level="9.2" data-path="交差項.html"><a href="交差項.html"><i class="fa fa-check"></i><b>9.2</b> 交差項</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="交差項.html"><a href="交差項.html#傾きダミー"><i class="fa fa-check"></i><b>9.2.1</b> 傾きダミー</a></li>
+<li class="chapter" data-level="9.2.2" data-path="交差項.html"><a href="交差項.html#量的変数同士の交差項"><i class="fa fa-check"></i><b>9.2.2</b> 量的変数同士の交差項</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="係数比較.html"><a href="係数比較.html"><i class="fa fa-check"></i><b>9.3</b> 係数比較</a></li>
+<li class="chapter" data-level="9.4" data-path="対数線形.html"><a href="対数線形.html"><i class="fa fa-check"></i><b>9.4</b> 対数線形</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="対数線形.html"><a href="対数線形.html#需要の価格弾力性追加説明"><i class="fa fa-check"></i><b>9.4.1</b> 需要の価格弾力性追加説明</a></li>
+<li class="chapter" data-level="9.4.2" data-path="対数線形.html"><a href="対数線形.html#対数線形の推定と検定"><i class="fa fa-check"></i><b>9.4.2</b> 対数線形の推定と検定</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="おまけ分析結果のまとめ出力上の工夫.html"><a href="おまけ分析結果のまとめ出力上の工夫.html"><i class="fa fa-check"></i><b>9.5</b> （おまけ）分析結果のまとめ・出力上の工夫</a></li>
+<li class="chapter" data-level="9.6" data-path="参考文献-7.html"><a href="参考文献-7.html"><i class="fa fa-check"></i><b>9.6</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="choice.html"><a href="choice.html"><i class="fa fa-check"></i><b>10</b> 消費者の選択と離散選択モデル</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="消費者選択と合理的消費者像概観.html"><a href="消費者選択と合理的消費者像概観.html"><i class="fa fa-check"></i><b>10.1</b> 消費者選択と合理的消費者像概観</a></li>
+<li class="chapter" data-level="10.2" data-path="選択行動と効用最大化についての例.html"><a href="選択行動と効用最大化についての例.html"><i class="fa fa-check"></i><b>10.2</b> 選択行動と効用最大化についての例</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="選択行動と効用最大化についての例.html"><a href="選択行動と効用最大化についての例.html#step-1-どのような消費者を考察の対象にするのか"><i class="fa fa-check"></i><b>10.2.1</b> Step 1: どのような消費者を考察の対象にするのか</a></li>
+<li class="chapter" data-level="10.2.2" data-path="選択行動と効用最大化についての例.html"><a href="選択行動と効用最大化についての例.html#step-2-選好モデルと効用"><i class="fa fa-check"></i><b>10.2.2</b> Step 2: 選好モデルと効用</a></li>
+<li class="chapter" data-level="10.2.3" data-path="選択行動と効用最大化についての例.html"><a href="選択行動と効用最大化についての例.html#step-3-効用最大化"><i class="fa fa-check"></i><b>10.2.3</b> Step 3: 効用最大化</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="離散選択モデル.html"><a href="離散選択モデル.html"><i class="fa fa-check"></i><b>10.3</b> 離散選択モデル</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="離散選択モデル.html"><a href="離散選択モデル.html#線形確率モデル"><i class="fa fa-check"></i><b>10.3.1</b> 線形確率モデル</a></li>
+<li class="chapter" data-level="10.3.2" data-path="離散選択モデル.html"><a href="離散選択モデル.html#プロビットモデルとロジットモデル"><i class="fa fa-check"></i><b>10.3.2</b> プロビットモデルとロジットモデル</a></li>
+<li class="chapter" data-level="10.3.3" data-path="離散選択モデル.html"><a href="離散選択モデル.html#潜在変数アプローチによる説明"><i class="fa fa-check"></i><b>10.3.3</b> 潜在変数アプローチによる説明</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="プロビットモデルの推定と解釈.html"><a href="プロビットモデルの推定と解釈.html"><i class="fa fa-check"></i><b>10.4</b> プロビットモデルの推定と解釈</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="プロビットモデルの推定と解釈.html"><a href="プロビットモデルの推定と解釈.html#最尤推定法"><i class="fa fa-check"></i><b>10.4.1</b> 最尤推定法</a></li>
+<li class="chapter" data-level="10.4.2" data-path="プロビットモデルの推定と解釈.html"><a href="プロビットモデルの推定と解釈.html#分析の実行とまとめ"><i class="fa fa-check"></i><b>10.4.2</b> 分析の実行とまとめ</a></li>
+<li class="chapter" data-level="10.4.3" data-path="プロビットモデルの推定と解釈.html"><a href="プロビットモデルの推定と解釈.html#限界効果の計算"><i class="fa fa-check"></i><b>10.4.3</b> 限界効果の計算</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="離散選択モデルへの合理的消費者像の応用.html"><a href="離散選択モデルへの合理的消費者像の応用.html"><i class="fa fa-check"></i><b>10.5</b> 離散選択モデルへの合理的消費者像の応用</a></li>
+<li class="chapter" data-level="10.6" data-path="多項選択モデル紹介.html"><a href="多項選択モデル紹介.html"><i class="fa fa-check"></i><b>10.6</b> 多項選択モデル紹介</a></li>
+<li class="chapter" data-level="10.7" data-path="需要の予測と本章のまとめ.html"><a href="需要の予測と本章のまとめ.html"><i class="fa fa-check"></i><b>10.7</b> 需要の予測と本章のまとめ</a></li>
+<li class="chapter" data-level="10.8" data-path="参考文献-8.html"><a href="参考文献-8.html"><i class="fa fa-check"></i><b>10.8</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="cluster.html"><a href="cluster.html"><i class="fa fa-check"></i><b>11</b> セグメントとクラスター分析</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="セグメンテーションとマーケティング意思決定.html"><a href="セグメンテーションとマーケティング意思決定.html"><i class="fa fa-check"></i><b>11.1</b> セグメンテーションとマーケティング意思決定</a></li>
+<li class="chapter" data-level="11.2" data-path="stpその後.html"><a href="stpその後.html"><i class="fa fa-check"></i><b>11.2</b> STPその後</a></li>
+<li class="chapter" data-level="11.3" data-path="セグメンテーションの実行とクラスター分析.html"><a href="セグメンテーションの実行とクラスター分析.html"><i class="fa fa-check"></i><b>11.3</b> セグメンテーションの実行とクラスター分析</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="セグメンテーションの実行とクラスター分析.html"><a href="セグメンテーションの実行とクラスター分析.html#Hier"><i class="fa fa-check"></i><b>11.3.1</b> 階層的クラスター分析</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="k-means.html"><a href="k-means.html"><i class="fa fa-check"></i><b>11.4</b> 非階層的クラスター分析：K-means法</a></li>
+<li class="chapter" data-level="11.5" data-path="rによるクラスター分析の実行.html"><a href="rによるクラスター分析の実行.html"><i class="fa fa-check"></i><b>11.5</b> Rによるクラスター分析の実行</a></li>
+<li class="chapter" data-level="11.6" data-path="参考文献-9.html"><a href="参考文献-9.html"><i class="fa fa-check"></i><b>11.6</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="factor.html"><a href="factor.html"><i class="fa fa-check"></i><b>12</b> 知覚マップと因子分析</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="ポジショニングと知覚マップ概要.html"><a href="ポジショニングと知覚マップ概要.html"><i class="fa fa-check"></i><b>12.1</b> ポジショニングと知覚マップ概要</a></li>
+<li class="chapter" data-level="12.2" data-path="因子分析概要.html"><a href="因子分析概要.html"><i class="fa fa-check"></i><b>12.2</b> 因子分析概要</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="因子分析概要.html"><a href="因子分析概要.html#因子分析の概要とモデルの構造"><i class="fa fa-check"></i><b>12.2.1</b> 因子分析の概要とモデルの構造</a></li>
+<li class="chapter" data-level="12.2.2" data-path="因子分析概要.html"><a href="因子分析概要.html#因子モデル"><i class="fa fa-check"></i><b>12.2.2</b> 2因子モデル</a></li>
+<li class="chapter" data-level="12.2.3" data-path="因子分析概要.html"><a href="因子分析概要.html#因子スコア"><i class="fa fa-check"></i><b>12.2.3</b> 因子スコア</a></li>
+<li class="chapter" data-level="12.2.4" data-path="因子分析概要.html"><a href="因子分析概要.html#小括"><i class="fa fa-check"></i><b>12.2.4</b> 小括</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="faex.html"><a href="faex.html"><i class="fa fa-check"></i><b>12.3</b> Rによる因子分析の実行</a></li>
+<li class="chapter" data-level="12.4" data-path="アンケートデータと知覚マップ.html"><a href="アンケートデータと知覚マップ.html"><i class="fa fa-check"></i><b>12.4</b> アンケートデータと知覚マップ</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="アンケートデータと知覚マップ.html"><a href="アンケートデータと知覚マップ.html#データ構造の変更"><i class="fa fa-check"></i><b>12.4.1</b> データ構造の変更</a></li>
+<li class="chapter" data-level="12.4.2" data-path="アンケートデータと知覚マップ.html"><a href="アンケートデータと知覚マップ.html#因子分析の実行"><i class="fa fa-check"></i><b>12.4.2</b> 因子分析の実行</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="pcafa.html"><a href="pcafa.html"><i class="fa fa-check"></i><b>12.5</b> （おまけ）主成分分析との違い</a></li>
+<li class="chapter" data-level="12.6" data-path="参考文献-10.html"><a href="参考文献-10.html"><i class="fa fa-check"></i><b>12.6</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="psm.html"><a href="psm.html"><i class="fa fa-check"></i><b>13</b> 価格感度測定 (PSM)</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="psmrunning.html"><a href="psmrunning.html"><i class="fa fa-check"></i><b>13.1</b> PSMの実行と結果</a></li>
+<li class="chapter" data-level="13.2" data-path="price_concept.html"><a href="price_concept.html"><i class="fa fa-check"></i><b>13.2</b> マーケティングにおける価格概念</a></li>
+<li class="chapter" data-level="13.3" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html"><i class="fa fa-check"></i><b>13.3</b> PSMに関する既存研究</a>
+<ul>
+<li class="chapter" data-level="13.3.1" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#受容価格に関する知見"><i class="fa fa-check"></i><b>13.3.1</b> 受容価格に関する知見</a></li>
+<li class="chapter" data-level="13.3.2" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#内的参照価格に関する知見"><i class="fa fa-check"></i><b>13.3.2</b> 内的参照価格に関する知見</a></li>
+</ul></li>
+<li class="chapter" data-level="13.4" data-path="受容価格帯と内的参照価格帯の応用とpsm.html"><a href="受容価格帯と内的参照価格帯の応用とpsm.html"><i class="fa fa-check"></i><b>13.4</b> 受容価格帯と内的参照価格帯の応用とPSM</a></li>
+<li class="chapter" data-level="13.5" data-path="集計方法に関する注意点.html"><a href="集計方法に関する注意点.html"><i class="fa fa-check"></i><b>13.5</b> 集計方法に関する注意点</a></li>
+<li class="chapter" data-level="13.6" data-path="参考文献-11.html"><a href="参考文献-11.html"><i class="fa fa-check"></i><b>13.6</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="consumer.html"><a href="consumer.html"><i class="fa fa-check"></i><b>14</b> コラム1（消費者行動研究の系譜概観）</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="参考文献-12.html"><a href="参考文献-12.html"><i class="fa fa-check"></i><b>14.1</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="causation1.html"><a href="causation1.html"><i class="fa fa-check"></i><b>15</b> コラム2-1（マーケティングにおける因果推論導入）</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="参考文献-13.html"><a href="参考文献-13.html"><i class="fa fa-check"></i><b>15.1</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="causation2.html"><a href="causation2.html"><i class="fa fa-check"></i><b>16</b> コラム2-2（ランダム化比較試験とカゴ落ちメール）</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="参考文献-14.html"><a href="参考文献-14.html"><i class="fa fa-check"></i><b>16.1</b> 参考文献</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチ講義ノート</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="プロビットモデルの推定と解釈" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> プロビットモデルの推定と解釈<a href="プロビットモデルの推定と解釈.html#プロビットモデルの推定と解釈" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="最尤推定法" class="section level3 hasAnchor" number="10.4.1">
+<h3><span class="header-section-number">10.4.1</span> 最尤推定法<a href="プロビットモデルの推定と解釈.html#最尤推定法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>プロビットモデルを構築できたら、次はモデル内のパラメータに関する推定値（<span class="math inline">\(\hat{\beta}_0, \hat{\beta}_1,...,\hat{\beta}_k\)</span>）を求め、選択確率に関する含意を得る。プロビットモデルを推定する場合のデータセットには、説名変数に関する列（<span class="math inline">\(x_{1i},.., x_{ki}\)</span>）と、それに対応する個人 <span class="math inline">\(i\)</span> の選択結果 <span class="math inline">\(y_i\)</span>（選択していれば1、選択していなければ 0）が記録されている。<code>choice_data.xlsx</code> は、二つの製品に対する消費者の選択結果を捉えた人工データデットである。データには製品1の価格 <span class="math inline">\(p1\)</span>、製品2の価格 <span class="math inline">\(p2\)</span>（千円）、製品1のクーポン広告を受け取ったかのダミー変数 <span class="math inline">\(a1\)</span>、製品2のクーポン広告ダミー変数 <span class="math inline">\(a2\)</span> と、製品1の選択結果 <span class="math inline">\(y1\)</span>、製品2の選択結果 <span class="math inline">\(y2\)</span> が含まれている。</p>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="プロビットモデルの推定と解釈.html#cb253-1" tabindex="-1"></a>choice_df <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/choice_data.xlsx&quot;</span>)</span>
+<span id="cb253-2"><a href="プロビットモデルの推定と解釈.html#cb253-2" tabindex="-1"></a><span class="fu">head</span>(choice_df)</span></code></pre></div>
+<pre><code>## # A tibble: 6 × 6
+##      y1    y2    p1    p2    a1    a2
+##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     1     0 10.7  16.8      0     1
+## 2     0     1 11.6   9.15     1     0
+## 3     1     0  8.97  9.31     1     0
+## 4     1     0  4.62  8.03     0     0
+## 5     1     0  7.81 19.2      1     1
+## 6     1     0  7.49  8.84     0     0</code></pre>
+<p>プロビットモデルのパラメータ推定においては、最小二乗法ではなく、最尤（Maximum Likelihood: ML）法を用いる。最尤法では、あるデータが与えられたときに、そのような情報が得られる確率が最も高くなる（最も尤もらしくなる）ようにパラメータの値を求める方法である。この尤もらしさを尤度と呼び、得たデータを尤度が最大になる（最もうまく説明できる）ようにパラメータを推定する。</p>
+<p>一般的に、パラメータ <span class="math inline">\(\theta\)</span> を含む確率密度 <span class="math inline">\(f(x,\theta)\)</span> からの無作為標本<span class="math inline">\({x_1,.., x_n}\)</span> を得た時、これに対する以下のような同時確率密度関数をパラメータ <span class="math inline">\(\theta\)</span> に関する尤度関数と見做す。</p>
+<p><span class="math display">\[
+L(\theta)=f(x_1,\theta)\times f(x_2,\theta)\times,...,\times f(x_n,\theta)
+\]</span>
+そして、これを最大にするように <span class="math inline">\(\theta\)</span> の推定値を求める方法が最尤法であり、ここで得る推定量を最尤推定量（Maximum Likelihood Estimator: MLE）と呼ぶ。
+実際の分析においては、尤度関数の自然対数を取った以下のような対数尤度関数を用いる事が多い。</p>
+<p><span class="math display">\[
+LL(\theta)=\sum^n_{i=1}\ln f(x,\theta)
+\]</span>
+対数尤度と尤度を最大にする <span class="math inline">\(\theta\)</span> は数学的には等しく、対数尤度を用いたほうが、計算が容易であることから、対数尤度が用いられる。</p>
+<p>前節で確認したプロビットモデル（<a href="離散選択モデル.html#eq:probit">(10.1)</a>）の対数尤度関数は、以下のように求まる。</p>
+<p><span class="math display" id="eq:llprobit">\[\begin{equation}
+LL_i(\theta)=y_i\Big(\ln[\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})] \Big)+ (1-y_i)\Big(\ln[1-\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})]\Big) \tag{10.2}
+\end{equation}\]</span></p>
+<p>式 <a href="プロビットモデルの推定と解釈.html#eq:llprobit">(10.2)</a> は個人 <span class="math inline">\(i\)</span> に関する対数尤度であるため、データ全体をうまく説明するパラメータを推定するためには、個別対数尤度の和（<span class="math inline">\(\sum^n_{i=1}LL_i\)</span>）を最大化するような係数パラメータ（<span class="math inline">\(\beta_0,\beta_1,..., \beta_k\)</span>）の推定値（<span class="math inline">\(\hat{\beta}_0,\hat{\beta}_1,..., \hat{\beta}_k\)</span>）を計算する。</p>
+</div>
+<div id="分析の実行とまとめ" class="section level3 hasAnchor" number="10.4.2">
+<h3><span class="header-section-number">10.4.2</span> 分析の実行とまとめ<a href="プロビットモデルの推定と解釈.html#分析の実行とまとめ" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>先程の<code>choice_data.xlsx</code>を用いて製品1の選択に関するプロビットモデルを推定してみる。Rでは<code>glm()</code>関数において、<code>family = binomial(link = probit)</code> という引数を指定することで実行が可能である<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a>。以下では分析の実行と結果の出力を行う。</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="プロビットモデルの推定と解釈.html#cb255-1" tabindex="-1"></a>probit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
+<span id="cb255-2"><a href="プロビットモデルの推定と解釈.html#cb255-2" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit),</span>
+<span id="cb255-3"><a href="プロビットモデルの推定と解釈.html#cb255-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
+<span id="cb255-4"><a href="プロビットモデルの推定と解釈.html#cb255-4" tabindex="-1"></a><span class="fu">summary</span>(probit1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## glm(formula = y1 ~ p1 + a1, family = binomial(link = probit), 
+##     data = choice_df)
+## 
+## Coefficients:
+##             Estimate Std. Error z value Pr(&gt;|z|)    
+## (Intercept)  2.04117    0.22350   9.133  &lt; 2e-16 ***
+## p1          -0.24720    0.02213 -11.171  &lt; 2e-16 ***
+## a1           0.62763    0.08656   7.251 4.13e-13 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## (Dispersion parameter for binomial family taken to be 1)
+## 
+##     Null deviance: 1384.5  on 999  degrees of freedom
+## Residual deviance: 1205.5  on 997  degrees of freedom
+## AIC: 1211.5
+## 
+## Number of Fisher Scoring iterations: 3</code></pre>
+<p>ここまで、我々は線形確率、プロビット、ロジットという3種類のモデルでの推定方法を概観してきた。以下では、これらの異なる推定方法を用いた分析結果を併記する。</p>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="プロビットモデルの推定と解釈.html#cb257-1" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb257-2"><a href="プロビットモデルの推定と解釈.html#cb257-2" tabindex="-1"></a>ols1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
+<span id="cb257-3"><a href="プロビットモデルの推定と解釈.html#cb257-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
+<span id="cb257-4"><a href="プロビットモデルの推定と解釈.html#cb257-4" tabindex="-1"></a></span>
+<span id="cb257-5"><a href="プロビットモデルの推定と解釈.html#cb257-5" tabindex="-1"></a>logit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
+<span id="cb257-6"><a href="プロビットモデルの推定と解釈.html#cb257-6" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit),</span>
+<span id="cb257-7"><a href="プロビットモデルの推定と解釈.html#cb257-7" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
+<span id="cb257-8"><a href="プロビットモデルの推定と解釈.html#cb257-8" tabindex="-1"></a>models <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
+<span id="cb257-9"><a href="プロビットモデルの推定と解釈.html#cb257-9" tabindex="-1"></a>models[[<span class="st">&quot;Linear probability model&quot;</span>]] <span class="ot">&lt;-</span> ols1</span>
+<span id="cb257-10"><a href="プロビットモデルの推定と解釈.html#cb257-10" tabindex="-1"></a>models[[<span class="st">&quot;Probit model&quot;</span>]] <span class="ot">&lt;-</span> probit1</span>
+<span id="cb257-11"><a href="プロビットモデルの推定と解釈.html#cb257-11" tabindex="-1"></a>models[[<span class="st">&quot;Logit model&quot;</span>]] <span class="ot">&lt;-</span> logit1</span>
+<span id="cb257-12"><a href="プロビットモデルの推定と解釈.html#cb257-12" tabindex="-1"></a></span>
+<span id="cb257-13"><a href="プロビットモデルの推定と解釈.html#cb257-13" tabindex="-1"></a><span class="fu">modelsummary</span>(models, </span>
+<span id="cb257-14"><a href="プロビットモデルの推定と解釈.html#cb257-14" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;モデル比較&quot;</span>,</span>
+<span id="cb257-15"><a href="プロビットモデルの推定と解釈.html#cb257-15" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show robust standard errors&quot;</span>,</span>
+<span id="cb257-16"><a href="プロビットモデルの推定と解釈.html#cb257-16" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb257-17"><a href="プロビットモデルの推定と解釈.html#cb257-17" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&quot;std.error&quot;</span>,</span>
+<span id="cb257-18"><a href="プロビットモデルの推定と解釈.html#cb257-18" tabindex="-1"></a>         <span class="at">vcov =</span> <span class="st">&quot;robust&quot;</span>,</span>
+<span id="cb257-19"><a href="プロビットモデルの推定と解釈.html#cb257-19" tabindex="-1"></a>         <span class="at">gof_map =</span> <span class="st">&quot;nobs&quot;</span>)</span></code></pre></div>
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tinytable_gaqpr7btwykogksg6ap5</title>
+    <style>
+.table td.tinytable_css_r5yomvtgc0ccv98s0wda, .table th.tinytable_css_r5yomvtgc0ccv98s0wda {    border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_pti03czc77zcycb1mah4, .table th.tinytable_css_pti03czc77zcycb1mah4 {    text-align: left; }
+.table td.tinytable_css_wpf0v3cvhdrl8ldilwsq, .table th.tinytable_css_wpf0v3cvhdrl8ldilwsq {    text-align: center; }
+.table td.tinytable_css_qlg425fim1mmyp7i5d16, .table th.tinytable_css_qlg425fim1mmyp7i5d16 {    text-align: center; }
+.table td.tinytable_css_trdkg3h5dz2rytbypx92, .table th.tinytable_css_trdkg3h5dz2rytbypx92 {    text-align: center; }
+.table td.tinytable_css_3j91463cphd5lic5uzll, .table th.tinytable_css_3j91463cphd5lic5uzll {    border-bottom: solid 0.05em black; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_gaqpr7btwykogksg6ap5" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
+        <thead>
+        <caption>モデル比較</caption>
+              <tr>
+                <th scope="col"> </th>
+                <th scope="col">Linear probability model</th>
+                <th scope="col">Probit model</th>
+                <th scope="col">Logit model</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan='4'>+ p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001</td></tr>
+<tr><td colspan='4'>Values in [ ] show robust standard errors</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td>(Intercept)</td>
+                  <td>1.196*** </td>
+                  <td>2.041*** </td>
+                  <td>3.332*** </td>
+                </tr>
+                <tr>
+                  <td>           </td>
+                  <td>(0.065)  </td>
+                  <td>(0.212)  </td>
+                  <td>(0.361)  </td>
+                </tr>
+                <tr>
+                  <td>p1         </td>
+                  <td>-0.085***</td>
+                  <td>-0.247***</td>
+                  <td>-0.404***</td>
+                </tr>
+                <tr>
+                  <td>           </td>
+                  <td>(0.006)  </td>
+                  <td>(0.021)  </td>
+                  <td>(0.036)  </td>
+                </tr>
+                <tr>
+                  <td>a1         </td>
+                  <td>0.221*** </td>
+                  <td>0.628*** </td>
+                  <td>1.035*** </td>
+                </tr>
+                <tr>
+                  <td>           </td>
+                  <td>(0.029)  </td>
+                  <td>(0.087)  </td>
+                  <td>(0.145)  </td>
+                </tr>
+                <tr>
+                  <td>Num.Obs.   </td>
+                  <td>1000     </td>
+                  <td>1000     </td>
+                  <td>1000     </td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function styleCell_tinytable_um4ltg8arztkz49yr2nk(i, j, css_id) {
+        var table = document.getElementById("tinytable_gaqpr7btwykogksg6ap5");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_gaqpr7btwykogksg6ap5');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_tinytable_um4ltg8arztkz49yr2nk(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_gaqpr7btwykogksg6ap5");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 0, 'tinytable_css_r5yomvtgc0ccv98s0wda') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 1, 'tinytable_css_r5yomvtgc0ccv98s0wda') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 2, 'tinytable_css_r5yomvtgc0ccv98s0wda') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 3, 'tinytable_css_r5yomvtgc0ccv98s0wda') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(1, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(2, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(3, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(4, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(5, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(7, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(1, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(2, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(3, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(4, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(5, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(7, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(1, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(2, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(3, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(4, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(5, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(7, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(1, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(2, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(3, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(4, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(5, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(7, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 0, 'tinytable_css_3j91463cphd5lic5uzll') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 1, 'tinytable_css_3j91463cphd5lic5uzll') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 2, 'tinytable_css_3j91463cphd5lic5uzll') })
+window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 3, 'tinytable_css_3j91463cphd5lic5uzll') })
+    </script>
+
+  </body>
+
+</html>
+<p>分析の結果、どのアプローチでも <span class="math inline">\(p_1\)</span> は被説名変数に対して負に、<span class="math inline">\(a_1\)</span> は正に有意な影響を与えることが示されている。しかしながら、詳しくは次節にて説明するが、係数の解釈については注意が必要である。このように、複数の分析アプローチを用いた結果をまとめ、併記することも簡単である。結果の頑健性チェックや、様々な比較検討のために、このような表が用いられることも多い。</p>
+</div>
+<div id="限界効果の計算" class="section level3 hasAnchor" number="10.4.3">
+<h3><span class="header-section-number">10.4.3</span> 限界効果の計算<a href="プロビットモデルの推定と解釈.html#限界効果の計算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>プロビットモデルの分析には成功したが、非線形モデルで推定された係数の解釈には注意が必要である。特に、プロビットモデルによって推定されたある変数の係数値は、「他の変数の影響をコントロールした場合にその変数が選択確率に与える影響」を意味しない。そのため、OLSの分析結果のように、係数の推定値のみを見て変数の影響の程度を議論することはできず、そのような解釈を行うためには特定の変数が持つ「限界効果」を追加的に分析する必要がある。</p>
+<p>プロビットモデルによって得た係数の推定値を直接的に解釈できない点と限界効果について説明する。パラメータの推定結果と、<span class="math inline">\(x_{1i},...,x_{ki}\)</span> の値を得たときに <span class="math inline">\(y_i\)</span> が 1 を取る確率は以下の様に示される。</p>
+<p><span class="math display">\[
+\hat{P}(y_i=1|x_{1i},...,x_{ki})=\Phi(\hat{\beta}_0+\hat{\beta}_1x_{1i}+...+\hat{\beta}_kx_{ki})
+\]</span></p>
+<p>ここで、説名変数 <span class="math inline">\(x_{1i}\)</span> の限界効果は、<span class="math inline">\(x_{1i}\)</span> が変化したときに反応確率がどのように変化するのかを表す。これは偏微分という計算方法を用いて以下の様に示すことができる。なお、以下で示す内容は <span class="math inline">\(x_{1i}\)</span> 以外の任意の説名変数を用いても成り立つ。</p>
+<p><span class="math display">\[
+\frac{\partial \hat{P}(y_i=1|x_{1i},...,x_{ki})}{\partial x_{1i}}=\phi(\hat{\beta_0}+\hat{\beta}_1x_{1i}+...+\hat{\beta}_kx_{ki})\hat{\beta}_1
+\]</span></p>
+<p>ただし、<span class="math inline">\(\phi\)</span> は標準正規分布の確率密度関数であり、累積分布関数を微分することで得る。このように、OLSのような線形モデルと異なり、<span class="math inline">\(\hat{\beta}_1\)</span> が直接的に限界効果を示しているわけではないことが伺える<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a>。</p>
+<p>また同式より、ある変数の変化が反応確率へ与える限界効果は、個人が持つ全ての説名変数（<span class="math inline">\(x_{1i},...,x_{ki}\)</span>）の値によって変化することもわかる。そのため、限界効果の報告においては「平均的な」限界効果を報告することが一般的である。ただし、「何の平均を取るか」という点において、2種類の計算方法が存在する。第1に、個人の個別限界効果を計算し、その平均値求めるという以下のような方法である。</p>
+<p><span class="math display" id="eq:avgmarg1">\[\begin{equation}
+\frac{1}{n}\sum^n_{i=1}\Big[\phi(\hat{\beta_0}+\hat{\beta}_1x_{1i}+...+\hat{\beta}_kx_{ki})\hat{\beta}_1 \Big] \tag{10.3}
+\end{equation}\]</span></p>
+<p>この計算方法は、因果推論における平均処置効果の議論に対応しているという好ましい性質を持っている（西山ほか, 2019）。</p>
+<p>第2の方法は、説明変数の値について、それぞれ平均値を計算し、限界効果を求めるという以下のような方法である。</p>
+<p><span class="math display" id="eq:avgmarg2">\[\begin{equation}
+\phi(\hat{\beta_0}+\hat{\beta}_1\bar{x}_1+...+\hat{\beta}_k\bar{x}_k)\hat{\beta}_1 \tag{10.4}
+\end{equation}\]</span></p>
+<p>これは、それぞれの説名変数について平均値を取るような「平均的個人」における限界効果として解釈可能な計算方法である。</p>
+<p>着目する説明変数が上のデータ分析結果における <code>a1</code> のように離散変数（ダミー変数）の場合、その限界効果についてこれまでのような偏微分の議論は使えない。そのため、ダミー変数が 0 の場合の反応確率と、1 の場合の反応確率の差を取る形で限界効果を捉える。例えば、クーポンを受け取っていない場合（<span class="math inline">\(a_1=0\)</span>）と受け取った場合（<span class="math inline">\(a_1=1\)</span>）の反応確率の差は以下の様に示すことができる。</p>
+<p><span class="math display" id="eq:marg-dummy">\[\begin{equation}
+\Phi(\hat{\beta}_0+\hat{\beta}_1p_{1i}+\hat{\beta}_2) - \Phi(\hat{\beta}_0+\hat{\beta}_1p_{1i}) \tag{10.5}
+\end{equation}\]</span></p>
+<p>この限界効果も、他の変数の値（例えば、<span class="math inline">\(p_{1i}\)</span>）によって変化するため、連続変数の場合と同様に平均値を報告することが一般的である。</p>
+<p>限界効果の計算には、<code>mfx::probitmfx()</code> を用いる<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>。必要に応じて、以下のようにパッケージをインストールしてほしい。</p>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb258-1"><a href="プロビットモデルの推定と解釈.html#cb258-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;mfx&quot;</span>)</span></code></pre></div>
+<p><code>mfx</code> パッケージを用いた限界効果の計算では、線形モデルやプロビットモデルの推定同様、以下のようにモデルを指定し、分析を行う。平均的な限界効果の計算方法については、<code>atmean</code> という引数で指定する。<code>atmean = FALSE</code> とすることで、個別限界効果の平均値を計算できる。一方で、平均値における限界効果は<code>atmean = TRUE</code> と指示することで計算できる。</p>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb259-1"><a href="プロビットモデルの推定と解釈.html#cb259-1" tabindex="-1"></a><span class="fu">library</span>(mfx)</span>
+<span id="cb259-2"><a href="プロビットモデルの推定と解釈.html#cb259-2" tabindex="-1"></a><span class="co">#Average Marginal Effects (限界効果の平均)</span></span>
+<span id="cb259-3"><a href="プロビットモデルの推定と解釈.html#cb259-3" tabindex="-1"></a>probit1_ame <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1,</span>
+<span id="cb259-4"><a href="プロビットモデルの推定と解釈.html#cb259-4" tabindex="-1"></a>               <span class="at">data =</span> choice_df, <span class="at">atmean =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb259-5"><a href="プロビットモデルの推定と解釈.html#cb259-5" tabindex="-1"></a>probit1_ame</span></code></pre></div>
+<pre><code>## Call:
+## probitmfx(formula = y1 ~ p1 + a1, data = choice_df, atmean = FALSE)
+## 
+## Marginal Effects:
+##         dF/dx  Std. Err.        z     P&gt;|z|    
+## p1 -0.0847786  0.0060787 -13.9469 &lt; 2.2e-16 ***
+## a1  0.2188866  0.0289816   7.5526 4.266e-14 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## dF/dx is for discrete change for the following variables:
+## 
+## [1] &quot;a1&quot;</code></pre>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb261-1"><a href="プロビットモデルの推定と解釈.html#cb261-1" tabindex="-1"></a><span class="co">#Marginal Effects at Mean（平均値における限界効果）</span></span>
+<span id="cb261-2"><a href="プロビットモデルの推定と解釈.html#cb261-2" tabindex="-1"></a>probit1_mem <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1,</span>
+<span id="cb261-3"><a href="プロビットモデルの推定と解釈.html#cb261-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df, <span class="at">atmean =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb261-4"><a href="プロビットモデルの推定と解釈.html#cb261-4" tabindex="-1"></a>probit1_mem</span></code></pre></div>
+<pre><code>## Call:
+## probitmfx(formula = y1 ~ p1 + a1, data = choice_df, atmean = TRUE)
+## 
+## Marginal Effects:
+##         dF/dx  Std. Err.        z     P&gt;|z|    
+## p1 -0.0984235  0.0088074 -11.1750 &lt; 2.2e-16 ***
+## a1  0.2446609  0.0324366   7.5427 4.602e-14 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## dF/dx is for discrete change for the following variables:
+## 
+## [1] &quot;a1&quot;</code></pre>
+<p>分析結果を比較すると、多少計算結果は異なるものの、どちらの計算方法においても、価格は製品の選択確率に負に、クーポンは正に有意な影響を与えることが伺える。また影響の程度として、限界効果の平均値に着目すると、価格が1単位（千円）上昇すると、選択確率が約<span class="math inline">\(8.5\%\)</span>下がること、クーポンを受け取った人は受け取っていない人と比べて約<span class="math inline">\(21.9\%\)</span>選択確率が高いことが伺える。また、今回の結果の場合、OLSを用いたLPMの係数パラメータと似た値を得たことも伺える。なお、詳細については省略するが限界効果の標準誤差はデルタ法と呼ばれる方法で計算されている（Fernihough, 2019）。</p>
+<p>また、<code>mfx</code> による結果も以下のように整理して出力する事ができる。下表の(1) は限界効果の平均（Average Mean Effect）、(2) は平均的個人における限界効果（Marginal Effect at Mean）をそれぞれあらわしている。</p>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb263-1"><a href="プロビットモデルの推定と解釈.html#cb263-1" tabindex="-1"></a>marginal <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb263-2"><a href="プロビットモデルの推定と解釈.html#cb263-2" tabindex="-1"></a>  <span class="st">&quot;p1 marginal&quot;</span> <span class="ot">=</span> <span class="st">&quot;p1&quot;</span>,</span>
+<span id="cb263-3"><a href="プロビットモデルの推定と解釈.html#cb263-3" tabindex="-1"></a>  <span class="st">&quot;a1 marginal&quot;</span> <span class="ot">=</span> <span class="st">&quot;a1&quot;</span></span>
+<span id="cb263-4"><a href="プロビットモデルの推定と解釈.html#cb263-4" tabindex="-1"></a>)</span>
+<span id="cb263-5"><a href="プロビットモデルの推定と解釈.html#cb263-5" tabindex="-1"></a></span>
+<span id="cb263-6"><a href="プロビットモデルの推定と解釈.html#cb263-6" tabindex="-1"></a>marg_model <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb263-7"><a href="プロビットモデルの推定と解釈.html#cb263-7" tabindex="-1"></a>  <span class="st">&quot;(1) Probit_AME&quot;</span> <span class="ot">&lt;-</span> probit1_ame,</span>
+<span id="cb263-8"><a href="プロビットモデルの推定と解釈.html#cb263-8" tabindex="-1"></a>  <span class="st">&quot;(2) Probit_MEM&quot;</span> <span class="ot">&lt;-</span> probit1_mem</span>
+<span id="cb263-9"><a href="プロビットモデルの推定と解釈.html#cb263-9" tabindex="-1"></a>)</span>
+<span id="cb263-10"><a href="プロビットモデルの推定と解釈.html#cb263-10" tabindex="-1"></a>marg_sum <span class="ot">&lt;-</span> <span class="fu">modelsummary</span>(</span>
+<span id="cb263-11"><a href="プロビットモデルの推定と解釈.html#cb263-11" tabindex="-1"></a>  <span class="co"># models to summarize side-by-side</span></span>
+<span id="cb263-12"><a href="プロビットモデルの推定と解釈.html#cb263-12" tabindex="-1"></a>  marg_model,</span>
+<span id="cb263-13"><a href="プロビットモデルの推定と解釈.html#cb263-13" tabindex="-1"></a>  <span class="co"># S.E. in parentheses</span></span>
+<span id="cb263-14"><a href="プロビットモデルの推定と解釈.html#cb263-14" tabindex="-1"></a>  <span class="at">statistic =</span> <span class="st">&quot;std.error&quot;</span>,</span>
+<span id="cb263-15"><a href="プロビットモデルの推定と解釈.html#cb263-15" tabindex="-1"></a>  <span class="co"># rename and select the coefficients</span></span>
+<span id="cb263-16"><a href="プロビットモデルの推定と解釈.html#cb263-16" tabindex="-1"></a>  <span class="at">coef_map =</span> marginal,</span>
+<span id="cb263-17"><a href="プロビットモデルの推定と解釈.html#cb263-17" tabindex="-1"></a>  <span class="co"># significance stars</span></span>
+<span id="cb263-18"><a href="プロビットモデルの推定と解釈.html#cb263-18" tabindex="-1"></a>  <span class="at">stars =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb263-19"><a href="プロビットモデルの推定と解釈.html#cb263-19" tabindex="-1"></a>  <span class="co"># term and component columns are combined</span></span>
+<span id="cb263-20"><a href="プロビットモデルの推定と解釈.html#cb263-20" tabindex="-1"></a>  <span class="at">shape =</span> term<span class="sc">:</span>component <span class="sc">~</span> model,</span>
+<span id="cb263-21"><a href="プロビットモデルの推定と解釈.html#cb263-21" tabindex="-1"></a>  <span class="at">add_rows =</span> <span class="fu">data.frame</span>(<span class="st">&quot;Marginal effect type&quot;</span>, <span class="st">&quot;Average Marginal Effect&quot;</span>, <span class="st">&quot;Marginal Effect at Mean&quot;</span>),</span>
+<span id="cb263-22"><a href="プロビットモデルの推定と解釈.html#cb263-22" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;限界効果サマリー&quot;</span>,</span>
+<span id="cb263-23"><a href="プロビットモデルの推定と解釈.html#cb263-23" tabindex="-1"></a>  <span class="co"># omit all goodness-of-fit statisitcs except # of observations</span></span>
+<span id="cb263-24"><a href="プロビットモデルの推定と解釈.html#cb263-24" tabindex="-1"></a>  <span class="at">gof_map =</span> <span class="st">&quot;nobs&quot;</span>)</span>
+<span id="cb263-25"><a href="プロビットモデルの推定と解釈.html#cb263-25" tabindex="-1"></a>marg_sum</span></code></pre></div>
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tinytable_r0gufhkdq7d7p884uuxq</title>
+    <style>
+.table td.tinytable_css_so81cqkbrb6spomeju7w, .table th.tinytable_css_so81cqkbrb6spomeju7w {    border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_mxx3t938mhhvzv7yt2dj, .table th.tinytable_css_mxx3t938mhhvzv7yt2dj {    text-align: left; }
+.table td.tinytable_css_rhtvur8ch39ypr3r2myu, .table th.tinytable_css_rhtvur8ch39ypr3r2myu {    text-align: center; }
+.table td.tinytable_css_qca7764q24z69x9zhff6, .table th.tinytable_css_qca7764q24z69x9zhff6 {    text-align: center; }
+.table td.tinytable_css_fasm0rkcpgkd85n4on0j, .table th.tinytable_css_fasm0rkcpgkd85n4on0j {    border-bottom: solid 0.05em black; }
+    </style>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>
+    MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+    </script>
+  </head>
+
+  <body>
+    <div class="container">
+      <table class="table table-borderless" id="tinytable_r0gufhkdq7d7p884uuxq" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
+        <thead>
+        <caption>限界効果サマリー</caption>
+              <tr>
+                <th scope="col"> </th>
+                <th scope="col">(1)</th>
+                <th scope="col">(2)</th>
+              </tr>
+        </thead>
+        <tfoot><tr><td colspan='3'>+ p < 0.1, * p < 0.05, ** p < 0.01, *** p < 0.001</td></tr></tfoot>
+        <tbody>
+                <tr>
+                  <td>p1                  </td>
+                  <td>-0.085***              </td>
+                  <td>-0.098***              </td>
+                </tr>
+                <tr>
+                  <td>                    </td>
+                  <td>(0.006)                </td>
+                  <td>(0.009)                </td>
+                </tr>
+                <tr>
+                  <td>a1                  </td>
+                  <td>0.219***               </td>
+                  <td>0.245***               </td>
+                </tr>
+                <tr>
+                  <td>                    </td>
+                  <td>(0.029)                </td>
+                  <td>(0.032)                </td>
+                </tr>
+                <tr>
+                  <td>Num.Obs.            </td>
+                  <td>1000                   </td>
+                  <td>1000                   </td>
+                </tr>
+                <tr>
+                  <td>Marginal effect type</td>
+                  <td>Average Marginal Effect</td>
+                  <td>Marginal Effect at Mean</td>
+                </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <script>
+      function styleCell_tinytable_5dnpv37qfzthu47vdrkc(i, j, css_id) {
+        var table = document.getElementById("tinytable_r0gufhkdq7d7p884uuxq");
+        table.rows[i].cells[j].classList.add(css_id);
+      }
+      function insertSpanRow(i, colspan, content) {
+        var table = document.getElementById('tinytable_r0gufhkdq7d7p884uuxq');
+        var newRow = table.insertRow(i);
+        var newCell = newRow.insertCell(0);
+        newCell.setAttribute("colspan", colspan);
+        // newCell.innerText = content;
+        // this may be unsafe, but innerText does not interpret <br>
+        newCell.innerHTML = content;
+      }
+      function spanCell_tinytable_5dnpv37qfzthu47vdrkc(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_r0gufhkdq7d7p884uuxq");
+        const targetRow = table.rows[i];
+        const targetCell = targetRow.cells[j];
+        for (let r = 0; r < rowspan; r++) {
+          // Only start deleting cells to the right for the first row (r == 0)
+          if (r === 0) {
+            // Delete cells to the right of the target cell in the first row
+            for (let c = colspan - 1; c > 0; c--) {
+              if (table.rows[i + r].cells[j + c]) {
+                table.rows[i + r].deleteCell(j + c);
+              }
+            }
+          }
+          // For rows below the first, delete starting from the target column
+          if (r > 0) {
+            for (let c = colspan - 1; c >= 0; c--) {
+              if (table.rows[i + r] && table.rows[i + r].cells[j]) {
+                table.rows[i + r].deleteCell(j);
+              }
+            }
+          }
+        }
+        // Set rowspan and colspan of the target cell
+        targetCell.rowSpan = rowspan;
+        targetCell.colSpan = colspan;
+      }
+
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(0, 0, 'tinytable_css_so81cqkbrb6spomeju7w') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(0, 1, 'tinytable_css_so81cqkbrb6spomeju7w') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(0, 2, 'tinytable_css_so81cqkbrb6spomeju7w') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(0, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(1, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(2, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(3, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(4, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(5, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(6, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(0, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(1, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(2, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(3, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(4, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(5, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(6, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(0, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(1, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(2, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(3, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(4, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(5, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(6, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(4, 0, 'tinytable_css_fasm0rkcpgkd85n4on0j') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(4, 1, 'tinytable_css_fasm0rkcpgkd85n4on0j') })
+window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(4, 2, 'tinytable_css_fasm0rkcpgkd85n4on0j') })
+    </script>
+
+  </body>
+
+</html>
+<p>最後に、プロビットモデルのモデル評価指標について紹介する。プロビットモデルを最尤法で推定した場合、OLSにおける決定係数 <span class="math inline">\(R^2\)</span> を用いてモデルの当てはまりの良さを用いることはできない。そこで、通常疑似決定係数（Pseudo <span class="math inline">\(R^2\)</span>）を用いる事が多い<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a>。疑似決定係数は0から1の間の値を取り、自身の立てたモデルの当てはまりが良いほど1に近づくという特徴を持っている。Rにおいては、<code>DescTools::PseudoR2()</code> を用いて計算可能である。<code>install.packages("DescTools")</code> でインストールしてほしい。</p>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb264-1"><a href="プロビットモデルの推定と解釈.html#cb264-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">PseudoR2</span>(probit1)</span></code></pre></div>
+<pre><code>##  McFadden 
+## 0.1293345</code></pre>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="27">
+<li id="fn27"><p>ロジットモデルの場合は、<code>family = binomial(link = logit)</code> で計算可能である。<a href="プロビットモデルの推定と解釈.html#fnref27" class="footnote-back">↩︎</a></p></li>
+<li id="fn28"><p><span class="math inline">\(\hat{y}_i=\hat{\beta}_0+\hat{\beta_1}x_{1i}+...+\hat{\beta}_kx_{ki}\)</span> という線形モデルの限界効果は、以下のようになる。
+<span class="math display">\[\frac{\partial \hat{y}_i}{\partial x_{1i}}=\hat{\beta}_1
+\]</span><a href="プロビットモデルの推定と解釈.html#fnref28" class="footnote-back">↩︎</a></p></li>
+<li id="fn29"><p>ロジットモデルの場合は、<code>mfx::logitmfx()</code> で計算可能である。<a href="プロビットモデルの推定と解釈.html#fnref29" class="footnote-back">↩︎</a></p></li>
+<li id="fn30"><p>この指標は、最尤推定で用いる対数尤度関数 <a href="プロビットモデルの推定と解釈.html#eq:llprobit">(10.2)</a> に実際の観測値と最尤推定値を代入して求まる対数尤度の和（<span class="math inline">\(L_{full}\)</span>）と、定数項だけを含むプロビットモデルを推定したときの対数尤度の和（<span class="math inline">\(L_0\)</span>）を用いて、<span class="math inline">\(\Big(1-(L_{full}/L_0) \Big)\)</span> と定義される<a href="プロビットモデルの推定と解釈.html#fnref30" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="離散選択モデル.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="離散選択モデルへの合理的消費者像の応用.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-choicemodel.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
