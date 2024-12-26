@@ -1,6 +1,6 @@
 --- 
-title: "マーケティングリサーチ講義ノート"
-subtitle: "Rを使ったリサーチ基礎固め"
+title: "マーケティングリサーチ"
+subtitle: "テキスト進捗ページ"
 author: 
   - name: "田頭拓己"
     affiliation: "神戸大学大学院経営学研究科"
