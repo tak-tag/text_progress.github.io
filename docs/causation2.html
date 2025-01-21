@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-01-20" />
+<meta name="date" content="2025-01-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,70 +53,6 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
 
 <style type="text/css">
   
@@ -381,7 +317,51 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 16</span> コラム2-2（ランダム化比較試験とカゴ落ちメール）<a href="causation2.html#causation2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>前のコラム（<a href="causation1.html#causation1">15</a>）にて、相関関係と因果関係を区別するためには、主に逆方向の因果関係と疑似相関に注意が必要であると話した。また、真の（個人レベルでの）因果関係は特定できず、我々があくまで平均的な因果効果について分析を通じて推察するということも強調した。</p>
 <p>因果効果を測定するうえで最も基本的な手法が、原因にあたる施策や選択を処置として調査対象者にランダムで割り当て、その後結果変数についての差を検討する、ランダム化比較試験（Randomized Controlled Trial; RCT）という手法である。RCTでは、原因について対象者に選ばせることなく、観察者（研究者）が確率的に均等になるように介入（例、くじ引きや乱数を利用）し処置を割り当てる。</p>
-<p>先行要因をランダムに割り当てる一番の目的は、「セレクション（自己選択）バイアス」を除去することにある。</p>
+<p>先行要因をランダムに割り当てる一番の目的は、「セレクション（自己選択）バイアス」を除去することにある。セレクションバイアスとは、処置に対する個人の選択によって生じるバイアスと考える。処置が個人の意思決定に任せられる場合、処置を受けるような人たちと受けない人たちとがそれぞれ持っている特徴によって差が生じてしまう可能性がある。例えば、栄養サプリメントが健康状態へ与える効果を検証したいと考える場合に、自主的にサプリメントを摂取しているか否かを処置の有無として捉えてしまうと、自主的にサプリメントを摂取している人がもつ特徴（健康志向など）が結果（健康状態）に影響を与えてしまう可能性がある。また、セレクションバイアスは、処置のなかったグループの結果変数の平均値（観察可） と、処置群が非処置に変化したときの結果の平均値（観察不可）の差として定義され、数値として観察できるものではない。</p>
+<p>そのため、セレクションバイアスが発生しないような状況を人工的に作り、単純なグループ間の比較によってセレクションバイアスを除いた因果効果を分析しようと試みる。この代表的な方法がRCTである。RCTによって処置をランダムに課した場合、処置が成果と独立であると仮定することができる。そのため、以下の重要な仮定を満たせば、RCTと平均の差の比較を通じて、平均因果効果を推定できると考える。</p>
+<ul>
+<li>Positivity
+<ul>
+<li>個人が処置される確率（<span class="math inline">\(P(T_i=1)\)</span>）は：<span class="math inline">\(0\leq P(T_i=1)\leq 1\)</span></li>
+<li>すべての個人が処置群に入る可能性を有していることを意味する。</li>
+</ul></li>
+<li>Independence Assumption
+<ul>
+<li>処置状況は潜在的な成果とは統計的に独立である。</li>
+<li>この仮定によって、観測できない潜在的な結果をデータから分析することを可能になる。</li>
+</ul></li>
+<li>Stable Unit Treatment Value Assumption (SUTVA)</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>No interference（干渉はなし）</li>
+</ol>
+<ul>
+<li>個人 <em>i</em> の処置状況は、他の個人の処置状況には影響しない(Angrist, Imbens, and Rubin 1996)</li>
+<li>処置効果のスピルオーバーがない状況を想定している。</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>No hidden variations of treatment</li>
+</ol>
+<ul>
+<li>各個人 <em>i</em> に対して、（異なる潜在的成果につながる）処置のバリエーションはない。</li>
+<li>これは、同一の処置条件である状況を想定していて、異質または曖昧な処置定義（例えば薬の処方量など）は不適切であることを意味している。</li>
+</ul>
+<p>RCTを実社会で行うことを「フィールド実験」と呼び、マーケティングを含む様々な領域で利用されている。しかしながら、実践的にはただ闇雲に調査対象をランダムにグループ分けして処置の有無を決定すれば良いわけではなく、「誰と誰を比較しているのか」という点を明確にし、実務的・学術的に意義のある比較を行う必要がある。この、「誰と誰を比較するのか」という点の重要性を強調するために本コラムではLi et al. (2021)による研究を紹介する。</p>
+<p>これを読んでいる皆さんは、Eコマース利用時にショッピングカートに製品を入れたが購入手続きをせずにそのまま放置してしまった経験はないだろうか？このような消費者行動は cart abandonment（カート放棄またはカゴ落ち）と呼ばれ、多くのEコマース客が行っている行為だということが知られている。</p>
+<p>これに対して企業側は、E-commerce cart retargeting（ECR）と呼ばれるリマインダーを送ることでカゴ落ち製品の購買を促す方策を取っている。このECRについて実務的に言われていたのが、「通知は早いほうが良い」という原則である。これは、Recency bumpと呼ばれ、早いリマインダー広告は、より多くのクリック反応やサイトへの再来につながると考えられていた。しかしこれは本当だろうか、というのが Li et al. (2021) の論点である。</p>
+<p>Li et al. (2021) はRecency bumpの強調に対して、理論的・方法論的批判から研究課題を設定している。理論的批判として、既存の理解ではECRの負の側面（広告への苛立ち）が検討されていないことを挙げた。早いリマインダーによって顧客がカゴ落ち品の購入を辞める原因になる可能性もあるがその点については答えていない。方法論的批判として、Recency bumpの根拠となっている知見が用いている手法の問題点を指摘している。既存の方法では、以下の図のようにすべてのカート放棄している顧客をプールし、リマインダー（ECR)のタイミングをランダム化したあと、これらのグループ間での反応率の差を見ている。</p>
+<div class="float">
+<img src="column/Lietal_1.png" alt="既存のランダム化フレームワーク" />
+<div class="figcaption">既存のランダム化フレームワーク</div>
+</div>
+<p>つまり、30分以内にECRを受け取ったグループと3日後（72時間後）にECRを受け取ったグループとで反応率を比較しているということになる。しかしながらこれはフェアな比較なのだろうか。カゴ落ちから3日経っているということは、3日間その製品を放置するという選択をしていることになり、そもそも買う可能性が低いグループかもしれない。一方でカゴ落ちから30分以内の顧客には、まだ買うことを意図している顧客も含まれているかもしれない。そのため、一見有効に見えるランダム化フレームワークだが、セレクションバイアスを排除できていない可能性が残っている。</p>
+<p>このような問題に対して Li et al. (2021) では、以下の図のように、それぞれのタイミンググループで、処置（ECRあり）群とコントロール群（ECRなし）群をランダムに分ける方法でRCTを実施した。</p>
+<div class="float">
+<img src="column/Lietal_2.png" alt="Li et al. (2021) のRCTフレームワーク" />
+<div class="figcaption">Li et al. (2021) のRCTフレームワーク</div>
+</div>
+<p>このような方法により、この論文では、既存の知見が内包していたバイアスの可能性を補正した形でECRの効果を検証した。この方法はより具体的な理論的発見及び実務的含意にもつながっている。著者たちは、Memory decay theory （忘却理論）を適用し、製品に関する記憶は時間とともに消えることから、ECRによる記憶の再生と広告への苛立ちの効果が時間経過によって変化することを予測し、それと整合的な結果を得た。具体的には、ECRの効果が送付されるタイミングによって異質であり、早いタイミングでは（0.5または1時間）ECRがより低い購買確率につながる一方で、遅いタイミングでは（24または72時間）リマインダーがより高い購買確率につながることが示された。</p>
+<p>フィールド実験を行うことは、企業の分析担当者にとっては実現可能性が高い方法かもしれない。しかしながら、リサーチデザインについては慎重に考える必要がある。特に、「誰と誰を比較するのか」という比較群の定義については慎重に検討する必要がある。自身が想定していないバイアスが内包されている調査デザインになっていないか（きちんと識別ができるデザインになっているか）、について他の研究者と議論することも非常に重要である。その点においてもRCTの実行には、手法の原則に関する理解が重要であると考えられる。</p>
 </div>
             </section>
 
