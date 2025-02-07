@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-01-28" />
+<meta name="date" content="2025-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -356,7 +356,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16" data-path="causation2.html"><a href="causation2.html"><i class="fa fa-check"></i><b>16</b> コラム2-2（ランダム化比較試験とカゴ落ちメール）</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="ランダム化比較試験概要.html"><a href="ランダム化比較試験概要.html"><i class="fa fa-check"></i><b>16.1</b> ランダム化比較試験概要</a></li>
-<li class="chapter" data-level="16.2" data-path="カゴ落ちメールに関するフィールド実験.html"><a href="カゴ落ちメールに関するフィールド実験.html"><i class="fa fa-check"></i><b>16.2</b> カゴ落ちメールに関するフィールド実験</a></li>
+<li class="chapter" data-level="16.2" data-path="li-et-al.-2021-によるカゴ落ちメールに関するフィールド実験.html"><a href="li-et-al.-2021-によるカゴ落ちメールに関するフィールド実験.html"><i class="fa fa-check"></i><b>16.2</b> Li et al. (2021) によるカゴ落ちメールに関するフィールド実験</a></li>
 <li class="chapter" data-level="16.3" data-path="参考文献-14.html"><a href="参考文献-14.html"><i class="fa fa-check"></i><b>16.3</b> 参考文献</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -509,7 +509,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 20    5 sunshine
 ## indexes:  1, 2</code></pre>
 <p>変換後のデータセットでは、各選択肢の特徴と、それに対する個人の選択結果（<code>TRUE</code> or <code>FALSE</code>）を含める形で行が構成されている。このようにデータの構造を修正することで、分析を行う。</p>
-<p>分析についても <code>mlogit</code>パッケージを利用して実行するのだが、分析結果の解釈を確かなものにするため、多項ロジットモデルについての説明を加える。多項ロジットモデルでは、<span class="math inline">\(m\)</span> 個の選択肢の中からある選択肢 <span class="math inline">\(j\)</span> を選ぶ行為を分析対象としている。分析モデルにおいては、説名変数 <span class="math inline">\(x_{1i},...,x_{ki}\)</span> が与えられたときにある選択肢 <span class="math inline">\(j\)</span> を選ぶ確率は 0 から 1 の間の値を取る必要がある。そのため、各選択肢に対する選択確率の合計が1になるように調整しなければならない。これに対して多項ロジットモデルでは、ある特定の選択肢（仮に選択肢 1 とする）を基準とし、その選択肢に対応する回帰係数パラメータ（<span class="math inline">\(\beta_{10},\beta_{11},...,\beta_{1k},\)</span>）をすべて 0 に固定する<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>。多項ロジットモデルは以下のように表すことができる。</p>
+<p>分析についても <code>mlogit</code>パッケージを利用して実行するのだが、分析結果の解釈を確かなものにするため、多項ロジットモデルについての説明を加える。多項ロジットモデルでは、<span class="math inline">\(m\)</span> 個の選択肢の中からある選択肢 <span class="math inline">\(j\)</span> を選ぶ行為を分析対象としている。分析モデルにおいては、説明変数 <span class="math inline">\(x_{1i},...,x_{ki}\)</span> が与えられたときにある選択肢 <span class="math inline">\(j\)</span> を選ぶ確率は 0 から 1 の間の値を取る必要がある。そのため、各選択肢に対する選択確率の合計が1になるように調整しなければならない。これに対して多項ロジットモデルでは、ある特定の選択肢（仮に選択肢 1 とする）を基準とし、その選択肢に対応する回帰係数パラメータ（<span class="math inline">\(\beta_{10},\beta_{11},...,\beta_{1k},\)</span>）をすべて 0 に固定する<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>。多項ロジットモデルは以下のように表すことができる。</p>
 <p><span class="math display">\[
 \begin{aligned}
 P(y_i=j|x_{1i},...,x_{ki})=
@@ -521,7 +521,7 @@ P(y_i=j|x_{1i},...,x_{ki})=
 \right.
 \end{aligned}
 \]</span></p>
-<p>多項ロジットの係数の解釈にも注意が必要である。多項ロジットモデルの係数（<span class="math inline">\(\beta\)</span>）は、対応する説名変数が微小に変化したときの、<span class="math inline">\(y_i=j\)</span> と <span class="math inline">\(y_i=1\)</span>（基準となる選択肢）との相対確率がどのように変化するかを示している。一方で限界効果は、説明変数が変化した時に <span class="math inline">\(y_i=j\)</span> を選ぶ確率がどのように変化するかを示している。そのため、推定される係数そのものと限界効果との意味が大きく異なる点も、多項ロジットモデルの特徴である（西山ほか, 2019）。
+<p>多項ロジットの係数の解釈にも注意が必要である。多項ロジットモデルの係数（<span class="math inline">\(\beta\)</span>）は、対応する説明変数が微小に変化したときの、<span class="math inline">\(y_i=j\)</span> と <span class="math inline">\(y_i=1\)</span>（基準となる選択肢）との相対確率がどのように変化するかを示している。一方で限界効果は、説明変数が変化した時に <span class="math inline">\(y_i=j\)</span> を選ぶ確率がどのように変化するかを示している。そのため、推定される係数そのものと限界効果との意味が大きく異なる点も、多項ロジットモデルの特徴である（西山ほか, 2019）。
 また、多項ロジットモデルでは任意の 2 つの選択肢の相対的な選択確率は他の選択肢からは独立であるという、無関係な選択肢からの独立（independence from irrelevant alternatives: IIA）という仮定を置く。この仮定が満たされない場合には、データセット内の選択肢を統合（ひとまとめに）するなどして、IIAの仮定が適切だとみなせる状況を作るよう工夫が必要となる。</p>
 <p>これらを踏まえ、多項ロジットモデルを実行する。分析においては <code>mlogit::mlogit()</code> を用いる。Rコードでのモデルの定式化においては、以下の 3 つの変数カテゴリを区別し、記述する必要がある（ただし、<span class="math inline">\(j\)</span> はある選択肢を示す）。</p>
 <ul>
@@ -533,7 +533,7 @@ P(y_i=j|x_{1i},...,x_{ki})=
 <p><span class="math display">\[
 V_{ij}=\alpha_j+\beta x_{ij}+\gamma_j z_i+\delta_j w_{ij}
 \]</span>
-そのため、どの変数については選択肢ごとの係数を推定すべきなのかについて、分析者側が、既存の理論やドメイン知識（実務・社会的知識）を用いて決定する必要がある。Rでのコード作成では、<code>formula = choice ~ x|z|w</code> という形でモデルを定義することができる。以下では、価格に対する消費者の反応はブランドごとに異なるものではないが、広告や陳列については各ブランドの具体的な戦術の特徴によって影響の程度が変わるかもしれないと考え、以下のように分析を行う（プロビットモデルを使うときには、<code>probit=TRUE</code>とする）。なお、このような選択肢に関する特徴を説名変数に含む多項ロジットモデルは、条件付きロジットモデル（Conditional logit model）と呼ばれることもある。</p>
+そのため、どの変数については選択肢ごとの係数を推定すべきなのかについて、分析者側が、既存の理論やドメイン知識（実務・社会的知識）を用いて決定する必要がある。Rでのコード作成では、<code>formula = choice ~ x|z|w</code> という形でモデルを定義することができる。以下では、価格に対する消費者の反応はブランドごとに異なるものではないが、広告や陳列については各ブランドの具体的な戦術の特徴によって影響の程度が変わるかもしれないと考え、以下のように分析を行う（プロビットモデルを使うときには、<code>probit=TRUE</code>とする）。なお、このような選択肢に関する特徴を説明変数に含む多項ロジットモデルは、条件付きロジットモデル（Conditional logit model）と呼ばれることもある。</p>
 <div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="多項選択モデル紹介.html#cb282-1" tabindex="-1"></a>ml_cracker <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(choice <span class="sc">~</span> price<span class="sc">|</span><span class="dv">1</span><span class="sc">|</span>disp <span class="sc">+</span> feat, <span class="at">probit =</span> <span class="cn">FALSE</span>,</span>
 <span id="cb282-2"><a href="多項選択モデル紹介.html#cb282-2" tabindex="-1"></a>                     <span class="at">data =</span> cracker)</span>
 <span id="cb282-3"><a href="多項選択モデル紹介.html#cb282-3" tabindex="-1"></a></span>

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-01-28" />
+<meta name="date" content="2025-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -356,7 +356,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16" data-path="causation2.html"><a href="causation2.html"><i class="fa fa-check"></i><b>16</b> コラム2-2（ランダム化比較試験とカゴ落ちメール）</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="ランダム化比較試験概要.html"><a href="ランダム化比較試験概要.html"><i class="fa fa-check"></i><b>16.1</b> ランダム化比較試験概要</a></li>
-<li class="chapter" data-level="16.2" data-path="カゴ落ちメールに関するフィールド実験.html"><a href="カゴ落ちメールに関するフィールド実験.html"><i class="fa fa-check"></i><b>16.2</b> カゴ落ちメールに関するフィールド実験</a></li>
+<li class="chapter" data-level="16.2" data-path="li-et-al.-2021-によるカゴ落ちメールに関するフィールド実験.html"><a href="li-et-al.-2021-によるカゴ落ちメールに関するフィールド実験.html"><i class="fa fa-check"></i><b>16.2</b> Li et al. (2021) によるカゴ落ちメールに関するフィールド実験</a></li>
 <li class="chapter" data-level="16.3" data-path="参考文献-14.html"><a href="参考文献-14.html"><i class="fa fa-check"></i><b>16.3</b> 参考文献</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -383,13 +383,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.3</span> 離散選択モデル<a href="離散選択モデル.html#離散選択モデル" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="線形確率モデル" class="section level3 hasAnchor" number="10.3.1">
 <h3><span class="header-section-number">10.3.1</span> 線形確率モデル<a href="離散選択モデル.html#線形確率モデル" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>前節末で説明したような選択肢の持つ属性によって消費者の選択行動を説明するためには、被説明変数に選択結果をとり、説明変数に選択肢属性を取る以下のような回帰モデルを考える。なお、簡単化のために単回帰モデルで本アプローチを紹介しているが、以下の議論は任意の <span class="math inline">\(k\)</span> 個の説名変数を含む重回帰モデルに応用することができる。</p>
+<p>前節末で説明したような選択肢の持つ属性によって消費者の選択行動を説明するためには、被説明変数に選択結果をとり、説明変数に選択肢属性を取る以下のような回帰モデルを考える。なお、簡単化のために単回帰モデルで本アプローチを紹介しているが、以下の議論は任意の <span class="math inline">\(k\)</span> 個の説明変数を含む重回帰モデルに応用することができる。</p>
 <p><span class="math display">\[
 y_i=\beta_0+\beta_1x_i+e_i,
 \]</span>
 ただし、<span class="math inline">\(y\)</span> は特定の製品を購入したか（<span class="math inline">\(y_i=1\)</span>）、購入していないか（<span class="math inline">\(y_i=0\)</span>）を表しており、<span class="math inline">\(x_i\)</span> は価格を表しているとする。分析においては <span class="math inline">\(y_i\)</span> と <span class="math inline">\(x_i\)</span>についての情報を含むデータセットを用いて、パラメータ <span class="math inline">\(\beta_0\)</span> と <span class="math inline">\(\beta_1\)</span> を推定する。通常、（他の要素が一定である場合）価格が上がると製品を選択確率は下がると考えられるので、<span class="math inline">\(\beta_1&lt;0\)</span> が予測される。</p>
 <p>このように消費者の選択を捉えた分析においては、被説明変数がダミー変数である回帰モデルを考える必要がある。しかしながら、ダミー変数のような離散変数を被説明変数に用いる場合には注意も必要である。本節では、このようなモデルを最小二乗法（OLS）で推定するアプローチとその際に生じる注意点を説明したうえで、それを克服するために用いられる分析手法を紹介する。</p>
-<p>被説名変数がダミー変数であるモデルは線形確率モデル（Linear Probability Model: LPM）と呼ばれる。ただし、<span class="math inline">\(y\)</span> が2値しか取らないため、<span class="math inline">\(\beta_1\)</span> は、「<span class="math inline">\(x_i\)</span> が1単位変化した際の <span class="math inline">\(y\)</span> の変化」として解釈することはできない。</p>
+<p>被説明変数がダミー変数であるモデルは線形確率モデル（Linear Probability Model: LPM）と呼ばれる。ただし、<span class="math inline">\(y\)</span> が2値しか取らないため、<span class="math inline">\(\beta_1\)</span> は、「<span class="math inline">\(x_i\)</span> が1単位変化した際の <span class="math inline">\(y\)</span> の変化」として解釈することはできない。</p>
 <p>ここで、誤差項の条件付き期待値について 0 であるという仮定（<span class="math inline">\(E(e_i|x_i)=0\)</span>）に基づくと、<span class="math inline">\(y_i\)</span> の条件付き期待値について以下を得る。</p>
 <p><span class="math display">\[
 E(y_i|x_i=x)=\beta_0+\beta_1x_i
@@ -402,7 +402,7 @@ P(y_i = 1|x_i)=\beta_0+\beta_1x_i
 <p><span class="math display">\[
 \Delta P(y_i = 1|x_i)=\Delta\beta_1x_i
 \]</span></p>
-<p>このことから、<span class="math inline">\(y\)</span> の予測値（<span class="math inline">\(\hat{y_i} = \hat{\beta}_0+\hat{\beta}_1x_i\)</span>）も線形回帰モデルと同様に示すことができる。したがって、係数の解釈について注意が必要ではあるものの、LPMによる推定結果も線形回帰モデル同様の含意を提供する。特に、複数の説名変数を採用することで、他の変数を固定したうえで説明変数の変化に伴う反応確率の変化を捉えることができる。そのため、LPMによって着目する変数が反応確率へ与える影響を検証することができる。</p>
+<p>このことから、<span class="math inline">\(y\)</span> の予測値（<span class="math inline">\(\hat{y_i} = \hat{\beta}_0+\hat{\beta}_1x_i\)</span>）も線形回帰モデルと同様に示すことができる。したがって、係数の解釈について注意が必要ではあるものの、LPMによる推定結果も線形回帰モデル同様の含意を提供する。特に、複数の説明変数を採用することで、他の変数を固定したうえで説明変数の変化に伴う反応確率の変化を捉えることができる。そのため、LPMによって着目する変数が反応確率へ与える影響を検証することができる。</p>
 <p>しかしながら、LPMの推定結果には注意も必要である。具体的には、以下の2点について問題が生じる。</p>
 <ol style="list-style-type: decimal">
 <li>誤差項の分散が不均一になる。</li>
@@ -426,20 +426,20 @@ P(y_i = 1|x_i)=\beta_0+\beta_1x_i
 Figure 10.1: LPMと回帰直線
 </p>
 </div>
-<p>そのため、予測を重視する研究を行う場合には、LPMは適さないことが多い。その一方で変数間の関係を検証することを目的とする場合には、大きな問題にはならないと考える場合もある（Angrist and Pischke, 2014）。言い換えると、ある説名変数が選択確率に与える影響を統計的に検証するという目的のもとでは、LPMでも対応可能である。特に、操作変数法や固定効果推定といった発展的な手法が線形モデルでは開発されており、LPMではこれらの手法を応用することができる。そのため、効果の検証に重きを置く分析の場合にはLPMを意識的に選択する場合もある。</p>
+<p>そのため、予測を重視する研究を行う場合には、LPMは適さないことが多い。その一方で変数間の関係を検証することを目的とする場合には、大きな問題にはならないと考える場合もある（Angrist and Pischke, 2014）。言い換えると、ある説明変数が選択確率に与える影響を統計的に検証するという目的のもとでは、LPMでも対応可能である。特に、操作変数法や固定効果推定といった発展的な手法が線形モデルでは開発されており、LPMではこれらの手法を応用することができる。そのため、効果の検証に重きを置く分析の場合にはLPMを意識的に選択する場合もある。</p>
 </div>
 <div id="プロビットモデルとロジットモデル" class="section level3 hasAnchor" number="10.3.2">
 <h3><span class="header-section-number">10.3.2</span> プロビットモデルとロジットモデル<a href="離散選択モデル.html#プロビットモデルとロジットモデル" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>任意の <span class="math inline">\(k\)</span> 個の説名変数を用いたLPMの反応確率は、
+<p>任意の <span class="math inline">\(k\)</span> 個の説明変数を用いたLPMの反応確率は、
 <span class="math display">\[
 P_i=E(y_i|x_{1i},...,x_{ki})=P(y_i = 1|x_{1i},...,x_{ki})=\beta_0+\beta_1x_i+...+\beta_kx_{ki}
 \]</span>
-となる。ここまでの議論において、線形確率モデル（LPM）の問題は、この確率が 0 から 1 の範囲を越えてしまう事にあった。この問題は、<span class="math inline">\(y\)</span>（選択）と <span class="math inline">\(x\)</span>（説名変数）との関係を線形で捉えることが原因となっている。そのため、0 から 1 の範囲を越えないように、何らかの累積分布関数を用いて非線形で分析を行う（回帰直線ではなく、回帰曲線を引く）ことで、この問題を克服する事ができる。</p>
+となる。ここまでの議論において、線形確率モデル（LPM）の問題は、この確率が 0 から 1 の範囲を越えてしまう事にあった。この問題は、<span class="math inline">\(y\)</span>（選択）と <span class="math inline">\(x\)</span>（説明変数）との関係を線形で捉えることが原因となっている。そのため、0 から 1 の範囲を越えないように、何らかの累積分布関数を用いて非線形で分析を行う（回帰直線ではなく、回帰曲線を引く）ことで、この問題を克服する事ができる。</p>
 <p>非線形なモデルとして分析する場合、回帰モデルによる反応確率は以下のように示すことができる。</p>
 <p><span class="math display">\[
 P(y_i = 1|x_{1i},...,x_{ki})=F\left(\beta_0+\beta_1x_i+...+\beta_kx_{ki}\right)
 \]</span>
-ただし、<span class="math inline">\(F(\cdot)\)</span>は選択（反応確率）と説名変数を非線形な形で結びつけるためのなんらかの関数である。ここで採用する<span class="math inline">\(F(\cdot)\)</span>によって回帰曲線の形状が決まる。</p>
+ただし、<span class="math inline">\(F(\cdot)\)</span>は選択（反応確率）と説明変数を非線形な形で結びつけるためのなんらかの関数である。ここで採用する<span class="math inline">\(F(\cdot)\)</span>によって回帰曲線の形状が決まる。</p>
 <p>例えば、図 <a href="離散選択モデル.html#fig:norm-cdf">10.2</a>は図<a href="離散選択モデル.html#fig:lpm-plot">10.1</a>との対比として（説明変数が一つのモデルを）非線形でのモデル化を示したものである。図 <a href="離散選択モデル.html#fig:norm-cdf">10.2</a>のように、非線形の近似曲線で回帰分析を行うことで、確率を意味する予測値が0から1の範囲に収まる。</p>
 <div class="figure"><span style="display:block;" id="fig:norm-cdf"></span>
 <img src="mktres_lecture_files/figure-html/norm-cdf-1.png" alt="非線形での近似イメージ" width="672" />
@@ -478,12 +478,12 @@ P(y_i|x_{1i},...,x_{ki}) =\Lambda(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})=\frac
 <h3><span class="header-section-number">10.3.3</span> 潜在変数アプローチによる説明<a href="離散選択モデル.html#潜在変数アプローチによる説明" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>これまでは、「選択」という点に着目し、ベルヌーイ確率関数を用いてプロビットモデルを導出する方法を紹介した。一方で、選択という離散的な変数の背後に、観察できない連続的な変数（潜在変数:
 latent variable）が存在するという視点からモデル化を行うことも可能である。このような考え方を潜在変数アプローチと呼ぶ。マーケティング領域の論文やテキストでは、この潜在変数アプローチに基づく選択モデルの記述や紹介も行われるため、本書では、先述のプロビットモデルと潜在変数アプローチにより導出されたモデルが一致することを示す。</p>
-<p>ここで、<span class="math inline">\(y_i^*\)</span> という（観察可能な説名変数とは異なる）連続的な潜在変数を考え、以下のような回帰モデルを考える。</p>
+<p>ここで、<span class="math inline">\(y_i^*\)</span> という（観察可能な説明変数とは異なる）連続的な潜在変数を考え、以下のような回帰モデルを考える。</p>
 <p><span class="math display">\[
 y_i^*=\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki}+e_i
 \]</span></p>
 <p>ただし、この誤差項 <span class="math inline">\(e_i\)</span> は標準正規分布に従い、<span class="math inline">\(e_i|x_{1i},...,x_{ki}~\sim N(0,1)\)</span>を満たすと考える。</p>
-<p>この時、<span class="math inline">\(y_i^*\)</span> がある閾値を越えたならば（観察可能な）被説名変数は 1 をとり、越えない場合は被説名変数が 0 をとる、というような潜在変数と被説名変数との関係を考える。プロビットモデルでは具体的に、以下のような関係を仮定する。</p>
+<p>この時、<span class="math inline">\(y_i^*\)</span> がある閾値を越えたならば（観察可能な）被説明変数は 1 をとり、越えない場合は被説明変数が 0 をとる、というような潜在変数と被説明変数との関係を考える。プロビットモデルでは具体的に、以下のような関係を仮定する。</p>
 <p><span class="math display">\[
 \begin{aligned}
 y_i=

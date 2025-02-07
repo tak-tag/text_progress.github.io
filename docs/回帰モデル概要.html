@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-01-28" />
+<meta name="date" content="2025-02-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -356,7 +356,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16" data-path="causation2.html"><a href="causation2.html"><i class="fa fa-check"></i><b>16</b> コラム2-2（ランダム化比較試験とカゴ落ちメール）</a>
 <ul>
 <li class="chapter" data-level="16.1" data-path="ランダム化比較試験概要.html"><a href="ランダム化比較試験概要.html"><i class="fa fa-check"></i><b>16.1</b> ランダム化比較試験概要</a></li>
-<li class="chapter" data-level="16.2" data-path="カゴ落ちメールに関するフィールド実験.html"><a href="カゴ落ちメールに関するフィールド実験.html"><i class="fa fa-check"></i><b>16.2</b> カゴ落ちメールに関するフィールド実験</a></li>
+<li class="chapter" data-level="16.2" data-path="li-et-al.-2021-によるカゴ落ちメールに関するフィールド実験.html"><a href="li-et-al.-2021-によるカゴ落ちメールに関するフィールド実験.html"><i class="fa fa-check"></i><b>16.2</b> Li et al. (2021) によるカゴ落ちメールに関するフィールド実験</a></li>
 <li class="chapter" data-level="16.3" data-path="参考文献-14.html"><a href="参考文献-14.html"><i class="fa fa-check"></i><b>16.3</b> 参考文献</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -455,11 +455,11 @@ y=\beta_0+\beta_1x
 \bar{y}=\hat{\beta}_0+\hat{\beta}_1\bar{x}
 \]</span>
 つまりOLSでは、回帰直線と各観測値のプラス方向のズレとマイナス方向のズレが釣り合う（残差の和が0）ような予測を行っている。その上で、予測値は、説明変数 <span class="math inline">\(x\)</span> が与えられたとき、被説明変数が「平均的に」どんな値を取るのかを示していると解釈できる。回帰モデルと平均との関係については次節で確率的側面からより詳しく説明を加える。</p>
-<p>回帰分析による予測による精度を調べるために、分析したモデルがどの程度被説名変数全体の分散を説明しているかという指標によってモデルの適合度を測る。一般的には、決定係数（<span class="math inline">\(\small R^2\)</span>）という指標によってモデル適合度が示される。<span class="math inline">\(\small R^2\)</span> は以下のように定義される。</p>
+<p>回帰分析による予測による精度を調べるために、分析したモデルがどの程度被説明変数全体の分散を説明しているかという指標によってモデルの適合度を測る。一般的には、決定係数（<span class="math inline">\(\small R^2\)</span>）という指標によってモデル適合度が示される。<span class="math inline">\(\small R^2\)</span> は以下のように定義される。</p>
 <p><span class="math display">\[
 R^2=1-\frac{\sum(y_i-\hat{y}_i)^2}{\sum(y_i-\bar{y})^2}=\frac{\sum(\hat{y}_i-\bar{y})^2}{\sum(y_i-\bar{y})^2}
 \]</span></p>
-<p>この指標は、被説明変数の分散を説明変数がどの程度説明するかの割合を表しており、0以上1以下の値を取る。例えば <span class="math inline">\(\small R^2\)</span> が0.80であるならば、被説名変数の変動の80%をモデルが説明しているということになる。そのため、<span class="math inline">\(\small R^2\)</span> は、回帰モデルの説明力として解釈される。しかしながら、予測という目的に対して近年は、機械学習などの発展的な手法が応用される事が多く、<span class="math inline">\(\small R^2\)</span> を軸に予測を行うことは少なくなってきている。</p>
+<p>この指標は、被説明変数の分散を説明変数がどの程度説明するかの割合を表しており、0以上1以下の値を取る。例えば <span class="math inline">\(\small R^2\)</span> が0.80であるならば、被説明変数の変動の80%をモデルが説明しているということになる。そのため、<span class="math inline">\(\small R^2\)</span> は、回帰モデルの説明力として解釈される。しかしながら、予測という目的に対して近年は、機械学習などの発展的な手法が応用される事が多く、<span class="math inline">\(\small R^2\)</span> を軸に予測を行うことは少なくなってきている。</p>
 <p>また、予測ではなく説明変数の効果（係数）についての検証や解釈に関心がある場合、回帰分析における <span class="math inline">\(\small R^2\)</span> の重要性は低くなる。特に、ビジネス分野における研究では、係数の推定や検定に焦点をあわせることが多い。本書においても、予測よりも係数に関する検証を重視する立場を取る。社会科学領域での分析では、<span class="math inline">\(\small R^2\)</span> が低くなることは珍しくない。そんな中で、「<span class="math inline">\(\small R^2\)</span> が低いからその回帰分析結果は意味がない」ということにはならない。研究者の目的が、関心のある変数同士（例、市場志向と企業成果）の関係性（有意性や影響の強さ）を検証したいというものである場合、仮に <span class="math inline">\(\small R^2\)</span> が低くても、きちんと両変数の関係を分析できる調査設計や分析を実行しているならば、その検証は有意義なものになる。つまりここで強調したいのは、係数の検証や解釈を重視して研究を行う場合、「<span class="math inline">\(\small R^2\)</span> がいくつ以上（以下）だから良い（ダメ）」という議論は目的と整合的ではなく、重要ではなくなるということである。
 本節では、OLSを中心にデータから回帰係数を推定するプロセスに目を向け、予測値と決定係数について紹介した。しかしながら、先述の通り我々は多くの場合特定の変数が成果変数に与える影響の検証に関心がある。次節では確率的な視点から理論的に回帰分析を理解する事により、回帰分析の結果の解釈についてより詳しく学ぶ。</p>
 </div>
