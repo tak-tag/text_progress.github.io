@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 7 回帰分析 | マーケティングリサーチ</title>
-  <meta name="description" content="Chapter 7 回帰分析 | マーケティングリサーチ" />
+  <title>Chapter 10 観察重視アプローチ | マーケティングリサーチ</title>
+  <meta name="description" content="Chapter 10 観察重視アプローチ | マーケティングリサーチ" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 7 回帰分析 | マーケティングリサーチ" />
+  <meta property="og:title" content="Chapter 10 観察重視アプローチ | マーケティングリサーチ" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 7 回帰分析 | マーケティングリサーチ" />
+  <meta name="twitter:title" content="Chapter 10 観察重視アプローチ | マーケティングリサーチ" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="参考文献-4.html"/>
-<link rel="next" href="回帰モデル概要.html"/>
+<link rel="prev" href="参考文献-7.html"/>
+<link rel="next" href="観察重視アプローチの研究プロセス.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -390,122 +390,88 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="regintro" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">Chapter 7</span> 回帰分析<a href="regintro.html#regintro" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>本章では、変数間の関係を捉える回帰分析について、そのモデルの基礎と統計的推測に基づく解釈を説明する。回帰分析結果から得られる含意は、「予測」と「検証」の二つに大別することができる。その上で特に本書では、「検証」という側面、特に「研究上関心のある説明変数の係数の解釈」を重視する立場を取る。立場が異なれば、回帰分析上何を重視するかという観点も異なるため、特に回帰分析による予測に関心のある読者においては別の図書を参照してほしい。</p>
-<p>なお、本節では、<code>MktRes_firmdata.xlsx</code>という企業データを用いた分析を行う。次節に移る前に以下の要領でデータを読み込んでほしい。</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="regintro.html#cb172-1" tabindex="-1"></a>firmdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/MktRes_firmdata.xlsx&quot;</span>)</span></code></pre></div>
-<p>このデータは、小売・サービス分野の企業約160社（企業数は年によって異なる）に関する2010年から2019年までの財務データである（計1440件）。このデータは、日本生産性本部における顧客満足度調査の対象になっている企業リストを作成し、その企業の中から金融領域の企業や、データを入手できなかった一部の企業を教育的意図から排除したものである。したがって、日本の小売・サービス分野において全国的に知名度のある代表的な企業の財務データ（の一部）だと考えられる。</p>
-<p>なお、本データには以下の変数が含まれており、データ内の単位は従業員数（人）を除き百万円である。</p>
-<ul>
-<li>fyear: 決算年</li>
-<li>legalname: 企業名</li>
-<li>ind_en: 日経業種名（英文）</li>
-<li>parent:親会社名（もしあれば）</li>
-<li>fiscal_month: 決算月</li>
-<li>current_liability: 流動負債</li>
-<li>ltloans: 長期借入金</li>
-<li>total_liability: 負債合計</li>
-<li>current_assets: 流動資産</li>
-<li>ppent: 有形固定資産</li>
-<li>total_assets: 資産合計</li>
-<li>net_assets_per_capital: 純資産合計／資本合計</li>
-<li>sales: 売上高</li>
-<li>sga: 販売費及び一般管理費</li>
-<li>operating_profit: 営業利益</li>
-<li>net_profit: 当期純利益</li>
-<li>pnet_profit: 親会社株主に帰属する当期純利益（連結）／当期利益（単独）</li>
-<li>re: 利益剰余金</li>
-<li>adv: 広告・宣伝費</li>
-<li>labor_cost: 人件費</li>
-<li>rd: 研究開発費</li>
-<li>other_sg: その他販売費及び一般管理費</li>
-<li>emp: 期末従業員数</li>
-<li>temp: 平均臨時従業員数</li>
-<li>tempratio: temp/(emp+temp)</li>
-<li>indgrowth: 産業成長率</li>
-<li>adint: 広告集中率（adv/sales）</li>
-<li>rdint: 研究集中率（rd/sales）</li>
-<li>mkexp: (sga - rd) / sales</li>
-<li>op: operating_profit / sales</li>
-<li>roa: pnet_profit / total_assets</li>
-</ul>
-<p>本データセットは、複数年にわたる複数サンプルからのデータであり、一般的にこのような構造のデータをパネルデータという。パネルデータの分析は本講義の範囲外なので、本章では主に、2019年のデータ抽出し、クロスセクショナルデータとして用いる。以下の様に全データから2019年の情報を抽出してほしい。</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="regintro.html#cb173-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb173-2"><a href="regintro.html#cb173-2" tabindex="-1"></a></span>
-<span id="cb173-3"><a href="regintro.html#cb173-3" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata <span class="sc">%&gt;%</span> </span>
-<span id="cb173-4"><a href="regintro.html#cb173-4" tabindex="-1"></a>  <span class="fu">filter</span>(fyear <span class="sc">==</span> <span class="dv">2019</span>)</span></code></pre></div>
-<p>データを用いた分析を行う場合、取得したデータの記述統計や分布を確認する必要がある。本来であれば研究上重要な変数を対象にデータの特徴を整理するが、ここでは複数の変数の特徴を一括で整理、図示化する方法を提示する。この方法では、<code>GGally</code>というパッケージの<code>ggpairs()</code>という関数を用いるため、以下のようにパッケージをダウンロードしてほしい。</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="regintro.html#cb174-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;GGally&quot;</span>)</span></code></pre></div>
-<p><code>firmdata19</code> データセットから、例として四つの変数を抽出して、ggpairsを実行する。これにより、各変数のヒストグラム（密度形式）と、それぞれの変数間の相関係数と散布図が同図内で示されている。また、<code>ggpairs()</code>内の引数設定によって様々な図示形式を指定できるため、興味のある人は調べてみてほしい。</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="regintro.html#cb175-1" tabindex="-1"></a>firmdata19 <span class="sc">%&gt;%</span> </span>
-<span id="cb175-2"><a href="regintro.html#cb175-2" tabindex="-1"></a>  <span class="fu">select</span>(sales, mkexp, emp, operating_profit) <span class="sc">%&gt;%</span> </span>
-<span id="cb175-3"><a href="regintro.html#cb175-3" tabindex="-1"></a>GGally<span class="sc">::</span><span class="fu">ggpairs</span>()<span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;ggpairs example&quot;</span>)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/ggpairs-1.png" width="672" /></p>
-<p>なお、記述統計については既出の <code>summary()</code>関数にデータフレームを指定することで、データセット全体の記述統計を出力する。ここでは例として先程と同じ変数の記述統計を以下のように出力してみる。</p>
-<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="regintro.html#cb176-1" tabindex="-1"></a>ds1 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
-<span id="cb176-2"><a href="regintro.html#cb176-2" tabindex="-1"></a>  <span class="fu">select</span>(sales, mkexp, emp, operating_profit) <span class="sc">%&gt;%</span> </span>
-<span id="cb176-3"><a href="regintro.html#cb176-3" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
-<span id="cb176-4"><a href="regintro.html#cb176-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ds1, <span class="at">align =</span> <span class="st">&quot;cccc&quot;</span>)</span></code></pre></div>
+<div id="観察重視アプローチ" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> 観察重視アプローチ<a href="観察重視アプローチ.html#観察重視アプローチ" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>本章では <a href="design.html#design">3</a> 章で紹介した観察重視（EF）アプローチについて紹介する。EFは、、現実のマーケティング事象、問題や観測に関するデータの取得と分析により、マーケティングに関するインサイトを得ることを目的とした研究アプローチである。データのアクセス可能性や分析手法の拡張により、現実のデータを入手し、探索的なぶんせきを行うことで、何らかの知見を得ることが可能になった。しかしながら実際にはこのようなアプローチをとっているにも関わらず、通常のTFアプローチ的な構成（イントロダクション <span class="math inline">\(\rightarrow\)</span>理論・概念フレームワーク<span class="math inline">\(\rightarrow\)</span>仮説<span class="math inline">\(\rightarrow\)</span>方法<span class="math inline">\(\rightarrow\)</span>結果<span class="math inline">\(\rightarrow\)</span>ディスカッション）で論文を書くことは、疑わしい研究慣行として問題視されている。特に、HARKing（hypothesizing after the results are known）と言われる「結果を得てから仮説を作る」行為には注意が必要である。EFアプローチによって探索的なデータ分析を行った場合には、途中からTFに変更したり、装ったりすることはせず、EFアプローチとして研究を完遂し報告することが求められる。以下の表は、Golder et al. (2023, p.322) に記載されているTFとEFの対比を日本語訳したものである。</p>
 <table>
+<caption><span id="tab:tfvsef">Table 10.1: </span>TFとEFアプローチの研究の違い（Golder et al. (2023, p.322）より筆者訳</caption>
 <colgroup>
-<col width="4%" />
-<col width="23%" />
-<col width="23%" />
-<col width="22%" />
-<col width="25%" />
+<col width="10%" />
+<col width="31%" />
+<col width="57%" />
 </colgroup>
 <thead>
 <tr class="header">
-<th align="left"></th>
-<th align="center">sales</th>
-<th align="center">mkexp</th>
-<th align="center">emp</th>
-<th align="center">operating_profit</th>
+<th align="left">研究プロセスのステップ</th>
+<th align="center">TFアプローチ</th>
+<th align="center">EFアプローチ</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left"></td>
-<td align="center">Min. : 11333</td>
-<td align="center">Min. :0.01137</td>
-<td align="center">Min. : 163</td>
-<td align="center">Min. :-40469</td>
+<td align="left">理論のテストまたは開発</td>
+<td align="center">主要な目的</td>
+<td align="center">数ある結果の可能性のうちの一つ</td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="center">1st Qu.: 186830</td>
-<td align="center">1st Qu.:0.16714</td>
-<td align="center">1st Qu.: 3488</td>
-<td align="center">1st Qu.: 7788</td>
+<td align="left">研究の焦点の決定</td>
+<td align="center">研究は仮説に基づいた結果を中心に展開される</td>
+<td align="center">探索的思考での研究</td>
 </tr>
 <tr class="odd">
-<td align="left"></td>
-<td align="center">Median : 464450</td>
-<td align="center">Median :0.25508</td>
-<td align="center">Median : 7825</td>
-<td align="center">Median : 24824</td>
+<td align="left">研究プロセスの認識</td>
+<td align="center">直線的</td>
+<td align="center">反復的</td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="center">Mean :1194513</td>
-<td align="center">Mean :0.29894</td>
-<td align="center">Mean : 20156</td>
-<td align="center">Mean : 80811</td>
+<td align="left">研究プロセスの混乱への寛容さ</td>
+<td align="center">明快で内的一貫性があり、仮説を支持するような結果が期待される</td>
+<td align="center">混乱はよくあることで、資産になり得る。また、混乱は十分に活用され報告されるべきである</td>
 </tr>
 <tr class="odd">
-<td align="left"></td>
-<td align="center">3rd Qu.:1164243</td>
-<td align="center">3rd Qu.:0.37438</td>
-<td align="center">3rd Qu.: 24464</td>
-<td align="center">3rd Qu.: 63026</td>
+<td align="left">文献レビュー</td>
+<td align="center">検証可能な仮説を支持するためのストーリーラインを提供</td>
+<td align="center">先行研究がなくても構わないが、洞察やインスピレーションを与えてくれる文献があればなお良い</td>
 </tr>
 <tr class="even">
-<td align="left"></td>
-<td align="center">Max. :9878866</td>
-<td align="center">Max. :0.75650</td>
-<td align="center">Max. :160227</td>
-<td align="center">Max. :656163</td>
+<td align="left">原因究明</td>
+<td align="center">焦点が絞られている</td>
+<td align="center">複数の角度からの説明が推奨される</td>
+</tr>
+<tr class="odd">
+<td align="left">事前のまとめ</td>
+<td align="center">より厳密</td>
+<td align="center">より拡散的</td>
+</tr>
+<tr class="even">
+<td align="left">概念的枠組みの開発</td>
+<td align="center">事前に構成要素と関係性を明確に構築する</td>
+<td align="center">構成概念とその関係性はゆるくつながれている：途中で概念枠組みが構築される可能性もある</td>
+</tr>
+<tr class="odd">
+<td align="left">データ収集</td>
+<td align="center">理論/仮説を検証するための経験的証拠の収集</td>
+<td align="center">着目する事象について探求し理解するための経験的観察結果の収集</td>
+</tr>
+<tr class="even">
+<td align="left">データ分析</td>
+<td align="center">仮説を評価するために統計的な分析を用いる</td>
+<td align="center">有意でない結果も含め、経験的な結果を記述・報告する。</td>
+</tr>
+<tr class="odd">
+<td align="left">頑健性のチェック</td>
+<td align="center">代替理論や説明論理を排除することに重点を置く：着目する調査の範囲内で頑健性がチェックされる</td>
+<td align="center">複数の説明論理や結果の差異を容認</td>
+</tr>
+<tr class="even">
+<td align="left">頑健性が満たされない場合の判断</td>
+<td align="center">核心的な主張の信頼性を低下させる</td>
+<td align="center">学習機会と見なす</td>
+</tr>
+<tr class="odd">
+<td align="left">原稿の執筆</td>
+<td align="center">標準的なテンプレートが存在する</td>
+<td align="center">提案されるテンプレート: 現象に着目することへのモチベーション、さまざまな分析過程を説明し、得られたインサイトを述べる：理論的な示唆があることもあれば、ないこともある。</td>
 </tr>
 </tbody>
 </table>
@@ -515,8 +481,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="参考文献-4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="回帰モデル概要.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="参考文献-7.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="観察重視アプローチの研究プロセス.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -547,7 +513,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-reg.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-empricsfirst.Rmd",
 "text": "Edit"
 },
 "history": {
