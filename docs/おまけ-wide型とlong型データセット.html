@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-02-09" />
+<meta name="date" content="2025-02-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -302,8 +302,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="10.1" data-path="観察重視アプローチの研究プロセス.html"><a href="観察重視アプローチの研究プロセス.html"><i class="fa fa-check"></i><b>10.1</b> 観察重視アプローチの研究プロセス</a>
 <ul>
 <li class="chapter" data-level="10.1.1" data-path="観察重視アプローチの研究プロセス.html"><a href="観察重視アプローチの研究プロセス.html#研究機会の特定"><i class="fa fa-check"></i><b>10.1.1</b> 研究機会の特定</a></li>
-<li class="chapter" data-level="10.1.2" data-path="観察重視アプローチの研究プロセス.html"><a href="観察重視アプローチの研究プロセス.html#地形状況探索"><i class="fa fa-check"></i><b>10.1.2</b> 地形（状況）探索</a></li>
+<li class="chapter" data-level="10.1.2" data-path="観察重視アプローチの研究プロセス.html"><a href="観察重視アプローチの研究プロセス.html#地形探索"><i class="fa fa-check"></i><b>10.1.2</b> 地形探索</a></li>
 <li class="chapter" data-level="10.1.3" data-path="観察重視アプローチの研究プロセス.html"><a href="観察重視アプローチの研究プロセス.html#理解の発展"><i class="fa fa-check"></i><b>10.1.3</b> 理解の発展</a></li>
+<li class="chapter" data-level="10.1.4" data-path="観察重視アプローチの研究プロセス.html"><a href="観察重視アプローチの研究プロセス.html#efアプローチ研究の報告"><i class="fa fa-check"></i><b>10.1.4</b> EFアプローチ研究の報告</a></li>
+<li class="chapter" data-level="10.1.5" data-path="観察重視アプローチの研究プロセス.html"><a href="観察重視アプローチの研究プロセス.html#efアプローチ研究例"><i class="fa fa-check"></i><b>10.1.5</b> EFアプローチ研究例</a></li>
 </ul></li>
 <li class="chapter" data-level="10.2" data-path="crm.html"><a href="crm.html"><i class="fa fa-check"></i><b>10.2</b> データ処理と顧客関係管理（CRM）</a></li>
 <li class="chapter" data-level="10.3" data-path="統計的検定を用いない顧客分析.html"><a href="統計的検定を用いない顧客分析.html"><i class="fa fa-check"></i><b>10.3</b> 統計的検定を用いない顧客分析</a>
@@ -400,7 +402,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>手元にあるWide型データをLong型に変換したい場合の対応策として、ここでは tidyverseに含まれているtidyrのgather()関数を用いる方法を紹介する。この関数の利用方法を実演するためにManabaにアップされている sales_wide.csv をダウンロードし、プロジェクト内のdataディレクトリに移して欲しい。データを読み込むと、以下のようにデータ構造を確認することができる。</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="おまけ-wide型とlong型データセット.html#cb77-1" tabindex="-1"></a>sales_wide <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/sales_wide.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 4 Columns: 6
-## ── Column specification ────────────────────────────────────────────────────────────────────────────
+## ── Column specification ──────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (6): store, sales06, sales07, sales08, sales09, sales10
 ## 
