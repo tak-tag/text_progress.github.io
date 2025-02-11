@@ -35,11 +35,11 @@ fig:kmeansplot1
 fig:kmeansplot2
 tab:merged
 tab:clusSummary
-fig:perExp
-fig:luxurity
 fig:factor
 fig:rotate
 fig:scree
+fig:perExp
+fig:luxurity
 tab:faData
 fig:screeplot
 fig:factorplot
@@ -189,12 +189,12 @@ k-means
 rによるクラスター分析の実行
 参考文献-9
 factor
-ポジショニングと知覚マップ概要
 因子分析概要
 因子分析の概要とモデルの構造
 因子モデル
 因子スコア
 小括
+ポジショニングと知覚マップ概要
 faex
 アンケートデータと知覚マップ
 データ構造の変更
@@ -218,3 +218,4 @@ causation2
 ランダム化比較試験概要
 li-et-al.-2021-によるカゴ落ちメールに関するフィールド実験
 参考文献-14
+非計画購買に関する研究紹介hui-et-al.-2013
