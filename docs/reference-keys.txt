@@ -60,6 +60,7 @@ fig:brcfig
 fig:acceptfig
 fig:psmfig
 fig:NSMfig
+tab:monotonicity
 はじめに本資料について
 rusage
 posit-cloudを始める
@@ -218,4 +219,7 @@ causation2
 ランダム化比較試験概要
 li-et-al.-2021-によるカゴ落ちメールに関するフィールド実験
 参考文献-14
-非計画購買に関する研究紹介hui-et-al.-2013
+causation3
+操作変数法の概要
+実験非遵守における操作変数法の活用
+参考文献-15

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-02-11" />
+<meta name="date" content="2025-02-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -373,6 +373,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="16.2" data-path="li-et-al.-2021-によるカゴ落ちメールに関するフィールド実験.html"><a href="li-et-al.-2021-によるカゴ落ちメールに関するフィールド実験.html"><i class="fa fa-check"></i><b>16.2</b> Li et al. (2021) によるカゴ落ちメールに関するフィールド実験</a></li>
 <li class="chapter" data-level="16.3" data-path="参考文献-14.html"><a href="参考文献-14.html"><i class="fa fa-check"></i><b>16.3</b> 参考文献</a></li>
 </ul></li>
+<li class="chapter" data-level="17" data-path="causation3.html"><a href="causation3.html"><i class="fa fa-check"></i><b>17</b> コラム3（非遵守と操作変数法）</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="操作変数法の概要.html"><a href="操作変数法の概要.html"><i class="fa fa-check"></i><b>17.1</b> 操作変数法の概要</a></li>
+<li class="chapter" data-level="17.2" data-path="実験非遵守における操作変数法の活用.html"><a href="実験非遵守における操作変数法の活用.html"><i class="fa fa-check"></i><b>17.2</b> 実験非遵守における操作変数法の活用</a></li>
+<li class="chapter" data-level="17.3" data-path="参考文献-15.html"><a href="参考文献-15.html"><i class="fa fa-check"></i><b>17.3</b> 参考文献</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -588,8 +594,7 @@ y_i = \beta_0 + \beta_1 (x_i-\bar{x})+\beta_2(z_i-\bar{z})+\beta_3(x_i-\bar{x})\
 <span id="cb209-4"><a href="交差項.html#cb209-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;R&amp;D Investment&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sales&quot;</span>)<span class="sc">+</span> </span>
 <span id="cb209-5"><a href="交差項.html#cb209-5" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Promotion level&quot;</span>, <span class="at">labels=</span>leg)</span></code></pre></div>
 <pre><code>## Scale for colour is already present.
-## Adding another scale for colour, which will replace the
-## existing scale.</code></pre>
+## Adding another scale for colour, which will replace the existing scale.</code></pre>
 <div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb211-1"><a href="交差項.html#cb211-1" tabindex="-1"></a>int_fig1</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/slopeHeadphone-1.png" width="672" /></p>
 <p>続いて、二つ目の方法を実行するために、以下の要領でパッケージをインストールしてほしい。<code>marginaleffects</code> は、<code>margins</code> や <code>emtrends</code> の機能を引き継ぎ、限界効果に関する計算結果を図示化するためのパッケージである<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a>。</p>
