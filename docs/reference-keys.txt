@@ -61,6 +61,9 @@ fig:acceptfig
 fig:psmfig
 fig:NSMfig
 tab:monotonicity
+tab:crosssection
+tab:timeseries
+tab:panel
 はじめに本資料について
 rusage
 posit-cloudを始める
@@ -223,3 +226,10 @@ causation3
 操作変数法の概要
 実験非遵守における操作変数法の活用
 参考文献-15
+causation4
+データのタイプ
+パネルデータ分析と固定効果
+germann-et-al.-2015-によるcmoの影響に関する分析
+参考文献-16
+causation5
+fisher-et-al.-2019-による配送能力と小売成果の研究

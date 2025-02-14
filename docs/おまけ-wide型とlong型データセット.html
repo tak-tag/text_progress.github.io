@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-02-12" />
+<meta name="date" content="2025-02-14" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -379,6 +379,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="17.2" data-path="実験非遵守における操作変数法の活用.html"><a href="実験非遵守における操作変数法の活用.html"><i class="fa fa-check"></i><b>17.2</b> 実験非遵守における操作変数法の活用</a></li>
 <li class="chapter" data-level="17.3" data-path="参考文献-15.html"><a href="参考文献-15.html"><i class="fa fa-check"></i><b>17.3</b> 参考文献</a></li>
 </ul></li>
+<li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
+<li class="chapter" data-level="18.3" data-path="germann-et-al.-2015-によるcmoの影響に関する分析.html"><a href="germann-et-al.-2015-によるcmoの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Germann et al. (2015) によるCMOの影響に関する分析</a></li>
+<li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="causation5.html"><a href="causation5.html"><i class="fa fa-check"></i><b>19</b> コラム5（差の差の分析法）</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="fisher-et-al.-2019-による配送能力と小売成果の研究.html"><a href="fisher-et-al.-2019-による配送能力と小売成果の研究.html"><i class="fa fa-check"></i><b>19.1</b> Fisher et al. (2019) による配送能力と小売成果の研究</a></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -409,7 +420,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>手元にあるWide型データをLong型に変換したい場合の対応策として、ここでは tidyverseに含まれているtidyrのgather()関数を用いる方法を紹介する。この関数の利用方法を実演するためにManabaにアップされている sales_wide.csv をダウンロードし、プロジェクト内のdataディレクトリに移して欲しい。データを読み込むと、以下のようにデータ構造を確認することができる。</p>
 <div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="おまけ-wide型とlong型データセット.html#cb77-1" tabindex="-1"></a>sales_wide <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/sales_wide.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 4 Columns: 6
-## ── Column specification ───────────────────────────────────────────────────────────────────────────────
+## ── Column specification ─────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (6): store, sales06, sales07, sales08, sales09, sales10
 ## 
