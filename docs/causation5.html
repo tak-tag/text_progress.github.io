@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-02-14" />
+<meta name="date" content="2025-02-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -429,8 +429,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span class="math display">\[
 Y_{it}=\alpha+\beta(D^{treat}_{i}\times D^{post}_{t})+\gamma D^{treat}_{i}+\delta D^{post}_{t}+u_{it}
 \]</span>
-上記のモデルにおける係数<span class="math inline">\(\beta\)</span>を確認、検定することで平均処置効果についての知見を得る。</p>
-<p>なお、DIDも他の手法と同様、平均処置効果を得るためにはいくつかの仮定を満たす必要がある。具体的には、SUTVAなど（<a href="causation2.html#causation2">16</a> 参照）因果推論に関わる基本的な仮定に加え、並行トレンド（Parallel trend）の仮定を満たす場合、DIDによって平均処置効果（処置群における平均処置効果？）を分析することが可能であることが知られている。並行トレンドとは、処置がない場合両群の差は一定であるという仮定だある。そのため、処置がない場合、横軸を時間、縦軸を成果変数とした際の両群の成果に関する曲線（直線）は並行になる（上図におけるA-CとB-B’の直線は並行になる）ことを意味する。</p>
+上記のモデルにおける係数<span class="math inline">\(\beta\)</span>を確認、検定することで疑似実験の効果についての知見を得る。</p>
+<p>なお、分析においては <a href="causation4.html#causation4">18</a> で紹介した、以下の二方向の固定効果（<span class="math inline">\(\mu_i\)</span>と<span class="math inline">\(\lambda_t\)</span>）を含む回帰モデルで推定することも可能である。</p>
+<p><span class="math display">\[
+Y_{it}=\mu_i+\lambda_t+\beta(D^{treat}_{i}\times D^{post}_{t})+\gamma D^{treat}_{i}+\delta D^{post}_{t}+u_{it}
+\]</span></p>
+<p>このとき、処置群ダミー（<span class="math inline">\(D^{treat}_{i}\)</span>）と事後ダミー（<span class="math inline">\(D^{post}_{t}\)</span>）はそれぞれ、観測個体固定効果（<span class="math inline">\(\mu_i\)</span>）と時間固定効果（<span class="math inline">\(\lambda_t\)</span>）に吸収されてしまうため、結果的に以下のモデルでDID推定を行うことができる。
+<span class="math display">\[
+Y_{it}=\mu_i+\lambda_t+\beta(D^{treat}_{i}\times D^{post}_{t})+u_{it}
+\]</span>
+このように、回帰モデルを用いてDID推定を行う場合には、パネルデータ分析、特に固定効果モデルに対する知識も必要になる。</p>
+<p>なお、DIDも他の手法と同様、平均処置効果を得るためにはいくつかの仮定を満たす必要がある。具体的には、SUTVAなど（<a href="causation2.html#causation2">16</a> 参照）因果推論に関わる基本的な仮定に加え、並行トレンド（Parallel trend）の仮定を満たす場合、DIDによって（処置群における）平均処置効果（Average Treatment Effects on Treated）を分析することが可能であることが知られている。並行トレンドとは、処置がない場合、処置群と統制群の成果の平均のトレンド（時間変化）が等しいという仮定である。そのため、処置がない場合、横軸を時間、縦軸を成果変数（の平均値）とした際の両群の成果に関する曲線（直線）は並行になる（上図におけるA-CとB-B’の直線は並行になる）ことを意味する。</p>
 <p>また、処置効果の異質性がないことも重要である。平均処置効果がグループや時間によって変化する場合、推定結果にバイアスがかかることが知られている。例えば、成果等による介入効果が時間によって変化する（長期的に効果が弱まるなどの）場合や、処置効果が特に処置群に強い影響を与えうる（影響を強く受けそうな群に処置が行われている）場合には異質な処置効果（Heterogenous treatment effects）として、問題になる。これに加えて、SUTVAでも議論したスピルオーバーがないこともDIDでは重要かつ満たすことが容易ではない仮定となる。自然災害や紛争など地理的要因に紐づいた構造変化を捉える場合、少なからず地理的な近接性に伴うスピルオーバー効果が生まれる可能性があるため、注意が必要となる。</p>
 <p>上記の仮定を満たしているかについて、正当化のための理想的な方法はない。図示化や論理的説明（産業的知識）が用いて、上記の仮定が満たされていることを説得的に記述することが求められる。また、その説明の補助として統計的検定が併用されることも多い。</p>
 </div>
