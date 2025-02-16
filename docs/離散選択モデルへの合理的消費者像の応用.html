@@ -159,7 +159,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの異なる視点"><i class="fa fa-check"></i><b>3.1.1</b> 実務とリサーチの異なる視点</a></li>
 <li class="chapter" data-level="3.1.2" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#マーケティングリサーチと実務的含意"><i class="fa fa-check"></i><b>3.1.2</b> マーケティングリサーチと実務的含意</a></li>
-<li class="chapter" data-level="3.1.3" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの分離"><i class="fa fa-check"></i><b>3.1.3</b> 実務とリサーチの分離</a></li>
+<li class="chapter" data-level="3.1.3" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#非計画購買に関する研究紹介hui-et-al.-2013"><i class="fa fa-check"></i><b>3.1.3</b> 非計画購買に関する研究紹介（Hui et al. 2013）</a></li>
+<li class="chapter" data-level="3.1.4" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの分離"><i class="fa fa-check"></i><b>3.1.4</b> 実務とリサーチの分離</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="リサーチデザインとアプローチ類型.html"><a href="リサーチデザインとアプローチ類型.html"><i class="fa fa-check"></i><b>3.2</b> リサーチデザインとアプローチ類型</a>
 <ul>
@@ -413,8 +414,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="離散選択モデルへの合理的消費者像の応用" class="section level2 hasAnchor" number="9.5">
 <h2><span class="header-section-number">9.5</span> 離散選択モデルへの合理的消費者像の応用<a href="離散選択モデルへの合理的消費者像の応用.html#離散選択モデルへの合理的消費者像の応用" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>離散選択モデルを用いた消費者需要の推定に関する先駆的な研究としてMcfadden (1974) による交通網に関する研究が挙げられる。この研究から続く離散選択モデルを用いた消費者需要の分析アプローチでは、（実際に消費者が何を考えているかに関わらず）消費者が自身の効用が最大になる選択肢を選んでいると考える。具体的には、「AとBという任意の2つの選択肢があり、ある個人がAを選んだ場合、その個人のAに対する効用はBに対する効用よりも高い」という、顕示選好に関する仮定を置き分析を行っている。そして、この仮定の根拠として妥当性を担保しているのが、10.1節と10.2節で紹介した理論的背景である。</p>
-<p>ここで、選択肢 <span class="math inline">\(j\)</span> に対する効用は以下のような関数で捉えるとする<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>。
+<p>離散選択モデルを用いた消費者需要の推定に関する先駆的な研究としてMcFadden (1974) による交通網に関する研究が挙げられる。この研究から続く離散選択モデルを用いた消費者需要の分析アプローチでは、（実際に消費者が何を考えているかに関わらず）消費者が自身の効用が最大になる選択肢を選んでいると考える。具体的には、「AとBという任意の2つの選択肢があり、ある個人がAを選んだ場合、その個人のAに対する効用はBに対する効用よりも高い」という、顕示選好に関する仮定を置き分析を行っている。そして、この仮定の根拠として妥当性を担保しているのが、10.1節と10.2節で紹介した理論的背景である。</p>
+<p>ここで、選択肢 <span class="math inline">\(j\)</span> に対する効用は以下のような関数で捉えるとする<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>。
 <span class="math display">\[
 U_{ij}=\beta_{0}+\beta_{1}x_{ij}+e_{ij}
 \]</span></p>
@@ -449,19 +450,19 @@ P(y_i=A|x_{iA},x_{iB})&amp;=P(e_{iB}-e_{iA}&lt;(\beta_{0A}-\beta_{0B})+\beta_1(x
 &amp;=\Phi(\tilde{\beta}_{0}+\beta_1(x_{iA}-x_{iB}))
 \end{align}
 \]</span>
-ただし、<span class="math inline">\(\tilde{\beta}_0\)</span>は、<span class="math inline">\(\beta_{0A}-\beta_{0B}\)</span> であり、選択肢間の定数項の差を表している。そのため、このような定式化の元で分析されるモデルの定数項は、「選択肢固有の定数項の差」として推定される。以下では、前節でも用いた <code>choice_df</code> を用いて上記の消費者の離散選択モデルを推定する。具体的には、製品1と2の価格差（<code>p_ratio</code>=p1-p2）と製品1のクーポン広告受取り有無（<code>a1</code>）と製品2のクーポン広告（<code>a2</code>）を用いて以下のようなモデルを分析する。</p>
+ただし、<span class="math inline">\(\tilde{\beta}_0\)</span>は、<span class="math inline">\(\beta_{0A}-\beta_{0B}\)</span> であり、選択肢間の定数項の差を表している。そのため、このような定式化によって分析されるモデルの定数項は、「選択肢固有の定数項の差」として推定される。以下では、前節でも用いた <code>choice_df</code> を用いて上記の消費者の離散選択モデルを推定する。具体的には、製品1と2の価格差（<code>p_ratio</code>=p1-p2）と製品1のクーポン広告受取り有無（<code>a1</code>）と製品2のクーポン広告（<code>a2</code>）を用いて以下のようなモデルを分析する。</p>
 <p><span class="math display">\[
 U_{1i}=\tilde{\beta}_{0}+\beta_1(p_1-p_2)+\beta_2a_1-\beta_3a_2+e_{1i}
 \]</span>
 ただし、R上のコードでは、<span class="math inline">\(a_2\)</span> の係数について、負に推定されることを想定しつつ、<code>+</code> 記号を使って定式化する。</p>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="離散選択モデルへの合理的消費者像の応用.html#cb253-1" tabindex="-1"></a><span class="co">#価格差変数作成</span></span>
-<span id="cb253-2"><a href="離散選択モデルへの合理的消費者像の応用.html#cb253-2" tabindex="-1"></a>choice_df <span class="ot">&lt;-</span> choice_df <span class="sc">%&gt;%</span> </span>
-<span id="cb253-3"><a href="離散選択モデルへの合理的消費者像の応用.html#cb253-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_ratio =</span> p1 <span class="sc">-</span>p2)</span>
-<span id="cb253-4"><a href="離散選択モデルへの合理的消費者像の応用.html#cb253-4" tabindex="-1"></a></span>
-<span id="cb253-5"><a href="離散選択モデルへの合理的消費者像の応用.html#cb253-5" tabindex="-1"></a>probit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p_ratio <span class="sc">+</span> a1 <span class="sc">+</span> a2, </span>
-<span id="cb253-6"><a href="離散選択モデルへの合理的消費者像の応用.html#cb253-6" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit),</span>
-<span id="cb253-7"><a href="離散選択モデルへの合理的消費者像の応用.html#cb253-7" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
-<span id="cb253-8"><a href="離散選択モデルへの合理的消費者像の応用.html#cb253-8" tabindex="-1"></a><span class="fu">summary</span>(probit2)</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="離散選択モデルへの合理的消費者像の応用.html#cb16-1" tabindex="-1"></a><span class="co">#価格差変数作成</span></span>
+<span id="cb16-2"><a href="離散選択モデルへの合理的消費者像の応用.html#cb16-2" tabindex="-1"></a>choice_df <span class="ot">&lt;-</span> choice_df <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="離散選択モデルへの合理的消費者像の応用.html#cb16-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p_ratio =</span> p1 <span class="sc">-</span>p2)</span>
+<span id="cb16-4"><a href="離散選択モデルへの合理的消費者像の応用.html#cb16-4" tabindex="-1"></a></span>
+<span id="cb16-5"><a href="離散選択モデルへの合理的消費者像の応用.html#cb16-5" tabindex="-1"></a>probit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p_ratio <span class="sc">+</span> a1 <span class="sc">+</span> a2, </span>
+<span id="cb16-6"><a href="離散選択モデルへの合理的消費者像の応用.html#cb16-6" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit),</span>
+<span id="cb16-7"><a href="離散選択モデルへの合理的消費者像の応用.html#cb16-7" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
+<span id="cb16-8"><a href="離散選択モデルへの合理的消費者像の応用.html#cb16-8" tabindex="-1"></a><span class="fu">summary</span>(probit2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = y1 ~ p_ratio + a1 + a2, family = binomial(link = probit), 
@@ -484,12 +485,12 @@ U_{1i}=\tilde{\beta}_{0}+\beta_1(p_1-p_2)+\beta_2a_1-\beta_3a_2+e_{1i}
 ## 
 ## Number of Fisher Scoring iterations: 4</code></pre>
 <p>分析の結果、価格差については負に有意であり、<code>p1</code> が相対的に高くほど選択確率が下がる傾向にあることを示唆している。また、自社のクーポン（<code>a1</code>）は正に、他社のクーポン（<code>a2</code>）は負に有意であることも伺えた。加えて、定数項（<code>(Intercept)</code>）は負に有意であるため、製品2を基準（製品2の定数項を 0 ）とした場合と比べ、製品 1 の定数項（ブランド価値）は低いと解釈する事ができる。本モデルの解釈を行うために、限界効果と擬似決定係数を以下のように分析する。</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="離散選択モデルへの合理的消費者像の応用.html#cb255-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">PseudoR2</span>(probit2)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="離散選択モデルへの合理的消費者像の応用.html#cb18-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">PseudoR2</span>(probit2)</span></code></pre></div>
 <pre><code>## McFadden 
 ## 0.229384</code></pre>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="離散選択モデルへの合理的消費者像の応用.html#cb257-1" tabindex="-1"></a>probit2_ame <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(y1 <span class="sc">~</span> p_ratio <span class="sc">+</span> a1 <span class="sc">+</span> a2,</span>
-<span id="cb257-2"><a href="離散選択モデルへの合理的消費者像の応用.html#cb257-2" tabindex="-1"></a>               <span class="at">data =</span> choice_df, <span class="at">atmean =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb257-3"><a href="離散選択モデルへの合理的消費者像の応用.html#cb257-3" tabindex="-1"></a>probit2_ame</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="離散選択モデルへの合理的消費者像の応用.html#cb20-1" tabindex="-1"></a>probit2_ame <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(y1 <span class="sc">~</span> p_ratio <span class="sc">+</span> a1 <span class="sc">+</span> a2,</span>
+<span id="cb20-2"><a href="離散選択モデルへの合理的消費者像の応用.html#cb20-2" tabindex="-1"></a>               <span class="at">data =</span> choice_df, <span class="at">atmean =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb20-3"><a href="離散選択モデルへの合理的消費者像の応用.html#cb20-3" tabindex="-1"></a>probit2_ame</span></code></pre></div>
 <pre><code>## Call:
 ## probitmfx(formula = y1 ~ p_ratio + a1 + a2, data = choice_df, 
 ##     atmean = FALSE)
@@ -509,8 +510,8 @@ U_{1i}=\tilde{\beta}_{0}+\beta_1(p_1-p_2)+\beta_2a_1-\beta_3a_2+e_{1i}
 </div>
 <div class="footnotes">
 <hr />
-<ol start="34">
-<li id="fn34"><p>ただし、行列の記法を使えば、同じ議論を <span class="math inline">\(x_{1ij},...,x_{kij}\)</span>の説明変数に応用できる。<a href="離散選択モデルへの合理的消費者像の応用.html#fnref34" class="footnote-back">↩︎</a></p></li>
+<ol start="13">
+<li id="fn13"><p>ただし、行列の記法を使えば、同じ議論を <span class="math inline">\(x_{1ij},...,x_{kij}\)</span>の説明変数に応用できる。<a href="離散選択モデルへの合理的消費者像の応用.html#fnref13" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

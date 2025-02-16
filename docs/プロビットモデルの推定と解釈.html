@@ -159,7 +159,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの異なる視点"><i class="fa fa-check"></i><b>3.1.1</b> 実務とリサーチの異なる視点</a></li>
 <li class="chapter" data-level="3.1.2" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#マーケティングリサーチと実務的含意"><i class="fa fa-check"></i><b>3.1.2</b> マーケティングリサーチと実務的含意</a></li>
-<li class="chapter" data-level="3.1.3" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの分離"><i class="fa fa-check"></i><b>3.1.3</b> 実務とリサーチの分離</a></li>
+<li class="chapter" data-level="3.1.3" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#非計画購買に関する研究紹介hui-et-al.-2013"><i class="fa fa-check"></i><b>3.1.3</b> 非計画購買に関する研究紹介（Hui et al. 2013）</a></li>
+<li class="chapter" data-level="3.1.4" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの分離"><i class="fa fa-check"></i><b>3.1.4</b> 実務とリサーチの分離</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="リサーチデザインとアプローチ類型.html"><a href="リサーチデザインとアプローチ類型.html"><i class="fa fa-check"></i><b>3.2</b> リサーチデザインとアプローチ類型</a>
 <ul>
@@ -416,8 +417,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="最尤推定法" class="section level3 hasAnchor" number="9.4.1">
 <h3><span class="header-section-number">9.4.1</span> 最尤推定法<a href="プロビットモデルの推定と解釈.html#最尤推定法" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>プロビットモデルを構築できたら、次はモデル内のパラメータに関する推定値（<span class="math inline">\(\hat{\beta}_0, \hat{\beta}_1,...,\hat{\beta}_k\)</span>）を求め、選択確率に関する含意を得る。プロビットモデルを推定する場合のデータセットには、説明変数に関する列（<span class="math inline">\(x_{1i},.., x_{ki}\)</span>）と、それに対応する個人 <span class="math inline">\(i\)</span> の選択結果 <span class="math inline">\(y_i\)</span>（選択していれば1、選択していなければ 0）が記録されている。<code>choice_data.xlsx</code> は、二つの製品に対する消費者の選択結果を捉えた人工データデットである。データには製品1の価格 <span class="math inline">\(p1\)</span>、製品2の価格 <span class="math inline">\(p2\)</span>（千円）、製品1のクーポン広告を受け取ったかのダミー変数 <span class="math inline">\(a1\)</span>、製品2のクーポン広告ダミー変数 <span class="math inline">\(a2\)</span> と、製品1の選択結果 <span class="math inline">\(y1\)</span>、製品2の選択結果 <span class="math inline">\(y2\)</span> が含まれている。</p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb240-1"><a href="プロビットモデルの推定と解釈.html#cb240-1" tabindex="-1"></a>choice_df <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/choice_data.xlsx&quot;</span>)</span>
-<span id="cb240-2"><a href="プロビットモデルの推定と解釈.html#cb240-2" tabindex="-1"></a><span class="fu">head</span>(choice_df)</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="プロビットモデルの推定と解釈.html#cb3-1" tabindex="-1"></a>choice_df <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/choice_data.xlsx&quot;</span>)</span>
+<span id="cb3-2"><a href="プロビットモデルの推定と解釈.html#cb3-2" tabindex="-1"></a><span class="fu">head</span>(choice_df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 6
 ##      y1    y2    p1    p2    a1    a2
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -427,15 +428,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4     1     0  4.62  8.03     0     0
 ## 5     1     0  7.81 19.2      1     1
 ## 6     1     0  7.49  8.84     0     0</code></pre>
-<p>プロビットモデルのパラメータ推定においては、最小二乗法ではなく、最尤（Maximum Likelihood: ML）法を用いる。最尤法では、あるデータが与えられたときに、そのような情報が得られる確率が最も高くなる（最も尤もらしくなる）ようにパラメータの値を求める方法である。この尤もらしさを尤度と呼び、得たデータを尤度が最大になる（最もうまく説明できる）ようにパラメータを推定する。</p>
-<p>一般的に、パラメータ <span class="math inline">\(\theta\)</span> を含む確率密度 <span class="math inline">\(f(x,\theta)\)</span> からの無作為標本<span class="math inline">\({x_1,.., x_n}\)</span> を得た時、これに対する以下のような同時確率密度関数をパラメータ <span class="math inline">\(\theta\)</span> に関する尤度関数と見做す。</p>
+<p>プロビットモデルのパラメータ推定においては、最小二乗法ではなく、最尤（Maximum Likelihood: ML）法を用いる。最尤法では、あるデータが与えられたときに、そのような情報が得られる確率が最も高くなる（最も尤もらしくなる）ようにパラメータの値を求める方法である。この尤もらしさを尤度と呼び、得られたデータを尤度が最大になる（最もうまく説明できる）ようにパラメータを推定する。</p>
+<p>一般的に、パラメータ <span class="math inline">\(\theta\)</span> を含む確率密度 <span class="math inline">\(f(x,\theta)\)</span> からの無作為標本<span class="math inline">\({x_1,..., x_n}\)</span> を得た時、これに対する以下のような同時確率密度関数をパラメータ <span class="math inline">\(\theta\)</span> に関する尤度関数と見做す。</p>
 <p><span class="math display">\[
-L(\theta)=f(x_1,\theta)\times f(x_2,\theta)\times,...,\times f(x_n,\theta)
+L(\theta)=f(x_1,\theta)\times f(x_2,\theta)\times...\times f(x_n,\theta)
 \]</span>
 そして、これを最大にするように <span class="math inline">\(\theta\)</span> の推定値を求める方法が最尤法であり、ここで得る推定量を最尤推定量（Maximum Likelihood Estimator: MLE）と呼ぶ。
 実際の分析においては、尤度関数の自然対数を取った以下のような対数尤度関数を用いる事が多い。</p>
 <p><span class="math display">\[
-LL(\theta)=\sum^n_{i=1}\ln f(x,\theta)
+LL(\theta)=\sum^n_{i=1}\ln f(x_i,\theta)
 \]</span>
 対数尤度と尤度を最大にする <span class="math inline">\(\theta\)</span> は数学的には等しく、対数尤度を用いたほうが、計算が容易であることから、対数尤度が用いられる。</p>
 <p>前節で確認したプロビットモデル（<a href="離散選択モデル.html#eq:probit">(9.1)</a>）の対数尤度関数は、以下のように求まる。</p>
@@ -446,11 +447,11 @@ LL_i(\theta)=y_i\Big(\ln[\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})] \Big)+ (
 </div>
 <div id="分析の実行とまとめ" class="section level3 hasAnchor" number="9.4.2">
 <h3><span class="header-section-number">9.4.2</span> 分析の実行とまとめ<a href="プロビットモデルの推定と解釈.html#分析の実行とまとめ" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>先程の<code>choice_data.xlsx</code>を用いて製品1の選択に関するプロビットモデルを推定してみる。Rでは<code>glm()</code>関数において、<code>family = binomial(link = probit)</code> という引数を指定することで実行が可能である<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a>。以下では分析の実行と結果の出力を行う。</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb242-1"><a href="プロビットモデルの推定と解釈.html#cb242-1" tabindex="-1"></a>probit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
-<span id="cb242-2"><a href="プロビットモデルの推定と解釈.html#cb242-2" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit),</span>
-<span id="cb242-3"><a href="プロビットモデルの推定と解釈.html#cb242-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
-<span id="cb242-4"><a href="プロビットモデルの推定と解釈.html#cb242-4" tabindex="-1"></a><span class="fu">summary</span>(probit1)</span></code></pre></div>
+<p>先程の<code>choice_data.xlsx</code>を用いて製品1の選択に関するプロビットモデルを推定してみる。Rでは<code>glm()</code>関数において、<code>family = binomial(link = probit)</code> という引数を指定することで実行が可能である<a href="#fn9" class="footnote-ref" id="fnref9"><sup>9</sup></a>。以下では分析の実行と結果の出力を行う。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="プロビットモデルの推定と解釈.html#cb5-1" tabindex="-1"></a>probit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
+<span id="cb5-2"><a href="プロビットモデルの推定と解釈.html#cb5-2" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit),</span>
+<span id="cb5-3"><a href="プロビットモデルの推定と解釈.html#cb5-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
+<span id="cb5-4"><a href="プロビットモデルの推定と解釈.html#cb5-4" tabindex="-1"></a><span class="fu">summary</span>(probit1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = y1 ~ p1 + a1, family = binomial(link = probit), 
@@ -472,38 +473,38 @@ LL_i(\theta)=y_i\Big(\ln[\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})] \Big)+ (
 ## 
 ## Number of Fisher Scoring iterations: 3</code></pre>
 <p>ここまで、我々は線形確率、プロビット、ロジットという3種類のモデルでの推定方法を概観してきた。以下では、これらの異なる推定方法を用いた分析結果を併記する。</p>
-<div class="sourceCode" id="cb244"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb244-1"><a href="プロビットモデルの推定と解釈.html#cb244-1" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
-<span id="cb244-2"><a href="プロビットモデルの推定と解釈.html#cb244-2" tabindex="-1"></a>ols1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
-<span id="cb244-3"><a href="プロビットモデルの推定と解釈.html#cb244-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
-<span id="cb244-4"><a href="プロビットモデルの推定と解釈.html#cb244-4" tabindex="-1"></a></span>
-<span id="cb244-5"><a href="プロビットモデルの推定と解釈.html#cb244-5" tabindex="-1"></a>logit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
-<span id="cb244-6"><a href="プロビットモデルの推定と解釈.html#cb244-6" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit),</span>
-<span id="cb244-7"><a href="プロビットモデルの推定と解釈.html#cb244-7" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
-<span id="cb244-8"><a href="プロビットモデルの推定と解釈.html#cb244-8" tabindex="-1"></a>models <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
-<span id="cb244-9"><a href="プロビットモデルの推定と解釈.html#cb244-9" tabindex="-1"></a>models[[<span class="st">&quot;Linear probability model&quot;</span>]] <span class="ot">&lt;-</span> ols1</span>
-<span id="cb244-10"><a href="プロビットモデルの推定と解釈.html#cb244-10" tabindex="-1"></a>models[[<span class="st">&quot;Probit model&quot;</span>]] <span class="ot">&lt;-</span> probit1</span>
-<span id="cb244-11"><a href="プロビットモデルの推定と解釈.html#cb244-11" tabindex="-1"></a>models[[<span class="st">&quot;Logit model&quot;</span>]] <span class="ot">&lt;-</span> logit1</span>
-<span id="cb244-12"><a href="プロビットモデルの推定と解釈.html#cb244-12" tabindex="-1"></a></span>
-<span id="cb244-13"><a href="プロビットモデルの推定と解釈.html#cb244-13" tabindex="-1"></a><span class="fu">modelsummary</span>(models, </span>
-<span id="cb244-14"><a href="プロビットモデルの推定と解釈.html#cb244-14" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;モデル比較&quot;</span>,</span>
-<span id="cb244-15"><a href="プロビットモデルの推定と解釈.html#cb244-15" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show robust standard errors&quot;</span>,</span>
-<span id="cb244-16"><a href="プロビットモデルの推定と解釈.html#cb244-16" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb244-17"><a href="プロビットモデルの推定と解釈.html#cb244-17" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&quot;std.error&quot;</span>,</span>
-<span id="cb244-18"><a href="プロビットモデルの推定と解釈.html#cb244-18" tabindex="-1"></a>         <span class="at">vcov =</span> <span class="st">&quot;robust&quot;</span>,</span>
-<span id="cb244-19"><a href="プロビットモデルの推定と解釈.html#cb244-19" tabindex="-1"></a>         <span class="at">gof_map =</span> <span class="st">&quot;nobs&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="プロビットモデルの推定と解釈.html#cb7-1" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb7-2"><a href="プロビットモデルの推定と解釈.html#cb7-2" tabindex="-1"></a>ols1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
+<span id="cb7-3"><a href="プロビットモデルの推定と解釈.html#cb7-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
+<span id="cb7-4"><a href="プロビットモデルの推定と解釈.html#cb7-4" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="プロビットモデルの推定と解釈.html#cb7-5" tabindex="-1"></a>logit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
+<span id="cb7-6"><a href="プロビットモデルの推定と解釈.html#cb7-6" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit),</span>
+<span id="cb7-7"><a href="プロビットモデルの推定と解釈.html#cb7-7" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
+<span id="cb7-8"><a href="プロビットモデルの推定と解釈.html#cb7-8" tabindex="-1"></a>models <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
+<span id="cb7-9"><a href="プロビットモデルの推定と解釈.html#cb7-9" tabindex="-1"></a>models[[<span class="st">&quot;Linear probability model&quot;</span>]] <span class="ot">&lt;-</span> ols1</span>
+<span id="cb7-10"><a href="プロビットモデルの推定と解釈.html#cb7-10" tabindex="-1"></a>models[[<span class="st">&quot;Probit model&quot;</span>]] <span class="ot">&lt;-</span> probit1</span>
+<span id="cb7-11"><a href="プロビットモデルの推定と解釈.html#cb7-11" tabindex="-1"></a>models[[<span class="st">&quot;Logit model&quot;</span>]] <span class="ot">&lt;-</span> logit1</span>
+<span id="cb7-12"><a href="プロビットモデルの推定と解釈.html#cb7-12" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="プロビットモデルの推定と解釈.html#cb7-13" tabindex="-1"></a><span class="fu">modelsummary</span>(models, </span>
+<span id="cb7-14"><a href="プロビットモデルの推定と解釈.html#cb7-14" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;モデル比較&quot;</span>,</span>
+<span id="cb7-15"><a href="プロビットモデルの推定と解釈.html#cb7-15" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show robust standard errors&quot;</span>,</span>
+<span id="cb7-16"><a href="プロビットモデルの推定と解釈.html#cb7-16" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb7-17"><a href="プロビットモデルの推定と解釈.html#cb7-17" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&quot;std.error&quot;</span>,</span>
+<span id="cb7-18"><a href="プロビットモデルの推定と解釈.html#cb7-18" tabindex="-1"></a>         <span class="at">vcov =</span> <span class="st">&quot;robust&quot;</span>,</span>
+<span id="cb7-19"><a href="プロビットモデルの推定と解釈.html#cb7-19" tabindex="-1"></a>         <span class="at">gof_map =</span> <span class="st">&quot;nobs&quot;</span>)</span></code></pre></div>
 <!DOCTYPE html> 
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tinytable_gaqpr7btwykogksg6ap5</title>
+    <title>tinytable_wcza2t4dr0tgwh0s0ozx</title>
     <style>
-.table td.tinytable_css_r5yomvtgc0ccv98s0wda, .table th.tinytable_css_r5yomvtgc0ccv98s0wda {    border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_pti03czc77zcycb1mah4, .table th.tinytable_css_pti03czc77zcycb1mah4 {    text-align: left; }
-.table td.tinytable_css_wpf0v3cvhdrl8ldilwsq, .table th.tinytable_css_wpf0v3cvhdrl8ldilwsq {    text-align: center; }
-.table td.tinytable_css_qlg425fim1mmyp7i5d16, .table th.tinytable_css_qlg425fim1mmyp7i5d16 {    text-align: center; }
-.table td.tinytable_css_trdkg3h5dz2rytbypx92, .table th.tinytable_css_trdkg3h5dz2rytbypx92 {    text-align: center; }
-.table td.tinytable_css_3j91463cphd5lic5uzll, .table th.tinytable_css_3j91463cphd5lic5uzll {    border-bottom: solid 0.05em black; }
+.table td.tinytable_css_ozf8hr5uaf3xmv0tjeay, .table th.tinytable_css_ozf8hr5uaf3xmv0tjeay {    border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_sopl3nu00ogmdidoal2b, .table th.tinytable_css_sopl3nu00ogmdidoal2b {    text-align: left; }
+.table td.tinytable_css_xvtiejtm2pcj24c1f6bx, .table th.tinytable_css_xvtiejtm2pcj24c1f6bx {    text-align: center; }
+.table td.tinytable_css_b219vagvh5ldz9l8cjk6, .table th.tinytable_css_b219vagvh5ldz9l8cjk6 {    text-align: center; }
+.table td.tinytable_css_bnb9iiv3haxy0tkjegn1, .table th.tinytable_css_bnb9iiv3haxy0tkjegn1 {    text-align: center; }
+.table td.tinytable_css_64t6i7hc9xnucq7hr3lt, .table th.tinytable_css_64t6i7hc9xnucq7hr3lt {    border-bottom: solid 0.05em black; }
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -521,7 +522,7 @@ LL_i(\theta)=y_i\Big(\ln[\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})] \Big)+ (
 
   <body>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_gaqpr7btwykogksg6ap5" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
+      <table class="table table-borderless" id="tinytable_wcza2t4dr0tgwh0s0ozx" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
         <thead>
         <caption>モデル比較</caption>
               <tr>
@@ -581,12 +582,12 @@ LL_i(\theta)=y_i\Big(\ln[\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})] \Big)+ (
     </div>
 
     <script>
-      function styleCell_tinytable_um4ltg8arztkz49yr2nk(i, j, css_id) {
-        var table = document.getElementById("tinytable_gaqpr7btwykogksg6ap5");
+      function styleCell_tinytable_lro7yxkgc6dzrudsugvo(i, j, css_id) {
+        var table = document.getElementById("tinytable_wcza2t4dr0tgwh0s0ozx");
         table.rows[i].cells[j].classList.add(css_id);
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_gaqpr7btwykogksg6ap5');
+        var table = document.getElementById('tinytable_wcza2t4dr0tgwh0s0ozx');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -594,8 +595,8 @@ LL_i(\theta)=y_i\Big(\ln[\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})] \Big)+ (
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_tinytable_um4ltg8arztkz49yr2nk(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_gaqpr7btwykogksg6ap5");
+      function spanCell_tinytable_lro7yxkgc6dzrudsugvo(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_wcza2t4dr0tgwh0s0ozx");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -622,52 +623,52 @@ LL_i(\theta)=y_i\Big(\ln[\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})] \Big)+ (
         targetCell.colSpan = colspan;
       }
 
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 0, 'tinytable_css_r5yomvtgc0ccv98s0wda') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 1, 'tinytable_css_r5yomvtgc0ccv98s0wda') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 2, 'tinytable_css_r5yomvtgc0ccv98s0wda') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 3, 'tinytable_css_r5yomvtgc0ccv98s0wda') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(1, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(2, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(3, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(4, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(5, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(7, 0, 'tinytable_css_pti03czc77zcycb1mah4') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(1, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(2, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(3, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(4, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(5, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(7, 1, 'tinytable_css_wpf0v3cvhdrl8ldilwsq') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(1, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(2, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(3, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(4, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(5, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(7, 2, 'tinytable_css_qlg425fim1mmyp7i5d16') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(0, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(1, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(2, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(3, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(4, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(5, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(7, 3, 'tinytable_css_trdkg3h5dz2rytbypx92') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 0, 'tinytable_css_3j91463cphd5lic5uzll') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 1, 'tinytable_css_3j91463cphd5lic5uzll') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 2, 'tinytable_css_3j91463cphd5lic5uzll') })
-window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz49yr2nk(6, 3, 'tinytable_css_3j91463cphd5lic5uzll') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(0, 0, 'tinytable_css_ozf8hr5uaf3xmv0tjeay') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(0, 1, 'tinytable_css_ozf8hr5uaf3xmv0tjeay') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(0, 2, 'tinytable_css_ozf8hr5uaf3xmv0tjeay') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(0, 3, 'tinytable_css_ozf8hr5uaf3xmv0tjeay') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(0, 0, 'tinytable_css_sopl3nu00ogmdidoal2b') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(1, 0, 'tinytable_css_sopl3nu00ogmdidoal2b') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(2, 0, 'tinytable_css_sopl3nu00ogmdidoal2b') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(3, 0, 'tinytable_css_sopl3nu00ogmdidoal2b') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(4, 0, 'tinytable_css_sopl3nu00ogmdidoal2b') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(5, 0, 'tinytable_css_sopl3nu00ogmdidoal2b') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(6, 0, 'tinytable_css_sopl3nu00ogmdidoal2b') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(7, 0, 'tinytable_css_sopl3nu00ogmdidoal2b') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(0, 1, 'tinytable_css_xvtiejtm2pcj24c1f6bx') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(1, 1, 'tinytable_css_xvtiejtm2pcj24c1f6bx') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(2, 1, 'tinytable_css_xvtiejtm2pcj24c1f6bx') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(3, 1, 'tinytable_css_xvtiejtm2pcj24c1f6bx') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(4, 1, 'tinytable_css_xvtiejtm2pcj24c1f6bx') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(5, 1, 'tinytable_css_xvtiejtm2pcj24c1f6bx') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(6, 1, 'tinytable_css_xvtiejtm2pcj24c1f6bx') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(7, 1, 'tinytable_css_xvtiejtm2pcj24c1f6bx') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(0, 2, 'tinytable_css_b219vagvh5ldz9l8cjk6') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(1, 2, 'tinytable_css_b219vagvh5ldz9l8cjk6') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(2, 2, 'tinytable_css_b219vagvh5ldz9l8cjk6') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(3, 2, 'tinytable_css_b219vagvh5ldz9l8cjk6') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(4, 2, 'tinytable_css_b219vagvh5ldz9l8cjk6') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(5, 2, 'tinytable_css_b219vagvh5ldz9l8cjk6') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(6, 2, 'tinytable_css_b219vagvh5ldz9l8cjk6') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(7, 2, 'tinytable_css_b219vagvh5ldz9l8cjk6') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(0, 3, 'tinytable_css_bnb9iiv3haxy0tkjegn1') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(1, 3, 'tinytable_css_bnb9iiv3haxy0tkjegn1') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(2, 3, 'tinytable_css_bnb9iiv3haxy0tkjegn1') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(3, 3, 'tinytable_css_bnb9iiv3haxy0tkjegn1') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(4, 3, 'tinytable_css_bnb9iiv3haxy0tkjegn1') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(5, 3, 'tinytable_css_bnb9iiv3haxy0tkjegn1') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(6, 3, 'tinytable_css_bnb9iiv3haxy0tkjegn1') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(7, 3, 'tinytable_css_bnb9iiv3haxy0tkjegn1') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(6, 0, 'tinytable_css_64t6i7hc9xnucq7hr3lt') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(6, 1, 'tinytable_css_64t6i7hc9xnucq7hr3lt') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(6, 2, 'tinytable_css_64t6i7hc9xnucq7hr3lt') })
+window.addEventListener('load', function () { styleCell_tinytable_lro7yxkgc6dzrudsugvo(6, 3, 'tinytable_css_64t6i7hc9xnucq7hr3lt') })
     </script>
 
   </body>
 
 </html>
-<p>分析の結果、どのアプローチでも <span class="math inline">\(p_1\)</span> は被説明変数に対して負に、<span class="math inline">\(a_1\)</span> は正に有意な影響を与えることが示されている。しかしながら、詳しくは次節にて説明するが、係数の解釈については注意が必要である。このように、複数の分析アプローチを用いた結果をまとめ、併記することも簡単である。結果の頑健性チェックや、様々な比較検討のために、このような表が用いられることも多い。</p>
+<p>分析の結果、どのアプローチでも <code>p1</code> は被説明変数に対して負に、<code>a1</code> は正に有意な影響を与えることが示されている。しかしながら、詳しくは次節にて説明するが、係数の解釈については注意が必要である。このように、複数の分析アプローチを用いた結果をまとめ、併記することも簡単である。結果の頑健性チェックや、様々な比較検討のために、このような表が用いられることも多い。</p>
 </div>
 <div id="限界効果の計算" class="section level3 hasAnchor" number="9.4.3">
 <h3><span class="header-section-number">9.4.3</span> 限界効果の計算<a href="プロビットモデルの推定と解釈.html#限界効果の計算" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -678,12 +679,12 @@ window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz4
 \]</span></p>
 <p>ここで、説明変数 <span class="math inline">\(x_{1i}\)</span> の限界効果は、<span class="math inline">\(x_{1i}\)</span> が変化したときに反応確率がどのように変化するのかを表す。これは偏微分という計算方法を用いて以下の様に示すことができる。なお、以下で示す内容は <span class="math inline">\(x_{1i}\)</span> 以外の任意の説明変数を用いても成り立つ。</p>
 <p><span class="math display">\[
-\frac{\partial \hat{P}(y_i=1|x_{1i},...,x_{ki})}{\partial x_{1i}}=\phi(\hat{\beta_0}+\hat{\beta}_1x_{1i}+...+\hat{\beta}_kx_{ki})\hat{\beta}_1
+\frac{\partial \hat{P}(y_i=1|x_{1i},...,x_{ki})}{\partial x_{1i}}=\phi(\hat{\beta}_0+\hat{\beta}_1x_{1i}+...+\hat{\beta}_kx_{ki})\hat{\beta}_1
 \]</span></p>
-<p>ただし、<span class="math inline">\(\phi\)</span> は標準正規分布の確率密度関数であり、累積分布関数を微分することで得る。このように、OLSのような線形モデルと異なり、<span class="math inline">\(\hat{\beta}_1\)</span> が直接的に限界効果を示しているわけではないことが伺える<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>。</p>
+<p>ただし、<span class="math inline">\(\phi\)</span> は標準正規分布の確率密度関数であり、累積分布関数を微分することで得る。このように、OLSのような線形モデルと異なり、<span class="math inline">\(\hat{\beta}_1\)</span> が直接的に限界効果を示しているわけではないことが伺える<a href="#fn10" class="footnote-ref" id="fnref10"><sup>10</sup></a>。</p>
 <p>また同式より、ある変数の変化が反応確率へ与える限界効果は、個人が持つ全ての説明変数（<span class="math inline">\(x_{1i},...,x_{ki}\)</span>）の値によって変化することもわかる。そのため、限界効果の報告においては「平均的な」限界効果を報告することが一般的である。ただし、「何の平均を取るか」という点において、2種類の計算方法が存在する。第1に、個人の個別限界効果を計算し、その平均値求めるという以下のような方法である。</p>
 <p><span class="math display" id="eq:avgmarg1">\[\begin{equation}
-\frac{1}{n}\sum^n_{i=1}\Big[\phi(\hat{\beta_0}+\hat{\beta}_1x_{1i}+...+\hat{\beta}_kx_{ki})\hat{\beta}_1 \Big] \tag{9.3}
+\frac{1}{n}\sum^n_{i=1}\Big[\phi(\hat{\beta}_0+\hat{\beta}_1x_{1i}+...+\hat{\beta}_kx_{ki})\hat{\beta}_1 \Big] \tag{9.3}
 \end{equation}\]</span></p>
 <p>この計算方法は、因果推論における平均処置効果の議論に対応しているという好ましい性質を持っている（西山ほか, 2019）。</p>
 <p>第2の方法は、説明変数の値について、それぞれ平均値を計算し、限界効果を求めるという以下のような方法である。</p>
@@ -696,14 +697,14 @@ window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz4
 \Phi(\hat{\beta}_0+\hat{\beta}_1p_{1i}+\hat{\beta}_2) - \Phi(\hat{\beta}_0+\hat{\beta}_1p_{1i}) \tag{9.5}
 \end{equation}\]</span></p>
 <p>この限界効果も、他の変数の値（例えば、<span class="math inline">\(p_{1i}\)</span>）によって変化するため、連続変数の場合と同様に平均値を報告することが一般的である。</p>
-<p>限界効果の計算には、<code>mfx::probitmfx()</code> を用いる<a href="#fn32" class="footnote-ref" id="fnref32"><sup>32</sup></a>。必要に応じて、以下のようにパッケージをインストールしてほしい。</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="プロビットモデルの推定と解釈.html#cb245-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;mfx&quot;</span>)</span></code></pre></div>
+<p>限界効果の計算には、<code>mfx::probitmfx()</code> を用いる<a href="#fn11" class="footnote-ref" id="fnref11"><sup>11</sup></a>。必要に応じて、以下のようにパッケージをインストールしてほしい。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="プロビットモデルの推定と解釈.html#cb8-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;mfx&quot;</span>)</span></code></pre></div>
 <p><code>mfx</code> パッケージを用いた限界効果の計算では、線形モデルやプロビットモデルの推定同様、以下のようにモデルを指定し、分析を行う。平均的な限界効果の計算方法については、<code>atmean</code> という引数で指定する。<code>atmean = FALSE</code> とすることで、個別限界効果の平均値を計算できる。一方で、平均値における限界効果は<code>atmean = TRUE</code> と指示することで計算できる。</p>
-<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="プロビットモデルの推定と解釈.html#cb246-1" tabindex="-1"></a><span class="fu">library</span>(mfx)</span>
-<span id="cb246-2"><a href="プロビットモデルの推定と解釈.html#cb246-2" tabindex="-1"></a><span class="co">#Average Marginal Effects (限界効果の平均)</span></span>
-<span id="cb246-3"><a href="プロビットモデルの推定と解釈.html#cb246-3" tabindex="-1"></a>probit1_ame <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1,</span>
-<span id="cb246-4"><a href="プロビットモデルの推定と解釈.html#cb246-4" tabindex="-1"></a>               <span class="at">data =</span> choice_df, <span class="at">atmean =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb246-5"><a href="プロビットモデルの推定と解釈.html#cb246-5" tabindex="-1"></a>probit1_ame</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="プロビットモデルの推定と解釈.html#cb9-1" tabindex="-1"></a><span class="fu">library</span>(mfx)</span>
+<span id="cb9-2"><a href="プロビットモデルの推定と解釈.html#cb9-2" tabindex="-1"></a><span class="co">#Average Marginal Effects (限界効果の平均)</span></span>
+<span id="cb9-3"><a href="プロビットモデルの推定と解釈.html#cb9-3" tabindex="-1"></a>probit1_ame <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1,</span>
+<span id="cb9-4"><a href="プロビットモデルの推定と解釈.html#cb9-4" tabindex="-1"></a>               <span class="at">data =</span> choice_df, <span class="at">atmean =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb9-5"><a href="プロビットモデルの推定と解釈.html#cb9-5" tabindex="-1"></a>probit1_ame</span></code></pre></div>
 <pre><code>## Call:
 ## probitmfx(formula = y1 ~ p1 + a1, data = choice_df, atmean = FALSE)
 ## 
@@ -717,10 +718,10 @@ window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz4
 ## dF/dx is for discrete change for the following variables:
 ## 
 ## [1] &quot;a1&quot;</code></pre>
-<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="プロビットモデルの推定と解釈.html#cb248-1" tabindex="-1"></a><span class="co">#Marginal Effects at Mean（平均値における限界効果）</span></span>
-<span id="cb248-2"><a href="プロビットモデルの推定と解釈.html#cb248-2" tabindex="-1"></a>probit1_mem <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1,</span>
-<span id="cb248-3"><a href="プロビットモデルの推定と解釈.html#cb248-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df, <span class="at">atmean =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb248-4"><a href="プロビットモデルの推定と解釈.html#cb248-4" tabindex="-1"></a>probit1_mem</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="プロビットモデルの推定と解釈.html#cb11-1" tabindex="-1"></a><span class="co">#Marginal Effects at Mean（平均値における限界効果）</span></span>
+<span id="cb11-2"><a href="プロビットモデルの推定と解釈.html#cb11-2" tabindex="-1"></a>probit1_mem <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1,</span>
+<span id="cb11-3"><a href="プロビットモデルの推定と解釈.html#cb11-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df, <span class="at">atmean =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb11-4"><a href="プロビットモデルの推定と解釈.html#cb11-4" tabindex="-1"></a>probit1_mem</span></code></pre></div>
 <pre><code>## Call:
 ## probitmfx(formula = y1 ~ p1 + a1, data = choice_df, atmean = TRUE)
 ## 
@@ -736,43 +737,43 @@ window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz4
 ## [1] &quot;a1&quot;</code></pre>
 <p>分析結果を比較すると、多少計算結果は異なるものの、どちらの計算方法においても、価格は製品の選択確率に負に、クーポンは正に有意な影響を与えることが伺える。また影響の程度として、限界効果の平均値に着目すると、価格が1単位（千円）上昇すると、選択確率が約<span class="math inline">\(8.5\%\)</span>下がること、クーポンを受け取った人は受け取っていない人と比べて約<span class="math inline">\(21.9\%\)</span>選択確率が高いことが伺える。また、今回の結果の場合、OLSを用いたLPMの係数パラメータと似た値を得たことも伺える。なお、詳細については省略するが限界効果の標準誤差はデルタ法と呼ばれる方法で計算されている（Fernihough, 2019）。</p>
 <p>また、<code>mfx</code> による結果も以下のように整理して出力する事ができる。下表の(1) は限界効果の平均（Average Mean Effect）、(2) は平均的個人における限界効果（Marginal Effect at Mean）をそれぞれあらわしている。</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="プロビットモデルの推定と解釈.html#cb250-1" tabindex="-1"></a>marginal <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb250-2"><a href="プロビットモデルの推定と解釈.html#cb250-2" tabindex="-1"></a>  <span class="st">&quot;p1 marginal&quot;</span> <span class="ot">=</span> <span class="st">&quot;p1&quot;</span>,</span>
-<span id="cb250-3"><a href="プロビットモデルの推定と解釈.html#cb250-3" tabindex="-1"></a>  <span class="st">&quot;a1 marginal&quot;</span> <span class="ot">=</span> <span class="st">&quot;a1&quot;</span></span>
-<span id="cb250-4"><a href="プロビットモデルの推定と解釈.html#cb250-4" tabindex="-1"></a>)</span>
-<span id="cb250-5"><a href="プロビットモデルの推定と解釈.html#cb250-5" tabindex="-1"></a></span>
-<span id="cb250-6"><a href="プロビットモデルの推定と解釈.html#cb250-6" tabindex="-1"></a>marg_model <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb250-7"><a href="プロビットモデルの推定と解釈.html#cb250-7" tabindex="-1"></a>  <span class="st">&quot;(1) Probit_AME&quot;</span> <span class="ot">&lt;-</span> probit1_ame,</span>
-<span id="cb250-8"><a href="プロビットモデルの推定と解釈.html#cb250-8" tabindex="-1"></a>  <span class="st">&quot;(2) Probit_MEM&quot;</span> <span class="ot">&lt;-</span> probit1_mem</span>
-<span id="cb250-9"><a href="プロビットモデルの推定と解釈.html#cb250-9" tabindex="-1"></a>)</span>
-<span id="cb250-10"><a href="プロビットモデルの推定と解釈.html#cb250-10" tabindex="-1"></a>marg_sum <span class="ot">&lt;-</span> <span class="fu">modelsummary</span>(</span>
-<span id="cb250-11"><a href="プロビットモデルの推定と解釈.html#cb250-11" tabindex="-1"></a>  <span class="co"># models to summarize side-by-side</span></span>
-<span id="cb250-12"><a href="プロビットモデルの推定と解釈.html#cb250-12" tabindex="-1"></a>  marg_model,</span>
-<span id="cb250-13"><a href="プロビットモデルの推定と解釈.html#cb250-13" tabindex="-1"></a>  <span class="co"># S.E. in parentheses</span></span>
-<span id="cb250-14"><a href="プロビットモデルの推定と解釈.html#cb250-14" tabindex="-1"></a>  <span class="at">statistic =</span> <span class="st">&quot;std.error&quot;</span>,</span>
-<span id="cb250-15"><a href="プロビットモデルの推定と解釈.html#cb250-15" tabindex="-1"></a>  <span class="co"># rename and select the coefficients</span></span>
-<span id="cb250-16"><a href="プロビットモデルの推定と解釈.html#cb250-16" tabindex="-1"></a>  <span class="at">coef_map =</span> marginal,</span>
-<span id="cb250-17"><a href="プロビットモデルの推定と解釈.html#cb250-17" tabindex="-1"></a>  <span class="co"># significance stars</span></span>
-<span id="cb250-18"><a href="プロビットモデルの推定と解釈.html#cb250-18" tabindex="-1"></a>  <span class="at">stars =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb250-19"><a href="プロビットモデルの推定と解釈.html#cb250-19" tabindex="-1"></a>  <span class="co"># term and component columns are combined</span></span>
-<span id="cb250-20"><a href="プロビットモデルの推定と解釈.html#cb250-20" tabindex="-1"></a>  <span class="at">shape =</span> term<span class="sc">:</span>component <span class="sc">~</span> model,</span>
-<span id="cb250-21"><a href="プロビットモデルの推定と解釈.html#cb250-21" tabindex="-1"></a>  <span class="at">add_rows =</span> <span class="fu">data.frame</span>(<span class="st">&quot;Marginal effect type&quot;</span>, <span class="st">&quot;Average Marginal Effect&quot;</span>, <span class="st">&quot;Marginal Effect at Mean&quot;</span>),</span>
-<span id="cb250-22"><a href="プロビットモデルの推定と解釈.html#cb250-22" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;限界効果サマリー&quot;</span>,</span>
-<span id="cb250-23"><a href="プロビットモデルの推定と解釈.html#cb250-23" tabindex="-1"></a>  <span class="co"># omit all goodness-of-fit statisitcs except # of observations</span></span>
-<span id="cb250-24"><a href="プロビットモデルの推定と解釈.html#cb250-24" tabindex="-1"></a>  <span class="at">gof_map =</span> <span class="st">&quot;nobs&quot;</span>)</span>
-<span id="cb250-25"><a href="プロビットモデルの推定と解釈.html#cb250-25" tabindex="-1"></a>marg_sum</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="プロビットモデルの推定と解釈.html#cb13-1" tabindex="-1"></a>marginal <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb13-2"><a href="プロビットモデルの推定と解釈.html#cb13-2" tabindex="-1"></a>  <span class="st">&quot;p1 marginal&quot;</span> <span class="ot">=</span> <span class="st">&quot;p1&quot;</span>,</span>
+<span id="cb13-3"><a href="プロビットモデルの推定と解釈.html#cb13-3" tabindex="-1"></a>  <span class="st">&quot;a1 marginal&quot;</span> <span class="ot">=</span> <span class="st">&quot;a1&quot;</span></span>
+<span id="cb13-4"><a href="プロビットモデルの推定と解釈.html#cb13-4" tabindex="-1"></a>)</span>
+<span id="cb13-5"><a href="プロビットモデルの推定と解釈.html#cb13-5" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="プロビットモデルの推定と解釈.html#cb13-6" tabindex="-1"></a>marg_model <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb13-7"><a href="プロビットモデルの推定と解釈.html#cb13-7" tabindex="-1"></a>  <span class="st">&quot;(1) Probit_AME&quot;</span> <span class="ot">&lt;-</span> probit1_ame,</span>
+<span id="cb13-8"><a href="プロビットモデルの推定と解釈.html#cb13-8" tabindex="-1"></a>  <span class="st">&quot;(2) Probit_MEM&quot;</span> <span class="ot">&lt;-</span> probit1_mem</span>
+<span id="cb13-9"><a href="プロビットモデルの推定と解釈.html#cb13-9" tabindex="-1"></a>)</span>
+<span id="cb13-10"><a href="プロビットモデルの推定と解釈.html#cb13-10" tabindex="-1"></a>marg_sum <span class="ot">&lt;-</span> <span class="fu">modelsummary</span>(</span>
+<span id="cb13-11"><a href="プロビットモデルの推定と解釈.html#cb13-11" tabindex="-1"></a>  <span class="co"># models to summarize side-by-side</span></span>
+<span id="cb13-12"><a href="プロビットモデルの推定と解釈.html#cb13-12" tabindex="-1"></a>  marg_model,</span>
+<span id="cb13-13"><a href="プロビットモデルの推定と解釈.html#cb13-13" tabindex="-1"></a>  <span class="co"># S.E. in parentheses</span></span>
+<span id="cb13-14"><a href="プロビットモデルの推定と解釈.html#cb13-14" tabindex="-1"></a>  <span class="at">statistic =</span> <span class="st">&quot;std.error&quot;</span>,</span>
+<span id="cb13-15"><a href="プロビットモデルの推定と解釈.html#cb13-15" tabindex="-1"></a>  <span class="co"># rename and select the coefficients</span></span>
+<span id="cb13-16"><a href="プロビットモデルの推定と解釈.html#cb13-16" tabindex="-1"></a>  <span class="at">coef_map =</span> marginal,</span>
+<span id="cb13-17"><a href="プロビットモデルの推定と解釈.html#cb13-17" tabindex="-1"></a>  <span class="co"># significance stars</span></span>
+<span id="cb13-18"><a href="プロビットモデルの推定と解釈.html#cb13-18" tabindex="-1"></a>  <span class="at">stars =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb13-19"><a href="プロビットモデルの推定と解釈.html#cb13-19" tabindex="-1"></a>  <span class="co"># term and component columns are combined</span></span>
+<span id="cb13-20"><a href="プロビットモデルの推定と解釈.html#cb13-20" tabindex="-1"></a>  <span class="at">shape =</span> term<span class="sc">:</span>component <span class="sc">~</span> model,</span>
+<span id="cb13-21"><a href="プロビットモデルの推定と解釈.html#cb13-21" tabindex="-1"></a>  <span class="at">add_rows =</span> <span class="fu">data.frame</span>(<span class="st">&quot;Marginal effect type&quot;</span>, <span class="st">&quot;Average Marginal Effect&quot;</span>, <span class="st">&quot;Marginal Effect at Mean&quot;</span>),</span>
+<span id="cb13-22"><a href="プロビットモデルの推定と解釈.html#cb13-22" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;限界効果サマリー&quot;</span>,</span>
+<span id="cb13-23"><a href="プロビットモデルの推定と解釈.html#cb13-23" tabindex="-1"></a>  <span class="co"># omit all goodness-of-fit statisitcs except # of observations</span></span>
+<span id="cb13-24"><a href="プロビットモデルの推定と解釈.html#cb13-24" tabindex="-1"></a>  <span class="at">gof_map =</span> <span class="st">&quot;nobs&quot;</span>)</span>
+<span id="cb13-25"><a href="プロビットモデルの推定と解釈.html#cb13-25" tabindex="-1"></a>marg_sum</span></code></pre></div>
 <!DOCTYPE html> 
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tinytable_r0gufhkdq7d7p884uuxq</title>
+    <title>tinytable_nn89u8erxvs4603a5v8q</title>
     <style>
-.table td.tinytable_css_so81cqkbrb6spomeju7w, .table th.tinytable_css_so81cqkbrb6spomeju7w {    border-bottom: solid 0.1em #d3d8dc; }
-.table td.tinytable_css_mxx3t938mhhvzv7yt2dj, .table th.tinytable_css_mxx3t938mhhvzv7yt2dj {    text-align: left; }
-.table td.tinytable_css_rhtvur8ch39ypr3r2myu, .table th.tinytable_css_rhtvur8ch39ypr3r2myu {    text-align: center; }
-.table td.tinytable_css_qca7764q24z69x9zhff6, .table th.tinytable_css_qca7764q24z69x9zhff6 {    text-align: center; }
-.table td.tinytable_css_fasm0rkcpgkd85n4on0j, .table th.tinytable_css_fasm0rkcpgkd85n4on0j {    border-bottom: solid 0.05em black; }
+.table td.tinytable_css_mv9wnflgu3azcbwcwz2o, .table th.tinytable_css_mv9wnflgu3azcbwcwz2o {    border-bottom: solid 0.1em #d3d8dc; }
+.table td.tinytable_css_moa0dl3zhxks0c3ectvw, .table th.tinytable_css_moa0dl3zhxks0c3ectvw {    text-align: left; }
+.table td.tinytable_css_8yfkglhytqw2tr8t47g8, .table th.tinytable_css_8yfkglhytqw2tr8t47g8 {    text-align: center; }
+.table td.tinytable_css_2u8m4av0dj4cnu13jg43, .table th.tinytable_css_2u8m4av0dj4cnu13jg43 {    text-align: center; }
+.table td.tinytable_css_twbo45jw5b2qqt63k4t6, .table th.tinytable_css_twbo45jw5b2qqt63k4t6 {    border-bottom: solid 0.05em black; }
     </style>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
@@ -790,7 +791,7 @@ window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz4
 
   <body>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_r0gufhkdq7d7p884uuxq" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
+      <table class="table table-borderless" id="tinytable_nn89u8erxvs4603a5v8q" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
         <thead>
         <caption>限界効果サマリー</caption>
               <tr>
@@ -836,12 +837,12 @@ window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz4
     </div>
 
     <script>
-      function styleCell_tinytable_5dnpv37qfzthu47vdrkc(i, j, css_id) {
-        var table = document.getElementById("tinytable_r0gufhkdq7d7p884uuxq");
+      function styleCell_tinytable_ws1tu8dmmbvowvom75wm(i, j, css_id) {
+        var table = document.getElementById("tinytable_nn89u8erxvs4603a5v8q");
         table.rows[i].cells[j].classList.add(css_id);
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_r0gufhkdq7d7p884uuxq');
+        var table = document.getElementById('tinytable_nn89u8erxvs4603a5v8q');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -849,8 +850,8 @@ window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz4
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_tinytable_5dnpv37qfzthu47vdrkc(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_r0gufhkdq7d7p884uuxq");
+      function spanCell_tinytable_ws1tu8dmmbvowvom75wm(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_nn89u8erxvs4603a5v8q");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -877,53 +878,53 @@ window.addEventListener('load', function () { styleCell_tinytable_um4ltg8arztkz4
         targetCell.colSpan = colspan;
       }
 
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(0, 0, 'tinytable_css_so81cqkbrb6spomeju7w') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(0, 1, 'tinytable_css_so81cqkbrb6spomeju7w') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(0, 2, 'tinytable_css_so81cqkbrb6spomeju7w') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(0, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(1, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(2, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(3, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(4, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(5, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(6, 0, 'tinytable_css_mxx3t938mhhvzv7yt2dj') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(0, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(1, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(2, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(3, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(4, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(5, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(6, 1, 'tinytable_css_rhtvur8ch39ypr3r2myu') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(0, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(1, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(2, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(3, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(4, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(5, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(6, 2, 'tinytable_css_qca7764q24z69x9zhff6') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(4, 0, 'tinytable_css_fasm0rkcpgkd85n4on0j') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(4, 1, 'tinytable_css_fasm0rkcpgkd85n4on0j') })
-window.addEventListener('load', function () { styleCell_tinytable_5dnpv37qfzthu47vdrkc(4, 2, 'tinytable_css_fasm0rkcpgkd85n4on0j') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(0, 0, 'tinytable_css_mv9wnflgu3azcbwcwz2o') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(0, 1, 'tinytable_css_mv9wnflgu3azcbwcwz2o') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(0, 2, 'tinytable_css_mv9wnflgu3azcbwcwz2o') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(0, 0, 'tinytable_css_moa0dl3zhxks0c3ectvw') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(1, 0, 'tinytable_css_moa0dl3zhxks0c3ectvw') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(2, 0, 'tinytable_css_moa0dl3zhxks0c3ectvw') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(3, 0, 'tinytable_css_moa0dl3zhxks0c3ectvw') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(4, 0, 'tinytable_css_moa0dl3zhxks0c3ectvw') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(5, 0, 'tinytable_css_moa0dl3zhxks0c3ectvw') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(6, 0, 'tinytable_css_moa0dl3zhxks0c3ectvw') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(0, 1, 'tinytable_css_8yfkglhytqw2tr8t47g8') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(1, 1, 'tinytable_css_8yfkglhytqw2tr8t47g8') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(2, 1, 'tinytable_css_8yfkglhytqw2tr8t47g8') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(3, 1, 'tinytable_css_8yfkglhytqw2tr8t47g8') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(4, 1, 'tinytable_css_8yfkglhytqw2tr8t47g8') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(5, 1, 'tinytable_css_8yfkglhytqw2tr8t47g8') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(6, 1, 'tinytable_css_8yfkglhytqw2tr8t47g8') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(0, 2, 'tinytable_css_2u8m4av0dj4cnu13jg43') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(1, 2, 'tinytable_css_2u8m4av0dj4cnu13jg43') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(2, 2, 'tinytable_css_2u8m4av0dj4cnu13jg43') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(3, 2, 'tinytable_css_2u8m4av0dj4cnu13jg43') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(4, 2, 'tinytable_css_2u8m4av0dj4cnu13jg43') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(5, 2, 'tinytable_css_2u8m4av0dj4cnu13jg43') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(6, 2, 'tinytable_css_2u8m4av0dj4cnu13jg43') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(4, 0, 'tinytable_css_twbo45jw5b2qqt63k4t6') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(4, 1, 'tinytable_css_twbo45jw5b2qqt63k4t6') })
+window.addEventListener('load', function () { styleCell_tinytable_ws1tu8dmmbvowvom75wm(4, 2, 'tinytable_css_twbo45jw5b2qqt63k4t6') })
     </script>
 
   </body>
 
 </html>
-<p>最後に、プロビットモデルのモデル評価指標について紹介する。プロビットモデルを最尤法で推定した場合、OLSにおける決定係数 <span class="math inline">\(R^2\)</span> を用いてモデルの当てはまりの良さを用いることはできない。そこで、通常疑似決定係数（Pseudo <span class="math inline">\(R^2\)</span>）を用いる事が多い<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>。疑似決定係数は0から1の間の値を取り、自身の立てたモデルの当てはまりが良いほど1に近づくという特徴を持っている。Rにおいては、<code>DescTools::PseudoR2()</code> を用いて計算可能である。<code>install.packages("DescTools")</code> でインストールしてほしい。</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="プロビットモデルの推定と解釈.html#cb251-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">PseudoR2</span>(probit1)</span></code></pre></div>
+<p>最後に、プロビットモデルのモデル評価指標について紹介する。プロビットモデルを最尤法で推定した場合、OLSにおける決定係数 <span class="math inline">\(R^2\)</span> を用いてモデルの当てはまりの良さを用いることはできない。そこで、通常疑似決定係数（Pseudo <span class="math inline">\(R^2\)</span>）を用いる事が多い<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>。疑似決定係数は0から1の間の値を取り、自身の立てたモデルの当てはまりが良いほど1に近づくという特徴を持っている。Rにおいては、<code>DescTools::PseudoR2()</code> を用いて計算可能である。<code>install.packages("DescTools")</code> でインストールしてほしい。</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="プロビットモデルの推定と解釈.html#cb14-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">PseudoR2</span>(probit1)</span></code></pre></div>
 <pre><code>##  McFadden 
 ## 0.1293345</code></pre>
 </div>
 </div>
 <div class="footnotes">
 <hr />
-<ol start="30">
-<li id="fn30"><p>ロジットモデルの場合は、<code>family = binomial(link = logit)</code> で計算可能である。<a href="プロビットモデルの推定と解釈.html#fnref30" class="footnote-back">↩︎</a></p></li>
-<li id="fn31"><p><span class="math inline">\(\hat{y}_i=\hat{\beta}_0+\hat{\beta_1}x_{1i}+...+\hat{\beta}_kx_{ki}\)</span> という線形モデルの限界効果は、以下のようになる。
+<ol start="9">
+<li id="fn9"><p>ロジットモデルの場合は、<code>family = binomial(link = logit)</code> で計算可能である。<a href="プロビットモデルの推定と解釈.html#fnref9" class="footnote-back">↩︎</a></p></li>
+<li id="fn10"><p><span class="math inline">\(\hat{y}_i=\hat{\beta}_0+\hat{\beta_1}x_{1i}+...+\hat{\beta}_kx_{ki}\)</span> という線形モデルの限界効果は、以下のようになる。
 <span class="math display">\[\frac{\partial \hat{y}_i}{\partial x_{1i}}=\hat{\beta}_1
-\]</span><a href="プロビットモデルの推定と解釈.html#fnref31" class="footnote-back">↩︎</a></p></li>
-<li id="fn32"><p>ロジットモデルの場合は、<code>mfx::logitmfx()</code> で計算可能である。<a href="プロビットモデルの推定と解釈.html#fnref32" class="footnote-back">↩︎</a></p></li>
-<li id="fn33"><p>この指標は、最尤推定で用いる対数尤度関数 <a href="プロビットモデルの推定と解釈.html#eq:llprobit">(9.2)</a> に実際の観測値と最尤推定値を代入して求まる対数尤度の和（<span class="math inline">\(L_{full}\)</span>）と、定数項だけを含むプロビットモデルを推定したときの対数尤度の和（<span class="math inline">\(L_0\)</span>）を用いて、<span class="math inline">\(\Big(1-(L_{full}/L_0) \Big)\)</span> と定義される<a href="プロビットモデルの推定と解釈.html#fnref33" class="footnote-back">↩︎</a></p></li>
+\]</span><a href="プロビットモデルの推定と解釈.html#fnref10" class="footnote-back">↩︎</a></p></li>
+<li id="fn11"><p>ロジットモデルの場合は、<code>mfx::logitmfx()</code> で計算可能である。<a href="プロビットモデルの推定と解釈.html#fnref11" class="footnote-back">↩︎</a></p></li>
+<li id="fn12"><p>この指標は、最尤推定で用いる対数尤度関数 <a href="プロビットモデルの推定と解釈.html#eq:llprobit">(9.2)</a> に実際の観測値と最尤推定値を代入して求まる対数尤度の和（<span class="math inline">\(L_{full}\)</span>）と、定数項だけを含むプロビットモデルを推定したときの対数尤度の和（<span class="math inline">\(L_0\)</span>）を用いて、<span class="math inline">\(\Big(1-(L_{full}/L_0) \Big)\)</span> と定義される<a href="プロビットモデルの推定と解釈.html#fnref12" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
