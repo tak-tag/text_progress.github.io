@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9.3 離散選択モデル | マーケティングリサーチ</title>
-  <meta name="description" content="9.3 離散選択モデル | マーケティングリサーチ" />
+  <title>9.3 離散選択モデル | マーケティングリサーチの概要・理屈・実行</title>
+  <meta name="description" content="9.3 離散選択モデル | マーケティングリサーチの概要・理屈・実行" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9.3 離散選択モデル | マーケティングリサーチ" />
+  <meta property="og:title" content="9.3 離散選択モデル | マーケティングリサーチの概要・理屈・実行" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9.3 離散選択モデル | マーケティングリサーチ" />
+  <meta name="twitter:title" content="9.3 離散選択モデル | マーケティングリサーチの概要・理屈・実行" />
   
   
   
@@ -159,8 +159,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの異なる視点"><i class="fa fa-check"></i><b>3.1.1</b> 実務とリサーチの異なる視点</a></li>
 <li class="chapter" data-level="3.1.2" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#マーケティングリサーチと実務的含意"><i class="fa fa-check"></i><b>3.1.2</b> マーケティングリサーチと実務的含意</a></li>
-<li class="chapter" data-level="3.1.3" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#非計画購買に関する研究紹介hui-et-al.-2013"><i class="fa fa-check"></i><b>3.1.3</b> 非計画購買に関する研究紹介（Hui et al. 2013）</a></li>
-<li class="chapter" data-level="3.1.4" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの分離"><i class="fa fa-check"></i><b>3.1.4</b> 実務とリサーチの分離</a></li>
+<li class="chapter" data-level="3.1.3" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの分離"><i class="fa fa-check"></i><b>3.1.3</b> 実務とリサーチの分離</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="リサーチデザインとアプローチ類型.html"><a href="リサーチデザインとアプローチ類型.html"><i class="fa fa-check"></i><b>3.2</b> リサーチデザインとアプローチ類型</a>
 <ul>
@@ -404,7 +403,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチ</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチの概要・理屈・実行</a>
           </h1>
         </div>
 
@@ -443,11 +442,11 @@ P(y_i = 1|x_i)=\beta_0+\beta_1x_i
 </ol>
 <p>第一の問題点については、LPMで推定してしまうことで分散均一という、OLS推定量が好ましい性質を持つための仮定を満たさないことにつながる。分散が均一であるとは、誤差項の分散がどの観測個体 <span class="math inline">\(i\)</span> に対しても同じ大きさであることを指す。そのため、特定の主体だけ誤差項の分散が大きい場合や、<span class="math inline">\(x\)</span> の値の変化に伴って誤差項の分散が大きくなるような状態ではこの仮定は満たされず、分散不均一であると言われる。ここで、上記のモデルの誤差項は <span class="math inline">\(e_i= y_i - (\beta_0+\beta_1x_i)\)</span> である。ここで、<span class="math inline">\(y_i\)</span> の条件付き期待値を <span class="math inline">\(P_i=E(y_i|x_i)=P(y_i = 1|x_i)=\beta_0+\beta_1x_i\)</span> と定義すると、誤差項の分散は <span class="math inline">\(Var(e_i|x_i)=P_i(1-P_i)\)</span> となることが知られている（西山ほか,2019）。<span class="math inline">\(P_i\)</span> の大きさはその定義より各主体によって <span class="math inline">\(x_i\)</span> に依存する形で変化することが伺える。そのため、LPMによる推定では、分散不均一の問題が生じるといえる。しかしながらこの問題は通常、分散不均一に対して頑健な標準誤差（例えば、ホワイトの標準誤差）を用いた分析を用いることで対応される。</p>
 <p>第二に予測値の論理的整合性について説明する。LPM推定によって得た <span class="math inline">\(y\)</span> の予測値は、反応確率の予測値を表すため、 <span class="math inline">\(y\)</span> の予測値は 0 から 1 の間に収まらないといけない。しかし、LPMでは予測値が負の値を取ったり、1 を上回ることもある。言い換えると確率の定義に反するような、論理的に整合的ではない予測値を返してしまう。ここで、以下のような簡単な人工データを用いて、LPMによる分析を実行してみる。下記df1の成果変数（Y）はダミー変数であり、説明変数は連続変数だとする。これを線形モデルで回帰し、予測値を出力してみる。すると、1つ目と4つ目の観測は負の値、7つ目と8つ目の観測は1を越える予測値を得たことが伺える。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="離散選択モデル.html#cb1-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb1-2"><a href="離散選択モデル.html#cb1-2" tabindex="-1"></a>                  <span class="at">X =</span> <span class="fu">c</span>(<span class="fl">3.4</span>, <span class="fl">5.22</span>, <span class="fl">7.06</span>, <span class="fl">2.81</span>, <span class="fl">4.11</span>, <span class="fl">10.34</span>, <span class="fl">13.67</span>, <span class="fl">15.99</span>, <span class="fl">9.09</span>))</span>
-<span id="cb1-3"><a href="離散選択モデル.html#cb1-3" tabindex="-1"></a>lpm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> df1)</span>
-<span id="cb1-4"><a href="離散選択モデル.html#cb1-4" tabindex="-1"></a>pred_lpm1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lpm1)</span>
-<span id="cb1-5"><a href="離散選択モデル.html#cb1-5" tabindex="-1"></a>pred_lpm1 </span></code></pre></div>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="離散選択モデル.html#cb238-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb238-2"><a href="離散選択モデル.html#cb238-2" tabindex="-1"></a>                  <span class="at">X =</span> <span class="fu">c</span>(<span class="fl">3.4</span>, <span class="fl">5.22</span>, <span class="fl">7.06</span>, <span class="fl">2.81</span>, <span class="fl">4.11</span>, <span class="fl">10.34</span>, <span class="fl">13.67</span>, <span class="fl">15.99</span>, <span class="fl">9.09</span>))</span>
+<span id="cb238-3"><a href="離散選択モデル.html#cb238-3" tabindex="-1"></a>lpm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> df1)</span>
+<span id="cb238-4"><a href="離散選択モデル.html#cb238-4" tabindex="-1"></a>pred_lpm1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lpm1)</span>
+<span id="cb238-5"><a href="離散選択モデル.html#cb238-5" tabindex="-1"></a>pred_lpm1 </span></code></pre></div>
 <pre><code>##            1            2            3            4            5            6 
 ## -0.006342894  0.173357681  0.355032986 -0.064597476  0.063760077  0.678888967 
 ##            7            8            9 
@@ -503,7 +502,7 @@ Figure 9.2: 非線形での近似イメージ
 <!-- # プロットを表示 -->
 <!-- print(combined_plot) -->
 <!-- ``` -->
-<p>標準正規分布の累積分布関数を<span class="math inline">\(\Phi\)</span>（ファイ）で示すと、反応確率は以下のように表すことができる<a href="#fn7" class="footnote-ref" id="fnref7"><sup>7</sup></a>。</p>
+<p>標準正規分布の累積分布関数を<span class="math inline">\(\Phi\)</span>（ファイ）で示すと、反応確率は以下のように表すことができる<a href="#fn28" class="footnote-ref" id="fnref28"><sup>28</sup></a>。</p>
 <p><span class="math display">\[
 P(y_i=1|x_{1i},...,x_{ki})=\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})=\int^{\beta_0+\sum^k_{j =1}\beta_jx_{ji}}_{-\infty}\phi(z)~dz
 \]</span></p>
@@ -511,7 +510,7 @@ P(y_i=1|x_{1i},...,x_{ki})=\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})=\int^{\
 <span class="math display">\[
 P(y_i=0|x_{1i},...,x_{ki})=1-P(y_i=1|x_{1i},...,x_{ki})=1-\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})
 \]</span>
-このように設定した選択の有無それぞれに対する分布関数をベルヌーイ確率関数<a href="#fn8" class="footnote-ref" id="fnref8"><sup>8</sup></a>に代入すると、<span class="math inline">\(y_i=1\)</span> の場合と <span class="math inline">\(y_i=0\)</span> の場合の両方を捉えた、以下のような確率密度関数を考えることができる。</p>
+このように設定した選択の有無それぞれに対する分布関数をベルヌーイ確率関数<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>に代入すると、<span class="math inline">\(y_i=1\)</span> の場合と <span class="math inline">\(y_i=0\)</span> の場合の両方を捉えた、以下のような確率密度関数を考えることができる。</p>
 <p><span class="math display" id="eq:probit">\[\begin{equation}
 P(y_i|x_{1i},...,x_{ki})=\\
 \Big(\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki}) \Big)^{y_i}\times \Big(1-\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki}) \Big)^{1-y_i} \tag{9.1}
@@ -566,9 +565,9 @@ P(y_i=1|x_{1i},...,x_{ki})=\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})
 </div>
 <div class="footnotes">
 <hr />
-<ol start="7">
-<li id="fn7"><p>ただし、<span class="math inline">\(\Phi&#39;(z)=\phi(z)=\frac{1}{\sqrt{2\pi}}\exp(\frac{-z^2}{2})\)</span>とする。<a href="離散選択モデル.html#fnref7" class="footnote-back">↩︎</a></p></li>
-<li id="fn8"><p><span class="math inline">\(f(y_i)=P_i^{y_i}\times\big(1-P_i)^{1-y_i}\)</span><a href="離散選択モデル.html#fnref8" class="footnote-back">↩︎</a></p></li>
+<ol start="28">
+<li id="fn28"><p>ただし、<span class="math inline">\(\Phi&#39;(z)=\phi(z)=\frac{1}{\sqrt{2\pi}}\exp(\frac{-z^2}{2})\)</span>とする。<a href="離散選択モデル.html#fnref28" class="footnote-back">↩︎</a></p></li>
+<li id="fn29"><p><span class="math inline">\(f(y_i)=P_i^{y_i}\times\big(1-P_i)^{1-y_i}\)</span><a href="離散選択モデル.html#fnref29" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
