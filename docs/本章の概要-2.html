@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践</title>
-  <meta name="description" content="5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践" />
+  <title>5.1 本章の概要 | マーケティングリサーチの概要・理屈・実践</title>
+  <meta name="description" content="5.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践" />
+  <meta property="og:title" content="5.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践" />
+  <meta name="twitter:title" content="5.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="本章の概要-2.html"/>
-<link rel="next" href="データの整形.html"/>
+<link rel="prev" href="handling.html"/>
+<link rel="next" href="データの読み込み.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -435,51 +435,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="データの読み込み" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> データの読み込み<a href="データの読み込み.html#データの読み込み" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>本節で用いるパッケージをまだインストールしていない読者は、以下のコマンドを用いてインストールしてほしい。また、インストールを完了したら、library()関数によって各パッケージを起動すること。</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="データの読み込み.html#cb48-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>,<span class="st">&quot;readr&quot;</span>,<span class="st">&quot;readxl&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="データの読み込み.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb49-2"><a href="データの読み込み.html#cb49-2" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb49-3"><a href="データの読み込み.html#cb49-3" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div>
-<p>ここからは、データセットを用いた分析を行う。基本的な操作においては、R外部で作成されたデータを取り込み利用するのだが、あるソフトウェアで作成・保存されたデータセットが他の環境で利用できるとは限らないという点に注意が必要である。具体的には、エクセルファイルが誰にでも開けるとは思ってはいけない。そのため、ソフト特性に依存しない汎用的な形式を使うことが好ましい。汎用性の高いファイル形式の代表的な例がCSV (comma separated values) である。以下は、mktData.csvという架空のファイルをdfというオブジェクト名で取り込むための、見本コードである。ここで用いる関数は、readrというパッケージのread_csv() という関数である。なお、以下のコードは、実在しない ’mktData.csv’というデータセットを引数に利用した見本コードであるため、このコードをそのまま実行してもエラーを返すだけであることに注意をしてほしい。実際には、自身が利用するファイル名を指定してファイルを読み込むことになる。なお、以下のコードの2行目は、データの1行目に変数名（列名）が含まれていない場合の引数の指定方法である。</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="データの読み込み.html#cb50-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;mktData.csv&quot;</span>)</span>
-<span id="cb50-2"><a href="データの読み込み.html#cb50-2" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;mktData.csv&quot;</span>, <span class="at">col_name =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p>なお、デスクトップ版を利用している場合には、ファイルが格納されているディレクトリ名も指定する必要がある。Rにおいては様々なファイルを入力・出力することになるため、利用するディレクトリが一貫していないとそれだけで作業が煩雑になる。そのため、「（補足）デスクトップ版の利用とプロジェクト機能」節で紹介している「プロジェクト機能」必ずを活用するようにほしい。</p>
-<p>本講義では、大学の学務ポータル（manaba）を通じて教員が配布したデータを学生各自のコンピュータにダウンロードし、それを post.cloudに各自がアップロードするという手順によって分析用データを利用する。Manabaからのデータのダウンロードは各自で済ませてほしい。Posit.cloudはR studio 画面を表示する段階でプロジェクトが作成される。ここではまず、分析に利用するデータを格納するディレクトリを作成するコードを紹介する&lt;デスクトップ版を使用している場合も、Project を指定していれば、以下のコードで全く同じ結果を得ることができる。&gt; 具体的は、以下の通りdir.create() を使って新たに data というディレクトリ（フォルダ）を作成する。</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="データの読み込み.html#cb51-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
-<p>新たなディレクトリを作成したら、そこに、ポータルよりダウンロードしたデータを入れてほしい。ここではまず “2022idpos.csv”というデータを用いる。データが無事 data ディレクトリに含まれたら、以下のコマンドによってそのデータファイルをR の作業スペースに読み込み、それに “idpos” というオブジェクト名を定義する。なお、ここで分析実行社はディレクトリを指定することも必要になる。また、コード内の na は、欠損値がどのように保存されているかを指定するための引数であり、もし欠損値が空欄であればnaによる指定は必要ない。</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="データの読み込み.html#cb52-1" tabindex="-1"></a>idpos <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/2022idpos.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
-<p>問題なくデータを読み込むことができたら、そのデータの冒頭数行を head() 関数によって表示する。head() 関数の結果によると、このidposデータは、3000行、5列のデータセットであることがわかる。なお、同様の情報は R studio 画面内の Environment タブから確認することできる。</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="データの読み込み.html#cb53-1" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 4
-##      id date      spent coupon
-##   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
-## 1    12 2019/9/25 14326      1
-## 2    32 2019/9/10 10232      1
-## 3    30 2019/9/9   6881      1
-## 4    29 2019/9/4   6365      0
-## 5    46 2019/9/10  7595      1
-## 6    44 2019/9/14  7858      0</code></pre>
-<p>また、読み込んだデータ特徴の確認は他の関数でも実行できる。例えば、name() 関数を使えば、データ内の変数名 (列名) を確認できるし、tidyverseに含まれる glimpse() 関数によってもデータの冒頭数行を含むいくつかの情報を返してくれる。</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="データの読み込み.html#cb55-1" tabindex="-1"></a><span class="fu">names</span>(idpos)</span></code></pre></div>
-<pre><code>## [1] &quot;id&quot;     &quot;date&quot;   &quot;spent&quot;  &quot;coupon&quot;</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="データの読み込み.html#cb57-1" tabindex="-1"></a><span class="fu">glimpse</span>(idpos)</span></code></pre></div>
-<pre><code>## Rows: 3,000
-## Columns: 4
-## $ id     &lt;dbl&gt; 12, 32, 30, 29, 46, 44, 44, 32, 3, 34, 36, 3, 42, 18, 38, 4, 19…
-## $ date   &lt;chr&gt; &quot;2019/9/25&quot;, &quot;2019/9/10&quot;, &quot;2019/9/9&quot;, &quot;2019/9/4&quot;, &quot;2019/9/10&quot;, …
-## $ spent  &lt;dbl&gt; 14326, 10232, 6881, 6365, 7595, 7858, 9405, 1821, 8375, 1828, 6…
-## $ coupon &lt;dbl&gt; 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, …</code></pre>
-<p>なお、このidposデータは、POS (Point of sales) という小売店レジでの取引データとロイヤルティプログラムなどの会員IDを含むID-POSと呼ばれるデータを想定し作成した、簡易的な人工データである。データには、小売店舗での取引日（date）、金額（spent）、クーポン利用の有無 (coupon)、性別 (gender) が含まれている。本来のPOSデータは、より詳細な日時や具体的な製品単品レベルの取引品目など、より詳細な情報が含まれているはずだが、ここでは簡単化のためにこのようなデータにしている。また、もしスプレッドシート形式で表示したい場合には View() 関数をconsoleに直接入力することでそれが可能になる。例えば、idposデータを用いて以下のようなコードを入力することで、Sourceウィンドウに新しいタブができ、そこにデータセットが表示される。</p>
+<div id="本章の概要-2" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> 本章の概要<a href="本章の概要-2.html#本章の概要-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>本章では、Rを用いたデータの処理と記述的な分析について紹介する。マーケティング領域では、様々なタイプのデータを扱うが、どのようなデータであってもデータを取り込み、分析可能な形に処理した後、高度な統計分析を行う前にデータの特徴について確認することが必要になる。本章ではます、これらのデータの読み込みやデータ処理といった分析の前に必要な技術的過程を紹介する。</p>
+<p>これまでの本書の内容は、データを収集するまでの注意点や方法を説明した。しかしながら、収集したデータをただ眺めているだけでは、定量的な知見を得ることはできない。そのため、以降の節では主にデータ処理や分析手法について説明する。まず我々は、データセットの構築から学ぶ。例えばあなたがアンケートを実施したならば、そのアンケートからデータセットを構築する努力が必要になる。アンケート結果に基づくデータセット構築において研究者はコーディング、トランスクライビング、データクリーニングのプロセスを経る。</p>
+<p>コーディングは、回答を分析可能なフォーマットへ変換する作業であり、通常回答に対して数値を当てはめる作業を伴う。例えば、回答者が男性ならば 1 を、女性ならば 0 をとるようなダミー変数を作成する作業がこれに当てはまる。コーディングは、不必要な情報を減らすことでデータ化プロセスを担う。トランスクライビングは、質問紙に記載された回答をデータ入力していく作業である。入力に関するヒューマンエラーは起こるものとして考える必要があるため、通常このプロセスは二人一組でダブルチェックをしながら行う。なお、オンラインアンケートの際はこのプロセスは自動で行われるため、不要になる。データクリーニングでは、研究者は不適切な回答のチェックを行う。例えば、回答可能範囲から外れた回答（例、7点尺度における8点回答）や、論理的に非整合的な回答（例、回答者が利用したことないと答えているサービスについて評価している場合） がないかをチェックする。また、欠損値という回答がない観測についてもチェックする必要がある。マーケティング分野においては欠損値のあるサンプルを削除するという方法も用いられるが、欠損値の扱いは奥が深く、いくつかの対応法がある。本書ではその詳細については扱わないが、欠損値に対応するためのデータ処理についての専門書も存在するため、関心のある読者はそれを参照してほしい（高橋・渡辺, 2017）。</p>
+<p>データセットの構築が完了したあとは、本書では基本的にRを通じて様々な作業を行う。Rには、様々な計算を実行するための関数が用意されており（例、mean, median, sqrt 等）、これらを使えば、実際に我々分析者が各コマンドもシンプルになる。関数の利用においては <code>f(argument)</code> のように関数名 <code>f</code> のあとにカッコをつけて表記する。なお、<code>argument</code> は日本では引数とよばれ、計算に必要な情報の指定である。関数の利用において作業者は具体的な関数名とそれに対応する引数を指定する必要がある。また、我々は通常、パッケージをインストール・起動することで他者が作った関数を利用することが多い。関数とパッケージについての説明や実行例は「Rの基本操作」節で紹介しているのでそちらを参照してほしい。</p>
+<p>ここで学ぶRでの作業は主に以下の通りである。</p>
+<ol style="list-style-type: decimal">
+<li>データの読み込み（csv, excel, etc.）</li>
+<li>dplyrの利用とデータ整形</li>
+<li>パイプ演算子を用いた複数処理の実行</li>
+<li>Wide vs. Long data format (おまけ)</li>
+</ol>
+<p>なお、これらの作業は、統計的な分析を実行する前のデータ前処理にも使われるものなので、データ分析をしたいと考える人達にとってはとても重要なスキルになる。</p>
+<p>分析可能な形にデータを処理した後は、データの特徴を確認することが必要になる。具体的には、記述統計や図示化を用いて、特定の変数の分布や変数間の関係について確認を行うことが重要である。この過程により、調査の背景にある実情を把握できるとともに、入手したデータ（のコーディングなど）にエラーがないかを確認することにもつながる。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="本章の概要-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="データの整形.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="handling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="データの読み込み.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

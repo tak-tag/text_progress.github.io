@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践</title>
-  <meta name="description" content="5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践" />
+  <title>8.1 ダミー変数 | マーケティングリサーチの概要・理屈・実践</title>
+  <meta name="description" content="8.1 ダミー変数 | マーケティングリサーチの概要・理屈・実践" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践" />
+  <meta property="og:title" content="8.1 ダミー変数 | マーケティングリサーチの概要・理屈・実践" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践" />
+  <meta name="twitter:title" content="8.1 ダミー変数 | マーケティングリサーチの概要・理屈・実践" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="本章の概要-2.html"/>
-<link rel="next" href="データの整形.html"/>
+<link rel="prev" href="regtechnic.html"/>
+<link rel="next" href="交差項.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -435,51 +435,99 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="データの読み込み" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> データの読み込み<a href="データの読み込み.html#データの読み込み" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>本節で用いるパッケージをまだインストールしていない読者は、以下のコマンドを用いてインストールしてほしい。また、インストールを完了したら、library()関数によって各パッケージを起動すること。</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="データの読み込み.html#cb48-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>,<span class="st">&quot;readr&quot;</span>,<span class="st">&quot;readxl&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="データの読み込み.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb49-2"><a href="データの読み込み.html#cb49-2" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb49-3"><a href="データの読み込み.html#cb49-3" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div>
-<p>ここからは、データセットを用いた分析を行う。基本的な操作においては、R外部で作成されたデータを取り込み利用するのだが、あるソフトウェアで作成・保存されたデータセットが他の環境で利用できるとは限らないという点に注意が必要である。具体的には、エクセルファイルが誰にでも開けるとは思ってはいけない。そのため、ソフト特性に依存しない汎用的な形式を使うことが好ましい。汎用性の高いファイル形式の代表的な例がCSV (comma separated values) である。以下は、mktData.csvという架空のファイルをdfというオブジェクト名で取り込むための、見本コードである。ここで用いる関数は、readrというパッケージのread_csv() という関数である。なお、以下のコードは、実在しない ’mktData.csv’というデータセットを引数に利用した見本コードであるため、このコードをそのまま実行してもエラーを返すだけであることに注意をしてほしい。実際には、自身が利用するファイル名を指定してファイルを読み込むことになる。なお、以下のコードの2行目は、データの1行目に変数名（列名）が含まれていない場合の引数の指定方法である。</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="データの読み込み.html#cb50-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;mktData.csv&quot;</span>)</span>
-<span id="cb50-2"><a href="データの読み込み.html#cb50-2" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;mktData.csv&quot;</span>, <span class="at">col_name =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p>なお、デスクトップ版を利用している場合には、ファイルが格納されているディレクトリ名も指定する必要がある。Rにおいては様々なファイルを入力・出力することになるため、利用するディレクトリが一貫していないとそれだけで作業が煩雑になる。そのため、「（補足）デスクトップ版の利用とプロジェクト機能」節で紹介している「プロジェクト機能」必ずを活用するようにほしい。</p>
-<p>本講義では、大学の学務ポータル（manaba）を通じて教員が配布したデータを学生各自のコンピュータにダウンロードし、それを post.cloudに各自がアップロードするという手順によって分析用データを利用する。Manabaからのデータのダウンロードは各自で済ませてほしい。Posit.cloudはR studio 画面を表示する段階でプロジェクトが作成される。ここではまず、分析に利用するデータを格納するディレクトリを作成するコードを紹介する&lt;デスクトップ版を使用している場合も、Project を指定していれば、以下のコードで全く同じ結果を得ることができる。&gt; 具体的は、以下の通りdir.create() を使って新たに data というディレクトリ（フォルダ）を作成する。</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="データの読み込み.html#cb51-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
-<p>新たなディレクトリを作成したら、そこに、ポータルよりダウンロードしたデータを入れてほしい。ここではまず “2022idpos.csv”というデータを用いる。データが無事 data ディレクトリに含まれたら、以下のコマンドによってそのデータファイルをR の作業スペースに読み込み、それに “idpos” というオブジェクト名を定義する。なお、ここで分析実行社はディレクトリを指定することも必要になる。また、コード内の na は、欠損値がどのように保存されているかを指定するための引数であり、もし欠損値が空欄であればnaによる指定は必要ない。</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="データの読み込み.html#cb52-1" tabindex="-1"></a>idpos <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/2022idpos.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
-<p>問題なくデータを読み込むことができたら、そのデータの冒頭数行を head() 関数によって表示する。head() 関数の結果によると、このidposデータは、3000行、5列のデータセットであることがわかる。なお、同様の情報は R studio 画面内の Environment タブから確認することできる。</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="データの読み込み.html#cb53-1" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 4
-##      id date      spent coupon
-##   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
-## 1    12 2019/9/25 14326      1
-## 2    32 2019/9/10 10232      1
-## 3    30 2019/9/9   6881      1
-## 4    29 2019/9/4   6365      0
-## 5    46 2019/9/10  7595      1
-## 6    44 2019/9/14  7858      0</code></pre>
-<p>また、読み込んだデータ特徴の確認は他の関数でも実行できる。例えば、name() 関数を使えば、データ内の変数名 (列名) を確認できるし、tidyverseに含まれる glimpse() 関数によってもデータの冒頭数行を含むいくつかの情報を返してくれる。</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="データの読み込み.html#cb55-1" tabindex="-1"></a><span class="fu">names</span>(idpos)</span></code></pre></div>
-<pre><code>## [1] &quot;id&quot;     &quot;date&quot;   &quot;spent&quot;  &quot;coupon&quot;</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="データの読み込み.html#cb57-1" tabindex="-1"></a><span class="fu">glimpse</span>(idpos)</span></code></pre></div>
-<pre><code>## Rows: 3,000
-## Columns: 4
-## $ id     &lt;dbl&gt; 12, 32, 30, 29, 46, 44, 44, 32, 3, 34, 36, 3, 42, 18, 38, 4, 19…
-## $ date   &lt;chr&gt; &quot;2019/9/25&quot;, &quot;2019/9/10&quot;, &quot;2019/9/9&quot;, &quot;2019/9/4&quot;, &quot;2019/9/10&quot;, …
-## $ spent  &lt;dbl&gt; 14326, 10232, 6881, 6365, 7595, 7858, 9405, 1821, 8375, 1828, 6…
-## $ coupon &lt;dbl&gt; 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, …</code></pre>
-<p>なお、このidposデータは、POS (Point of sales) という小売店レジでの取引データとロイヤルティプログラムなどの会員IDを含むID-POSと呼ばれるデータを想定し作成した、簡易的な人工データである。データには、小売店舗での取引日（date）、金額（spent）、クーポン利用の有無 (coupon)、性別 (gender) が含まれている。本来のPOSデータは、より詳細な日時や具体的な製品単品レベルの取引品目など、より詳細な情報が含まれているはずだが、ここでは簡単化のためにこのようなデータにしている。また、もしスプレッドシート形式で表示したい場合には View() 関数をconsoleに直接入力することでそれが可能になる。例えば、idposデータを用いて以下のようなコードを入力することで、Sourceウィンドウに新しいタブができ、そこにデータセットが表示される。</p>
+<div id="dummy" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> ダミー変数<a href="dummy.html#dummy" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>本節では、説明変数としてカテゴリ変数を用いる場合の方法と、その結果の解釈について説明する。マーケティング領域の研究においては、あるカテゴリに属することが成果変数にどのような影響を与えるのかに関心を持つことも多い。そのような場合には、「ダミー変数」と呼ばれる形にカテゴリ変数を定義し、分析することが多い。ダミー変数とは、特定のカテゴリに属するならば1を、それ以外なら0を取るような変数を指す。例えば、女性ならば1、それ以外の性別であれば0を取るようなダミー変数を、「女性ダミー」として扱うことができる。ダミー変数 <em>D</em> を用いた回帰モデルは以下の様に表すことができる、</p>
+<p><span class="math display">\[
+y_i=\alpha+\beta x_i + \gamma D_i+u_i
+\]</span>
+ただし、<span class="math inline">\(x_i\)</span> は連続尺度の説明変数である。ダミー変数は取りうる値が1か0に限定されているため、<em>y</em> の条件付期待値は以下のように解釈できる。</p>
+<p><span class="math display">\[
+E(y_i|D_i=1)=\alpha+\beta x_i + \gamma
+\]</span></p>
+<p><span class="math display">\[
+E(y_i|D_i=0)=\alpha+\beta x_i
+\]</span></p>
+<p>つまり、ダミー変数に対応する回帰係数はベースライン（<span class="math inline">\(D_i=0\)</span>）グループとの「切片の差」を表しているということがわかる。例えば、<span class="math inline">\(\small \alpha\)</span>、<span class="math inline">\(\small \beta\)</span>と、<span class="math inline">\(\small \gamma\)</span>が正の値を取るような場合、上記のダミー変数の関係は以下の図のように示す事ができる。例えば、このダミー変数が女性ダミーであるならば、女性はその他の性別に比べて、<em>y</em> の値が相対的に高い、と解釈できる。</p>
+<div class="float">
+<img src="reg/dummy.png" style="width:70.0%" alt="ダミー変数関係図" />
+<div class="figcaption">ダミー変数関係図</div>
+</div>
+<p>ダミー変数を説明変数に含む回帰分析をRで実行することはとても簡単である。<code>lm()</code> 関数内のモデル定義において、カテゴリ変数を含めば良いだけである。Characterという文字列情報のデータ型で示されているカテゴリ変数を用いると、自動でダミー変数化して、回帰分析を実行してくれる。</p>
+<p>例えば、本章で使っている firmdata19 を使って分析を行ってみる。具体的には、営業利益率（営業利益/売上）が小売産業に属する企業とそれ以外で異なるかを分析する。しかし、データセット上にこの分類に対応するカテゴリー変数は存在しないため、以下のように、“Retail Stores, NEC” もしくは “Supermarket Chains” のどちらかに含まれる企業であれば1、それ以外であれば0を取るカテゴリー変数（<code>format</code>）を作成する。<code>%in%</code> は二つのベクトル間の要素の一致を確認するための演算子で、下記<code>mutate</code>コマンドでは、<code>ind_en</code> 列に書かれている情報が <code>retail</code> リストに「含まれる」か否かをチェックしている。そのため、以下コマンドでは、事前に作成した <code>retail</code> を参照し、<code>ind_en</code> で観察されるカテゴリーが <code>retail</code> に当てはまれば、<code>"Retail"</code>を、そうでなければ、<code>"Others"</code> を返すように指示していることになる。</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="dummy.html#cb194-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb194-2"><a href="dummy.html#cb194-2" tabindex="-1"></a><span class="co">#産業名を特定したオブジェクト&quot;Retail&quot;の作成</span></span>
+<span id="cb194-3"><a href="dummy.html#cb194-3" tabindex="-1"></a>retail <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Retail Stores, NEC&quot;</span>, <span class="st">&quot;Supermarket Chains&quot;</span>)</span>
+<span id="cb194-4"><a href="dummy.html#cb194-4" tabindex="-1"></a><span class="co"># Retailを使ったカテゴリー変数の作成</span></span>
+<span id="cb194-5"><a href="dummy.html#cb194-5" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb194-6"><a href="dummy.html#cb194-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">format =</span> <span class="fu">ifelse</span>(ind_en <span class="sc">%in%</span> retail, <span class="st">&quot;Retail&quot;</span>, <span class="st">&quot;Other&quot;</span>))</span>
+<span id="cb194-7"><a href="dummy.html#cb194-7" tabindex="-1"></a><span class="co">#カテゴリーの頻度チェック</span></span>
+<span id="cb194-8"><a href="dummy.html#cb194-8" tabindex="-1"></a><span class="fu">with</span>(firmdata19, <span class="fu">table</span>(format))</span></code></pre></div>
+<pre><code>## format
+##  Other Retail 
+##     98     49</code></pre>
+<p>そして、作成したカテゴリー変数も含めて、以下のような回帰モデルを分析する。</p>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="dummy.html#cb196-1" tabindex="-1"></a>fit.d1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span> mkexp <span class="sc">+</span> format, <span class="at">data =</span> firmdata19)</span>
+<span id="cb196-2"><a href="dummy.html#cb196-2" tabindex="-1"></a><span class="fu">summary</span>(fit.d1)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = op ~ mkexp + format, data = firmdata19)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.09224 -0.03182 -0.00752  0.01799  0.26461 
+## 
+## Coefficients:
+##               Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   0.098489   0.008859  11.117  &lt; 2e-16 ***
+## mkexp        -0.069204   0.025444  -2.720  0.00734 ** 
+## formatRetail -0.023734   0.009751  -2.434  0.01616 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.05454 on 144 degrees of freedom
+## Multiple R-squared:  0.1042, Adjusted R-squared:  0.09178 
+## F-statistic: 8.377 on 2 and 144 DF,  p-value: 0.0003617</code></pre>
+<p>上記のように、カテゴリー変数（format）を回帰モデルに含めるだけで、自動的にダミー変数化して分析を実行してくれる。今回はたまたま我々の意図通り Othersをベースライングループに設定されているが、これは、指示した結果ではない。　 もし確実に特定のカテゴリーを1と定義したい場合には、自身でダミー変数を作成して回帰分析を行えばいい。</p>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="dummy.html#cb198-1" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb198-2"><a href="dummy.html#cb198-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">retail =</span> <span class="fu">ifelse</span>(format <span class="sc">==</span> <span class="st">&quot;Retail&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb198-3"><a href="dummy.html#cb198-3" tabindex="-1"></a></span>
+<span id="cb198-4"><a href="dummy.html#cb198-4" tabindex="-1"></a><span class="co">#確認</span></span>
+<span id="cb198-5"><a href="dummy.html#cb198-5" tabindex="-1"></a><span class="fu">with</span>(firmdata19, <span class="fu">table</span>(retail, format))</span></code></pre></div>
+<pre><code>##       format
+## retail Other Retail
+##      0    98      0
+##      1     0     49</code></pre>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="dummy.html#cb200-1" tabindex="-1"></a>fit.d2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span>  mkexp <span class="sc">+</span> retail, <span class="at">data =</span> firmdata19)</span>
+<span id="cb200-2"><a href="dummy.html#cb200-2" tabindex="-1"></a><span class="fu">summary</span>(fit.d2)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = op ~ mkexp + retail, data = firmdata19)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -0.09224 -0.03182 -0.00752  0.01799  0.26461 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  0.098489   0.008859  11.117  &lt; 2e-16 ***
+## mkexp       -0.069204   0.025444  -2.720  0.00734 ** 
+## retail      -0.023734   0.009751  -2.434  0.01616 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.05454 on 144 degrees of freedom
+## Multiple R-squared:  0.1042, Adjusted R-squared:  0.09178 
+## F-statistic: 8.377 on 2 and 144 DF,  p-value: 0.0003617</code></pre>
+<p>分析の結果、マーケティング支出と小売ダミーのどちらも営業利益率に対して負に有意な影響を持つことがわかった。したがって、小売企業はデータセット内の他の産業よりも利益率が低いといえる。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="本章の概要-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="データの整形.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="regtechnic.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="交差項.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -510,7 +558,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-datahandling.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-reg2.Rmd",
 "text": "Edit"
 },
 "history": {

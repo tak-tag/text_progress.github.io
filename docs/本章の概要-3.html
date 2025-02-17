@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践</title>
-  <meta name="description" content="5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践" />
+  <title>6.1 本章の概要 | マーケティングリサーチの概要・理屈・実践</title>
+  <meta name="description" content="6.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践" />
+  <meta property="og:title" content="6.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践" />
+  <meta name="twitter:title" content="6.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="本章の概要-2.html"/>
-<link rel="next" href="データの整形.html"/>
+<link rel="prev" href="test.html"/>
+<link rel="next" href="確率モデル期待値と分散.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -435,51 +435,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="データの読み込み" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> データの読み込み<a href="データの読み込み.html#データの読み込み" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>本節で用いるパッケージをまだインストールしていない読者は、以下のコマンドを用いてインストールしてほしい。また、インストールを完了したら、library()関数によって各パッケージを起動すること。</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="データの読み込み.html#cb48-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>,<span class="st">&quot;readr&quot;</span>,<span class="st">&quot;readxl&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="データの読み込み.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb49-2"><a href="データの読み込み.html#cb49-2" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb49-3"><a href="データの読み込み.html#cb49-3" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div>
-<p>ここからは、データセットを用いた分析を行う。基本的な操作においては、R外部で作成されたデータを取り込み利用するのだが、あるソフトウェアで作成・保存されたデータセットが他の環境で利用できるとは限らないという点に注意が必要である。具体的には、エクセルファイルが誰にでも開けるとは思ってはいけない。そのため、ソフト特性に依存しない汎用的な形式を使うことが好ましい。汎用性の高いファイル形式の代表的な例がCSV (comma separated values) である。以下は、mktData.csvという架空のファイルをdfというオブジェクト名で取り込むための、見本コードである。ここで用いる関数は、readrというパッケージのread_csv() という関数である。なお、以下のコードは、実在しない ’mktData.csv’というデータセットを引数に利用した見本コードであるため、このコードをそのまま実行してもエラーを返すだけであることに注意をしてほしい。実際には、自身が利用するファイル名を指定してファイルを読み込むことになる。なお、以下のコードの2行目は、データの1行目に変数名（列名）が含まれていない場合の引数の指定方法である。</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="データの読み込み.html#cb50-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;mktData.csv&quot;</span>)</span>
-<span id="cb50-2"><a href="データの読み込み.html#cb50-2" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;mktData.csv&quot;</span>, <span class="at">col_name =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p>なお、デスクトップ版を利用している場合には、ファイルが格納されているディレクトリ名も指定する必要がある。Rにおいては様々なファイルを入力・出力することになるため、利用するディレクトリが一貫していないとそれだけで作業が煩雑になる。そのため、「（補足）デスクトップ版の利用とプロジェクト機能」節で紹介している「プロジェクト機能」必ずを活用するようにほしい。</p>
-<p>本講義では、大学の学務ポータル（manaba）を通じて教員が配布したデータを学生各自のコンピュータにダウンロードし、それを post.cloudに各自がアップロードするという手順によって分析用データを利用する。Manabaからのデータのダウンロードは各自で済ませてほしい。Posit.cloudはR studio 画面を表示する段階でプロジェクトが作成される。ここではまず、分析に利用するデータを格納するディレクトリを作成するコードを紹介する&lt;デスクトップ版を使用している場合も、Project を指定していれば、以下のコードで全く同じ結果を得ることができる。&gt; 具体的は、以下の通りdir.create() を使って新たに data というディレクトリ（フォルダ）を作成する。</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="データの読み込み.html#cb51-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
-<p>新たなディレクトリを作成したら、そこに、ポータルよりダウンロードしたデータを入れてほしい。ここではまず “2022idpos.csv”というデータを用いる。データが無事 data ディレクトリに含まれたら、以下のコマンドによってそのデータファイルをR の作業スペースに読み込み、それに “idpos” というオブジェクト名を定義する。なお、ここで分析実行社はディレクトリを指定することも必要になる。また、コード内の na は、欠損値がどのように保存されているかを指定するための引数であり、もし欠損値が空欄であればnaによる指定は必要ない。</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="データの読み込み.html#cb52-1" tabindex="-1"></a>idpos <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/2022idpos.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
-<p>問題なくデータを読み込むことができたら、そのデータの冒頭数行を head() 関数によって表示する。head() 関数の結果によると、このidposデータは、3000行、5列のデータセットであることがわかる。なお、同様の情報は R studio 画面内の Environment タブから確認することできる。</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="データの読み込み.html#cb53-1" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 4
-##      id date      spent coupon
-##   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
-## 1    12 2019/9/25 14326      1
-## 2    32 2019/9/10 10232      1
-## 3    30 2019/9/9   6881      1
-## 4    29 2019/9/4   6365      0
-## 5    46 2019/9/10  7595      1
-## 6    44 2019/9/14  7858      0</code></pre>
-<p>また、読み込んだデータ特徴の確認は他の関数でも実行できる。例えば、name() 関数を使えば、データ内の変数名 (列名) を確認できるし、tidyverseに含まれる glimpse() 関数によってもデータの冒頭数行を含むいくつかの情報を返してくれる。</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="データの読み込み.html#cb55-1" tabindex="-1"></a><span class="fu">names</span>(idpos)</span></code></pre></div>
-<pre><code>## [1] &quot;id&quot;     &quot;date&quot;   &quot;spent&quot;  &quot;coupon&quot;</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="データの読み込み.html#cb57-1" tabindex="-1"></a><span class="fu">glimpse</span>(idpos)</span></code></pre></div>
-<pre><code>## Rows: 3,000
-## Columns: 4
-## $ id     &lt;dbl&gt; 12, 32, 30, 29, 46, 44, 44, 32, 3, 34, 36, 3, 42, 18, 38, 4, 19…
-## $ date   &lt;chr&gt; &quot;2019/9/25&quot;, &quot;2019/9/10&quot;, &quot;2019/9/9&quot;, &quot;2019/9/4&quot;, &quot;2019/9/10&quot;, …
-## $ spent  &lt;dbl&gt; 14326, 10232, 6881, 6365, 7595, 7858, 9405, 1821, 8375, 1828, 6…
-## $ coupon &lt;dbl&gt; 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, …</code></pre>
-<p>なお、このidposデータは、POS (Point of sales) という小売店レジでの取引データとロイヤルティプログラムなどの会員IDを含むID-POSと呼ばれるデータを想定し作成した、簡易的な人工データである。データには、小売店舗での取引日（date）、金額（spent）、クーポン利用の有無 (coupon)、性別 (gender) が含まれている。本来のPOSデータは、より詳細な日時や具体的な製品単品レベルの取引品目など、より詳細な情報が含まれているはずだが、ここでは簡単化のためにこのようなデータにしている。また、もしスプレッドシート形式で表示したい場合には View() 関数をconsoleに直接入力することでそれが可能になる。例えば、idposデータを用いて以下のようなコードを入力することで、Sourceウィンドウに新しいタブができ、そこにデータセットが表示される。</p>
+<div id="本章の概要-3" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> 本章の概要<a href="本章の概要-3.html#本章の概要-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Rを用いて、統計的な分析（区間推定や検定）を実行すること自体はさほど難しくない。基本的な分析に必要な関数は基本パッケージに搭載されており、コードの書き方（引数の設定など）もネット上で検索すれば容易に知ることができる。しかしながら、自身もしくは他者が実行した分析をきちんと理解するためには、基礎的な統計学の内容を理解している必要がある。本章では、基礎統計学に関する説明を提示する。なお、本書で紹介する内容はあくまで簡易的な内容であるため、統計学を未習の場合は基礎統計学の図書を用いて学習することを強く推奨する。また、章末に統計学や計量経済学の学習に役立つ参考文献を提示しているので、各自の学習に役立ててほしい。</p>
+<p>本章で扱う内容は主に、標本から得た情報に基づき母集団の性質について推測するアプローチを想定したものである。具体的には、以下の内容を含める：</p>
+<ol style="list-style-type: decimal">
+<li>確率モデルと期待値・分散</li>
+<li>統計的推測と点推定・区間推定</li>
+<li>統計的仮説検定</li>
+<li>平均値に関する検定・分散分析</li>
+<li>検定力分析とサンプルサイズ</li>
+</ol>
+<p>本章の後半では様々な検定方法を紹介するが、本書ではこれらの分析手法について記憶するよりも、マーケティング領域の学生において特に誤解の多い統計的分析に関する基本的な性質について理解してほしいと考えている。第一に、確率変数によって定義された統計量もまた確率変数であるという点である。データを収集し、分析を実行し統計量を計算すると、自身が観察した値が唯一の値であると考えてしまうかもしれない。しかし、母集団とは確率分布であり、標本はその確率分布に従う確率変数、データはその確率変数の実現値だと解釈できる（倉田・星野、2011）。そのため、自身が観察した推定値もまた確率変数の実現値であるということを理解することが大切である。</p>
+<p>第二に、信頼区間についてである。統計的な分析では、信頼区間の計算を行うことも多い。しかしながら、信頼区間は誤解のもと解釈される場合も多いため、注意が必要である。信頼区間は、未知パラメータ（母平均等）を一定の確率（信頼水準）で含む区間を示す。信頼区間には確率を割り当て、例えば95%信頼区間のようなものを計算するのだが、よくある誤った解釈として「母集団の期待値（未知パラメータ）は95%の確率でxx以上、yy以下という区間に含まれる」というものである。基礎的な統計学の枠組みでは、未知パラメータは確率変数ではない。そのため、未知パラメータに確率を割り当てるような表現は誤りである。確率変数であるのは、推定された区間である。</p>
+<p>第三に、統計的仮説検定についてである。統計的仮説検定ではまず、母集団の統計的特徴に関する記述である「帰無仮説」と「対立仮説」を定める必要がある。特に帰無仮説は検定における分析や考察の基準となり、帰無仮説を棄却するか否かによって仮説検定の判断を行う。通常、「棄却する」という言葉は帰無仮説に対してのみ用いるため、論文の中で利用している理論仮説や作業仮説に対しては使わない。また、統計的仮説検定では、帰無仮説が真であるにも関わらず帰無仮説を棄却してしまう第一種の誤りと、帰無仮説が真ではないのにも関わらず、帰無仮説を採択してしまう第二種の誤りとが存在する。第一種の誤りを起こす確率は有意水準という。統計的仮説検定では、事前に設定した有意水準の分だけ（慣習として5%や1%といった基準が採用される）第一種の誤りを起こす確率を起用したうえで帰無仮説が正しいか否かを判断する。一方で、「帰無仮説を棄却できない」という結果を得た際には注意が必要である。具体的には、帰無仮説を棄却できない（統計的に有意でない）からと言って、帰無仮説が正しいと結論づけることはできない。そのため例えば、統計的に有意でない結果をもとに「〇〇は××に影響がない（もしくは、差がない）ことが明らかになった」という解釈を行うことは適切ではない。</p>
+<p>第四にp値についての解釈である。Rや他のソフトウェアで統計的検定を実行すると “p-value”（p値）という値を得る。p値は「値が小さければ仮説が真であることを示す指標」や「小さいほど結果の重要性を示す指標」といった解釈を行うべきではない（Baker, 2016）。p値は、帰無仮説が正しいと仮定したときに，手元のデータから計算した検定統計量以上に極端な値をとる確率だと定義できる（豊田, 2017）。そしてp値が有意水準よりも小さい場合には、帰無仮説が間違っていたという判断を下すというのが、p値に基づく帰無仮説棄却の判断である。</p>
+<p>本章では、上記の注意点について理解するための統計的な原理原則と、それに対応するRを用いた統計的分析手法を提示する。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="本章の概要-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="データの整形.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="test.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="確率モデル期待値と分散.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -510,7 +489,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-datahandling.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-stat.Rmd",
 "text": "Edit"
 },
 "history": {

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践</title>
-  <meta name="description" content="5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践" />
+  <title>4.1 本章の概要 | マーケティングリサーチの概要・理屈・実践</title>
+  <meta name="description" content="4.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践" />
+  <meta property="og:title" content="4.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.2 データの読み込み | マーケティングリサーチの概要・理屈・実践" />
+  <meta name="twitter:title" content="4.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="本章の概要-2.html"/>
-<link rel="next" href="データの整形.html"/>
+<link rel="prev" href="survey.html"/>
+<link rel="next" href="psychscale.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -435,51 +435,102 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="データの読み込み" class="section level2 hasAnchor" number="5.2">
-<h2><span class="header-section-number">5.2</span> データの読み込み<a href="データの読み込み.html#データの読み込み" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>本節で用いるパッケージをまだインストールしていない読者は、以下のコマンドを用いてインストールしてほしい。また、インストールを完了したら、library()関数によって各パッケージを起動すること。</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="データの読み込み.html#cb48-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>,<span class="st">&quot;readr&quot;</span>,<span class="st">&quot;readxl&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="データの読み込み.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb49-2"><a href="データの読み込み.html#cb49-2" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb49-3"><a href="データの読み込み.html#cb49-3" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div>
-<p>ここからは、データセットを用いた分析を行う。基本的な操作においては、R外部で作成されたデータを取り込み利用するのだが、あるソフトウェアで作成・保存されたデータセットが他の環境で利用できるとは限らないという点に注意が必要である。具体的には、エクセルファイルが誰にでも開けるとは思ってはいけない。そのため、ソフト特性に依存しない汎用的な形式を使うことが好ましい。汎用性の高いファイル形式の代表的な例がCSV (comma separated values) である。以下は、mktData.csvという架空のファイルをdfというオブジェクト名で取り込むための、見本コードである。ここで用いる関数は、readrというパッケージのread_csv() という関数である。なお、以下のコードは、実在しない ’mktData.csv’というデータセットを引数に利用した見本コードであるため、このコードをそのまま実行してもエラーを返すだけであることに注意をしてほしい。実際には、自身が利用するファイル名を指定してファイルを読み込むことになる。なお、以下のコードの2行目は、データの1行目に変数名（列名）が含まれていない場合の引数の指定方法である。</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="データの読み込み.html#cb50-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;mktData.csv&quot;</span>)</span>
-<span id="cb50-2"><a href="データの読み込み.html#cb50-2" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;mktData.csv&quot;</span>, <span class="at">col_name =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
-<p>なお、デスクトップ版を利用している場合には、ファイルが格納されているディレクトリ名も指定する必要がある。Rにおいては様々なファイルを入力・出力することになるため、利用するディレクトリが一貫していないとそれだけで作業が煩雑になる。そのため、「（補足）デスクトップ版の利用とプロジェクト機能」節で紹介している「プロジェクト機能」必ずを活用するようにほしい。</p>
-<p>本講義では、大学の学務ポータル（manaba）を通じて教員が配布したデータを学生各自のコンピュータにダウンロードし、それを post.cloudに各自がアップロードするという手順によって分析用データを利用する。Manabaからのデータのダウンロードは各自で済ませてほしい。Posit.cloudはR studio 画面を表示する段階でプロジェクトが作成される。ここではまず、分析に利用するデータを格納するディレクトリを作成するコードを紹介する&lt;デスクトップ版を使用している場合も、Project を指定していれば、以下のコードで全く同じ結果を得ることができる。&gt; 具体的は、以下の通りdir.create() を使って新たに data というディレクトリ（フォルダ）を作成する。</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="データの読み込み.html#cb51-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
-<p>新たなディレクトリを作成したら、そこに、ポータルよりダウンロードしたデータを入れてほしい。ここではまず “2022idpos.csv”というデータを用いる。データが無事 data ディレクトリに含まれたら、以下のコマンドによってそのデータファイルをR の作業スペースに読み込み、それに “idpos” というオブジェクト名を定義する。なお、ここで分析実行社はディレクトリを指定することも必要になる。また、コード内の na は、欠損値がどのように保存されているかを指定するための引数であり、もし欠損値が空欄であればnaによる指定は必要ない。</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="データの読み込み.html#cb52-1" tabindex="-1"></a>idpos <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/2022idpos.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
-<p>問題なくデータを読み込むことができたら、そのデータの冒頭数行を head() 関数によって表示する。head() 関数の結果によると、このidposデータは、3000行、5列のデータセットであることがわかる。なお、同様の情報は R studio 画面内の Environment タブから確認することできる。</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="データの読み込み.html#cb53-1" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 4
-##      id date      spent coupon
-##   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
-## 1    12 2019/9/25 14326      1
-## 2    32 2019/9/10 10232      1
-## 3    30 2019/9/9   6881      1
-## 4    29 2019/9/4   6365      0
-## 5    46 2019/9/10  7595      1
-## 6    44 2019/9/14  7858      0</code></pre>
-<p>また、読み込んだデータ特徴の確認は他の関数でも実行できる。例えば、name() 関数を使えば、データ内の変数名 (列名) を確認できるし、tidyverseに含まれる glimpse() 関数によってもデータの冒頭数行を含むいくつかの情報を返してくれる。</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="データの読み込み.html#cb55-1" tabindex="-1"></a><span class="fu">names</span>(idpos)</span></code></pre></div>
-<pre><code>## [1] &quot;id&quot;     &quot;date&quot;   &quot;spent&quot;  &quot;coupon&quot;</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="データの読み込み.html#cb57-1" tabindex="-1"></a><span class="fu">glimpse</span>(idpos)</span></code></pre></div>
-<pre><code>## Rows: 3,000
-## Columns: 4
-## $ id     &lt;dbl&gt; 12, 32, 30, 29, 46, 44, 44, 32, 3, 34, 36, 3, 42, 18, 38, 4, 19…
-## $ date   &lt;chr&gt; &quot;2019/9/25&quot;, &quot;2019/9/10&quot;, &quot;2019/9/9&quot;, &quot;2019/9/4&quot;, &quot;2019/9/10&quot;, …
-## $ spent  &lt;dbl&gt; 14326, 10232, 6881, 6365, 7595, 7858, 9405, 1821, 8375, 1828, 6…
-## $ coupon &lt;dbl&gt; 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, …</code></pre>
-<p>なお、このidposデータは、POS (Point of sales) という小売店レジでの取引データとロイヤルティプログラムなどの会員IDを含むID-POSと呼ばれるデータを想定し作成した、簡易的な人工データである。データには、小売店舗での取引日（date）、金額（spent）、クーポン利用の有無 (coupon)、性別 (gender) が含まれている。本来のPOSデータは、より詳細な日時や具体的な製品単品レベルの取引品目など、より詳細な情報が含まれているはずだが、ここでは簡単化のためにこのようなデータにしている。また、もしスプレッドシート形式で表示したい場合には View() 関数をconsoleに直接入力することでそれが可能になる。例えば、idposデータを用いて以下のようなコードを入力することで、Sourceウィンドウに新しいタブができ、そこにデータセットが表示される。</p>
+<div id="本章の概要-1" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> 本章の概要<a href="本章の概要-1.html#本章の概要-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>コンピュータや情報通信技術が発展した現代においては、様々な手段で研究に用いるデータを集めることがきる。例えば、研究者の関心や研究課題のために収集されたデータを用いることもあれば、別の目的で収集されたデータを用いることもある。前者のようなデータを「一次データ」、後者を「二次データ」と呼ぶ。自身の研究において用いているデータが二次データである場合、その出典や取得方法について論文やレポート内で明記する必要がある。一方で一次データを取得した場合、データの取得方法やデータの詳細について説明する必要がある。</p>
+<p>また、採用するデータの集計レベル（分析単位）にも注意が必要である。集計レベルの違いとして、個人の行動や回答を捉えた「非集計データ」と、非集計データをある単位でまとめ、計算や整理を施した「集計データ」とを捉えることができる。</p>
+<p>本章では、一次データかつ非集計データを得る方法としてマーケティングや消費者行動領域で広く利用されている質問紙調査について説明する。具体的には以下の点について議論する：</p>
+<ol style="list-style-type: decimal">
+<li><p>質問紙調査の得意分野とマーケティングリサーチとの関係</p></li>
+<li><p>調査対象者の確保</p></li>
+<li><p>心理尺度と質問紙設計</p></li>
+<li><p>質問紙作成における実践的注意点</p></li>
+<li><p>質問紙調査に伴う研究倫理</p></li>
+</ol>
+<p>第一に、マーケティングリサーチにおける質問紙調査の役割について説明する。近年、情報システムの発展により様々なデータ取得の機会が増えた。オンライン上でのページ遷移や閲覧状況などの行動を追跡できることや、店舗での購買行動についてのデータも盛んに活用されている。このような状況でも、質問紙調査は多くの企業や研究者によって活用されているデータ収集方法である。その背景には、現行の行動データでは「どのようにもしくはなぜその行動に至ったのか」という消費者の内的な心理的プロセスについては観察できないという問題がある。観察できない内的プロセスを理論的モデルによって代替し行動データのみに着目する研究アプローチもあるが、心理学的アプローチに基づく研究では伝統的に、心理尺度を用いて質問紙を通じた調査を行ってきた。マーケティング領域では、質問紙調査を通じて消費者のブランド認知や再生、態度などについて知るためのノウハウが蓄積されてきている。</p>
+<p>第二に、質問紙調査において必要な回答者（調査対象者）の確保について説明する。質問紙調査を実施するためには、いつ、どのような人に、どれぐらいの人数に対して調査を行うのかを決める必要がある。このような調査概要を明確化するために、6つのWs（Who, What, When, Where, Why, Way）に答えることが役立つ。これらの点に答えることで調査方法の概要が定まると期待できる（Malhotra, 2010）。また研究者がアクセス可能な個人に対して調査を行うためのサンプリング手法についても、代表的な方法をいくつか紹介する。特に、統計的に好ましい性質を持っているランダムサンプリングや、ランダムサンプリングが実施できない場合の代替的手段としての非確率的サンプリングについて紹介する。</p>
+<p>第三に、質問紙調査で用いる尺度について、心理尺度の議論を中心に説明する。心理学においては直接的かつ量的に測定できない概念に焦点を合わせることが多く、パーソナリティ特性や感情、態度などに対し心理尺度を用いて測定を試みる。マーケティングや消費者行動研究でも、心理尺度を応用することで観察できない概念について調査することを試みる。本章では、リッカート尺度や意味微分（Semantic differential: SD）法を中心に、心理尺度の構成方法について説明する。また、作成した尺度の信頼性と妥当性について検討することも重要である。信頼性とは採用した尺度が同じ結果を繰り返し得ることに繋がるかを捉えており、妥当性は採用した尺度が着目する概念を測定できているかを捉えている。</p>
+<p>第四に、実践的な注意点として、質問におけるワーディング（言い回し）と質問票の構成について説明する。質問においては、不明瞭で回答者の混乱に繋がるワーディングは避けるべきである。典型的な誤りとして、（1）曖昧な質問、（2）ダブルバレル質問、（3）誘導的な表現、が含まれる。これらを回避することで調査対象者の回答の心理的なコストを避けることが求められる。質問紙調査内で用いる項目やワーディングが定まったら、それらをどのように構成するかを決める必要がある。基本的には答えやすく興味を引く質問を最初に聞き、難しい問題やセンシティブな質問は終売いや最後に尋ねるという方法が捉えられる。また、近年では回答の質を広報させるための工夫についても議論されている。これらの代表的な取り組みとして instructional manipulation check（IMC）や directed question scale（DQS）を紹介する。</p>
+<p>第五に、研究倫理について述べる。質問紙調査によるデータ収集は、社会科学における「人を対象にした研究」に該当する。そのため、調査協力者が質問紙に回答することで不利になったり、個人の幸福を損ねる結果にならないよう配慮する必要がある。特に、調査を行う主体、目的、調査により得た情報の管理方法、公開有無や方法、倫理的配慮の内容などについて十分な情報を提供し、この条件について回答者から許諾（インフォームド・コンセント）を得ることが重要になる。</p>
+<p>本節の最後に、質問紙調査に関する概要を説明する。質問紙調査とは、データ収集のための構造化された手法で、回答者が回答する一連の質問（書面または口頭）から構成される。質問紙調査は、研究者と回答者との間の言語的情報のみを用いるコミュニケーションとして捉えられる。その意味で質問紙調査は、調査者が求める情報を、回答者が回答できる一連の具体的な質問に変換することを目的とし設計される。調査の実施において研究者は、回答者が相互コミュニケーションに参加し、協力し、面接を完了するように意欲を高め、動機を与え、奨励すると同時に、回答誤差を最小化する必要がある。研究者はこの双方向的なコミュニケーションにおいて、下の図のようなノイズが生じることを理解し、それを削減する努力を講じることが求められる。</p>
+<div class="float">
+<img src="Research%20design/survey_noise.png" style="width:70.0%" alt="コミュニケーションノイズ" />
+<div class="figcaption">コミュニケーションノイズ</div>
+</div>
+<p>なお、質問紙調査は思いつきのまま実行することは難しく、調査実施前に綿密な調査設計を計画する必要がある。調査設計は主に以下のプロセスを経ることで決定される（鈴木, 2016; Malhotra, 2010）。</p>
+<ol style="list-style-type: decimal">
+<li>研究上必要な情報を特定する</li>
+</ol>
+<ul>
+<li>研究課題、理論、仮説の決定（<a href="design.html#design">3</a>章）</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>調査概要（スケジュール、予算、対象者、サンプリング方法）の決定</li>
+</ol>
+<ul>
+<li>いつ、誰に対して、どのようにして調査を行うかを検討する（<a href="sampling.html#sampling">4.3</a>節）。</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>分析手法の検討</li>
+</ol>
+<ul>
+<li>どのような分析手法を用いるのかを事前に定める（7章以降）</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>項目の作成</li>
+</ol>
+<ul>
+<li>捉える概念と尺度の検討（<a href="尺度の種類と質問項目.html#measurement">4.4.1</a>節）</li>
+<li>先行研究レビュー</li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li>ワーディングを決める</li>
+</ol>
+<ul>
+<li>教示文や質問の言葉遣いを調整、決定する（<a href="実践的な注意点.html#wording">4.5.1</a>節）</li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li>質問票の構造を決める（<a href="実践的な注意点.html#surveystructure">4.5.2</a>節）</li>
+</ol>
+<ul>
+<li>質問の順番を決める</li>
+<li>調査票のレイアウトや装丁を決める</li>
+</ul>
+<ol start="7" style="list-style-type: decimal">
+<li>プレ調査の実施と準備</li>
+</ol>
+<ul>
+<li>（相対的に）少人数への調査を実施、フィードバックを得る</li>
+<li>修正と項目の確定</li>
+<li>倫理的検討と審査（<a href="ethicality.html#ethicality">4.6</a>節）</li>
+</ul>
+<ol start="8" style="list-style-type: decimal">
+<li>本調査の実施</li>
+</ol>
+<p>本章では、上記のステップを踏まえ、質問紙調査設計について説明する。なお研究上必要な情報を特定には自身が設定した研究課題に深く関わるため、<a href="design.html#design">3</a> 章を参照してほしい。</p>
+<!-- ここは省略？-> リサーチデザインの章に移動 -->
+<!-- ## 記述的リサーチデザイン -->
+<!-- コンピュータやソフトウェアが発展した現代においては、データを収集し、ある変数についての情報を要約、分析すること自体はさほど難しいことではない。しかしながら、実務的ないし学術的に意義のある研究を行うのは容易ではない。そのためには、研究課題について慎重に吟味しつつ、適切なリサーチデザインを決定する必要がある。リサーチデザインとは、研究プロジェクトを実行するための枠組みや計画案のことである（Malhotra, 2019）。経営学分野におけるリサーチデザインは、田村(2006) にて検討されている。ここでは、Malhotra (2019) を参照に記述的リサーチデザインを中心に説明する。 -->
+<!-- Malhotra (2019)　は、マーケティング・リサーチのタイプとして、大きく分けて　(1) 探索的リサーチ、(2) 決定的 (conclusive) リサーチがあるとし、決定的リサーチの中にさらに (3) 記述的リサーチと (4) 因果リサーチがあるとした。探索的リサーチでは、その研究プロセスが非構造（または半構造）的かつ柔軟であり、一般的に定性的方法が用いられることが多い。研究者は、研究や実務に関するアイディアやインサイトの発見、仮説の構築、未開拓領域における研究課題の定義、等を目的にこのタイプの研究を採用することが多い。一方で決定的リサーチを採用する研究者は、特定の仮説を検証したり、変数同士の関係についての分析を目的とすることが多い。このアプローチでは、リサーチプロセスはより構造化され、定量的な分析手法が用いられることが多い。 -->
+<!-- ![リサーチデザイン分類](Research design/types.png){width=70%} -->
+<!-- 決定的リサーチの中でも、記述的リサーチは、特定の変数や複数の変数間の関係を明らかにすることで、実証的な問いに回答しようと試みる。記述的リサーチを用いた研究目的の例としては、(1) 関連するグループ（顧客や商圏）の特徴を説明する、 (2) 顧客全体のうち特定の行動を取る顧客の比率はどの程度なのか明らかにする (e.g. ヘビーユーザーの比率)、(3) 企業の操作するマーケティング変数と顧客の購買意図との関係を明らかにする、などが挙げられる。これらはあくまで例であるため、あえて抽象的な表現を用いているが、実際に記述的リサーチ課題を提示する際には、検証可能なレベルにまで焦点を絞ることが必要になる。そして、本書ではおもにこの記述的リサーチに焦点を合わせて、手法を紹介する。 -->
+<!-- 一方で因果リサーチでは、相関関係と因果関係を区別し、先行要因が結果変数へ与える効果について因果関係を想定した形で分析することを指す。相関関係とは、2つの変数XとYの間に、比例や反比例といった共変関係があることを指す。一方で、要因Xを変化させることで要因Yが変化する時、Xを原因でYを結果とする因果関係がある（X$\rightarrow$Yと示す）という。つまり相関関係とは異なり、因果関係ではどちらが先行要因であるかという前後関係がはっきりしている。このような因果関係を明らかにする分析手法は一般的に因果推論と言われ、記述的リサーチよりも高度な調査設計・統計的手法が必要となる。本講義は、マーケティングにおける因果推論の応用は扱わないため、別資料を参照してほしい。 -->
+<!-- リサーチデザインは、研究上の問いと整合的である必要がある。言い換えると、記述的リサーチにより自身の立てた問いにきちんと答えるためには、記述的リサーチで回答可能な問いを考えなければならない。例えば、「Eコマースにおける製品品質補償の提示は新規顧客の獲得につながるのか？」という問いは補償サービスと新規顧客によるEコマースサイトの選択率という2つの変数間の関係にまで論点を落とし込んだ問いとなっており調査・分析が可能である。しかしながら、学生のレポートでは、「Eコマースにおいて顧客獲得に重要な要素はなにか？」のような問いが散見される。このような（何か、なぜか、どのような等）広範な視座を持つ問いは探索的に検討すべきものであり、記述的リサーチによって検証可能な形に具体化がされていない。そのため、このような問いに整合的な回答を提示するためには、探索的リサーチデザインが必要になる。高度な研究では、混合メソッド（Mixed method）アプローチとして、探索的リサーチ（例、インタビューや理論的整理）を行ったあとに記述的リサーチ（例、質問紙調査）を実施するような方法も存在する。しかしながら、本書では単一のリサーチメソッドの採用に焦点を合わせ、記述的リサーチと整合的な問いを立てることを推奨する。 -->
+<!-- 「何か、なぜか、どのような」を捉えた問いは研究者の素朴な疑問が表出しており、研究者の現実的・理論的情報のインプットが不足していることにより提示されることが多い。そのため、先行研究や実務的情報をインプットしたあとに、より具体的で重要性の高い問題を捉えることが、より意義のある検証可能な研究課題につながる。優れたリサーチデザインは、自身の立てた問いに対してどのように調査・分析を行えば整合的な回答を提示できるかを具体化したものであり、研究全体の以下の要素間の一貫性や整合性を保つことができる。 -->
+<!-- - 着目する事象（実務的課題） -->
+<!-- - 研究課題 -->
+<!-- -  （理論と）仮説 -->
+<!-- - 採用する具体的な変数 -->
+<!-- - 調査・分析手法 -->
+<!-- 基本的には、リサーチデザインそのものに優劣はなく、「ある方法を採用しているから別の方法よりも優れている」ということはない。ただし、方法そのものがアップデートされたり、ある手法が誤っていると研究によって明らかになることがある。そのような場合を除きどのようなリサーチデザインを採用しているから優れているないし劣っている研究であるということは言えない。そのため、リサーチデザインの決定においては、「自身の立てた問いにきちんと回答できるか」という問いとの整合性が重要になる。この点に注意をして研究課題とリサーチデザインの設計をセットで考えるようにクセづけてほしい。 -->
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="本章の概要-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="データの整形.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="survey.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="psychscale.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -510,7 +561,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-datahandling.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/03-dataSurvey.Rmd",
 "text": "Edit"
 },
 "history": {
