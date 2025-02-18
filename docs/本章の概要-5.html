@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.1 本章の概要 | マーケティングリサーチの概要・理屈・実践</title>
-  <meta name="description" content="5.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
+  <title>8.1 本章の概要 | マーケティングリサーチの概要・理屈・実践</title>
+  <meta name="description" content="8.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
+  <meta property="og:title" content="8.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
+  <meta name="twitter:title" content="8.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="handling.html"/>
-<link rel="next" href="データの読み込み.html"/>
+<link rel="prev" href="regtechnic.html"/>
+<link rel="next" href="dummy.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -450,29 +450,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="本章の概要-2" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> 本章の概要<a href="本章の概要-2.html#本章の概要-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>本章では、Rを用いたデータの処理と記述的な分析について紹介する。マーケティング領域では、様々なタイプのデータを扱うが、どのようなデータであってもデータを取り込み、分析可能な形に処理した後、高度な統計分析を行う前にデータの特徴について確認することが必要になる。本章ではます、これらのデータの読み込みやデータ処理といった分析の前に必要な技術的過程を紹介する。</p>
-<p>これまでの本書の内容は、データを収集するまでの注意点や方法を説明した。しかしながら、収集したデータをただ眺めているだけでは、定量的な知見を得ることはできない。そのため、以降の節では主にデータ処理や分析手法について説明する。まず我々は、データセットの構築から学ぶ。例えばあなたがアンケートを実施したならば、そのアンケートからデータセットを構築する努力が必要になる。アンケート結果に基づくデータセット構築において研究者はコーディング、トランスクライビング、データクリーニングのプロセスを経る。</p>
-<p>コーディングは、回答を分析可能なフォーマットへ変換する作業であり、通常回答に対して数値を当てはめる作業を伴う。例えば、回答者が男性ならば 1 を、女性ならば 0 をとるようなダミー変数を作成する作業がこれに当てはまる。コーディングは、不必要な情報を減らすことでデータ化プロセスを担う。トランスクライビングは、質問紙に記載された回答をデータ入力していく作業である。入力に関するヒューマンエラーは起こるものとして考える必要があるため、通常このプロセスは二人一組でダブルチェックをしながら行う。なお、オンラインアンケートの際はこのプロセスは自動で行われるため、不要になる。データクリーニングでは、研究者は不適切な回答のチェックを行う。例えば、回答可能範囲から外れた回答（例、7点尺度における8点回答）や、論理的に非整合的な回答（例、回答者が利用したことないと答えているサービスについて評価している場合） がないかをチェックする。また、欠損値という回答がない観測についてもチェックする必要がある。マーケティング分野においては欠損値のあるサンプルを削除するという方法も用いられるが、欠損値の扱いは奥が深く、いくつかの対応法がある。本書ではその詳細については扱わないが、欠損値に対応するためのデータ処理についての専門書も存在するため、関心のある読者はそれを参照してほしい（高橋・渡辺, 2017）。</p>
-<p>データセットの構築が完了したあとは、本書では基本的にRを通じて様々な作業を行う。Rには、様々な計算を実行するための関数が用意されており（例、mean, median, sqrt 等）、これらを使えば、実際に我々分析者が各コマンドもシンプルになる。関数の利用においては <code>f(argument)</code> のように関数名 <code>f</code> のあとにカッコをつけて表記する。なお、<code>argument</code> は日本では引数とよばれ、計算に必要な情報の指定である。関数の利用において作業者は具体的な関数名とそれに対応する引数を指定する必要がある。また、我々は通常、パッケージをインストール・起動することで他者が作った関数を利用することが多い。関数とパッケージについての説明や実行例は「Rの基本操作」節で紹介しているのでそちらを参照してほしい。</p>
-<p>ここで学ぶRでの作業は主に以下の通りである。</p>
+<div id="本章の概要-5" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> 本章の概要<a href="本章の概要-5.html#本章の概要-5" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>。本章では、回帰分析を用いたマーケティング研究においてよく利用されるモデルの定式化や分析上の工夫について紹介する。具体的には、以下の内容について説明する。</p>
 <ol style="list-style-type: decimal">
-<li>データの読み込み（csv, excel, etc.）</li>
-<li>dplyrの利用とデータ整形</li>
-<li>パイプ演算子を用いた複数処理の実行</li>
-<li>Wide vs. Long data format (おまけ)</li>
+<li>ダミー変数の活用</li>
+<li>交差項を用いた回帰モデル</li>
+<li>係数比較</li>
+<li>対数線形モデル</li>
 </ol>
-<p>なお、これらの作業は、統計的な分析を実行する前のデータ前処理にも使われるものなので、データ分析をしたいと考える人達にとってはとても重要なスキルになる。</p>
-<p>分析可能な形にデータを処理した後は、データの特徴を確認することが必要になる。具体的には、記述統計や図示化を用いて、特定の変数の分布や変数間の関係について確認を行うことが重要である。この過程により、調査の背景にある実情を把握できるとともに、入手したデータ（のコーディングなど）にエラーがないかを確認することにもつながる。</p>
+<p>ダミー変数とは、観測個体があるカテゴリに属するなら1を、そうでなければ0を取るような変数のことである。本章ではこのような二値変数を説明変数として用いる方法を紹介する。このような変数を用いた場合、係数の解釈が通常の回帰係数とは異なり、ダミー変数に対応する回帰係数は切片の差、つまり、被説明変数の値に関するグループ間での相対的な高低について示している。</p>
+<p>次に扱う方法は交差項を用いたモデルである。マーケティング領域ではよく「調整効果」という表現でこのモデル定式化が用いられる。しかし、研究において誤まった用い方をしているケースも散見されるため、注意が必要である。調整効果という呼称からは、主に着目しているメインの説明変数とその効果を調整する副次的な変数があるかのようなニュアンスが読み取れる。しかしながらモデル化においてそのような扱いの差は存在せず、以下のように定式化される。</p>
+<p><span class="math display">\[
+y_i = \beta_0 + \beta_1 x_i+\beta_2z_i+\beta_3(x_i\times z_i)+u_i
+\]</span></p>
+<p>このとき、仮に研究者が <span class="math inline">\(x\)</span> を主たる研究の関心として持っていたとしても、交差項（掛け算の項）で用いる二つの変数についてはどちらも同様に単独項と交差項の両方を含めることが必要となる。なお、このような交差項を用いた定式化では、ダミー変数と連続変数どちらも利用することが可能である。そのうえで本章では、以下の点について注意を促す：</p>
+<ol style="list-style-type: decimal">
+<li>交差項には、条件付き効果に関する作業仮説を論じる必要がある。</li>
+</ol>
+<ul>
+<li>例、XがYに与える影響は、Zの値に応じて変化する。</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>交差項を含むモデルには交差項を構成する二つの変数も含める。</li>
+</ol>
+<ul>
+<li>推定モデル上、どちらか一方がメインかのような特定化は行わない。</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>交差項を構成する二つの変数の係数を従来の回帰分析結果と同じように解釈してはいけない。</li>
+</ol>
+<ul>
+<li>説明変数独立項の係数の意味について注意が必要。</li>
+</ul>
+<p>第三に扱う手法が係数比較を意図した定式化である。マーケティング領域では稀に異なる説明変数のうちどちらの係数のほうが大きいのかを比較するような議論を行う研究が見受けられる。係数の大小関係を統計的な観点から比較するための現実的な方法のひとつは、説明変数の単位を統一した上で信頼区間を計測することである。第二の方法として本章では、大小比較に関する統計的検定を実行するためのモデル定式化を紹介する。</p>
+<p>第四に、マーケティングの枠組みと密接に関わる定式化方法として、対数線形モデルを紹介する。マーケティングでは、需要の価格弾力性など変数間の非線形の関係を分析したいという目的を持つことも多い。回帰分析では、推定される係数について線形の形で扱うことで、分析が可能になる。そのような定式化の方法として、説明変数と被説明変数の両方に対して、自然対数（<span class="math inline">\(\ln\)</span>）を用いた変数変換を行うことで、以下のようなモデルを設計できる。</p>
+<p><span class="math display">\[
+\ln y_i = \ln \alpha+\beta\ln x_i+u_i
+\]</span></p>
+<p>このような定式化は一般的に線形対数モデルと呼ばれ、説明変数に対応する回帰係数は「弾力性」を表すことが知られている。より具体的には、このようなモデルの回帰係数は、説明変数が 1% 増加したとき、被説明変数が何%変化するか（変化率）を表していることに注意が必要である。</p>
+<p>また、本章末にRを用いた分析結果表の作成方法も紹介しているので、必要に応じて参照し活用してほしい。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="handling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="データの読み込み.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="regtechnic.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dummy.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -503,7 +528,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-datahandling.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-reg2.Rmd",
 "text": "Edit"
 },
 "history": {

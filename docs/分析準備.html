@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5.1 本章の概要 | マーケティングリサーチの概要・理屈・実践</title>
-  <meta name="description" content="5.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
+  <title>7.2 分析準備 | マーケティングリサーチの概要・理屈・実践</title>
+  <meta name="description" content="7.2 分析準備 | マーケティングリサーチの概要・理屈・実践" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
+  <meta property="og:title" content="7.2 分析準備 | マーケティングリサーチの概要・理屈・実践" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
+  <meta name="twitter:title" content="7.2 分析準備 | マーケティングリサーチの概要・理屈・実践" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="handling.html"/>
-<link rel="next" href="データの読み込み.html"/>
+<link rel="prev" href="本章の概要-4.html"/>
+<link rel="next" href="単回帰モデルと予測値.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -450,29 +450,98 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="本章の概要-2" class="section level2 hasAnchor" number="5.1">
-<h2><span class="header-section-number">5.1</span> 本章の概要<a href="本章の概要-2.html#本章の概要-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>本章では、Rを用いたデータの処理と記述的な分析について紹介する。マーケティング領域では、様々なタイプのデータを扱うが、どのようなデータであってもデータを取り込み、分析可能な形に処理した後、高度な統計分析を行う前にデータの特徴について確認することが必要になる。本章ではます、これらのデータの読み込みやデータ処理といった分析の前に必要な技術的過程を紹介する。</p>
-<p>これまでの本書の内容は、データを収集するまでの注意点や方法を説明した。しかしながら、収集したデータをただ眺めているだけでは、定量的な知見を得ることはできない。そのため、以降の節では主にデータ処理や分析手法について説明する。まず我々は、データセットの構築から学ぶ。例えばあなたがアンケートを実施したならば、そのアンケートからデータセットを構築する努力が必要になる。アンケート結果に基づくデータセット構築において研究者はコーディング、トランスクライビング、データクリーニングのプロセスを経る。</p>
-<p>コーディングは、回答を分析可能なフォーマットへ変換する作業であり、通常回答に対して数値を当てはめる作業を伴う。例えば、回答者が男性ならば 1 を、女性ならば 0 をとるようなダミー変数を作成する作業がこれに当てはまる。コーディングは、不必要な情報を減らすことでデータ化プロセスを担う。トランスクライビングは、質問紙に記載された回答をデータ入力していく作業である。入力に関するヒューマンエラーは起こるものとして考える必要があるため、通常このプロセスは二人一組でダブルチェックをしながら行う。なお、オンラインアンケートの際はこのプロセスは自動で行われるため、不要になる。データクリーニングでは、研究者は不適切な回答のチェックを行う。例えば、回答可能範囲から外れた回答（例、7点尺度における8点回答）や、論理的に非整合的な回答（例、回答者が利用したことないと答えているサービスについて評価している場合） がないかをチェックする。また、欠損値という回答がない観測についてもチェックする必要がある。マーケティング分野においては欠損値のあるサンプルを削除するという方法も用いられるが、欠損値の扱いは奥が深く、いくつかの対応法がある。本書ではその詳細については扱わないが、欠損値に対応するためのデータ処理についての専門書も存在するため、関心のある読者はそれを参照してほしい（高橋・渡辺, 2017）。</p>
-<p>データセットの構築が完了したあとは、本書では基本的にRを通じて様々な作業を行う。Rには、様々な計算を実行するための関数が用意されており（例、mean, median, sqrt 等）、これらを使えば、実際に我々分析者が各コマンドもシンプルになる。関数の利用においては <code>f(argument)</code> のように関数名 <code>f</code> のあとにカッコをつけて表記する。なお、<code>argument</code> は日本では引数とよばれ、計算に必要な情報の指定である。関数の利用において作業者は具体的な関数名とそれに対応する引数を指定する必要がある。また、我々は通常、パッケージをインストール・起動することで他者が作った関数を利用することが多い。関数とパッケージについての説明や実行例は「Rの基本操作」節で紹介しているのでそちらを参照してほしい。</p>
-<p>ここで学ぶRでの作業は主に以下の通りである。</p>
-<ol style="list-style-type: decimal">
-<li>データの読み込み（csv, excel, etc.）</li>
-<li>dplyrの利用とデータ整形</li>
-<li>パイプ演算子を用いた複数処理の実行</li>
-<li>Wide vs. Long data format (おまけ)</li>
-</ol>
-<p>なお、これらの作業は、統計的な分析を実行する前のデータ前処理にも使われるものなので、データ分析をしたいと考える人達にとってはとても重要なスキルになる。</p>
-<p>分析可能な形にデータを処理した後は、データの特徴を確認することが必要になる。具体的には、記述統計や図示化を用いて、特定の変数の分布や変数間の関係について確認を行うことが重要である。この過程により、調査の背景にある実情を把握できるとともに、入手したデータ（のコーディングなど）にエラーがないかを確認することにもつながる。</p>
+<div id="分析準備" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> 分析準備<a href="分析準備.html#分析準備" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>本章では、変数間の関係を捉える回帰分析について、そのモデルの基礎と統計的推測に基づく解釈を説明する。回帰分析結果から得られる含意は、「予測」と「検証」の二つに大別することができる。その上で特に本書では、「検証」という側面、特に「研究上関心のある説明変数の係数の解釈」を重視する立場を取る。立場が異なれば、回帰分析上何を重視するかという観点も異なるため、特に回帰分析による予測に関心のある読者においては別の図書を参照してほしい。</p>
+<p>なお本章では、<a href="handling.html#handling">5</a> 章でも利用した <code>MktRes_firmdata.xlsx</code>という企業データを用いた分析を行う。次節に移る前に以下の要領でデータを読み込んでほしい。</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="分析準備.html#cb175-1" tabindex="-1"></a>firmdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/MktRes_firmdata.xlsx&quot;</span>)</span></code></pre></div>
+<p>本章では主に、<code>firmdata</code> における2019年のデータ抽出し、クロスセクショナルデータとして用いる。以下の様に全データから2019年の情報を抽出してほしい。</p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="分析準備.html#cb176-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb176-2"><a href="分析準備.html#cb176-2" tabindex="-1"></a></span>
+<span id="cb176-3"><a href="分析準備.html#cb176-3" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata <span class="sc">%&gt;%</span> </span>
+<span id="cb176-4"><a href="分析準備.html#cb176-4" tabindex="-1"></a>  <span class="fu">filter</span>(fyear <span class="sc">==</span> <span class="dv">2019</span>)</span></code></pre></div>
+<p>データを用いた分析を行う場合、取得したデータの記述統計や分布を確認する必要がある。本来であれば研究上重要な変数を対象にデータの特徴を整理するが、ここでは複数の変数の特徴を一括で整理、図示化する方法を提示する。この方法では、<code>GGally</code>というパッケージの<code>ggpairs()</code>という関数を用いるため、以下のようにパッケージをダウンロードしてほしい。</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="分析準備.html#cb177-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;GGally&quot;</span>)</span></code></pre></div>
+<p><code>firmdata19</code> データセットから、例として四つの変数を抽出して、ggpairsを実行する。これにより、各変数のヒストグラム（密度形式）と、それぞれの変数間の相関係数と散布図が同図内で示されている。また、<code>ggpairs()</code>内の引数設定によって様々な図示形式を指定できるため、興味のある人は調べてみてほしい。</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="分析準備.html#cb178-1" tabindex="-1"></a>firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb178-2"><a href="分析準備.html#cb178-2" tabindex="-1"></a>  <span class="fu">select</span>(sales, mkexp, emp, operating_profit) <span class="sc">%&gt;%</span> </span>
+<span id="cb178-3"><a href="分析準備.html#cb178-3" tabindex="-1"></a>GGally<span class="sc">::</span><span class="fu">ggpairs</span>()<span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;ggpairs example&quot;</span>)</span></code></pre></div>
+<p><img src="mktres_lecture_files/figure-html/ggpairs-1.png" width="672" /></p>
+<p>なお、記述統計については既出の <code>summary()</code>関数にデータフレームを指定することで、データセット全体の記述統計を出力する。ここでは例として先程と同じ変数の記述統計を以下のように出力してみる。</p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="分析準備.html#cb179-1" tabindex="-1"></a>ds1 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb179-2"><a href="分析準備.html#cb179-2" tabindex="-1"></a>  <span class="fu">select</span>(sales, mkexp, emp, operating_profit) <span class="sc">%&gt;%</span> </span>
+<span id="cb179-3"><a href="分析準備.html#cb179-3" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
+<span id="cb179-4"><a href="分析準備.html#cb179-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ds1, <span class="at">align =</span> <span class="st">&quot;cccc&quot;</span>)</span></code></pre></div>
+<table>
+<colgroup>
+<col width="4%" />
+<col width="23%" />
+<col width="23%" />
+<col width="22%" />
+<col width="25%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left"></th>
+<th align="center">sales</th>
+<th align="center">mkexp</th>
+<th align="center">emp</th>
+<th align="center">operating_profit</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left"></td>
+<td align="center">Min. : 11333</td>
+<td align="center">Min. :0.01137</td>
+<td align="center">Min. : 163</td>
+<td align="center">Min. :-40469</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="center">1st Qu.: 186830</td>
+<td align="center">1st Qu.:0.16714</td>
+<td align="center">1st Qu.: 3488</td>
+<td align="center">1st Qu.: 7788</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="center">Median : 464450</td>
+<td align="center">Median :0.25508</td>
+<td align="center">Median : 7825</td>
+<td align="center">Median : 24824</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="center">Mean :1194513</td>
+<td align="center">Mean :0.29894</td>
+<td align="center">Mean : 20156</td>
+<td align="center">Mean : 80811</td>
+</tr>
+<tr class="odd">
+<td align="left"></td>
+<td align="center">3rd Qu.:1164243</td>
+<td align="center">3rd Qu.:0.37438</td>
+<td align="center">3rd Qu.: 24464</td>
+<td align="center">3rd Qu.: 63026</td>
+</tr>
+<tr class="even">
+<td align="left"></td>
+<td align="center">Max. :9878866</td>
+<td align="center">Max. :0.75650</td>
+<td align="center">Max. :160227</td>
+<td align="center">Max. :656163</td>
+</tr>
+</tbody>
+</table>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="handling.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="データの読み込み.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="本章の概要-4.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="単回帰モデルと予測値.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -503,7 +572,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/04-datahandling.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-reg.Rmd",
 "text": "Edit"
 },
 "history": {
