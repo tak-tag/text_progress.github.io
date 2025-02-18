@@ -1,6 +1,6 @@
 # 回帰分析上の工夫紹介{#regtechnic}
 ## 本章の概要
-。本章では、回帰分析を用いたマーケティング研究においてよく利用されるモデルの定式化や分析上の工夫について紹介する。具体的には、以下の内容について説明する。
+本章では、回帰分析を用いたマーケティング研究においてよく利用されるモデルの定式化や分析上の工夫について紹介する。具体的には、以下の内容について説明する。
 
 1. ダミー変数の活用
 2. 交差項を用いた回帰モデル
@@ -65,6 +65,9 @@ $$
 
 ```{r categorygeneration}
 library(tidyverse)
+firmdata <- readxl::read_xlsx("data/MktRes_firmdata.xlsx")
+firmdata19 <- firmdata %>% 
+  filter(fyear == 2019)
 #産業名を特定したオブジェクト"Retail"の作成
 retail <- c("Retail Stores, NEC", "Supermarket Chains")
 # Retailを使ったカテゴリー変数の作成

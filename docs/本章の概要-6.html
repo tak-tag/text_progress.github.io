@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>10.3 統計的検定を用いない顧客分析 | マーケティングリサーチの概要・理屈・実践</title>
-  <meta name="description" content="10.3 統計的検定を用いない顧客分析 | マーケティングリサーチの概要・理屈・実践" />
+  <title>9.1 本章の概要 | マーケティングリサーチの概要・理屈・実践</title>
+  <meta name="description" content="9.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="10.3 統計的検定を用いない顧客分析 | マーケティングリサーチの概要・理屈・実践" />
+  <meta property="og:title" content="9.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="10.3 統計的検定を用いない顧客分析 | マーケティングリサーチの概要・理屈・実践" />
+  <meta name="twitter:title" content="9.1 本章の概要 | マーケティングリサーチの概要・理屈・実践" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="crm.html"/>
-<link rel="next" href="参考文献-8.html"/>
+<link rel="prev" href="choice.html"/>
+<link rel="next" href="消費者選択と合理的消費者像概観.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -451,210 +451,34 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="統計的検定を用いない顧客分析" class="section level2 hasAnchor" number="10.3">
-<h2><span class="header-section-number">10.3</span> 統計的検定を用いない顧客分析<a href="統計的検定を用いない顧客分析.html#統計的検定を用いない顧客分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="データの構造変化とソート" class="section level3 hasAnchor" number="10.3.1">
-<h3><span class="header-section-number">10.3.1</span> データの構造変化とソート<a href="統計的検定を用いない顧客分析.html#データの構造変化とソート" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>本節では、学術的に価値を持つような広範な影響力を持つEFアプローチ研究ではなく、特定の企業における主要顧客を発見することを目的とした探索的分析例を紹介する。</p>
-<p>現代のマーケティングリサーチでは、顧客の購買データを用いて（統計的な分析を要さず）重要顧客や顧客層を発見することが、小売企業を中心に広く行われている。ここでは基本的に、ID-POSデータを用いたデータベースの正規化と集計2焦点を合わせ、そのための分析手法を紹介する。特に、顧客個人に関する情報を用いながら企業や店舗にとって重要な顧客を特定し、その顧客との関係性を深めた場合を考える。</p>
-<p>小売企業や店舗の運営効率から考えると、単に来店客数を増やすだけでなく、より頻繁に、より高額の買い物をする顧客を特定し、その人（達）の購買を促進することが効果的になる。言い換えると、企業や店舗は、ロイヤルカスタマーを特定し、その顧客との関係性を構築したいと考えるのである。そのためにはまず、ロイヤルカスタマーを特定する作業が必要になる。そこで本節では、データから企業にとって価値のある顧客を発見する方法について、データの前処理技術を応用する形で紹介する。</p>
-<p>本節では簡単に、単純なデータハンドリングから顧客インサイトを得る方法を考える。特に、データ処理とソーティング（順番の入れ替え）を用いる方法を用いる。本節ではID-POSデータを用いた分析として、デシル分析とRFM分析を紹介する。デシル分析は、支出額をもとに上位から顧客を並べ替え、その順番に基づき顧客を10分割することで、上位の支出額を担うランクに属する顧客を特定する。なお、他の指標で同様の分析を実行することも可能だが、一般的には支出額を用いることが多い。例えば、月当たり5000人の顧客がいるとすると、500人ずつのグループに分け、購買額の大きい順にデシル1〜10 (10〜1の場合もある) とする形でランク分けする方法がこれにあたる。このとき、各顧客の情報がポイントカードやアプリで紐付いているのであれば、最も購買額の多いグループの特徴を整理することで、現在購入額の高い顧客がどんな特徴を持つのか理解できる。</p>
-<p>一方、RFM（Recency, Frequency, Monetary）分析は、取引情報から、最近いつ買ったか、どれだけの頻度で買い物するか、どれだけ支出しているかといった情報を総合的に勘案し、どの顧客が最重要かを特定する方法である。これらの指標は、ロイヤルティや再購買確率が高い顧客を判別するのに役立つ3つの指標である。例えば、最終購買日から時間が経っている顧客は離反しているかもしれないし、購買頻度や購買額が高いと、ロイヤルティが高い可能性が高い。また、クーポンや割引利用の有無の情報と紐付けることができれば、当該顧客がチェリーピッカーか否かも判断することができる。</p>
-<p>ID-POSデータは、各顧客の会員IDについての情報はありながらも取引ベースで情報が整理されている。このようなデータに対して以下の手順を用いてデータを集計・ソーティングする。</p>
+<div id="本章の概要-6" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> 本章の概要<a href="本章の概要-6.html#本章の概要-6" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>マーケティング施策を新たに導入したり、戦術要素（例えば、4Ps）を変更したりすることはマーケティング意思決定において重要な問題である。その際、マーケティング意思決定者は、その変更によってどの程度消費者の自社製品への反応が変化するかに関心を持つだろう。</p>
+<p>ここで、マーケティングリサーチによって需要の変化を予測したいのだが、どのように行えばよいのだろうか？1つのアプローチはアンケートを用いて現在の利用状況を捉えつつ、マーケティングについての変更がなされた際の利用意向について実験的なシナリオや刺激を利用して調査をするというものである。しかし、アンケートを用いて実際の購買や選択においてマーケティング要素がどのような影響を与えるのか、そしてそれが変化した際に需要がどのように変化しそうなのかを分析し予測することは難しい。そこで、マーケティングリサーチでは、「製品を購買したか否か」や、複数ある製品の候補から「どのブランドを選んだか」というような観察可能な行動の結果を情報として収集し活用することも多い。</p>
+<p>このような選択行動は離散データとして扱われる。例えば、ある製品を購買していれば 1 を、していなければ 0 を取るような離散変数として定義される。マーケティングリサーチでは、このようなデータに対して「購入をした人は何%か？」というような円グラフを描くだけではなく、統計的なモデルを用いることで価格や広告などのマーケティング戦略要素が個人の選択へ与える影響について分析を行う。具体的には、消費者の行動を捉えた離散変数を被説明変数とし、マーケティング戦略要素などを説明変数とする分析モデルを構築する。このような分析モデルは、離散選択モデルと呼ばれ、マーケティングのみならず、交通や都市計画分野などにおいても頻繁に用いられている手法である。</p>
+<p>このような分析に対してRでは、プロビットモデルやロジットモデルを実行するための関数を用いて分析が可能である。しかしながら、分析の実行が容易であることに反してこれらの分析モデルでは、引数の設定や出力される結果の解釈、ひいてはモデルそのものに内包されている理論的前提について注意も必要である。そのため本章では、以下の項目について説明する。</p>
 <ol style="list-style-type: decimal">
-<li>顧客IDごとに、各取引情報を集計する。</li>
-<li>顧客ID情報についてまとめたデータベースにおける順番をソートし、重要顧客を識別する。</li>
+<li>選択結果に関する情報から消費者行動を類推するための理論枠組み</li>
+<li>線形回帰モデルの応用可能性と問題点</li>
+<li>プロビット・ロジットモデルの統計学的説明</li>
+<li>離散選択モデルの消費者理論への応用</li>
+<li>多項選択モデル</li>
 </ol>
-<p>このようなデータの集計は、データ構造を取引ベースから顧客IDベースに変換することを可能にする。下図は、取引ベースのID-POSデータを、集計作業によって顧客IDベースのデータ構造に変換するイメージを示したものである。ID-POSデータは、顧客ID情報が含まれていながらも、データの行（観測）は各取引を示している。そのため、仮に同じIDの顧客がデータ収集期間に複数回取引を行っている場合、同じIDを含む観測がいくつも見られることになる。一方で下部の顧客IDベースのデータは、ID-POSデータを顧客ID情報によって集計したものであり、一定期間中に特定のIDを持つ顧客がどのような購買行動を示していたかを捉えたデータである。そのため、データの行は各顧客IDを示している。本節では、まずはじめにこのようなデータ構造の変換について説明する。</p>
-<div class="float">
-<img src="datahandling/datastructure.png" style="width:70.0%" alt="データ構造変化" />
-<div class="figcaption">データ構造変化</div>
-</div>
-<p>ここでは、先程利用した idpos データを用いて作業を進める。改めて、当該データを以下のコマンドで確認する。</p>
-<div class="sourceCode" id="cb274"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb274-1"><a href="統計的検定を用いない顧客分析.html#cb274-1" tabindex="-1"></a>idpos <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/2022idpos.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
-<pre><code>## Rows: 3000 Columns: 4
-## ── Column specification ────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (1): date
-## dbl (3): id, spent, coupon
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb276-1"><a href="統計的検定を用いない顧客分析.html#cb276-1" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 4
-##      id date      spent coupon
-##   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
-## 1    12 2019/9/25 14326      1
-## 2    32 2019/9/10 10232      1
-## 3    30 2019/9/9   6881      1
-## 4    29 2019/9/4   6365      0
-## 5    46 2019/9/10  7595      1
-## 6    44 2019/9/14  7858      0</code></pre>
-<p>ここで、date変数を用いて直近で何日前の来店かを示す変数を作成する。このデータは、2019年09月01日 から 2019年10月01日までの一ヶ月間、とある店舗で記録された取引データであると仮定し作成されている。そのため、データ収集終了最新時点（2019-10-2）と来店日時の差を表す変数を作成する (ここでの処理にエラーが出る場合は、<code>idpos$date &lt;- as.Date(idpos$date)</code> というコマンドを事前に試してから変数の定義を行ってほしい)。head関数により出力された結果によって新たな変数（datediff）が追加されたことがわかる。</p>
-<div class="sourceCode" id="cb278"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb278-1"><a href="統計的検定を用いない顧客分析.html#cb278-1" tabindex="-1"></a>idpos<span class="sc">$</span>datediff<span class="ot">&lt;-</span></span>
-<span id="cb278-2"><a href="統計的検定を用いない顧客分析.html#cb278-2" tabindex="-1"></a>  <span class="fu">as.numeric</span>(<span class="fu">difftime</span>(<span class="st">&quot;2019-10-02&quot;</span>,idpos<span class="sc">$</span>date,<span class="at">units=</span><span class="st">&quot;days&quot;</span>))</span>
-<span id="cb278-3"><a href="統計的検定を用いない顧客分析.html#cb278-3" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 5
-##      id date      spent coupon datediff
-##   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;
-## 1    12 2019/9/25 14326      1        7
-## 2    32 2019/9/10 10232      1       22
-## 3    30 2019/9/9   6881      1       23
-## 4    29 2019/9/4   6365      0       28
-## 5    46 2019/9/10  7595      1       22
-## 6    44 2019/9/14  7858      0       18</code></pre>
-<p>続いて、パイプ演算子を使ったデータ処理によって顧客IDベースの形へ集計する。ここでは特に、group_by() という関数を使い、顧客id (今回は性別情報も残したいので gender も加えている)をグループ化の基準と指定する形で集計を行う。また、CRM分析で使う変数のために、idレベルでの集計という形で以下の変数を作成する。そして、以下の変数を用いて集計した新たなデータセットを “idpos_cust” として定義する。</p>
-<ul>
-<li>frequency：各idの出現頻度をn()でカウントする</li>
-<li>monetary：spentの合計をsum()で計算する</li>
-<li>cherry (picker)：クーポンの利用回数の合計をsum()で計算する</li>
-<li>recency：datediffの最小値をmin()で求め、直近でいつ来たかを判別</li>
-</ul>
-<div class="sourceCode" id="cb280"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb280-1"><a href="統計的検定を用いない顧客分析.html#cb280-1" tabindex="-1"></a>idpos_cust <span class="ot">&lt;-</span> idpos <span class="sc">%&gt;%</span> </span>
-<span id="cb280-2"><a href="統計的検定を用いない顧客分析.html#cb280-2" tabindex="-1"></a>  <span class="fu">group_by</span>(id) <span class="sc">%&gt;%</span> </span>
-<span id="cb280-3"><a href="統計的検定を用いない顧客分析.html#cb280-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">frequency =</span> <span class="fu">n</span>(), </span>
-<span id="cb280-4"><a href="統計的検定を用いない顧客分析.html#cb280-4" tabindex="-1"></a>            <span class="at">monetary =</span> <span class="fu">sum</span>(spent), </span>
-<span id="cb280-5"><a href="統計的検定を用いない顧客分析.html#cb280-5" tabindex="-1"></a>            <span class="at">cherry =</span> <span class="fu">sum</span>(coupon), </span>
-<span id="cb280-6"><a href="統計的検定を用いない顧客分析.html#cb280-6" tabindex="-1"></a>            <span class="at">recency =</span> <span class="fu">min</span>(datediff)</span>
-<span id="cb280-7"><a href="統計的検定を用いない顧客分析.html#cb280-7" tabindex="-1"></a>            )</span>
-<span id="cb280-8"><a href="統計的検定を用いない顧客分析.html#cb280-8" tabindex="-1"></a><span class="fu">head</span>(idpos_cust)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 5
-##      id frequency monetary cherry recency
-##   &lt;dbl&gt;     &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-## 1     1        21   173314      8       1
-## 2     2        20   157976     13       2
-## 3     3        21   134673      5       1
-## 4     4        19   154416     10       4
-## 5     5        20   177156     11       3
-## 6     6        19   151853     11       3</code></pre>
-<p>上記の操作によって、元々のidposデータから、顧客ベースのデータ構造（idpos_cust）に変換できたはずである。しかしこれだけでは、まだ我々は誰が重要顧客か特定できない。そのため、次に我々はデータの並べかえを行う。具体的には、支出額が高い順に並び替えたあとに上位20人の顧客を表示する。</p>
-<div class="sourceCode" id="cb282"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb282-1"><a href="統計的検定を用いない顧客分析.html#cb282-1" tabindex="-1"></a>idpos_cust_m <span class="ot">&lt;-</span> idpos_cust <span class="sc">%&gt;%</span> </span>
-<span id="cb282-2"><a href="統計的検定を用いない顧客分析.html#cb282-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(monetary))</span>
-<span id="cb282-3"><a href="統計的検定を用いない顧客分析.html#cb282-3" tabindex="-1"></a></span>
-<span id="cb282-4"><a href="統計的検定を用いない顧客分析.html#cb282-4" tabindex="-1"></a><span class="do">##Customers in the top 20 (Monetary) </span></span>
-<span id="cb282-5"><a href="統計的検定を用いない顧客分析.html#cb282-5" tabindex="-1"></a>idpos_cust_m[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]</span></code></pre></div>
-<pre><code>## # A tibble: 20 × 5
-##       id frequency monetary cherry recency
-##    &lt;dbl&gt;     &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-##  1    15        31   305665     13       1
-##  2    35        30   262181     13       1
-##  3    31        31   254804     19       3
-##  4    33        29   251352     14       2
-##  5    22        24   214150      9       4
-##  6    20        21   199197     11       2
-##  7    18        24   196686     13       3
-##  8    49        24   196143     12       4
-##  9     9        24   195788     14       1
-## 10    12        25   194860     15       1
-## 11    42        21   193582      5       1
-## 12    30        26   190687     17       2
-## 13    36        20   189937     13       6
-## 14    14        21   188600     14       1
-## 15    26        22   184657     10       2
-## 16    32        20   184276     12       1
-## 17    17        19   181947     13       1
-## 18    44        23   181397     12       1
-## 19    34        20   179533      8       2
-## 20    37        21   179169     11       2</code></pre>
-</div>
-<div id="データ結合" class="section level3 hasAnchor" number="10.3.2">
-<h3><span class="header-section-number">10.3.2</span> データ結合<a href="統計的検定を用いない顧客分析.html#データ結合" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>ここまでの結果からは購買額の高い顧客IDを特定することができた。しかしながら、これらの顧客がどのような特徴を持っているのかについては推察できない。そのため、別で管理されていた顧客情報を捉えたデータセットと結合することでこれらの顧客についての属性を把握する。
-以下では、今回使用する顧客情報データセットを読み込み、その概要を示している。このデータセットには、3000人分の会員登録済み顧客情報が蓄積されており、以下の変数を含む：</p>
-<ul>
-<li>id: 顧客ID</li>
-<li>gender: 性別</li>
-<li>age: 年齢</li>
-<li>famsize: 世帯人数</li>
-</ul>
-<div class="sourceCode" id="cb284"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb284-1"><a href="統計的検定を用いない顧客分析.html#cb284-1" tabindex="-1"></a>id_data <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/id_data.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
-<span id="cb284-2"><a href="統計的検定を用いない顧客分析.html#cb284-2" tabindex="-1"></a><span class="fu">str</span>(id_data)</span></code></pre></div>
-<pre><code>## spc_tbl_ [3,000 × 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-##  $ id     : num [1:3000] 1 2 3 4 5 6 7 8 9 10 ...
-##  $ gender : chr [1:3000] &quot;female&quot; &quot;male&quot; &quot;female&quot; &quot;female&quot; ...
-##  $ age    : num [1:3000] 51 38 41 24 48 46 36 30 26 57 ...
-##  $ famsize: num [1:3000] 2 2 1 1 5 1 1 1 3 5 ...
-##  - attr(*, &quot;spec&quot;)=
-##   .. cols(
-##   ..   id = col_double(),
-##   ..   gender = col_character(),
-##   ..   age = col_double(),
-##   ..   famsize = col_double()
-##   .. )
-##  - attr(*, &quot;problems&quot;)=&lt;externalptr&gt;</code></pre>
-<p>ここで、顧客データと購買データを <code>left_join()</code> を用いて、<code>idpos_cust</code> をメインとする形で <code>id</code> によって結合する。<code>left_join()</code> は左側に指定したデータフレームに存在知するキーの行を返す形でデータの結合を行う。言い換えると、左側のデータセットに存在する行（観測）はすべて残され、そこに新たな変数を加える形でデータフレーム間の結合を行う。</p>
-<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb286-1"><a href="統計的検定を用いない顧客分析.html#cb286-1" tabindex="-1"></a>idpos_cust <span class="ot">&lt;-</span> <span class="fu">left_join</span>(idpos_cust,id_data, <span class="at">by =</span> <span class="st">&quot;id&quot;</span>)</span>
-<span id="cb286-2"><a href="統計的検定を用いない顧客分析.html#cb286-2" tabindex="-1"></a><span class="fu">head</span>(idpos_cust)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 8
-##      id frequency monetary cherry recency gender   age famsize
-##   &lt;dbl&gt;     &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;
-## 1     1        21   173314      8       1 female    51       2
-## 2     2        20   157976     13       2 male      38       2
-## 3     3        21   134673      5       1 female    41       1
-## 4     4        19   154416     10       4 female    24       1
-## 5     5        20   177156     11       3 female    48       5
-## 6     6        19   151853     11       3 female    46       1</code></pre>
-<p>上記の通り、顧客ベースの取引情報に、各顧客の属性情報が追加された事がわかる。これを利用し、以下のように上位20顧客の性別比率を以下のように確認する。これによって、主要顧客に占める性別比率が確認できる。</p>
-<div class="sourceCode" id="cb288"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb288-1"><a href="統計的検定を用いない顧客分析.html#cb288-1" tabindex="-1"></a>idpos_cust_m <span class="ot">&lt;-</span> idpos_cust <span class="sc">%&gt;%</span> </span>
-<span id="cb288-2"><a href="統計的検定を用いない顧客分析.html#cb288-2" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(monetary))</span>
-<span id="cb288-3"><a href="統計的検定を用いない顧客分析.html#cb288-3" tabindex="-1"></a></span>
-<span id="cb288-4"><a href="統計的検定を用いない顧客分析.html#cb288-4" tabindex="-1"></a><span class="co">#gender ratio in the top 20</span></span>
-<span id="cb288-5"><a href="統計的検定を用いない顧客分析.html#cb288-5" tabindex="-1"></a><span class="fu">table</span>(idpos_cust_m[<span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,]<span class="sc">$</span>gender)</span></code></pre></div>
-<pre><code>## 
-## female   male 
-##     16      4</code></pre>
-<p>続いては先述のデシル分析を実行する。具体的には、idpos_custに対し、cut()関数を使うことで、monetaryの大きさに基づきサンプルを10等分し、新たに “decile_rank” という変数（列）をデータに追加し、その新たなデータセットを “idpos_cust_m”と定義する。なお、次節にてこのデータを改めて使うため、データをprojectのdataディレクトリ内に保存しておいてほしい。</p>
-<div class="sourceCode" id="cb290"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb290-1"><a href="統計的検定を用いない顧客分析.html#cb290-1" tabindex="-1"></a>idpos_cust_m<span class="sc">$</span>decile_rank <span class="ot">&lt;-</span> </span>
-<span id="cb290-2"><a href="統計的検定を用いない顧客分析.html#cb290-2" tabindex="-1"></a>  <span class="fu">cut</span>(idpos_cust_m<span class="sc">$</span>monetary,</span>
-<span id="cb290-3"><a href="統計的検定を用いない顧客分析.html#cb290-3" tabindex="-1"></a>      <span class="fu">quantile</span>(idpos_cust_m<span class="sc">$</span>monetary, (<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>)<span class="sc">/</span><span class="dv">10</span>,<span class="at">na.rm=</span><span class="cn">TRUE</span>),</span>
-<span id="cb290-4"><a href="統計的検定を用いない顧客分析.html#cb290-4" tabindex="-1"></a>      <span class="at">label=</span><span class="cn">FALSE</span>,<span class="at">include.lowest=</span><span class="cn">TRUE</span>)</span>
-<span id="cb290-5"><a href="統計的検定を用いない顧客分析.html#cb290-5" tabindex="-1"></a><span class="fu">head</span>(idpos_cust_m)</span></code></pre></div>
-<pre><code>## # A tibble: 6 × 9
-##      id frequency monetary cherry recency gender   age famsize decile_rank
-##   &lt;dbl&gt;     &lt;int&gt;    &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;dbl&gt;   &lt;dbl&gt;       &lt;int&gt;
-## 1    15        31   305665     13       1 female    19       3          10
-## 2    35        30   262181     13       1 female    22       3          10
-## 3    31        31   254804     19       3 female    55       1          10
-## 4    33        29   251352     14       2 male      54       5          10
-## 5    22        24   214150      9       4 female    53       4          10
-## 6    20        21   199197     11       2 female    50       1          10</code></pre>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="統計的検定を用いない顧客分析.html#cb292-1" tabindex="-1"></a>readr<span class="sc">::</span><span class="fu">write_csv</span>(idpos_cust_m, <span class="st">&quot;data/idpos_customer.csv&quot;</span>)</span></code></pre></div>
-<p>head()関数によって新たな変数の追加を確認したあとは、各デシルの店舗売上への貢献度を確認する。ここでは、decile_rankをグループ化の基準として設定し、summarize() によって集計する方法を用いる。その後、各デシルの売上比率を計算し、高い順に並び替える。集計・分析の結果は、上位20%の顧客で、ID-POSに計上されている売上の57%を締めていることを示した。</p>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="統計的検定を用いない顧客分析.html#cb293-1" tabindex="-1"></a>decile <span class="ot">&lt;-</span> idpos_cust_m <span class="sc">%&gt;%</span> </span>
-<span id="cb293-2"><a href="統計的検定を用いない顧客分析.html#cb293-2" tabindex="-1"></a>  <span class="fu">group_by</span>(decile_rank) <span class="sc">%&gt;%</span> </span>
-<span id="cb293-3"><a href="統計的検定を用いない顧客分析.html#cb293-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">freq =</span> <span class="fu">n</span>(),</span>
-<span id="cb293-4"><a href="統計的検定を用いない顧客分析.html#cb293-4" tabindex="-1"></a>            <span class="at">monetary =</span> <span class="fu">sum</span>(monetary)) </span>
-<span id="cb293-5"><a href="統計的検定を用いない顧客分析.html#cb293-5" tabindex="-1"></a>total <span class="ot">&lt;-</span> <span class="fu">sum</span>(decile<span class="sc">$</span>monetary)</span>
-<span id="cb293-6"><a href="統計的検定を用いない顧客分析.html#cb293-6" tabindex="-1"></a></span>
-<span id="cb293-7"><a href="統計的検定を用いない顧客分析.html#cb293-7" tabindex="-1"></a>decile2 <span class="ot">&lt;-</span> decile <span class="sc">%&gt;%</span> </span>
-<span id="cb293-8"><a href="統計的検定を用いない顧客分析.html#cb293-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> monetary<span class="sc">/</span>total<span class="sc">*</span><span class="dv">100</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb293-9"><a href="統計的検定を用いない顧客分析.html#cb293-9" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(decile_rank))</span>
-<span id="cb293-10"><a href="統計的検定を用いない顧客分析.html#cb293-10" tabindex="-1"></a></span>
-<span id="cb293-11"><a href="統計的検定を用いない顧客分析.html#cb293-11" tabindex="-1"></a>decile2</span></code></pre></div>
-<pre><code>## # A tibble: 10 × 4
-##    decile_rank  freq monetary percent
-##          &lt;int&gt; &lt;int&gt;    &lt;dbl&gt;   &lt;dbl&gt;
-##  1          10   149 11141710   45.1 
-##  2           9   149  3042467   12.3 
-##  3           8   147  2220019    8.98
-##  4           7   150  1976807    8.00
-##  5           6   148  1687031    6.83
-##  6           5   149  1466609    5.93
-##  7           4   149  1213922    4.91
-##  8           3   148   939338    3.80
-##  9           2   149   670413    2.71
-## 10           1   149   358988    1.45</code></pre>
-<p>本節で示したように、高度な統計的分析を実行せずとも重要顧客を特定する事が可能になる。本節では特に、データの集計や処理技術を使った方法を紹介した。このような分析によって回答できる問いは「企業にとっての重要顧客は誰か」というものだろう。この問いは非常に興味深く実務的にも有意義なものであるが、以下の点に注意することが重要である。第一に、何をもって顧客の重要性を定義するかという問題である。本節では特にRFMなどの基準を用いて、観察可能な購買結果をもとに重要顧客を識別する方法を捉えた。しかしながら、例えば購買頻度と購買額では異なる側面を捉えており、どの指標を用いて分析するかによって（通常は）結果が異なる。そのため、研究者自身が「重要性」をどのように定義するのかを注意深く判断し、なおかつそれをレポートやプレゼンテーション内できちんと明示する必要がある。さらに、データでは捉えきれない側面は分析結果に反映されないという点についても注意が必要である。例えば日本には江戸時代から続く小売企業もいくつも存在する。仮に、そのような小売企業と、長期間代々取引を続けている顧客（一族や企業）がいたとして、さらにその顧客が分析による上位顧客に含まれなかったとする。その場合、この顧客を重要顧客でないと切り捨てて良いのでだろうか。災害、国家の統治体制の変化、戦争、などの激動を経てなお取引が続いている顧客は重要でないと言い切れるのだろうか。もちろん、このような顧客を重要でないと捉えることも、経営判断として間違ったものではない。しかしながら、少なくともデータを用いた分析結果を過信しすぎず、データによって何が捉えられており、何が捉えきれていないのかについて研究者・意思決定者のどちらも自覚的になることが必要になる。</p>
-<p>第二に、分析を行うだけでマーケティング実務が完結するわけではないという点についても注意が必要である。「重要顧客を特定する」という研究課題の背後には、「CRMを実行して収益性を向上させる」という実務的課題が存在しているはずである。そのため、今回の発見物をもとに、マーケティング活動への示唆を与えていくことが重要になるのだが、誰が重要顧客か、という問いに答えるだけでは具体的な活動指針（アプリを通じた囲い込みや、訪問販売等）を与えるのは難しい。そのため、重要顧客のライフスタイルや価値観などの彼/彼女らの特徴に踏み込んだ調査を行うことも必要になるかもしれない。昨今のロイヤルティプログラム（ポイントシステム）では、モバイルアプリを通じて個人の様々な行動履歴が記録されたり、アンケートへの回答を促されたりすることがあるだろう。これらの情報とID-POSデータをうまく接合できれば、重要顧客を特定しつつ、それらの顧客に適したCRM方策を策定できるかもしれない。</p>
-</div>
+<p>第一に、離散選択モデルに基づき消費者行動を研究するための理論的枠組みを紹介する。消費者が何を考えて行動（選択）に至ったのかについて観察することはできない。そのため、本章で扱うアプローチでは、消費者の選択という観察可能な行動に着目しつつ、観察できない消費者の思考については、理論によって補完するという方法を取る。より詳細には、「首尾一貫した選択を分析の対象とする」という仮定を置くことで、消費者の選択行動結果に基づき、本来観察できない選択肢の効用を推察できるようになる。したがって、離散選択モデルに基づく含意を得るためには、その背後に存在する理論的枠組みに対する理解が必要になる。そこで本章では、消費者の選好に関する理論（顕示選好）と効用最大化との関係について説明する。</p>
+<p>第二に、統計的な分析に着目し、離散変数を被説明変数とする回帰モデルを最小二乗法で推定する場合について説明する。このような方法は線形確率モデルと呼ばれ、変数間の関係を検証することに着目する際には意図的に採用されることもある。線形確率モデルによって推定された係数は、説明変数が変化したときに被説明変数（ダミー変数）が1を取る確率（反応確率）が、どのように変化するかを示す。そのため、説明変数と被説明変数の関係を捉えるという目的のもとでは線形確率モデルも一定の役割を果たすことに加え、最小二乗法の方が好ましい統計的性質を満たす手法（操作変数法や固定効果推定など）を応用できるという利点も有している。</p>
+<p>しかしながら線形確率モデルの最も大きな問題として、推定結果に基づく予測値が論理的整合性を満たさないというものがある。具体的には、線形確率モデルによって推定された予測値は反応確率を示しているはずであるにも関わらず、予測値が1を上回ったり、負の値を取ることがある。そのため、予測を重視する研究を行う場合や、効果の程度や推定値についての議論が重要である場合には線形確率モデルは適さない。</p>
+<p>第三に、線形確率モデルではない推定方法としてプロビットモデルとロジットモデルを紹介する。本章では主にプロビットモデルを中心に説明を行っているが、どちらのアプローチでも非線形の（回帰直線ではなく、回帰曲線を引く）分析を行うことで、推定結果に基づいて計算される反応確率が 0 から 1 の範囲を越えないように調整される。この統計的なモデルの定式化について、まずは選択行動という点に着目し反応確率の観点から説明する。</p>
+<p>その後潜在変数アプローチと呼ばれる、観察可能な離散変数の背後に、観察できない連続的な変数が存在するという視点からの定式化を紹介する。マーケティングにおける研究群では、多様な背景を持った研究者が論文を書いているため、同じ離散選択モデルを用いた論文でもその定式化の説明方法が異なる場合がある。その際の手助けになるように、本章では上記の二つの異なる定式化アプローチを紹介する。その後、最尤法を用いてプロビットモデルを推定する方法を紹介する。ここではRでの分析実行方法と結果の解釈についても組み合わせて説明する。</p>
+<p>ここまでの内容で、消費者の選択を巡る理論と、統計的な離散選択モデルを説明した。これらの内容を踏まえ、第四に離散選択モデルの消費者理論への応用について説明する。具体的には効用最大化という理論枠組みから効用関数の構造についてモデル化し、それを分析する手順や考え方について説明する。効用の大小関係に基づきプロビットやロジットモデルといった離散選択モデルを定式化する考え方は照井・佐藤（2022）などのマーケティングリサーチのテキストでも紹介されている。しかし本章では、これらの議論を巡る理論や統計的モデルについて順を追って確認してきた。これは、効用最大化を前提として用いられる選択モデルがなぜ、どのように定式化されるのかを理解することを意図して構成している。</p>
+<p>本章後半には、選択肢が三つ以上の場合の選択モデルとして、多項ロジットモデルの概要とRを用いた分析方法を紹介している。また、最後には離散選択モデルの推定から実務的含意を得るための具体例も紹介しているため、こちらも合わせて確認してほしい。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="crm.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="参考文献-8.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="choice.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="消費者選択と合理的消費者像概観.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -685,7 +509,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/09-empricsfirst.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-choicemodel.Rmd",
 "text": "Edit"
 },
 "history": {
