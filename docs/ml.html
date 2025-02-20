@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6.10 分散分析 | マーケティングリサーチの概要・理屈・実践</title>
-  <meta name="description" content="6.10 分散分析 | マーケティングリサーチの概要・理屈・実践" />
+  <title>9.6 補足：最尤推定法の紹介 | マーケティングリサーチの概要・理屈・実践</title>
+  <meta name="description" content="9.6 補足：最尤推定法の紹介 | マーケティングリサーチの概要・理屈・実践" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6.10 分散分析 | マーケティングリサーチの概要・理屈・実践" />
+  <meta property="og:title" content="9.6 補足：最尤推定法の紹介 | マーケティングリサーチの概要・理屈・実践" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6.10 分散分析 | マーケティングリサーチの概要・理屈・実践" />
+  <meta name="twitter:title" content="9.6 補足：最尤推定法の紹介 | マーケティングリサーチの概要・理屈・実践" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="平均値に関するその他の検定.html"/>
-<link rel="next" href="pwr.html"/>
+<link rel="prev" href="プロビットモデルの推定と解釈.html"/>
+<link rel="next" href="離散選択モデルへの合理的消費者像の応用.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -460,71 +460,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="分散分析" class="section level2 hasAnchor" number="6.10">
-<h2><span class="header-section-number">6.10</span> 分散分析<a href="分散分析.html#分散分析" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>ここまでの内容では、２グループ間の平均の差に関する分析を捉えた。しかしながら、三つ以上のグループ間の平均の差に関心があることもある。例えば、異なる地域における売上高の差を比較したい場合が挙げられる。このような目的を持つ場合によく用いられるのが分散分析（Analysis of Variance; ANOVA）である。本節では、ANOVAの実行方法を中心に説明を行う。なお、ANOVAに関するより詳細な説明は別添の補足資料を参照してほしい。
-ANOVAの構造については、要因と水準という二つの要素から説明が行われる。要因とは、観測値に影響を与えていると考えうるカテゴリ変数のことを指し、水準とは、要因を構成するいくつかの条件やグループを指す。例えばある小売企業における各店舗の一定期間内の売上高が出店エリア特性によって差があるのかという問いに関心があるとする。その際各店舗を、都市エリア、郊外エリア、農村エリアという三つのグループに分類し、それぞれのグループにおける標本平均を求めれば、エリアごとの差を分析できるだろう。この場合、「地域」が売上高に影響を与えうる要因であり、「都市、郊外、農村」という三つのグループが水準だと言える。</p>
-<p>分析において取り上げる要因が一つである分散分析を一元配置分散分析と呼ぶ。二元配置分散分析については本資料では扱わないため、補足資料を参照してほしい。なお、分散分析をRで実行することは難しくない。ここでは、<code>reshape2</code>というパッケージに内包されてる tipping データを用いてANOVAを実行するため、以下のように<code>reshape2</code>パッケージをインストールして欲しい。</p>
-<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="分散分析.html#cb161-1" tabindex="-1"></a><span class="fu">install.packages</span>(reshape2)</span></code></pre></div>
-<p>パッケージをインストールしたら、以下のように<code>reshape2</code>を起動し、今回使用する <code>tips</code> データを確認する。本データに含まれている変数は以下の通りである。</p>
-<ul>
-<li>total_bill: 支払料金（ドル）</li>
-<li>tip: チップ額（ドル）</li>
-<li>sex: 支払い者の性別</li>
-<li>smoker: グループ内に喫煙者がいるか</li>
-<li>day: 曜日</li>
-<li>time: 時間帯</li>
-<li>size: 人数</li>
-</ul>
-<div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="分散分析.html#cb162-1" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
-<span id="cb162-2"><a href="分散分析.html#cb162-2" tabindex="-1"></a><span class="fu">str</span>(tips)</span></code></pre></div>
-<pre><code>## &#39;data.frame&#39;:    244 obs. of  7 variables:
-##  $ total_bill: num  17 10.3 21 23.7 24.6 ...
-##  $ tip       : num  1.01 1.66 3.5 3.31 3.61 4.71 2 3.12 1.96 3.23 ...
-##  $ sex       : Factor w/ 2 levels &quot;Female&quot;,&quot;Male&quot;: 1 2 2 2 1 2 2 2 2 2 ...
-##  $ smoker    : Factor w/ 2 levels &quot;No&quot;,&quot;Yes&quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ day       : Factor w/ 4 levels &quot;Fri&quot;,&quot;Sat&quot;,&quot;Sun&quot;,..: 3 3 3 3 3 3 3 3 3 3 ...
-##  $ time      : Factor w/ 2 levels &quot;Dinner&quot;,&quot;Lunch&quot;: 1 1 1 1 1 1 1 1 1 1 ...
-##  $ size      : int  2 3 3 2 4 4 2 4 2 2 ...</code></pre>
-<p>ここでは、以下の通りチップ額が曜日によって異なるか否かを分析する。ANOVAの実行においては<code>aov()</code>関数によって分析するモデルとデータを指定し、<code>anova()</code> によって分析結果を出力する（<code>summary()</code> を用いることも可能である）。なお、上記のデータサマリーより、<code>day</code> という要因には四水準 (levels) 含まれていることがうかがえる。</p>
-<div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="分散分析.html#cb164-1" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">aov</span>(tip <span class="sc">~</span> day, <span class="at">data =</span> tips)</span>
-<span id="cb164-2"><a href="分散分析.html#cb164-2" tabindex="-1"></a><span class="fu">anova</span>(s)</span></code></pre></div>
-<pre><code>## Analysis of Variance Table
-## 
-## Response: tip
-##            Df Sum Sq Mean Sq F value Pr(&gt;F)
-## day         3   9.53  3.1753  1.6724 0.1736
-## Residuals 240 455.69  1.8987</code></pre>
-<p>分析結果における <code>Sum Sq</code> は、水準間変動和（i.e.,平方和）と呼ばれ、特定要因の水準間によって説明される観測値の変動を表している。 <code>Mean Sq</code> は平均平方と呼ばれ、Sum SqをDF(自由度)で割ったものである。<code>F value</code> は F値という検定統計量の実現値であり、<code>Pr(&gt;F)</code> は本検定の p値を表している。また、<code>Residuals</code> の行で示されているのは、残差平方和と呼ばれ、郡内変動、つまり同グループ（水準）内での値のばらつきの程度を表している。</p>
-<p>分析の結果、チップ額について曜日による統計的に有意な差は確認されなかった。それでは、ANOVAでは具体的にどのような帰無仮説を用いた検定を行っているのだろうか？結論を先に述べると、「すべての水準間で平均値は同じ」という帰無仮説を検定しており、仮に帰無仮説が棄却された場合、「少なくとも一つの水準では値が異なる」という対立仮説を指示する。そのため、ANOVAにおける帰無仮説の棄却は、少なくとも1つの群は全体と異なる平均値を持っているという結論につながる。そのため、ANOVAの検定結果だけでは具体的にどの水準間に差があるのかはわからない。そこで、ANOVAを用いた研究では事後分析として、多重比較と呼ばれる分析を行うことが多い。しかし、この多重比較には統計的な問題が伴うと言われている（詳細は補足資料参照）。その問題に対応した手法として広く用いられているのが、Tukeyのpair-wise 比較である。Rではこの分析を、<code>TukeyHSD()</code> という関数で実行できる。具体的には、<code>aov()</code> でストアしたANOVAの分析結果を用いて以下のように実施する。また、<code>plot()</code>を用いて、pair-wise比較の結果を95%信頼区間とともに図示化することもできる。</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="分散分析.html#cb166-1" tabindex="-1"></a>tukey_result <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(s)</span>
-<span id="cb166-2"><a href="分散分析.html#cb166-2" tabindex="-1"></a>tukey_result</span></code></pre></div>
-<pre><code>##   Tukey multiple comparisons of means
-##     95% family-wise confidence level
-## 
-## Fit: aov(formula = tip ~ day, data = tips)
-## 
-## $day
-##                 diff        lwr       upr     p adj
-## Sat-Fri   0.25836661 -0.6443694 1.1611026 0.8806455
-## Sun-Fri   0.52039474 -0.3939763 1.4347658 0.4558054
-## Thur-Fri  0.03671477 -0.8980753 0.9715049 0.9996235
-## Sun-Sat   0.26202813 -0.2976929 0.8217492 0.6203822
-## Thur-Sat -0.22165184 -0.8141430 0.3708394 0.7678581
-## Thur-Sun -0.48367997 -1.0937520 0.1263921 0.1724212</code></pre>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="分散分析.html#cb168-1" tabindex="-1"></a><span class="fu">plot</span>(tukey_result)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/tukeys-1.png" width="672" /></p>
-<p>分析結果における <code>diff</code> 列は平均値の差を表している。 <code>lwer</code> と <code>upr</code> は信頼区間の下限と上限を表しており、一番右の列はp値を示している。分析の結果、P-valueが10%水準よりも低い結果がないため、どのペアに関する検定でも有意な差は確認できなかった。したがって、分析結果は必ずしもチップ額が曜日によって変化するとは言えないことを示した。この結果は、アメリカにおけるチップ額が会計額に対する割合や提供されたサービス品質によって決まるという慣習から考えると妥当な結果である。しかしながら、前節で注意した通り、このような統計的に非有意な結果をもって「曜日はチップ額に影響を与えない」と結論づけるのは不適切である。</p>
-<p>なお、今回の分析においてはANOVAもTukeyのpair-wise比較も有意な結論を得ることができなかったという点で、両者の結果に一貫性があった。しかしながら、ANOVAでは有意だが、Tukeyの分析ではどの組み合わせも有意ではないという一見整合でない結果を得ることもある。その場合には、慣習としてTukeyの多重比較結果を優先して解釈を提示することが多い。しかしながら、研究者が自身の実施した検定の「意味」を理解し、解釈や議論を提示することも重要である。例えば、ANOVAとTukeyでは用いている帰無仮説が異なるため、異なる比較対象を用いた検定を実施している。そのため、自身が実行した分析がどのような帰無仮説を採用しており、何と何の比較を行っているのかを正確に把握し、実施した検定の意味に適した解釈や議論を展開する事が重要になる。</p>
-<p>本章では、基礎的な統計学の復習として、主に区間推定と統計的仮説検定について説明した。区間推定では、主に信頼区間の計算に着目し、信頼区間の意味についてきちんと理解、解釈することの重要性を強調した。また、統計的仮説検定では、母平均の検定を起点とし統計的検定の基礎的な構造と考え方について説明した。検定においては、母集団の統計的特徴に関する予測である帰無仮説と対立仮説を設計することが重要である。また、グループ間の差異に着目した検定を行う場合には、関心のある未知パラメータについての差や比に着目し検定統計量を作成する事が多いが、基本的な統計的検定の考え方と手順は変わらないという点についても説明した。</p>
+<div id="ml" class="section level2 hasAnchor" number="9.6">
+<h2><span class="header-section-number">9.6</span> 補足：最尤推定法の紹介<a href="ml.html#ml" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>最尤法では、あるデータが与えられたときに、そのような情報が得られる確率が最も高くなる（最も尤もらしくなる）ようにパラメータの値を求める方法である。この尤もらしさを尤度と呼び、得られたデータを尤度が最大になる（最もうまく説明できる）ようにパラメータを推定する。</p>
+<p>一般的に、パラメータ <span class="math inline">\(\theta\)</span> を含む確率密度 <span class="math inline">\(f(x,\theta)\)</span> からの無作為標本<span class="math inline">\({x_1,..., x_n}\)</span> を得た時、これに対する以下のような同時確率密度関数をパラメータ <span class="math inline">\(\theta\)</span> に関する尤度関数と見做す。</p>
+<p><span class="math display">\[
+L(\theta)=f(x_1,\theta)\times f(x_2,\theta)\times...\times f(x_n,\theta)
+\]</span>
+そして、これを最大にするように <span class="math inline">\(\theta\)</span> の推定値を求める方法が最尤法であり、ここで得る推定量を最尤推定量（Maximum Likelihood Estimator: MLE）と呼ぶ。
+実際の分析においては、尤度関数の自然対数を取った以下のような対数尤度関数を用いる事が多い。</p>
+<p><span class="math display">\[
+LL(\theta)=\sum^n_{i=1}\ln f(x_i,\theta)
+\]</span>
+対数尤度と尤度を最大にする <span class="math inline">\(\theta\)</span> は数学的には等しく、対数尤度を用いたほうが、計算が容易であることから、対数尤度が用いられる。</p>
+<p>前節で確認したプロビットモデル（<a href="離散選択モデル.html#eq:probit">(9.1)</a>）の対数尤度関数は、以下のように求まる。</p>
+<p><span class="math display" id="eq:llprobit">\[\begin{equation}
+LL_i(\theta)=y_i\Big(\ln[\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})] \Big)+ (1-y_i)\Big(\ln[1-\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})]\Big) \tag{9.5}
+\end{equation}\]</span></p>
+<p>式 <a href="ml.html#eq:llprobit">(9.5)</a> は個人 <span class="math inline">\(i\)</span> に関する対数尤度であるため、データ全体をうまく説明するパラメータを推定するためには、個別対数尤度の和（<span class="math inline">\(\sum^n_{i=1}LL_i\)</span>）を最大化するような係数パラメータ（<span class="math inline">\(\beta_0,\beta_1,..., \beta_k\)</span>）の推定値（<span class="math inline">\(\hat{\beta}_0,\hat{\beta}_1,..., \hat{\beta}_k\)</span>）を計算する。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="平均値に関するその他の検定.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="pwr.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="プロビットモデルの推定と解釈.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="離散選択モデルへの合理的消費者像の応用.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -555,7 +516,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-stat.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/08-choicemodel.Rmd",
 "text": "Edit"
 },
 "history": {

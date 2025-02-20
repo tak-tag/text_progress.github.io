@@ -10,10 +10,10 @@ tab:umax
 fig:lpm-plot
 fig:norm-cdf
 eq:probit
-eq:llprobit
 eq:avgmarg1
 eq:avgmarg2
 eq:marg-dummy
+eq:llprobit
 eq:utility
 tab:tfvsef
 fig:segment
@@ -197,9 +197,9 @@ step-3-効用最大化
 プロビットモデルとロジットモデル
 潜在変数アプローチによる説明
 プロビットモデルの推定と解釈
-最尤推定法
-分析の実行とまとめ
+分析の実行と結果のまとめ
 限界効果の計算
+ml
 離散選択モデルへの合理的消費者像の応用
 多項選択モデル紹介
 需要の予測と本章のまとめ
