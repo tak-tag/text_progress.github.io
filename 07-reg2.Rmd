@@ -516,6 +516,55 @@ msummary(Int,
 
 以上のように、既存のパッケージやサービスを用いることで、少ない労力で分析結果を表にまとめ、出力することが可能になる。ここで紹介した以外にも有力なパッケージがあるので、関心のある人は色々と調べて、自分にあったやり方を探してみて欲しい。
 
+## 練習問題
+
+Rの“wooldridge”パッケージ内にある、“wage2” というデータセットを用いて分析を実行してみよう。
+wage2 は935個の観測と17の変数を含むデータセットである。本データセットの変数リストは以下のCRANウェブサイト（[https://search.r-project.org/CRAN/refmans/wooldridge/html/wage2.html](https://search.r-project.org/CRAN/refmans/wooldridge/html/wage2.html) ）に以下のように示されている：
+
+
+- wage: monthly earnings
+
+- hours: average weekly hours
+
+- IQ: IQ score
+
+- KWW: knowledge of world work score
+
+- educ: years of education
+
+- exper: years of work experience
+
+- tenure: years with current employer
+
+- age: age in years
+
+- married: =1 if married
+
+- black: =1 if black
+
+- south: =1 if live in south
+
+- urban: =1 if live in SMSA
+
+- sibs: number of siblings
+
+- brthord: birth order
+
+- meduc: mother's education
+
+- feduc: father's education
+
+- lwage: natural log of wage
+
+このデータを利用し、賃金に関するが含意を得てみよう。なお、データセット "wage2" は以下の手順で利用できる。
+
+```{r wage2application, eval=FALSE}
+install.packages("wooldridge")
+library(wooldridge)
+data("wage2")
+```
+
+
 ## 参考文献
 秋山裕（2018）「Rによる計量経済学 第2版」，オーム社.
 

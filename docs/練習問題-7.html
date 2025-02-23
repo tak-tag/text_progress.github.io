@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7.3 単回帰モデルと予測値 | マーケティングリサーチの概要・理屈・実践</title>
-  <meta name="description" content="7.3 単回帰モデルと予測値 | マーケティングリサーチの概要・理屈・実践" />
+  <title>11.7 練習問題 | マーケティングリサーチの概要・理屈・実践</title>
+  <meta name="description" content="11.7 練習問題 | マーケティングリサーチの概要・理屈・実践" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7.3 単回帰モデルと予測値 | マーケティングリサーチの概要・理屈・実践" />
+  <meta property="og:title" content="11.7 練習問題 | マーケティングリサーチの概要・理屈・実践" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7.3 単回帰モデルと予測値 | マーケティングリサーチの概要・理屈・実践" />
+  <meta name="twitter:title" content="11.7 練習問題 | マーケティングリサーチの概要・理屈・実践" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="分析準備.html"/>
-<link rel="next" href="回帰分析における推定と検定.html"/>
+<link rel="prev" href="rによるクラスター分析の実行.html"/>
+<link rel="next" href="参考文献-9.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -479,92 +479,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="単回帰モデルと予測値" class="section level2 hasAnchor" number="7.3">
-<h2><span class="header-section-number">7.3</span> 単回帰モデルと予測値<a href="単回帰モデルと予測値.html#単回帰モデルと予測値" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>本章では、二変数間の関係について「予測」と「検証」の二点からより深掘りしていく方法を紹介する。マーケティングを実行する企業の立場に立てば、マーケティングに関連する方策や投資を導入することで成果（売上や利益）を向上させたいと考えるだろう。しかしながら、マーケティングの施策により得られる成果や、そのために投入される労働力、金銭、時間などの資源は、採用する施策案により異なる。そのため、企業も闇雲に意思決定を行うわけには行かず、その意思決定によって、どの程度の成果の向上を見込めるかの予測ができると良い。最も基本的な予測の形式は、ある説明変数（先行要因）が被説明変数（成果）に対してどのような影響を与えるのかを特定し、それに基づき予測値を算出するという方法である。</p>
-<p>回帰分析絵では、二つの異なる変数 <span class="math inline">\(y,~x\)</span> の関係を <span class="math inline">\(\small y=f(x)\)</span> のように<span class="math inline">\(y\)</span>を<span class="math inline">\(x\)</span>の関数（<span class="math inline">\(f(x)\)</span>）で示すというアイディアで分析を行う。このとき <span class="math inline">\(y\)</span> を「被説明変数（Explained variable）もしくは従属変数（dependent variable）」、<span class="math inline">\(x\)</span> を「説明変数（Explaining variable）もしくは独立変数（independent variable）」という。そして、被説明変数と説明変数の関係を特定化した式のことを一般的に回帰モデルという。最も基本的な関数型の特定方法は以下のような一次関数による特定化である。</p>
-<p><span class="math display">\[
-y=\beta_0+\beta_1x
-\]</span>
-このとき、<span class="math inline">\(\small \beta_0\)</span> は切片、<span class="math inline">\(\small \beta_1\)</span> は傾きを表す係数であり、回帰係数と呼ばれる。</p>
-<p>回帰モデルは線形の関係を捉えているものの、実際にデータを入手し散布図を作成すると、以下のように、直線とは異なる結果を得る。そのため、上記のモデルは正確な表現でないことがわかる。</p>
-<p><img src="mktres_lecture_files/figure-html/scatterplot-1.png" width="672" /></p>
-<p>分析者がデータとして得る情報は、<span class="math inline">\(y\)</span> や <span class="math inline">\(x\)</span> の実現値であり、回帰モデルの切片や傾きの値は直接はわからない。そこで、モデルで捉えた直線と実現値のズレを考え、得たデータから回帰モデルのパラメータ（係数）を推定するという方針をとる。モデルで捉えた直線による（係数の推定値に基づく）<span class="math inline">\(y\)</span> と<span class="math inline">\(x\)</span> の関係は、<span class="math inline">\(\small x=x_i\)</span> のとき、<span class="math inline">\(y_i\)</span> の予測値である<span class="math inline">\(\small \hat{y}_i\)</span>（ワイハット）と、係数の推定値 <span class="math inline">\(\small \hat{\beta}_0\)</span>、 <span class="math inline">\(\small \hat{\beta}_1\)</span> を用いて以下のように定義できる。</p>
-<p><span class="math display">\[
-\hat{y}_i=\hat{\beta}_0+ \hat{\beta}_1 x_i
-\]</span></p>
-<p>係数の推定値 <span class="math inline">\(\small \hat{\beta}_0\)</span> と <span class="math inline">\(\small \hat{\beta}_1\)</span> を求めるための計算方法は、（最尤法や積率法など）いくつかあるものの、本書では最小二乗法（Ordinary least square: OLS）という方法に着目し紹介する。OLS推定量（OLS Estimator: OLSE）の求め方の直感は、以下の図の通り、観測値と回帰直線間の距離の合計（残差平方和）を最小にするように計算される。</p>
-<div class="float">
-<img src="reg/ols.png" style="width:70.0%" alt="OLSE概要" />
-<div class="figcaption">OLSE概要</div>
-</div>
-<p>予測値のモデルで示されているのは、データを分析した結果求めたOLSEに基づく説明変数 <span class="math inline">\(x_i\)</span> と、<span class="math inline">\(\small \hat{y}_i\)</span> との関係である。<span class="math inline">\(\small \hat{y}_i\)</span> は被説明変数 <span class="math inline">\(y_i\)</span> の「予測値（predicted value）」や「理論値（fitted value）」と呼ばれるものであり、<span class="math inline">\(y_i\)</span> の観測値とは異なる値であることに注意が必要である。このとき、観測値と予測値のズレ（<span class="math inline">\(\small y_i-\hat{y}_i\)</span>）を「残差（residual）」という。OLSは残差を <span class="math inline">\(\hat{u}_i\)</span> とし、以下で示される、残差平方和（二乗和）を最小にするように推定量を求める方法である。なお、OLSEの計算仮定については、秋山（2018）が詳しく説明をしてくれている。</p>
-<p><span class="math display">\[
-\sum_{i=1}^n\hat{u}_i^2=\sum_{i=1}^n(y_i-\hat{y}_i)^2=\sum_{i=1}^n\left(\hat{y}_i-(\hat{\beta}_0+ \hat{\beta}_1 x_i)\right)^2
-\]</span>
-これを解くと、以下のような推定量を得る。
-<span class="math display">\[
-\hat{\beta}_0=\bar{y}-\hat{\beta}_1\bar{x}
-\]</span></p>
-<p><span class="math display">\[
-\hat{\beta}_1=\frac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i-\bar{x})^2}
-\]</span></p>
-<p>Rによる回帰分析は、<code>lm()</code>という関数（linear model）を用いて簡単に実行できる。この関数内では、<code>lm(y ~ x, data = df)</code> という要領で、説明変数と被説明変数を <span class="math inline">\(\sim\)</span>（チルダ）で繋いでモデルを指定する。例えば、先程の企業データにおける2019年の観測を用いて、従業員数と売上高の関係について分析するためには、以下のように分析を実行する。</p>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="単回帰モデルと予測値.html#cb180-1" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> emp, <span class="at">data =</span> firmdata19)</span>
-<span id="cb180-2"><a href="単回帰モデルと予測値.html#cb180-2" tabindex="-1"></a><span class="fu">coef</span>(reg1)</span></code></pre></div>
-<pre><code>## (Intercept)         emp 
-## 22809.67863    58.13194</code></pre>
-<p>分析の結果、定数項（Intercept）は 22809.7 で、傾きは 58.1 であることがわかった。つまり、従業員数を一単位増やすと、売上高が58.1（百万円）増えることを示唆している。仮に従業員数が10人であれば、売上高の「予測値」は以下のように計算できる。</p>
-<p><span class="math display">\[
-22809.7+58.1\times 10=23390.7
-\]</span></p>
-<p>回帰分析によって被説明変数の予測値を計算が可能なことを説明したが、この予測値は実際の観測値とは異なる。では、ここで求められた予測値はどのように解釈できるものなのだろうか。それを理解するために、残差と予測値に関する以下の四つの性質を紹介する。</p>
-<ol style="list-style-type: decimal">
-<li>残差の和は0：</li>
-</ol>
-<p><span class="math display">\[
-\sum_{i=1}^n\hat{u}_i=0
-\]</span></p>
-<ol start="2" style="list-style-type: decimal">
-<li>残差と説明変数の積和は0：</li>
-</ol>
-<p><span class="math display">\[
-\sum_{i=1}^n　x_i\hat{u}_i=0
-\]</span></p>
-<ul>
-<li>1と2より：</li>
-</ul>
-<p><span class="math display">\[
-\sum_{i=1}^n　\hat{y}_i\hat{u}_i=0
-\]</span></p>
-<ol start="3" style="list-style-type: decimal">
-<li>予測値の平均と観測値の平均は等しい:</li>
-</ol>
-<p><span class="math display">\[
-\bar{y}=\bar{\hat{y}}
-\]</span></p>
-<ol start="4" style="list-style-type: decimal">
-<li>回帰直線は（<span class="math inline">\(\bar{x}, \bar{y}\)</span>）の座標を通る:</li>
-</ol>
-<p><span class="math display">\[
-\bar{y}=\hat{\beta}_0+\hat{\beta}_1\bar{x}
-\]</span>
-つまりOLSでは、回帰直線と各観測値のプラス方向のズレとマイナス方向のズレが釣り合う（残差の和が0）ような予測を行っている。その上で、予測値は、説明変数 <span class="math inline">\(x\)</span> が与えられたとき、被説明変数が「平均的に」どんな値を取るのかを示していると解釈できる。回帰モデルと平均との関係については次節で確率的側面からより詳しく説明を加える。</p>
-<p>回帰分析による予測による精度を調べるために、分析したモデルがどの程度被説明変数全体の分散を説明しているかという指標によってモデルの適合度を測る。一般的には、決定係数（<span class="math inline">\(\small R^2\)</span>）という指標によってモデル適合度が示される。<span class="math inline">\(\small R^2\)</span> は以下のように定義される。</p>
-<p><span class="math display">\[
-R^2=1-\frac{\sum(y_i-\hat{y}_i)^2}{\sum(y_i-\bar{y})^2}=\frac{\sum(\hat{y}_i-\bar{y})^2}{\sum(y_i-\bar{y})^2}
-\]</span></p>
-<p>この指標は、被説明変数の分散を説明変数がどの程度説明するかの割合を表しており、0以上1以下の値を取る。例えば <span class="math inline">\(\small R^2\)</span> が0.80であるならば、被説明変数の変動の80%をモデルが説明しているということになる。そのため、<span class="math inline">\(\small R^2\)</span> は、回帰モデルの説明力として解釈される。しかしながら、予測という目的に対して近年は、機械学習などの発展的な手法が応用される事が多く、<span class="math inline">\(\small R^2\)</span> を軸に予測を行うことは少なくなってきている。</p>
-<p>また、予測ではなく説明変数の効果（係数）についての検証や解釈に関心がある場合、回帰分析における <span class="math inline">\(\small R^2\)</span> の重要性は低くなる。特に、ビジネス分野における研究では、係数の推定や検定に焦点をあわせることが多い。本書においても、予測よりも係数に関する検証を重視する立場を取る。社会科学領域での分析では、<span class="math inline">\(\small R^2\)</span> が低くなることは珍しくない。そんな中で、「<span class="math inline">\(\small R^2\)</span> が低いからその回帰分析結果は意味がない」ということにはならない。研究者の目的が、関心のある変数同士（例、市場志向と企業成果）の関係性（有意性や影響の強さ）を検証したいというものである場合、仮に <span class="math inline">\(\small R^2\)</span> が低くても、きちんと両変数の関係を分析できる調査設計や分析を実行しているならば、その検証は有意義なものになる。つまりここで強調したいのは、係数の検証や解釈を重視して研究を行う場合、「<span class="math inline">\(\small R^2\)</span> がいくつ以上（以下）だから良い（ダメ）」という議論は目的と整合的ではなく、重要ではなくなるということである。
-本節では、OLSを中心にデータから回帰係数を推定するプロセスに目を向け、予測値と決定係数について紹介した。しかしながら、先述の通り我々は多くの場合特定の変数が成果変数に与える影響の検証に関心がある。次節では確率的な視点から理論的に回帰分析を理解する事により、回帰分析の結果の解釈についてより詳しく学ぶ。</p>
+<div id="練習問題-7" class="section level2 hasAnchor" number="11.7">
+<h2><span class="header-section-number">11.7</span> 練習問題<a href="練習問題-7.html#練習問題-7" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>前節で活用した <code>回答データ【消費者調査2023年度下期調査】.xlsx</code> に含まれる別の変数を活用し、データの探索およびクラスター分析を実行しよう。そして、（1）データ・変数の概要、（2）実行した分析アプローチ、（3）結果（図を含む）、（4）結果に基づく実務的助言、をまとめた短いサマリーを書いてみよう。その際、どんな分析を実施し、どんな結果を得たのか、明確かつ簡潔に書くことをこころがけよう。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="分析準備.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="回帰分析における推定と検定.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="rによるクラスター分析の実行.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="参考文献-9.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -595,7 +520,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/06-reg.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-cluster.Rmd",
 "text": "Edit"
 },
 "history": {
