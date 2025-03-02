@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-02-23" />
+<meta name="date" content="2025-03-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -139,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Marketing Research Lecture Note</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本資料について）</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本書について）</a></li>
 <li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
@@ -671,8 +671,8 @@ E(\tilde{\beta}_1|x_1,x_2)=E(\hat{\beta}_1)+E(\hat{\beta_2} \tilde{\delta_1})=\b
 </div>
 <div id="多重共線性" class="section level4 hasAnchor" number="7.5.7.2">
 <h4><span class="header-section-number">7.5.7.2</span> 多重共線性<a href="重回帰モデル.html#多重共線性" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>第二の論点として、単回帰分析の際には存在しなかった多重共線性（multicollinearity）という問題がある。これは説明変数同士の相関が高いことによる推定上の問題であり、Variance Inflation Factor という指標<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>を使ってその程度を測ることもある。また、マーケティング領域の研究においてはまれに「多重共線性があるから、説明変数を除外すべきだ」という主張を聞くことがある。しかしながら、本書はできる限り説明変数の除外を行わないほうが良いという立場を提示する。詳しくは後述するが、分析の対象となる説明変数によって極端にVIFが高くなる場合には、次の段落にあるようにその変数の意義を検討し、その変数をそのまま残す、何かで比を取る、対数化する（詳しくは次章）などの変数変換の工夫をしながら、その変数をモデルに含めるということが現実的かつ実践的な対応となる。なおこの立場は、本書が回帰分析における係数の検証や解釈に注視していることに大きく依存するため、注意してほしい。</p>
-<p>多重共線性について語る際には、(1) 説明変数同士が完全に相関している（相関係数が 1 もしくは -1）場合と、(2) 完璧ではないが相関係数が高い場合、という二つの異なる状況を区別し理解する必要がある。まず一つ目の場合、そもそも係数の推定値が計算できないという問題が生じる。そのため、完璧に相関しあっている変数を同時にモデルに含めることは出来ず、変数の除外を考えないといけない。この問題は言い換えると「同じ変数を同モデル内に複数入れてはいけない」という制約だと理解できる（西山ほか, 2019）。では（2）の場合にはどのような問題が生じるのか。結論から述べると、説明変数同士の相関は、推定量の分散 <span class="math inline">\(\small Var(\hat{\beta}_j)\)</span> を高めてしまう（Wooldridge, 2013）。しかし、 <span class="math inline">\(\small Var(\hat{\beta}_j)\)</span> は、多重共線性だけでなく以下の三つの要素から影響を受ける。第一に、誤差項の真の分散（<span class="math inline">\(\small \sigma^2\)</span>）、第二に独立変数間の相関<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>、第三に、独立変数の変動（<span class="math inline">\(\small SST_j=\sum(x_{ji}-\bar{x}_j)^2\)</span>）である。第一と第二の指標が高い場合には、推定量の分散は大きくなる。一方で、第三の要素である<span class="math inline">\(\small SST_j\)</span> が高い場合には <span class="math inline">\(\small Var(\hat{\beta}_j)\)</span> は小さくなる。そのため、<span class="math inline">\(\small Var(\hat{\beta}_j)\)</span> を改善するためには、サンプルサイズを大きくし<span class="math inline">\(\small SST_j\)</span> を大きくすることも有用な対処方法となる。しかしながら、社会科学分野においてはデータ取得可能性の観点からそれが難しいことも多い。そのときには、推定量分散の増加と説明変数除外による弊害とのトレードオフを考慮して意思決定することになる。そのうえで本書は、先述の通りできる限り説明変数を除外することは避けるほうが良いという立場を取る。必要な説明変数を含めずに回帰分析を行うと、欠落変数バイアスの問題が生じる。また、もし分析における主な関心が、着目する説明変数 <span class="math inline">\(\small x_{ji}\)</span> の　<span class="math inline">\(y_{i}\)</span> への効果を検証・解釈することであり、かつそれをきちんと捉えるために他の説明変数の存在が必要なのであれば、VIFは無視して構わない（cf. Wooldridge, 2013）。そのため、「VIFが10以上<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>だから、多重共線性があり、変数を除外すべきだ」というような考えは、上記の研究上の関心に対しては恣意的であり有意義でないと考える。そもそも先述のように、VIFによって生じる問題は<span class="math inline">\(\small Var(\hat{\beta}_j)\)</span> の増加であるが、この分散は他の要素にも影響を受けるため、VIFが10以上だから必ず <span class="math inline">\(\small Var(\hat{\beta}_j)\)</span> が大きすぎて推定量が有用でないということはない。これらのことから、回帰モデルに含む変数選択は、VIFの値に依存して判断するよりも、分析モデルの意図や用いる変数の理論的・分析的意義について検討し決断されるべきものだと考える。</p>
+<p>第二の論点として、単回帰分析の際には存在しなかった多重共線性（multicollinearity）という問題がある。これは説明変数同士の相関が高いことによる推定上の問題であり、Variance Inflation Factor という指標<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>を使ってその程度を測ることもある。また、マーケティング領域の研究においてはまれに「多重共線性があるから、説明変数を除外すべきだ」という主張を聞くことがある。しかしながら、本書はできる限り説明変数の除外を行わないほうが良いという立場を提示する。詳しくは後述するが、分析の対象となる説明変数によって極端にVIFが高くなる場合には、次の段落にあるようにその変数の意義を検討し、その変数をそのまま残す、何かで比を取る、対数化する（詳しくは次章）などの変数変換の工夫をしながら、その変数をモデルに含めるということが現実的かつ実践的な対応となる。なおこの立場は、本書が回帰分析における係数の検証や解釈に注視していることに大きく依存するため、注意してほしい。</p>
+<p>多重共線性について語る際には、(1) 説明変数同士が完全に相関している（相関係数が 1 もしくは -1）場合と、(2) 完璧ではないが相関係数が高い場合、という二つの異なる状況を区別し理解する必要がある。まず一つ目の場合、そもそも係数の推定値が計算できないという問題が生じる。そのため、完璧に相関しあっている変数を同時にモデルに含めることは出来ず、変数の除外を考えないといけない。この問題は言い換えると「同じ変数を同モデル内に複数入れてはいけない」という制約だと理解できる（西山ほか, 2019）。では（2）の場合にはどのような問題が生じるのか。結論から述べると、説明変数同士の相関は、推定量の分散 <span class="math inline">\(\small Var(\hat{\beta}_j)\)</span> を高めてしまう（Wooldridge, 2013）。しかし、 <span class="math inline">\(\small Var(\hat{\beta}_j)\)</span> は、多重共線性だけでなく以下の三つの要素から影響を受ける。第一に、誤差項の真の分散（<span class="math inline">\(\small \sigma^2\)</span>）、第二に独立変数間の相関<a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>、第三に、独立変数の変動（<span class="math inline">\(\small SST_j=\sum(x_{ji}-\bar{x}_j)^2\)</span>）である。第一と第二の指標が高い場合には、推定量の分散は大きくなる。一方で、第三の要素である<span class="math inline">\(\small SST_j\)</span> が高い場合には <span class="math inline">\(\small Var(\hat{\beta}_j)\)</span> は小さくなる。そのため、<span class="math inline">\(\small Var(\hat{\beta}_j)\)</span> を改善するためには、サンプルサイズを大きくし<span class="math inline">\(\small SST_j\)</span> を大きくすることも有用な対処方法となる。しかしながら、社会科学分野においてはデータ取得可能性の観点からそれが難しいことも多い。そのときには、推定量分散の増加と説明変数除外による弊害とのトレードオフを考慮して意思決定することになる。そのうえで本書は、先述の通りできる限り説明変数を除外することは避けるほうが良いという立場を取る。必要な説明変数を含めずに回帰分析を行うと、欠落変数バイアスの問題が生じる。また、もし分析における主な関心が、着目する説明変数 <span class="math inline">\(\small x_{ji}\)</span> の　<span class="math inline">\(y_{i}\)</span> への効果を検証・解釈することであり、かつそれをきちんと捉えるために他の説明変数の存在が必要なのであれば、VIFは無視して構わない（cf. Wooldridge, 2013）。そのため、「VIFが10以上<a href="#fn19" class="footnote-ref" id="fnref19"><sup>19</sup></a>だから、多重共線性があり、変数を除外すべきだ」というような考えは、上記の研究上の関心に対しては恣意的であり有意義でないと考える。そもそも先述のように、VIFによって生じる問題は<span class="math inline">\(\small Var(\hat{\beta}_j)\)</span> の増加であるが、この分散は他の要素にも影響を受けるため、VIFが10以上だから必ず <span class="math inline">\(\small Var(\hat{\beta}_j)\)</span> が大きすぎて推定量が有用でないということはない。これらのことから、回帰モデルに含む変数選択は、VIFの値に依存して判断するよりも、分析モデルの意図や用いる変数の理論的・分析的意義について検討し決断されるべきものだと考える。</p>
 </div>
 <div id="過剰制御" class="section level4 hasAnchor" number="7.5.7.3">
 <h4><span class="header-section-number">7.5.7.3</span> 過剰制御<a href="重回帰モデル.html#過剰制御" class="anchor-section" aria-label="Anchor link to header"></a></h4>
@@ -719,10 +719,10 @@ E(\tilde{\beta}_1|x_1,x_2)=E(\hat{\beta}_1)+E(\hat{\beta_2} \tilde{\delta_1})=\b
 </div>
 <div class="footnotes">
 <hr />
-<ol start="16">
-<li id="fn16"><p>後述する <span class="math inline">\(\small R^2_{j}\)</span> を用いて、<span class="math inline">\(VIF_j=1/(1-R^2_{j})\)</span> と定義される。<a href="重回帰モデル.html#fnref16" class="footnote-back">↩︎</a></p></li>
-<li id="fn17"><p>より具体的には説明変数 <span class="math inline">\(x_{ji}\)</span>を従属変数に、その他の全ての説明変数を独立変数として回帰分析をした際の決定係数 <span class="math inline">\(R^2_j\)</span>、。なお、先述のVIFはこの<span class="math inline">\(R^2_j\)</span>の関数である。<a href="重回帰モデル.html#fnref17" class="footnote-back">↩︎</a></p></li>
-<li id="fn18"><p>慣習としてよく用いられる閾値<a href="重回帰モデル.html#fnref18" class="footnote-back">↩︎</a></p></li>
+<ol start="17">
+<li id="fn17"><p>後述する <span class="math inline">\(\small R^2_{j}\)</span> を用いて、<span class="math inline">\(VIF_j=1/(1-R^2_{j})\)</span> と定義される。<a href="重回帰モデル.html#fnref17" class="footnote-back">↩︎</a></p></li>
+<li id="fn18"><p>より具体的には説明変数 <span class="math inline">\(x_{ji}\)</span>を従属変数に、その他の全ての説明変数を独立変数として回帰分析をした際の決定係数 <span class="math inline">\(R^2_j\)</span>、。なお、先述のVIFはこの<span class="math inline">\(R^2_j\)</span>の関数である。<a href="重回帰モデル.html#fnref18" class="footnote-back">↩︎</a></p></li>
+<li id="fn19"><p>慣習としてよく用いられる閾値<a href="重回帰モデル.html#fnref19" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

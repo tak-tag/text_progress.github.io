@@ -63,7 +63,7 @@ tab:monotonicity
 tab:crosssection
 tab:timeseries
 tab:panel
-はじめに本資料について
+はじめに本書について
 rusage
 posit-cloudを始める
 desktop

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-02-23" />
+<meta name="date" content="2025-03-03" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -139,7 +139,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">Marketing Research Lecture Note</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本資料について）</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本書について）</a></li>
 <li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="posit-cloudを始める.html"><a href="posit-cloudを始める.html"><i class="fa fa-check"></i><b>2.1</b> Posit cloudを始める</a></li>
@@ -557,7 +557,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 18            89            65 sunshine
 ## 19           106            69 sunshine
 ## 20           106            69 sunshine</code></pre>
-<p>このデータ構造を、long型に変更する<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a>。</p>
+<p>このデータ構造を、long型に変更する<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a>。</p>
 <div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb265-1"><a href="多項選択モデル紹介.html#cb265-1" tabindex="-1"></a>cracker <span class="ot">&lt;-</span> <span class="fu">mlogit.data</span>(Cracker, <span class="at">choice =</span> <span class="st">&quot;choice&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;wide&quot;</span>, <span class="at">varying=</span><span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>))</span>
 <span id="cb265-2"><a href="多項選択モデル紹介.html#cb265-2" tabindex="-1"></a><span class="fu">head</span>(cracker, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## ~~~~~~~
@@ -609,7 +609,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 20    5 sunshine
 ## indexes:  1, 2</code></pre>
 <p>変換後のデータセットでは、各選択肢の特徴と、それに対する個人の選択結果（<code>TRUE</code> or <code>FALSE</code>）を含める形で行が構成されている。このようにデータの構造を修正することで、分析を行う。</p>
-<p>分析についても <code>mlogit</code>パッケージを利用して実行するのだが、分析結果の解釈を確かなものにするため、多項ロジットモデルについての説明を加える。多項ロジットモデルでは、<span class="math inline">\(m\)</span> 個の選択肢の中からある選択肢 <span class="math inline">\(j\)</span> を選ぶ行為を分析対象としている。分析モデルにおいては、説明変数 <span class="math inline">\(x_{1i},...,x_{ki}\)</span> が与えられたときにある選択肢 <span class="math inline">\(j\)</span> を選ぶ確率は 0 から 1 の間の値を取る必要がある。そのため、各選択肢に対する選択確率の合計が1になるように調整しなければならない。これに対して多項ロジットモデルでは、ある特定の選択肢（仮に選択肢 1 とする）を基準とし、その選択肢に対応する回帰係数パラメータ（<span class="math inline">\(\beta_{10},\beta_{11},...,\beta_{1k},\)</span>）をすべて 0 に固定する<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a>。多項ロジットモデルは以下のように表すことができる。</p>
+<p>分析についても <code>mlogit</code>パッケージを利用して実行するのだが、分析結果の解釈を確かなものにするため、多項ロジットモデルについての説明を加える。多項ロジットモデルでは、<span class="math inline">\(m\)</span> 個の選択肢の中からある選択肢 <span class="math inline">\(j\)</span> を選ぶ行為を分析対象としている。分析モデルにおいては、説明変数 <span class="math inline">\(x_{1i},...,x_{ki}\)</span> が与えられたときにある選択肢 <span class="math inline">\(j\)</span> を選ぶ確率は 0 から 1 の間の値を取る必要がある。そのため、各選択肢に対する選択確率の合計が1になるように調整しなければならない。これに対して多項ロジットモデルでは、ある特定の選択肢（仮に選択肢 1 とする）を基準とし、その選択肢に対応する回帰係数パラメータ（<span class="math inline">\(\beta_{10},\beta_{11},...,\beta_{1k},\)</span>）をすべて 0 に固定する<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>。多項ロジットモデルは以下のように表すことができる。</p>
 <p><span class="math display">\[
 \begin{aligned}
 P(y_i=j|x_{1i},...,x_{ki})=
@@ -676,9 +676,9 @@ V_{ij}=\alpha_j+\beta x_{ij}+\gamma_j z_i+\delta_j w_{ij}
 </div>
 <div class="footnotes">
 <hr />
-<ol start="36">
-<li id="fn36"><p>なお、<code>mlogit.data()</code> 関数の引数の設定については、元々のデータ構造によって変わるので、[Cranにあるソフトウェア](<a href="https://cran.r-project.org/package=mlogit）の説明などを確認し、応用することを進める" class="uri">https://cran.r-project.org/package=mlogit）の説明などを確認し、応用することを進める</a>。<a href="多項選択モデル紹介.html#fnref36" class="footnote-back">↩︎</a></p></li>
-<li id="fn37"><p>ただし。<span class="math inline">\(\exp(0)=1\)</span> 。<a href="多項選択モデル紹介.html#fnref37" class="footnote-back">↩︎</a></p></li>
+<ol start="37">
+<li id="fn37"><p>なお、<code>mlogit.data()</code> 関数の引数の設定については、元々のデータ構造によって変わるので、[Cranにあるソフトウェア](<a href="https://cran.r-project.org/package=mlogit）の説明などを確認し、応用することを進める" class="uri">https://cran.r-project.org/package=mlogit）の説明などを確認し、応用することを進める</a>。<a href="多項選択モデル紹介.html#fnref37" class="footnote-back">↩︎</a></p></li>
+<li id="fn38"><p>ただし。<span class="math inline">\(\exp(0)=1\)</span> 。<a href="多項選択モデル紹介.html#fnref38" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
