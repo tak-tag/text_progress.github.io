@@ -387,7 +387,50 @@ $$
 $$
 つまり、重回帰モデルにおける $\hat{\beta}_1$ は、別の説明変数をコントロール（$\small \Delta x_{2i}=0$）した上で、$\small x_1$ が $\small \hat{y}$ に与える影響（$\small x_1$ が変化した際の $\small \hat{y}$の変化の程度）を捉えていると解釈できる。また、$\small \hat{\beta}_2$ についても同様に解釈できる。そしてこの特徴は、*k*個の説明変数を用いたモデルにも同様に適応できる。
 
-パーシャル効果に関するもう少し詳細に説明すると、重回帰モデルの回帰係数は、説明変数が持つ変動のうち他の説明変数とは無関係な変動だけを抽出し、被説明変数との関係を分析していると理解できる。
+パーシャル効果に関するもう少し詳細に説明すると、重回帰モデルの回帰係数は、説明変数が持つ変動のうち他の説明変数とは無関係な変動だけを抽出し、被説明変数との関係を分析していると解釈できる。この点を理解するために、次の2つの説明変数を含む回帰モデルを考える。
+
+$$
+y_i = \hat{\beta}_0 + \hat{\beta}_1 x_{i1} +\hat{\beta}_2 x_{i2}+\hat{u}_i = \hat{y_i} + \hat{u}_i
+$$
+
+このとき、変数 $x_{i1}$ と $x_{i2}$ の関係は次のように表される。
+
+$$
+x_{i1} = \hat{\gamma}_0 + \hat{\gamma}_2 x_{i2} +\hat{r}_{i1} = \hat{x}_{i1} + \hat{r}_{i1}
+$$
+
+ここで、$\hat{r}_{i1}$ は、$x_1$ を $x_2$ に対して単回帰したときの OLS 残差を表す。つまり、$\hat{r}_{i1}$ は $x_{i1}$ のうち、$x_{i2}$ と無相関な部分である。
+
+上の式に基づき、$\hat{x}_{i1}$ と $\hat{u_i}$ の関係について以下を得る。
+
+$$
+\sum \hat{x}_{i1} \hat{u_i} = \sum (\hat{x}_{i1} + \hat{r}_{i1})\hat{u}_i = \sum \hat{x}_{i1}\hat{u}_i + \sum \hat{r}_{i1}\hat{u}_i = 0.
+$$
+
+次に、$\sum \hat{x}_{i1}\hat{u}_i$ は以下のように書き換えられる。
+
+$$
+\sum \hat{x}_{i1}\hat{u}_i = \sum (\hat{\gamma}_0 +\hat{\gamma}_2 x_{i2})\hat{u}_i = \hat{\gamma}_0 \underbrace{\sum \hat{u}_i}_{0} + \hat{\gamma2} \underbrace{\sum x_{i2}\hat{u}_i}_{0} = 0
+$$
+
+したがって、$\sum \hat{r}_{i1}\hat{u}_i$ は以下を満たすはずである。
+
+$$
+\begin{aligned}
+\sum \hat{r}_{i1}\hat{u}_i =
+\sum\hat{r_{i1}}(y_i -\hat{\beta}_0 - \hat{\beta}_1 x_{i1} - \hat{\beta}_2 x_{i2})\\
+= \sum \hat{r}_{i1} y_i -\hat{\beta}_0 \underbrace{\sum \hat{r}_{i1}}_{0} - \hat{\beta}_1 \sum \hat{r}_{i1} x_{i1} - \hat{\beta}_2 \underbrace{\sum \hat{r}_{i1} x_{i2}}_{0}\\
+= \sum \hat{r}_{i1} y_i - \hat{\beta}_1 \sum \hat{r}_{i1} x_{i1} = 0
+\end{aligned}
+$$
+
+よって、$\hat{\beta}_1$ は次のように表される。
+
+$$
+\hat{\beta}_1 = \frac{\sum \hat{r}_{i1} y_i}{\sum \hat{r}_{i1} x_{i1}}=\frac{\sum \hat{r}_{i1} y_i}{\sum \underbrace{\hat{r}_{i1}(\hat{x}_{i1}}_{0} + \hat{r}_{i1})}=\frac{\sum \hat{r}_{i1} y_i}{\sum \hat{r}_{i1}^2}
+$$
+
+上記の議論に基づき、$\hat{\beta}_1$ は $x_2$ の影響を取り除いた後の $y$ と $x_1$ の関係を示すと解釈できる。
 
 
 ### 単回帰モデルと重回帰モデルの比較

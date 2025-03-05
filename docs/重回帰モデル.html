@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-03-03" />
+<meta name="date" content="2025-03-05" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -565,7 +565,37 @@ y_i=\beta_0+\beta_1x_{1i}+\beta_2x_{2i}+u
 \Delta\hat{y}_i=\hat{\beta}_1\Delta x_{1i}
 \]</span>
 つまり、重回帰モデルにおける <span class="math inline">\(\hat{\beta}_1\)</span> は、別の説明変数をコントロール（<span class="math inline">\(\small \Delta x_{2i}=0\)</span>）した上で、<span class="math inline">\(\small x_1\)</span> が <span class="math inline">\(\small \hat{y}\)</span> に与える影響（<span class="math inline">\(\small x_1\)</span> が変化した際の <span class="math inline">\(\small \hat{y}\)</span>の変化の程度）を捉えていると解釈できる。また、<span class="math inline">\(\small \hat{\beta}_2\)</span> についても同様に解釈できる。そしてこの特徴は、<em>k</em>個の説明変数を用いたモデルにも同様に適応できる。</p>
-<p>パーシャル効果に関するもう少し詳細に説明すると、重回帰モデルの回帰係数は、説明変数が持つ変動のうち他の説明変数とは無関係な変動だけを抽出し、被説明変数との関係を分析していると理解できる。</p>
+<p>パーシャル効果に関するもう少し詳細に説明すると、重回帰モデルの回帰係数は、説明変数が持つ変動のうち他の説明変数とは無関係な変動だけを抽出し、被説明変数との関係を分析していると解釈できる。この点を理解するために、次の2つの説明変数を含む回帰モデルを考える。</p>
+<p><span class="math display">\[
+y_i = \hat{\beta}_0 + \hat{\beta}_1 x_{i1} +\hat{\beta}_2 x_{i2}+\hat{u}_i = \hat{y_i} + \hat{u}_i
+\]</span></p>
+<p>このとき、変数 <span class="math inline">\(x_{i1}\)</span> と <span class="math inline">\(x_{i2}\)</span> の関係は次のように表される。</p>
+<p><span class="math display">\[
+x_{i1} = \hat{\gamma}_0 + \hat{\gamma}_2 x_{i2} +\hat{r}_{i1} = \hat{x}_{i1} + \hat{r}_{i1}
+\]</span></p>
+<p>ここで、<span class="math inline">\(\hat{r}_{i1}\)</span> は、<span class="math inline">\(x_1\)</span> を <span class="math inline">\(x_2\)</span> に対して単回帰したときの OLS 残差を表す。つまり、<span class="math inline">\(\hat{r}_{i1}\)</span> は <span class="math inline">\(x_{i1}\)</span> のうち、<span class="math inline">\(x_{i2}\)</span> と無相関な部分である。</p>
+<p>上の式に基づき、<span class="math inline">\(\hat{x}_{i1}\)</span> と <span class="math inline">\(\hat{u_i}\)</span> の関係について以下を得る。</p>
+<p><span class="math display">\[
+\sum \hat{x}_{i1} \hat{u_i} = \sum (\hat{x}_{i1} + \hat{r}_{i1})\hat{u}_i = \sum \hat{x}_{i1}\hat{u}_i + \sum \hat{r}_{i1}\hat{u}_i = 0.
+\]</span></p>
+<p>次に、<span class="math inline">\(\sum \hat{x}_{i1}\hat{u}_i\)</span> は以下のように書き換えられる。</p>
+<p><span class="math display">\[
+\sum \hat{x}_{i1}\hat{u}_i = \sum (\hat{\gamma}_0 +\hat{\gamma}_2 x_{i2})\hat{u}_i = \hat{\gamma}_0 \underbrace{\sum \hat{u}_i}_{0} + \hat{\gamma2} \underbrace{\sum x_{i2}\hat{u}_i}_{0} = 0
+\]</span></p>
+<p>したがって、<span class="math inline">\(\sum \hat{r}_{i1}\hat{u}_i\)</span> は以下を満たすはずである。</p>
+<p><span class="math display">\[
+\begin{aligned}
+\sum \hat{r}_{i1}\hat{u}_i =
+\sum\hat{r_{i1}}(y_i -\hat{\beta}_0 - \hat{\beta}_1 x_{i1} - \hat{\beta}_2 x_{i2})\\
+= \sum \hat{r}_{i1} y_i -\hat{\beta}_0 \underbrace{\sum \hat{r}_{i1}}_{0} - \hat{\beta}_1 \sum \hat{r}_{i1} x_{i1} - \hat{\beta}_2 \underbrace{\sum \hat{r}_{i1} x_{i2}}_{0}\\
+= \sum \hat{r}_{i1} y_i - \hat{\beta}_1 \sum \hat{r}_{i1} x_{i1} = 0
+\end{aligned}
+\]</span></p>
+<p>よって、<span class="math inline">\(\hat{\beta}_1\)</span> は次のように表される。</p>
+<p><span class="math display">\[
+\hat{\beta}_1 = \frac{\sum \hat{r}_{i1} y_i}{\sum \hat{r}_{i1} x_{i1}}=\frac{\sum \hat{r}_{i1} y_i}{\sum \underbrace{\hat{r}_{i1}(\hat{x}_{i1}}_{0} + \hat{r}_{i1})}=\frac{\sum \hat{r}_{i1} y_i}{\sum \hat{r}_{i1}^2}
+\]</span></p>
+<p>上記の議論に基づき、<span class="math inline">\(\hat{\beta}_1\)</span> は <span class="math inline">\(x_2\)</span> の影響を取り除いた後の <span class="math inline">\(y\)</span> と <span class="math inline">\(x_1\)</span> の関係を示すと解釈できる。</p>
 </div>
 <div id="単回帰モデルと重回帰モデルの比較" class="section level3 hasAnchor" number="7.5.5">
 <h3><span class="header-section-number">7.5.5</span> 単回帰モデルと重回帰モデルの比較<a href="重回帰モデル.html#単回帰モデルと重回帰モデルの比較" class="anchor-section" aria-label="Anchor link to header"></a></h3>
