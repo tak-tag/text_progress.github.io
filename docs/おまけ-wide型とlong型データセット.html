@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-03-05" />
+<meta name="date" content="2025-03-07" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -292,7 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7.5.4" data-path="重回帰モデル.html"><a href="重回帰モデル.html#回帰係数の解釈"><i class="fa fa-check"></i><b>7.5.4</b> 回帰係数の解釈</a></li>
 <li class="chapter" data-level="7.5.5" data-path="重回帰モデル.html"><a href="重回帰モデル.html#単回帰モデルと重回帰モデルの比較"><i class="fa fa-check"></i><b>7.5.5</b> 単回帰モデルと重回帰モデルの比較</a></li>
 <li class="chapter" data-level="7.5.6" data-path="重回帰モデル.html"><a href="重回帰モデル.html#分析結果の解釈と注意点"><i class="fa fa-check"></i><b>7.5.6</b> 分析結果の解釈と注意点</a></li>
-<li class="chapter" data-level="7.5.7" data-path="重回帰モデル.html"><a href="重回帰モデル.html#重回帰モデルにおける変数選択"><i class="fa fa-check"></i><b>7.5.7</b> 重回帰モデルにおける変数選択</a></li>
+<li class="chapter" data-level="7.5.7" data-path="重回帰モデル.html"><a href="重回帰モデル.html#varsel"><i class="fa fa-check"></i><b>7.5.7</b> 重回帰モデルにおける変数選択</a></li>
 </ul></li>
 <li class="chapter" data-level="7.6" data-path="練習問題-4.html"><a href="練習問題-4.html"><i class="fa fa-check"></i><b>7.6</b> 練習問題</a></li>
 <li class="chapter" data-level="7.7" data-path="参考文献-5.html"><a href="参考文献-5.html"><i class="fa fa-check"></i><b>7.7</b> 参考文献</a></li>
@@ -489,7 +489,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>手元にあるWide型データをLong型に変換したい場合の対応策として、ここでは tidyverseに含まれているtidyrのgather()関数を用いる方法を紹介する。この関数の利用方法を実演するためにManabaにアップされている sales_wide.csv をダウンロードし、プロジェクト内のdataディレクトリに移して欲しい。データを読み込むと、以下のようにデータ構造を確認することができる。</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="おまけ-wide型とlong型データセット.html#cb80-1" tabindex="-1"></a>sales_wide <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/sales_wide.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 4 Columns: 6
-## ── Column specification ────────────────────────────────────────────────────────────────────────────────────────
+## ── Column specification ────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (6): store, sales06, sales07, sales08, sales09, sales10
 ## 
