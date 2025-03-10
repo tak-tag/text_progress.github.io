@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-03-07" />
+<meta name="date" content="2025-03-10" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -547,7 +547,7 @@ F=\frac{(SSR_0-SSR_1)/k}{SSR_1/(n-k-1)}=\frac{SSR_0-SSR_1}{SSR_1}\cdot\frac{n-k-
 </div>
 <div id="回帰係数の解釈" class="section level3 hasAnchor" number="7.5.4">
 <h3><span class="header-section-number">7.5.4</span> 回帰係数の解釈<a href="重回帰モデル.html#回帰係数の解釈" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>ここからは、重回帰分析の係数の解釈について説明する。ここで説明する解釈は「なぜ基本的には重回帰モデルを採用すべきなのか」を理解するために重要な内容である。結論から述べると、重回帰分析における説明変数の係数は、同モデル内の「他の変数の効果をコントロールしたうえで」説明変数が被説明変数へ与える影響を表している。そして重回帰分析のこの特徴が、学術的にも実務的にも重要な含意を与えうる分析手法として機能する。</p>
+<p>ここからは、重回帰分析の係数の解釈について説明する。ここで説明する解釈は「なぜ基本的には重回帰モデルを採用すべきなのか」を理解するために重要な内容である。結論から述べると、重回帰分析における説明変数の係数は、「説明変数が持つ変動のうち他の説明変数とは無関係な変動だけを抽出し、被説明変数との関係を分析している」と解釈できる。この特徴が、同モデル内の「他の変数の影響をコントロールしたうえで」説明変数が被説明変数へ与える影響を捉える方法として、学術的にも実務的にも活用されている。</p>
 <p>重回帰モデルにおける各説明変数の係数は、パーシャル効果として解釈できる。以下では、このパーシャル効果の直感について、Wooldridge（2013）を参考に説明する。まず、以下のような説明変数が二個である重回帰モデルを考える。</p>
 <p><span class="math display">\[
 y_i=\beta_0+\beta_1x_{1i}+\beta_2x_{2i}+u
@@ -565,7 +565,7 @@ y_i=\beta_0+\beta_1x_{1i}+\beta_2x_{2i}+u
 \Delta\hat{y}_i=\hat{\beta}_1\Delta x_{1i}
 \]</span>
 つまり、重回帰モデルにおける <span class="math inline">\(\hat{\beta}_1\)</span> は、別の説明変数をコントロール（<span class="math inline">\(\small \Delta x_{2i}=0\)</span>）した上で、<span class="math inline">\(\small x_1\)</span> が <span class="math inline">\(\small \hat{y}\)</span> に与える影響（<span class="math inline">\(\small x_1\)</span> が変化した際の <span class="math inline">\(\small \hat{y}\)</span>の変化の程度）を捉えていると解釈できる。また、<span class="math inline">\(\small \hat{\beta}_2\)</span> についても同様に解釈できる。そしてこの特徴は、<em>k</em>個の説明変数を用いたモデルにも同様に適応できる。</p>
-<p>パーシャル効果に関するもう少し詳細に説明すると、重回帰モデルの回帰係数は、「説明変数が持つ変動のうち他の説明変数とは無関係な変動だけを抽出し、被説明変数との関係を分析している」と解釈できる。この点を理解するために、次の2つの説明変数を含む回帰モデルを考える。</p>
+<p><span class="math inline">\(x_{2}\)</span> を固定すると上では述べたが、このような分析を行った際の<span class="math inline">\(x_1\)</span> と <span class="math inline">\(\beta_1\)</span> については具体的にどのような変動・効果を捉えているのだろうか。以下では、パーシャル効果についてもう少し詳細に説明することで、係数の解釈についての理解を深める。先ほど重回帰モデルの回帰係数は、「説明変数が持つ変動のうち他の説明変数とは無関係な変動だけを抽出し、被説明変数との関係を分析している」と解釈できると述べた。この点を理解するために、次の2つの説明変数を含む回帰モデルを考える。</p>
 <p><span class="math display">\[
 y_i = \hat{\beta}_0 + \hat{\beta}_1 x_{i1} +\hat{\beta}_2 x_{i2}+\hat{u}_i = \hat{y_i} + \hat{u}_i
 \]</span></p>
@@ -573,7 +573,7 @@ y_i = \hat{\beta}_0 + \hat{\beta}_1 x_{i1} +\hat{\beta}_2 x_{i2}+\hat{u}_i = \ha
 <p><span class="math display">\[
 x_{i1} = \hat{\gamma}_0 + \hat{\gamma}_2 x_{i2} +\hat{r}_{i1} = \hat{x}_{i1} + \hat{r}_{i1}
 \]</span></p>
-<p>ここで、<span class="math inline">\(\hat{r}_{i1}\)</span> は、<span class="math inline">\(x_1\)</span> を <span class="math inline">\(x_2\)</span> に対して単回帰したときの OLS 残差を表す。つまり、<span class="math inline">\(\hat{r}_{i1}\)</span> は <span class="math inline">\(x_{i1}\)</span> のうち、<span class="math inline">\(x_{i2}\)</span> と無相関な部分である。</p>
+<p>ここで、<span class="math inline">\(\hat{r}_{i1}\)</span> は、<span class="math inline">\(x_1\)</span> を <span class="math inline">\(x_2\)</span> に対して単回帰したときの OLS 残差を表す。つまり、<span class="math inline">\(\hat{r}_{i1}\)</span> は <span class="math inline">\(x_{i1}\)</span> のうち、<span class="math inline">\(x_{i2}\)</span> と無相関な部分である。これらを総合すると<span class="math inline">\(x_{1}\)</span> の変動は、別の説明変数 <span class="math inline">\(x_{2}\)</span> との関係で説明できる部分（変動：<span class="math inline">\(\hat{x}_{1}\)</span>）と、<span class="math inline">\(x_{2}\)</span> とは無関係な部分（<span class="math inline">\(\hat{r}_{1}\)</span>）とに分けて捉えることができる。</p>
 <p>上の式に基づき、<span class="math inline">\(\hat{x}_{i1}\)</span> と <span class="math inline">\(\hat{u_i}\)</span> の関係について以下を得る。</p>
 <p><span class="math display">\[
 \sum \hat{x}_{i1} \hat{u_i} = \sum (\hat{x}_{i1} + \hat{r}_{i1})\hat{u}_i = \sum \hat{x}_{i1}\hat{u}_i + \sum \hat{r}_{i1}\hat{u}_i = 0.
