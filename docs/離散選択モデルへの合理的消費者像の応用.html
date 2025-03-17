@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-03-15" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -520,7 +520,7 @@ P(y_i=A|x_{iA},x_{iB})&amp;=P(e_{iB}-e_{iA}&lt;(\beta_{0A}-\beta_{0B})+\beta_1(x
 \]</span>
 ただし、<span class="math inline">\(\tilde{\beta}_0\)</span>は、<span class="math inline">\(\beta_{0A}-\beta_{0B}\)</span> であり、選択肢間の定数項の差を表している。そのため、このような定式化によって分析されるモデルの定数項は、「選択肢固有の定数項の差」として推定される。以下では、前節でも用いた <code>choice_df</code> を用いて上記の消費者の離散選択モデルを推定する。具体的には、製品1と2の価格差（<code>p_ratio</code>=p1-p2）と製品1のクーポン広告受取り有無（<code>a1</code>）と製品2のクーポン広告（<code>a2</code>）を用いて以下のようなモデルを分析する。</p>
 <p><span class="math display">\[
-U_{1i}=\tilde{\beta}_{0}+\beta_1(p_1-p_2)+\beta_2a_1-\beta_3a_2+e_{1i}
+U_{1i}=\tilde{\beta}_{0}-\beta_1(p_1-p_2)+\beta_2a_1-\beta_3a_2+e_{1i}
 \]</span>
 ただし、R上のコードでは、<span class="math inline">\(a_2\)</span> の係数について、負に推定されることを想定しつつ、<code>+</code> 記号を使って定式化する。</p>
 <div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb257-1"><a href="離散選択モデルへの合理的消費者像の応用.html#cb257-1" tabindex="-1"></a><span class="co">#価格差変数作成</span></span>

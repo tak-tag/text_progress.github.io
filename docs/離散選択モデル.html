@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-03-15" />
+<meta name="date" content="2025-03-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -579,7 +579,7 @@ P(y_i=1|x_{1i},...,x_{ki})=\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})=\int^{\
 <span class="math display">\[
 P(y_i=0|x_{1i},...,x_{ki})=1-P(y_i=1|x_{1i},...,x_{ki})=1-\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})
 \]</span>
-このように設定した選択の有無それぞれに対する分布関数をベルヌーイ確率関数<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>に代入すると、<span class="math inline">\(y_i=1\)</span> の場合と <span class="math inline">\(y_i=0\)</span> の場合の両方を捉えた、以下のような確率密度関数を考えることができる。</p>
+これにより、選択肢を選ぶことへの条件付き確率と選ばないことへの条件付き確率を、回帰モデルと標準正規分布の累積分布関数との関係から定義する事ができた。これを <span class="math inline">\(y_i=1\)</span> か <span class="math inline">\(y_i=0\)</span> という値を取る事象に対応させるため、ベルヌーイ確率関数<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>に代入すると、以下のような確率密度関数を考えることができる。</p>
 <p><span class="math display" id="eq:probit">\[\begin{equation}
 P(y_i|x_{1i},...,x_{ki})=\\
 \Big(\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki}) \Big)^{y_i}\times \Big(1-\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki}) \Big)^{1-y_i} \tag{9.1}
