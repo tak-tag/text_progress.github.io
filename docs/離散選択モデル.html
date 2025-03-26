@@ -4,25 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>9.4 離散選択モデル | マーケティングリサーチの概要・理屈・実践</title>
-  <meta name="description" content="9.4 離散選択モデル | マーケティングリサーチの概要・理屈・実践" />
+  <title>9.4 離散選択モデル | マーケティングリサーチの進め方</title>
+  <meta name="description" content="9.4 離散選択モデル | マーケティングリサーチの進め方" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="9.4 離散選択モデル | マーケティングリサーチの概要・理屈・実践" />
+  <meta property="og:title" content="9.4 離散選択モデル | マーケティングリサーチの進め方" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="9.4 離散選択モデル | マーケティングリサーチの概要・理屈・実践" />
+  <meta name="twitter:title" content="9.4 離散選択モデル | マーケティングリサーチの進め方" />
   
   
   
 
 
 
-<meta name="date" content="2025-03-17" />
+<meta name="date" content="2025-03-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -472,7 +472,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチの概要・理屈・実践</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチの進め方</a>
           </h1>
         </div>
 
@@ -571,7 +571,7 @@ Figure 9.2: 非線形での近似イメージ
 <!-- # プロットを表示 -->
 <!-- print(combined_plot) -->
 <!-- ``` -->
-<p>標準正規分布の累積分布関数を<span class="math inline">\(\Phi\)</span>（ファイ）で示すと、反応確率は以下のように表すことができる<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a>。</p>
+<p>標準正規分布の累積分布関数を<span class="math inline">\(\Phi\)</span>（ファイ）で示すと、反応確率は以下のように表すことができる<a href="#fn29" class="footnote-ref" id="fnref29"><sup>29</sup></a>。</p>
 <p><span class="math display">\[
 P(y_i=1|x_{1i},...,x_{ki})=\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})=\int^{\beta_0+\sum^k_{j =1}\beta_jx_{ji}}_{-\infty}\phi(z)~dz
 \]</span></p>
@@ -579,7 +579,7 @@ P(y_i=1|x_{1i},...,x_{ki})=\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})=\int^{\
 <span class="math display">\[
 P(y_i=0|x_{1i},...,x_{ki})=1-P(y_i=1|x_{1i},...,x_{ki})=1-\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})
 \]</span>
-これにより、選択肢を選ぶことへの条件付き確率と選ばないことへの条件付き確率を、回帰モデルと標準正規分布の累積分布関数との関係から定義する事ができた。これを <span class="math inline">\(y_i=1\)</span> か <span class="math inline">\(y_i=0\)</span> という値を取る事象に対応させるため、ベルヌーイ確率関数<a href="#fn31" class="footnote-ref" id="fnref31"><sup>31</sup></a>に代入すると、以下のような確率密度関数を考えることができる。</p>
+これにより、選択肢を選ぶことへの条件付き確率と選ばないことへの条件付き確率を、回帰モデルと標準正規分布の累積分布関数との関係から定義する事ができた。これを <span class="math inline">\(y_i=1\)</span> か <span class="math inline">\(y_i=0\)</span> という値を取る事象に対応させるため、ベルヌーイ確率関数<a href="#fn30" class="footnote-ref" id="fnref30"><sup>30</sup></a>に代入すると、以下のような確率密度関数を考えることができる。</p>
 <p><span class="math display" id="eq:probit">\[\begin{equation}
 P(y_i|x_{1i},...,x_{ki})=\\
 \Big(\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki}) \Big)^{y_i}\times \Big(1-\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki}) \Big)^{1-y_i} \tag{9.1}
@@ -634,9 +634,9 @@ P(y_i=1|x_{1i},...,x_{ki})=\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})
 </div>
 <div class="footnotes">
 <hr />
-<ol start="30">
-<li id="fn30"><p>ただし、<span class="math inline">\(\Phi&#39;(z)=\phi(z)=\frac{1}{\sqrt{2\pi}}\exp(\frac{-z^2}{2})\)</span>とする。<a href="離散選択モデル.html#fnref30" class="footnote-back">↩︎</a></p></li>
-<li id="fn31"><p><span class="math inline">\(f(y_i)=P_i^{y_i}\times\big(1-P_i)^{1-y_i}\)</span><a href="離散選択モデル.html#fnref31" class="footnote-back">↩︎</a></p></li>
+<ol start="29">
+<li id="fn29"><p>ただし、<span class="math inline">\(\Phi&#39;(z)=\phi(z)=\frac{1}{\sqrt{2\pi}}\exp(\frac{-z^2}{2})\)</span>とする。<a href="離散選択モデル.html#fnref29" class="footnote-back">↩︎</a></p></li>
+<li id="fn30"><p><span class="math inline">\(f(y_i)=P_i^{y_i}\times\big(1-P_i)^{1-y_i}\)</span><a href="離散選択モデル.html#fnref30" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

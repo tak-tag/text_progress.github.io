@@ -4,25 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>8.5 対数線形 | マーケティングリサーチの概要・理屈・実践</title>
-  <meta name="description" content="8.5 対数線形 | マーケティングリサーチの概要・理屈・実践" />
+  <title>8.5 対数線形 | マーケティングリサーチの進め方</title>
+  <meta name="description" content="8.5 対数線形 | マーケティングリサーチの進め方" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="8.5 対数線形 | マーケティングリサーチの概要・理屈・実践" />
+  <meta property="og:title" content="8.5 対数線形 | マーケティングリサーチの進め方" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="8.5 対数線形 | マーケティングリサーチの概要・理屈・実践" />
+  <meta name="twitter:title" content="8.5 対数線形 | マーケティングリサーチの進め方" />
   
   
   
 
 
 
-<meta name="date" content="2025-03-17" />
+<meta name="date" content="2025-03-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -472,7 +472,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチの概要・理屈・実践</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチの進め方</a>
           </h1>
         </div>
 
@@ -497,7 +497,7 @@ Y=AL^\alpha K^\beta
 \]</span></p>
 <div id="対数線形モデルの分析実行" class="section level3 hasAnchor" number="8.5.1">
 <h3><span class="header-section-number">8.5.1</span> 対数線形モデルの分析実行<a href="対数線形.html#対数線形モデルの分析実行" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>このような回帰式をR上で構築することは難しくない。<code>lm()</code> 関数内のモデル定式化において、<code>log()</code> を用いれば良い。例えば、上の式を firmdata19 に当てはめて、<em>Y</em>を売上、<em>L</em>を人件費、<em>K</em> を有形固定資産とおいて、以下のようにモデルを推定してみる<a href="#fn22" class="footnote-ref" id="fnref22"><sup>22</sup></a>。</p>
+<p>このような回帰式をR上で構築することは難しくない。<code>lm()</code> 関数内のモデル定式化において、<code>log()</code> を用いれば良い。例えば、上の式を firmdata19 に当てはめて、<em>Y</em>を売上、<em>L</em>を人件費、<em>K</em> を有形固定資産とおいて、以下のようにモデルを推定してみる<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a>。</p>
 <div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="対数線形.html#cb222-1" tabindex="-1"></a>fit_prod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(sales) <span class="sc">~</span> <span class="fu">log</span>(labor_cost) <span class="sc">+</span> <span class="fu">log</span>(ppent), <span class="at">data =</span> firmdata19)</span>
 <span id="cb222-2"><a href="対数線形.html#cb222-2" tabindex="-1"></a></span>
 <span id="cb222-3"><a href="対数線形.html#cb222-3" tabindex="-1"></a><span class="fu">summary</span>(fit_prod)</span></code></pre></div>
@@ -623,8 +623,8 @@ Y=AL^\alpha K^\beta
 </div>
 <div class="footnotes">
 <hr />
-<ol start="22">
-<li id="fn22"><p>なお、実際に研究において生産関数を推定する場合には、変数の特定化に関して、先行研究に基づきより慎重に検討する必要があるため注意して欲しい<a href="対数線形.html#fnref22" class="footnote-back">↩︎</a></p></li>
+<ol start="21">
+<li id="fn21"><p>なお、実際に研究において生産関数を推定する場合には、変数の特定化に関して、先行研究に基づきより慎重に検討する必要があるため注意して欲しい<a href="対数線形.html#fnref21" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

@@ -4,25 +4,25 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>6.7 区間推定 | マーケティングリサーチの概要・理屈・実践</title>
-  <meta name="description" content="6.7 区間推定 | マーケティングリサーチの概要・理屈・実践" />
+  <title>6.7 区間推定 | マーケティングリサーチの進め方</title>
+  <meta name="description" content="6.7 区間推定 | マーケティングリサーチの進め方" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="6.7 区間推定 | マーケティングリサーチの概要・理屈・実践" />
+  <meta property="og:title" content="6.7 区間推定 | マーケティングリサーチの進め方" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="6.7 区間推定 | マーケティングリサーチの概要・理屈・実践" />
+  <meta name="twitter:title" content="6.7 区間推定 | マーケティングリサーチの進め方" />
   
   
   
 
 
 
-<meta name="date" content="2025-03-17" />
+<meta name="date" content="2025-03-26" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -472,7 +472,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチの概要・理屈・実践</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチの進め方</a>
           </h1>
         </div>
 
@@ -484,7 +484,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">6.7</span> 区間推定<a href="区間推定.html#区間推定" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>点推定の節で示した通り、推定値と未知パラメータの間には、ずれ（誤差）がある。標本平均の様に好ましい性質（不偏性や一致性）を持つ推定量であっても、計算の結果示された一つの推定値がどの程度信頼できるものなのかはわからない。そこで区間推定という、未知パラメータ（母平均等）を一定の確率（信頼水準）で含む区間を計算する方法を用いて、統計的な誤差を加味した母数への検討を試みる。区間推定においては、「信頼水準zz%で、xx以上、yy以下という区間は真の母数を含む」という区間[xx, yy]を調べる。このような区間は信頼区間（confidence interval）と呼ばれ、多くの統計分析において用いられている。
 では、ここで示された区間がどのように計算され、どのようなことを意味するのだろうか。以下では、一度電球の例から離れ、もう少し一般的な形で信頼区間の導出や解釈を説明する。</p>
-<p>はじめに、標準正規分布に基づくある区間の確率の求め方を説明する。 <span class="math inline">\(Z_1,Z_2,...,Z_n\)</span> は、N(0, 1) （標準正規分布）に従う母集団からの無作為標本とする。このとき、標準正規分布がある区間 [<span class="math inline">\(-\infty,~z_\alpha\)</span>] をとる確率は、以下の式および図のように示すことができる<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>。なお、<span class="math inline">\(\small z_\alpha\)</span> は、確率<span class="math inline">\(\small \alpha\)</span> に対応する標準正規分布上の上側確率 <span class="math inline">\(\small \alpha\)</span> 点とする。このとき、この分布における <span class="math inline">\(\small z_\alpha\)</span> 以下（以上）の範囲を取る確率は 1 <span class="math inline">\(\small -\alpha\)</span>（<span class="math inline">\(\small \alpha\)</span>） である。</p>
+<p>はじめに、標準正規分布に基づくある区間の確率の求め方を説明する。 <span class="math inline">\(Z_1,Z_2,...,Z_n\)</span> は、N(0, 1) （標準正規分布）に従う母集団からの無作為標本とする。このとき、標準正規分布がある区間 [<span class="math inline">\(-\infty,~z_\alpha\)</span>] をとる確率は、以下の式および図のように示すことができる<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>。なお、<span class="math inline">\(\small z_\alpha\)</span> は、確率<span class="math inline">\(\small \alpha\)</span> に対応する標準正規分布上の上側確率 <span class="math inline">\(\small \alpha\)</span> 点とする。このとき、この分布における <span class="math inline">\(\small z_\alpha\)</span> 以下（以上）の範囲を取る確率は 1 <span class="math inline">\(\small -\alpha\)</span>（<span class="math inline">\(\small \alpha\)</span>） である。</p>
 <p><span class="math display">\[
 P(Z\leq z_\alpha) = \int^{z_\alpha}_{-\infty}~f(z)~dz =\int^{z_\alpha}_{-\infty}~\frac{1}{\sqrt{2\pi}}\exp\left(-\frac{z^2}{2}\right)~ dz = 1-\alpha
 \]</span></p>
@@ -625,8 +625,8 @@ P\left(\bar{X}-t_{\alpha/2}(n-1)\cdot \frac{s}{\sqrt{n}}\leq \mu \leq \bar{X}+t_
 </div>
 <div class="footnotes">
 <hr />
-<ol start="15">
-<li id="fn15"><p>ただし、標準正規分布の確率密度関数 <span class="math inline">\(\small f(z)\)</span> は、<span class="math inline">\(\small 1/\sqrt{2\pi}\exp\left(-z^2/2\right)\)</span> だと知られている。<a href="区間推定.html#fnref15" class="footnote-back">↩︎</a></p></li>
+<ol start="14">
+<li id="fn14"><p>ただし、標準正規分布の確率密度関数 <span class="math inline">\(\small f(z)\)</span> は、<span class="math inline">\(\small 1/\sqrt{2\pi}\exp\left(-z^2/2\right)\)</span> だと知られている。<a href="区間推定.html#fnref14" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
