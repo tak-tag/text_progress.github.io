@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 16 コラム2-2（ランダム化比較試験とカゴ落ちメール） | マーケティングリサーチの進め方</title>
-  <meta name="description" content="Chapter 16 コラム2-2（ランダム化比較試験とカゴ落ちメール） | マーケティングリサーチの進め方" />
+  <title>2.2 プロジェクト機能について | マーケティングリサーチの進め方</title>
+  <meta name="description" content="2.2 プロジェクト機能について | マーケティングリサーチの進め方" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 16 コラム2-2（ランダム化比較試験とカゴ落ちメール） | マーケティングリサーチの進め方" />
+  <meta property="og:title" content="2.2 プロジェクト機能について | マーケティングリサーチの進め方" />
   <meta property="og:type" content="book" />
   
   
   <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 16 コラム2-2（ランダム化比較試験とカゴ落ちメール） | マーケティングリサーチの進め方" />
+  <meta name="twitter:title" content="2.2 プロジェクト機能について | マーケティングリサーチの進め方" />
   
   
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="参考文献-13.html"/>
-<link rel="next" href="ランダム化比較試験概要.html"/>
+<link rel="prev" href="desktop.html"/>
+<link rel="next" href="rの基本操作.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -482,16 +482,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="causation2" class="section level1 hasAnchor" number="16">
-<h1><span class="header-section-number">Chapter 16</span> コラム2-2（ランダム化比較試験とカゴ落ちメール）<a href="causation2.html#causation2" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="プロジェクト機能について" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> プロジェクト機能について<a href="プロジェクト機能について.html#プロジェクト機能について" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R および R studio のインストールが完了したら、アプリケーションを起動する。
+アプリケーションを起動すると、デフォルトでは以下のような R Studio環境画面が表示される。</p>
+<div class="float">
+<img src="Intro/Rstudio.png" style="width:70.0%" alt="新しいRstudio 画面" />
+<div class="figcaption">新しいRstudio 画面</div>
+</div>
+<p>Rstudioは、上記の図のような画面構成をしている。Rstudioの画面を構成する主なウィンドウはペインと呼ばれ、(1) RスクリプトでRコードの入力・編集に用いる”Source”、(2) Rの命令を直接入力し結果も表示される”Console”がなどが主な要素としてある。また、その他利用しているデータ情報、パッケージ、履歴など様々なタブが存在する。Rstudioの初回起動時にはSourceのペインは収納されているため、 Rスクリプトファイルを作成する必要がある。Rstudioは基本的に4分割画面で表示され、各ペインの配置については、Tools <span class="math inline">\(\rightarrow\)</span> Global option <span class="math inline">\(\rightarrow\)</span> Pane Layoutより変更が可能になる。Rstudioを操作する上で、基本的に重要となる情報は、(1) Source、(2) Console、(3) データやプロットに関する環境情報の3点であるので、以下のような配置がおすすめである。</p>
+<ul>
+<li>左上 or 下: Source</li>
+<li>左下 or 上: History (ただし、さほど重要ではないので畳んだ状態にしておく)</li>
+<li>右上 or 下: Console</li>
+<li>右下 or 上: 複数タブをまとめ</li>
+</ul>
+<p>配置の目的はあくまで、必要な情報を同一画面上に表示することであるため、自身のやりやすい配置を考えてアレンジしてほしい。</p>
+<p>デスクトップ版で R studio を利用する際には、「プロジェクト」機能を使うことを勧める。プロジェクトは、互いに関連し合ったファイルの集まりを指す。Rを通じた分析では、たくさんのファイルを扱うことになる。例えば、複数のRスクリプトやデータセット、加工したデータセットの保存、分析結果、出力された図表などがある。これらのファイルを手作業で一括管理することは困難である。むしろそのような管理作業に認知的な負担を費やしたくないというのが分析者の本音である。プロジェクト機能を使うことにより、作業ディレクトリとファイルの保存先をひとまとまりに指定できるため、ファイル管理の手間がなくなる。</p>
+<p>新しいプロジェクトを作成するシンプルな方法が、Fileから作成する方法である。具体的には、File -&gt; New Project -&gt; New Directory -&gt; Create New Project -&gt;Directory nameの指定 -&gt; プロジェクトの設置場所（ディレクト）の指定、という手順で作成する。</p>
+<div class="float">
+<img src="Intro/project.png" style="width:70.0%" alt="プロジェクト作成手順1" />
+<div class="figcaption">プロジェクト作成手順1</div>
+</div>
+<div class="float">
+<img src="Intro/project2.png" style="width:70.0%" alt="プロジェクト作成手順2" />
+<div class="figcaption">プロジェクト作成手順2</div>
+</div>
+<p>R をデスクトップ上で利用する際には、基本的には自身のPC内にある（もしくはディレクトリにアクセス可能である）データの所在地（ディレクトリ）を特定することでデータの操作や分析を行う。これに対してプロジェクト機能を利用することでそのプロジェクトを実行している際に参照するワーキングディレクトリを固定することが可能になる。この機能によってR studioを通じたデータ処理や分析作業が容易になり、不要なトラブルを避けることが可能になるため、デスクトップでR studioを使う場合には可能な限りプロジェクト機能を利用してほしい。</p>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="参考文献-13.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="ランダム化比較試験概要.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="desktop.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="rの基本操作.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -522,7 +547,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/15-column02a.Rmd",
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-Rusage.Rmd",
 "text": "Edit"
 },
 "history": {
