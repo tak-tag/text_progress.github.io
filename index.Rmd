@@ -1,6 +1,6 @@
 --- 
 title: "マーケティングリサーチの進め方"
-subtitle: "研究手法の概要・理屈・実践"
+subtitle: "研究手法の理屈と実践"
 author: 
   - name: "田頭拓己"
     affiliation: "神戸大学大学院経営学研究科"
