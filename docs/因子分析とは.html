@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>12.2 因子分析とは | マーケティングリサーチの進め方</title>
+  <meta name="description" content="12.2 因子分析とは | マーケティングリサーチの進め方" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="12.2 因子分析とは | マーケティングリサーチの進め方" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="12.2 因子分析とは | マーケティングリサーチの進め方" />
+  
+  
+  
+
+
+
+<meta name="date" content="2025-04-17" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="本章の概要-9.html"/>
+<link rel="next" href="因子モデル.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Marketing Research Lecture Note</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> はじめに（本書について）</a></li>
+<li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="desktop.html"><a href="desktop.html"><i class="fa fa-check"></i><b>2.1</b> R studio デスクトップ版の利用</a></li>
+<li class="chapter" data-level="2.2" data-path="プロジェクト機能について.html"><a href="プロジェクト機能について.html"><i class="fa fa-check"></i><b>2.2</b> プロジェクト機能について</a></li>
+<li class="chapter" data-level="2.3" data-path="rの基本操作.html"><a href="rの基本操作.html"><i class="fa fa-check"></i><b>2.3</b> Rの基本操作</a></li>
+<li class="chapter" data-level="2.4" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html"><i class="fa fa-check"></i><b>2.4</b> R スクリプトのすゝめ</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="r-スクリプトのすゝめ.html"><a href="r-スクリプトのすゝめ.html#rスクリプトを書く"><i class="fa fa-check"></i><b>2.4.1</b> Rスクリプトを書く</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="本章のまとめ.html"><a href="本章のまとめ.html"><i class="fa fa-check"></i><b>2.5</b> 本章のまとめ</a></li>
+<li class="chapter" data-level="2.6" data-path="コラムposit-cloudを使ってみる.html"><a href="コラムposit-cloudを使ってみる.html"><i class="fa fa-check"></i><b>2.6</b> コラム：Posit cloudを使ってみる</a></li>
+<li class="chapter" data-level="2.7" data-path="参考文献.html"><a href="参考文献.html"><i class="fa fa-check"></i><b>2.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="design.html"><a href="design.html"><i class="fa fa-check"></i><b>3</b> リサーチデザインと問いの設定</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="本章の概要.html"><a href="本章の概要.html"><i class="fa fa-check"></i><b>3.1</b> 本章の概要</a></li>
+<li class="chapter" data-level="3.2" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html"><i class="fa fa-check"></i><b>3.2</b> マーケティング実務とリサーチ</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#実務とリサーチの異なる視点"><i class="fa fa-check"></i><b>3.2.1</b> 実務とリサーチの異なる視点</a></li>
+<li class="chapter" data-level="3.2.2" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#マーケティングリサーチと実務的含意"><i class="fa fa-check"></i><b>3.2.2</b> マーケティングリサーチと実務的含意</a></li>
+<li class="chapter" data-level="3.2.3" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#非計画購買に関する研究紹介"><i class="fa fa-check"></i><b>3.2.3</b> 非計画購買に関する研究紹介</a></li>
+<li class="chapter" data-level="3.2.4" data-path="マーケティング実務とリサーチ.html"><a href="マーケティング実務とリサーチ.html#マネジメントとリサーチの分離"><i class="fa fa-check"></i><b>3.2.4</b> マネジメントとリサーチの分離</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="リサーチデザインとアプローチの類型.html"><a href="リサーチデザインとアプローチの類型.html"><i class="fa fa-check"></i><b>3.3</b> リサーチデザインとアプローチの類型</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="リサーチデザインとアプローチの類型.html"><a href="リサーチデザインとアプローチの類型.html#異なる研究アプローチ理論重視と観察重視アプローチ"><i class="fa fa-check"></i><b>3.3.1</b> 異なる研究アプローチ（理論重視と観察重視アプローチ）</a></li>
+<li class="chapter" data-level="3.3.2" data-path="リサーチデザインとアプローチの類型.html"><a href="リサーチデザインとアプローチの類型.html#理論重視研究と論文の構成"><i class="fa fa-check"></i><b>3.3.2</b> 理論重視研究と論文の構成</a></li>
+<li class="chapter" data-level="3.3.3" data-path="リサーチデザインとアプローチの類型.html"><a href="リサーチデザインとアプローチの類型.html#企業リサーチにおけるレポート"><i class="fa fa-check"></i><b>3.3.3</b> 企業リサーチにおけるレポート</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>3.4</b> 研究課題（問い）の設定</a></li>
+<li class="chapter" data-level="3.5" data-path="問題と分析をつなげる仮説の提示.html"><a href="問題と分析をつなげる仮説の提示.html"><i class="fa fa-check"></i><b>3.5</b> 問題と分析をつなげる仮説の提示</a></li>
+<li class="chapter" data-level="3.6" data-path="philosphy.html"><a href="philosphy.html"><i class="fa fa-check"></i><b>3.6</b> 学術的研究のための留意点</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="philosphy.html"><a href="philosphy.html#マーケティング研究と科学哲学"><i class="fa fa-check"></i><b>3.6.1</b> マーケティング研究と科学哲学</a></li>
+<li class="chapter" data-level="3.6.2" data-path="philosphy.html"><a href="philosphy.html#elaboration"><i class="fa fa-check"></i><b>3.6.2</b> 研究における理論の利用と精緻化</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="研究課題と仮説の設定例.html"><a href="研究課題と仮説の設定例.html"><i class="fa fa-check"></i><b>3.7</b> 研究課題と仮説の設定例</a></li>
+<li class="chapter" data-level="3.8" data-path="練習問題.html"><a href="練習問題.html"><i class="fa fa-check"></i><b>3.8</b> 練習問題</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="練習問題.html"><a href="練習問題.html#研究課題の導出"><i class="fa fa-check"></i><b>3.8.1</b> 研究課題の導出</a></li>
+<li class="chapter" data-level="3.8.2" data-path="練習問題.html"><a href="練習問題.html#仮説の導出"><i class="fa fa-check"></i><b>3.8.2</b> 仮説の導出</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="参考文献-1.html"><a href="参考文献-1.html"><i class="fa fa-check"></i><b>3.9</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
+<li class="chapter" data-level="4.3.2" data-path="sampling.html"><a href="sampling.html#サンプルサイズの決定"><i class="fa fa-check"></i><b>4.3.2</b> サンプルサイズの決定</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="尺度の種類と質問項目.html"><a href="尺度の種類と質問項目.html"><i class="fa fa-check"></i><b>4.4</b> 尺度の種類と質問項目</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="尺度の種類と質問項目.html"><a href="尺度の種類と質問項目.html#measurement"><i class="fa fa-check"></i><b>4.4.1</b> 心理尺度</a></li>
+<li class="chapter" data-level="4.4.2" data-path="尺度の種類と質問項目.html"><a href="尺度の種類と質問項目.html#質問項目と解答欄"><i class="fa fa-check"></i><b>4.4.2</b> 質問項目と解答欄</a></li>
+<li class="chapter" data-level="4.4.3" data-path="尺度の種類と質問項目.html"><a href="尺度の種類と質問項目.html#マーケティングと心理尺度"><i class="fa fa-check"></i><b>4.4.3</b> マーケティングと心理尺度</a></li>
+<li class="chapter" data-level="4.4.4" data-path="尺度の種類と質問項目.html"><a href="尺度の種類と質問項目.html#信頼性と妥当性"><i class="fa fa-check"></i><b>4.4.4</b> 信頼性と妥当性</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="実践的な注意点.html"><a href="実践的な注意点.html"><i class="fa fa-check"></i><b>4.5</b> 実践的な注意点</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="実践的な注意点.html"><a href="実践的な注意点.html#wording"><i class="fa fa-check"></i><b>4.5.1</b> 質問におけるワーディング</a></li>
+<li class="chapter" data-level="4.5.2" data-path="実践的な注意点.html"><a href="実践的な注意点.html#surveystructure"><i class="fa fa-check"></i><b>4.5.2</b> 質問票の構成</a></li>
+<li class="chapter" data-level="4.5.3" data-path="実践的な注意点.html"><a href="実践的な注意点.html#調査回答の質向上にむけた工夫"><i class="fa fa-check"></i><b>4.5.3</b> 調査回答の質向上にむけた工夫</a></li>
+<li class="chapter" data-level="4.5.4" data-path="実践的な注意点.html"><a href="実践的な注意点.html#変数間の関係を捉えるための質問紙調査設計"><i class="fa fa-check"></i><b>4.5.4</b> 変数間の関係を捉えるための質問紙調査設計</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="ethicality.html"><a href="ethicality.html"><i class="fa fa-check"></i><b>4.6</b> 研究倫理について</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="ethicality.html"><a href="ethicality.html#質問紙調査ととインフォームドコンセント"><i class="fa fa-check"></i><b>4.6.1</b> 質問紙調査ととインフォームド・コンセント</a></li>
+<li class="chapter" data-level="4.6.2" data-path="ethicality.html"><a href="ethicality.html#研究倫理と事前登録"><i class="fa fa-check"></i><b>4.6.2</b> 研究倫理と事前登録</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="練習問題-1.html"><a href="練習問題-1.html"><i class="fa fa-check"></i><b>4.7</b> 練習問題</a></li>
+<li class="chapter" data-level="4.8" data-path="参考文献-2.html"><a href="参考文献-2.html"><i class="fa fa-check"></i><b>4.8</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="handling.html"><a href="handling.html"><i class="fa fa-check"></i><b>5</b> データ整理と要約・可視化</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="本章の概要-2.html"><a href="本章の概要-2.html"><i class="fa fa-check"></i><b>5.1</b> 本章の概要</a></li>
+<li class="chapter" data-level="5.2" data-path="データの読み込み.html"><a href="データの読み込み.html"><i class="fa fa-check"></i><b>5.2</b> データの読み込み</a></li>
+<li class="chapter" data-level="5.3" data-path="データの整形.html"><a href="データの整形.html"><i class="fa fa-check"></i><b>5.3</b> データの整形</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="データの整形.html"><a href="データの整形.html#tidyverse-の活用"><i class="fa fa-check"></i><b>5.3.1</b> tidyverse の活用</a></li>
+<li class="chapter" data-level="5.3.2" data-path="データの整形.html"><a href="データの整形.html#企業データの処理"><i class="fa fa-check"></i><b>5.3.2</b> 企業データの処理</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="データの要約と可視化.html"><a href="データの要約と可視化.html"><i class="fa fa-check"></i><b>5.4</b> データの要約と可視化</a></li>
+<li class="chapter" data-level="5.5" data-path="記述統計.html"><a href="記述統計.html"><i class="fa fa-check"></i><b>5.5</b> 記述統計</a></li>
+<li class="chapter" data-level="5.6" data-path="カテゴリ変数の要約.html"><a href="カテゴリ変数の要約.html"><i class="fa fa-check"></i><b>5.6</b> カテゴリ変数の要約</a></li>
+<li class="chapter" data-level="5.7" data-path="データの可視化.html"><a href="データの可視化.html"><i class="fa fa-check"></i><b>5.7</b> データの可視化</a></li>
+<li class="chapter" data-level="5.8" data-path="二変数間の関係の要約.html"><a href="二変数間の関係の要約.html"><i class="fa fa-check"></i><b>5.8</b> 二変数間の関係の要約</a></li>
+<li class="chapter" data-level="5.9" data-path="statex.html"><a href="statex.html"><i class="fa fa-check"></i><b>5.9</b> 練習問題</a></li>
+<li class="chapter" data-level="5.10" data-path="参考文献-3.html"><a href="参考文献-3.html"><i class="fa fa-check"></i><b>5.10</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="test.html"><a href="test.html"><i class="fa fa-check"></i><b>6</b> 基礎統計学復習</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="本章の概要-3.html"><a href="本章の概要-3.html"><i class="fa fa-check"></i><b>6.1</b> 本章の概要</a></li>
+<li class="chapter" data-level="6.2" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html"><i class="fa fa-check"></i><b>6.2</b> 確率モデル、期待値と分散</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html#確率と離散確率変数"><i class="fa fa-check"></i><b>6.2.1</b> 確率と離散確率変数</a></li>
+<li class="chapter" data-level="6.2.2" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html#連続確率変数"><i class="fa fa-check"></i><b>6.2.2</b> 連続確率変数</a></li>
+<li class="chapter" data-level="6.2.3" data-path="確率モデル期待値と分散.html"><a href="確率モデル期待値と分散.html#期待値"><i class="fa fa-check"></i><b>6.2.3</b> 期待値</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="統計的推測.html"><a href="統計的推測.html"><i class="fa fa-check"></i><b>6.3</b> 統計的推測</a></li>
+<li class="chapter" data-level="6.4" data-path="pestimate.html"><a href="pestimate.html"><i class="fa fa-check"></i><b>6.4</b> 点推定</a></li>
+<li class="chapter" data-level="6.5" data-path="推定量もまた確率変数.html"><a href="推定量もまた確率変数.html"><i class="fa fa-check"></i><b>6.5</b> 推定量もまた確率変数</a></li>
+<li class="chapter" data-level="6.6" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html"><i class="fa fa-check"></i><b>6.6</b> 補足（いくつかの確率分布の関係性）</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#正規分布"><i class="fa fa-check"></i><b>6.6.1</b> 正規分布</a></li>
+<li class="chapter" data-level="6.6.2" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#カイ二乗分布"><i class="fa fa-check"></i><b>6.6.2</b> カイ二乗分布</a></li>
+<li class="chapter" data-level="6.6.3" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#t分布"><i class="fa fa-check"></i><b>6.6.3</b> t分布</a></li>
+<li class="chapter" data-level="6.6.4" data-path="補足いくつかの確率分布の関係性.html"><a href="補足いくつかの確率分布の関係性.html#f分布"><i class="fa fa-check"></i><b>6.6.4</b> F分布</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="区間推定.html"><a href="区間推定.html"><i class="fa fa-check"></i><b>6.7</b> 区間推定</a>
+<ul>
+<li class="chapter" data-level="6.7.1" data-path="区間推定.html"><a href="区間推定.html#標準正規分布に基づく信頼区間の求め方"><i class="fa fa-check"></i><b>6.7.1</b> 標準正規分布に基づく信頼区間の求め方*</a></li>
+<li class="chapter" data-level="6.7.2" data-path="区間推定.html"><a href="区間推定.html#t分布を使った区間推定"><i class="fa fa-check"></i><b>6.7.2</b> t分布を使った区間推定*</a></li>
+<li class="chapter" data-level="6.7.3" data-path="区間推定.html"><a href="区間推定.html#rによる区間推定"><i class="fa fa-check"></i><b>6.7.3</b> Rによる区間推定</a></li>
+</ul></li>
+<li class="chapter" data-level="6.8" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html"><i class="fa fa-check"></i><b>6.8</b> 統計的仮説検定</a>
+<ul>
+<li class="chapter" data-level="6.8.1" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html#nullhypo"><i class="fa fa-check"></i><b>6.8.1</b> 検定の手順と仮説</a></li>
+<li class="chapter" data-level="6.8.2" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html#母平均の検定両側検定に関する理屈"><i class="fa fa-check"></i><b>6.8.2</b> 母平均の検定（両側検定）に関する理屈</a></li>
+<li class="chapter" data-level="6.8.3" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html#片側検定の紹介"><i class="fa fa-check"></i><b>6.8.3</b> 片側検定の紹介</a></li>
+<li class="chapter" data-level="6.8.4" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html#有意水準と検定における誤り"><i class="fa fa-check"></i><b>6.8.4</b> 有意水準と検定における誤り</a></li>
+<li class="chapter" data-level="6.8.5" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html#検定結果に関する解釈"><i class="fa fa-check"></i><b>6.8.5</b> 検定結果に関する解釈</a></li>
+<li class="chapter" data-level="6.8.6" data-path="統計的仮説検定.html"><a href="統計的仮説検定.html#電球データと検定"><i class="fa fa-check"></i><b>6.8.6</b> 電球データと検定</a></li>
+</ul></li>
+<li class="chapter" data-level="6.9" data-path="平均値に関するその他の検定.html"><a href="平均値に関するその他の検定.html"><i class="fa fa-check"></i><b>6.9</b> 平均値に関するその他の検定</a></li>
+<li class="chapter" data-level="6.10" data-path="分散分析.html"><a href="分散分析.html"><i class="fa fa-check"></i><b>6.10</b> 分散分析</a>
+<ul>
+<li class="chapter" data-level="6.10.1" data-path="分散分析.html"><a href="分散分析.html#分散分析についてのモデル表現"><i class="fa fa-check"></i><b>6.10.1</b> 分散分析についてのモデル表現*</a></li>
+<li class="chapter" data-level="6.10.2" data-path="分散分析.html"><a href="分散分析.html#分散分析における効果の検定"><i class="fa fa-check"></i><b>6.10.2</b> 分散分析における効果の検定*</a></li>
+<li class="chapter" data-level="6.10.3" data-path="分散分析.html"><a href="分散分析.html#二元配置分散分析"><i class="fa fa-check"></i><b>6.10.3</b> 二元配置分散分析*</a></li>
+<li class="chapter" data-level="6.10.4" data-path="分散分析.html"><a href="分散分析.html#二元配置モデルの効果検定"><i class="fa fa-check"></i><b>6.10.4</b> 二元配置モデルの効果検定*</a></li>
+<li class="chapter" data-level="6.10.5" data-path="分散分析.html"><a href="分散分析.html#回帰分析との関係"><i class="fa fa-check"></i><b>6.10.5</b> 回帰分析との関係</a></li>
+<li class="chapter" data-level="6.10.6" data-path="分散分析.html"><a href="分散分析.html#tukey"><i class="fa fa-check"></i><b>6.10.6</b> 多重比較とそれに伴う統計的問題</a></li>
+<li class="chapter" data-level="6.10.7" data-path="分散分析.html"><a href="分散分析.html#rによる分散分析の実行"><i class="fa fa-check"></i><b>6.10.7</b> Rによる分散分析の実行</a></li>
+</ul></li>
+<li class="chapter" data-level="6.11" data-path="pwr.html"><a href="pwr.html"><i class="fa fa-check"></i><b>6.11</b> 検定力分析とサンプルサイズ</a></li>
+<li class="chapter" data-level="6.12" data-path="練習問題-2.html"><a href="練習問題-2.html"><i class="fa fa-check"></i><b>6.12</b> 練習問題</a>
+<ul>
+<li class="chapter" data-level="6.12.1" data-path="練習問題-2.html"><a href="練習問題-2.html#仮説検定の理屈"><i class="fa fa-check"></i><b>6.12.1</b> 仮説検定の理屈</a></li>
+<li class="chapter" data-level="6.12.2" data-path="練習問題-2.html"><a href="練習問題-2.html#仮説検定の解釈"><i class="fa fa-check"></i><b>6.12.2</b> 仮説検定の解釈</a></li>
+</ul></li>
+<li class="chapter" data-level="6.13" data-path="参考文献-4.html"><a href="参考文献-4.html"><i class="fa fa-check"></i><b>6.13</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="regintro.html"><a href="regintro.html"><i class="fa fa-check"></i><b>7</b> 回帰分析</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="本章の概要-4.html"><a href="本章の概要-4.html"><i class="fa fa-check"></i><b>7.1</b> 本章の概要</a></li>
+<li class="chapter" data-level="7.2" data-path="分析準備.html"><a href="分析準備.html"><i class="fa fa-check"></i><b>7.2</b> 分析準備</a></li>
+<li class="chapter" data-level="7.3" data-path="単回帰モデルと予測値.html"><a href="単回帰モデルと予測値.html"><i class="fa fa-check"></i><b>7.3</b> 単回帰モデルと予測値</a></li>
+<li class="chapter" data-level="7.4" data-path="回帰分析における推定と検定.html"><a href="回帰分析における推定と検定.html"><i class="fa fa-check"></i><b>7.4</b> 回帰分析における推定と検定</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="回帰分析における推定と検定.html"><a href="回帰分析における推定と検定.html#企業データを用いた回帰分析の実行"><i class="fa fa-check"></i><b>7.4.1</b> 企業データを用いた回帰分析の実行</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="重回帰モデル.html"><a href="重回帰モデル.html"><i class="fa fa-check"></i><b>7.5</b> 重回帰モデル</a>
+<ul>
+<li class="chapter" data-level="7.5.1" data-path="重回帰モデル.html"><a href="重回帰モデル.html#重回帰モデル概要"><i class="fa fa-check"></i><b>7.5.1</b> 重回帰モデル概要</a></li>
+<li class="chapter" data-level="7.5.2" data-path="重回帰モデル.html"><a href="重回帰モデル.html#重回帰モデルの記述と性質"><i class="fa fa-check"></i><b>7.5.2</b> 重回帰モデルの記述と性質</a></li>
+<li class="chapter" data-level="7.5.3" data-path="重回帰モデル.html"><a href="重回帰モデル.html#重回帰分析におけるモデル適合度"><i class="fa fa-check"></i><b>7.5.3</b> 重回帰分析におけるモデル適合度</a></li>
+<li class="chapter" data-level="7.5.4" data-path="重回帰モデル.html"><a href="重回帰モデル.html#回帰係数の解釈"><i class="fa fa-check"></i><b>7.5.4</b> 回帰係数の解釈</a></li>
+<li class="chapter" data-level="7.5.5" data-path="重回帰モデル.html"><a href="重回帰モデル.html#単回帰モデルと重回帰モデルの比較"><i class="fa fa-check"></i><b>7.5.5</b> 単回帰モデルと重回帰モデルの比較</a></li>
+<li class="chapter" data-level="7.5.6" data-path="重回帰モデル.html"><a href="重回帰モデル.html#分析結果の解釈と注意点"><i class="fa fa-check"></i><b>7.5.6</b> 分析結果の解釈と注意点</a></li>
+<li class="chapter" data-level="7.5.7" data-path="重回帰モデル.html"><a href="重回帰モデル.html#varsel"><i class="fa fa-check"></i><b>7.5.7</b> 重回帰モデルにおける変数選択</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="練習問題-3.html"><a href="練習問題-3.html"><i class="fa fa-check"></i><b>7.6</b> 練習問題</a></li>
+<li class="chapter" data-level="7.7" data-path="参考文献-5.html"><a href="参考文献-5.html"><i class="fa fa-check"></i><b>7.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="regtechnic.html"><a href="regtechnic.html"><i class="fa fa-check"></i><b>8</b> 回帰分析上の工夫紹介</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="本章の概要-5.html"><a href="本章の概要-5.html"><i class="fa fa-check"></i><b>8.1</b> 本章の概要</a></li>
+<li class="chapter" data-level="8.2" data-path="dummy.html"><a href="dummy.html"><i class="fa fa-check"></i><b>8.2</b> ダミー変数</a>
+<ul>
+<li class="chapter" data-level="8.2.1" data-path="dummy.html"><a href="dummy.html#企業データを用いた分析の実行"><i class="fa fa-check"></i><b>8.2.1</b> 企業データを用いた分析の実行</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="交差項.html"><a href="交差項.html"><i class="fa fa-check"></i><b>8.3</b> 交差項</a>
+<ul>
+<li class="chapter" data-level="8.3.1" data-path="交差項.html"><a href="交差項.html#傾きダミー"><i class="fa fa-check"></i><b>8.3.1</b> 傾きダミー</a></li>
+<li class="chapter" data-level="8.3.2" data-path="交差項.html"><a href="交差項.html#傾きダミーの実行"><i class="fa fa-check"></i><b>8.3.2</b> 傾きダミーの実行</a></li>
+<li class="chapter" data-level="8.3.3" data-path="交差項.html"><a href="交差項.html#量的変数同士の交差項"><i class="fa fa-check"></i><b>8.3.3</b> 量的変数同士の交差項</a></li>
+<li class="chapter" data-level="8.3.4" data-path="交差項.html"><a href="交差項.html#交差項モデルの実行"><i class="fa fa-check"></i><b>8.3.4</b> 交差項モデルの実行</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="係数比較.html"><a href="係数比較.html"><i class="fa fa-check"></i><b>8.4</b> 係数比較</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="係数比較.html"><a href="係数比較.html#係数比較の実行"><i class="fa fa-check"></i><b>8.4.1</b> 係数比較の実行</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="対数線形.html"><a href="対数線形.html"><i class="fa fa-check"></i><b>8.5</b> 対数線形</a>
+<ul>
+<li class="chapter" data-level="8.5.1" data-path="対数線形.html"><a href="対数線形.html#対数線形モデルの分析実行"><i class="fa fa-check"></i><b>8.5.1</b> 対数線形モデルの分析実行</a></li>
+<li class="chapter" data-level="8.5.2" data-path="対数線形.html"><a href="対数線形.html#需要の価格弾力性について"><i class="fa fa-check"></i><b>8.5.2</b> 需要の価格弾力性について*</a></li>
+<li class="chapter" data-level="8.5.3" data-path="対数線形.html"><a href="対数線形.html#対数線形の推定と検定"><i class="fa fa-check"></i><b>8.5.3</b> 対数線形の推定と検定</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="練習問題-4.html"><a href="練習問題-4.html"><i class="fa fa-check"></i><b>8.6</b> 練習問題</a></li>
+<li class="chapter" data-level="8.7" data-path="参考文献-6.html"><a href="参考文献-6.html"><i class="fa fa-check"></i><b>8.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="choice.html"><a href="choice.html"><i class="fa fa-check"></i><b>9</b> 消費者の選択と離散選択モデル</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="本章の概要-6.html"><a href="本章の概要-6.html"><i class="fa fa-check"></i><b>9.1</b> 本章の概要</a></li>
+<li class="chapter" data-level="9.2" data-path="rational.html"><a href="rational.html"><i class="fa fa-check"></i><b>9.2</b> 消費者選択と合理的消費者像概観</a></li>
+<li class="chapter" data-level="9.3" data-path="utility.html"><a href="utility.html"><i class="fa fa-check"></i><b>9.3</b> 選択行動と効用最大化</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="utility.html"><a href="utility.html#step-1-どのような消費者を考察の対象にするのか"><i class="fa fa-check"></i><b>9.3.1</b> Step 1: どのような消費者を考察の対象にするのか</a></li>
+<li class="chapter" data-level="9.3.2" data-path="utility.html"><a href="utility.html#step-2-選好モデルと効用"><i class="fa fa-check"></i><b>9.3.2</b> Step 2: 選好モデルと効用</a></li>
+<li class="chapter" data-level="9.3.3" data-path="utility.html"><a href="utility.html#step-3-効用最大化"><i class="fa fa-check"></i><b>9.3.3</b> Step 3: 効用最大化</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="discrete.html"><a href="discrete.html"><i class="fa fa-check"></i><b>9.4</b> 離散選択モデル</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="discrete.html"><a href="discrete.html#線形確率モデル"><i class="fa fa-check"></i><b>9.4.1</b> 線形確率モデル</a></li>
+<li class="chapter" data-level="9.4.2" data-path="discrete.html"><a href="discrete.html#プロビットモデルとロジットモデル"><i class="fa fa-check"></i><b>9.4.2</b> プロビットモデルとロジットモデル*</a></li>
+<li class="chapter" data-level="9.4.3" data-path="discrete.html"><a href="discrete.html#潜在変数アプローチによる説明"><i class="fa fa-check"></i><b>9.4.3</b> 潜在変数アプローチによる説明*</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="プロビットモデルの推定と解釈.html"><a href="プロビットモデルの推定と解釈.html"><i class="fa fa-check"></i><b>9.5</b> プロビットモデルの推定と解釈</a>
+<ul>
+<li class="chapter" data-level="9.5.1" data-path="プロビットモデルの推定と解釈.html"><a href="プロビットモデルの推定と解釈.html#分析の実行と結果のまとめ"><i class="fa fa-check"></i><b>9.5.1</b> 分析の実行と結果のまとめ</a></li>
+<li class="chapter" data-level="9.5.2" data-path="プロビットモデルの推定と解釈.html"><a href="プロビットモデルの推定と解釈.html#限界効果の計算"><i class="fa fa-check"></i><b>9.5.2</b> 限界効果の計算</a></li>
+<li class="chapter" data-level="9.5.3" data-path="プロビットモデルの推定と解釈.html"><a href="プロビットモデルの推定と解釈.html#限界効果がなぜ必要か"><i class="fa fa-check"></i><b>9.5.3</b> 限界効果がなぜ必要か？*</a></li>
+</ul></li>
+<li class="chapter" data-level="9.6" data-path="ml.html"><a href="ml.html"><i class="fa fa-check"></i><b>9.6</b> 補足：最尤推定法の紹介</a></li>
+<li class="chapter" data-level="9.7" data-path="離散選択モデルへの合理的消費者像の応用.html"><a href="離散選択モデルへの合理的消費者像の応用.html"><i class="fa fa-check"></i><b>9.7</b> 離散選択モデルへの合理的消費者像の応用</a></li>
+<li class="chapter" data-level="9.8" data-path="多項選択モデル紹介.html"><a href="多項選択モデル紹介.html"><i class="fa fa-check"></i><b>9.8</b> 多項選択モデル紹介</a></li>
+<li class="chapter" data-level="9.9" data-path="需要の予測と本章のまとめ.html"><a href="需要の予測と本章のまとめ.html"><i class="fa fa-check"></i><b>9.9</b> 需要の予測と本章のまとめ</a></li>
+<li class="chapter" data-level="9.10" data-path="参考文献-7.html"><a href="参考文献-7.html"><i class="fa fa-check"></i><b>9.10</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="empirics.html"><a href="empirics.html"><i class="fa fa-check"></i><b>10</b> 観察重視アプローチ</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="本章の概要-7.html"><a href="本章の概要-7.html"><i class="fa fa-check"></i><b>10.1</b> 本章の概要</a></li>
+<li class="chapter" data-level="10.2" data-path="観察重視アプローチ.html"><a href="観察重視アプローチ.html"><i class="fa fa-check"></i><b>10.2</b> 観察重視アプローチ</a></li>
+<li class="chapter" data-level="10.3" data-path="観察重視アプローチの研究プロセス.html"><a href="観察重視アプローチの研究プロセス.html"><i class="fa fa-check"></i><b>10.3</b> 観察重視アプローチの研究プロセス</a>
+<ul>
+<li class="chapter" data-level="10.3.1" data-path="観察重視アプローチの研究プロセス.html"><a href="観察重視アプローチの研究プロセス.html#研究機会の特定"><i class="fa fa-check"></i><b>10.3.1</b> 研究機会の特定</a></li>
+<li class="chapter" data-level="10.3.2" data-path="観察重視アプローチの研究プロセス.html"><a href="観察重視アプローチの研究プロセス.html#地形探索"><i class="fa fa-check"></i><b>10.3.2</b> 地形探索</a></li>
+<li class="chapter" data-level="10.3.3" data-path="観察重視アプローチの研究プロセス.html"><a href="観察重視アプローチの研究プロセス.html#理解の発展"><i class="fa fa-check"></i><b>10.3.3</b> 理解の発展</a></li>
+<li class="chapter" data-level="10.3.4" data-path="観察重視アプローチの研究プロセス.html"><a href="観察重視アプローチの研究プロセス.html#efアプローチ研究の報告"><i class="fa fa-check"></i><b>10.3.4</b> EFアプローチ研究の報告</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="efアプローチ研究例.html"><a href="efアプローチ研究例.html"><i class="fa fa-check"></i><b>10.4</b> EFアプローチ研究例</a></li>
+<li class="chapter" data-level="10.5" data-path="簡易的なデータ探索法紹介統計的分析を用いない顧客分析.html"><a href="簡易的なデータ探索法紹介統計的分析を用いない顧客分析.html"><i class="fa fa-check"></i><b>10.5</b> 簡易的なデータ探索法紹介：統計的分析を用いない顧客分析</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="簡易的なデータ探索法紹介統計的分析を用いない顧客分析.html"><a href="簡易的なデータ探索法紹介統計的分析を用いない顧客分析.html#crm"><i class="fa fa-check"></i><b>10.5.1</b> データ処理と顧客関係管理（CRM）</a></li>
+<li class="chapter" data-level="10.5.2" data-path="簡易的なデータ探索法紹介統計的分析を用いない顧客分析.html"><a href="簡易的なデータ探索法紹介統計的分析を用いない顧客分析.html#データの構造変化とソート"><i class="fa fa-check"></i><b>10.5.2</b> データの構造変化とソート</a></li>
+<li class="chapter" data-level="10.5.3" data-path="簡易的なデータ探索法紹介統計的分析を用いない顧客分析.html"><a href="簡易的なデータ探索法紹介統計的分析を用いない顧客分析.html#データ結合"><i class="fa fa-check"></i><b>10.5.3</b> データ結合</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="練習問題-5.html"><a href="練習問題-5.html"><i class="fa fa-check"></i><b>10.6</b> 練習問題</a></li>
+<li class="chapter" data-level="10.7" data-path="参考文献-8.html"><a href="参考文献-8.html"><i class="fa fa-check"></i><b>10.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="cluster.html"><a href="cluster.html"><i class="fa fa-check"></i><b>11</b> セグメントとクラスター分析</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="本章の概要-8.html"><a href="本章の概要-8.html"><i class="fa fa-check"></i><b>11.1</b> 本章の概要</a></li>
+<li class="chapter" data-level="11.2" data-path="セグメンテーションとマーケティング意思決定.html"><a href="セグメンテーションとマーケティング意思決定.html"><i class="fa fa-check"></i><b>11.2</b> セグメンテーションとマーケティング意思決定</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="セグメンテーションとマーケティング意思決定.html"><a href="セグメンテーションとマーケティング意思決定.html#stpその後"><i class="fa fa-check"></i><b>11.2.1</b> STPその後</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="セグメンテーションの実行とクラスター分析.html"><a href="セグメンテーションの実行とクラスター分析.html"><i class="fa fa-check"></i><b>11.3</b> セグメンテーションの実行とクラスター分析</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="セグメンテーションの実行とクラスター分析.html"><a href="セグメンテーションの実行とクラスター分析.html#Hier"><i class="fa fa-check"></i><b>11.3.1</b> 階層的クラスター分析</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="k-means.html"><a href="k-means.html"><i class="fa fa-check"></i><b>11.4</b> 非階層的クラスター分析：K-means法</a></li>
+<li class="chapter" data-level="11.5" data-path="rによるクラスター分析の実行.html"><a href="rによるクラスター分析の実行.html"><i class="fa fa-check"></i><b>11.5</b> Rによるクラスター分析の実行</a></li>
+<li class="chapter" data-level="11.6" data-path="練習問題-6.html"><a href="練習問題-6.html"><i class="fa fa-check"></i><b>11.6</b> 練習問題</a></li>
+<li class="chapter" data-level="11.7" data-path="参考文献-9.html"><a href="参考文献-9.html"><i class="fa fa-check"></i><b>11.7</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="factor.html"><a href="factor.html"><i class="fa fa-check"></i><b>12</b> 探索的因子分析と知覚マップ</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="本章の概要-9.html"><a href="本章の概要-9.html"><i class="fa fa-check"></i><b>12.1</b> 本章の概要</a></li>
+<li class="chapter" data-level="12.2" data-path="因子分析とは.html"><a href="因子分析とは.html"><i class="fa fa-check"></i><b>12.2</b> 因子分析とは</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="因子分析とは.html"><a href="因子分析とは.html#因子分析の概要とモデルの構造"><i class="fa fa-check"></i><b>12.2.1</b> 因子分析の概要とモデルの構造</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="因子モデル.html"><a href="因子モデル.html"><i class="fa fa-check"></i><b>12.3</b> 2因子モデル</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="因子モデル.html"><a href="因子モデル.html#因子軸の回転"><i class="fa fa-check"></i><b>12.3.1</b> 因子軸の回転</a></li>
+<li class="chapter" data-level="12.3.2" data-path="因子モデル.html"><a href="因子モデル.html#因子数の決定"><i class="fa fa-check"></i><b>12.3.2</b> 因子数の決定</a></li>
+<li class="chapter" data-level="12.3.3" data-path="因子モデル.html"><a href="因子モデル.html#因子スコア"><i class="fa fa-check"></i><b>12.3.3</b> 因子スコア</a></li>
+<li class="chapter" data-level="12.3.4" data-path="因子モデル.html"><a href="因子モデル.html#因子モデルまとめ"><i class="fa fa-check"></i><b>12.3.4</b> 2因子モデルまとめ</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="ポジショニングと知覚マップ概要.html"><a href="ポジショニングと知覚マップ概要.html"><i class="fa fa-check"></i><b>12.4</b> ポジショニングと知覚マップ概要</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="ポジショニングと知覚マップ概要.html"><a href="ポジショニングと知覚マップ概要.html#ポジショニングについて"><i class="fa fa-check"></i><b>12.4.1</b> ポジショニングについて</a></li>
+<li class="chapter" data-level="12.4.2" data-path="ポジショニングと知覚マップ概要.html"><a href="ポジショニングと知覚マップ概要.html#知覚マップ"><i class="fa fa-check"></i><b>12.4.2</b> 知覚マップ</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="faex.html"><a href="faex.html"><i class="fa fa-check"></i><b>12.5</b> Rによる因子分析の実行</a></li>
+<li class="chapter" data-level="12.6" data-path="アンケートデータと知覚マップ.html"><a href="アンケートデータと知覚マップ.html"><i class="fa fa-check"></i><b>12.6</b> アンケートデータと知覚マップ</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="アンケートデータと知覚マップ.html"><a href="アンケートデータと知覚マップ.html#データ構造の変更"><i class="fa fa-check"></i><b>12.6.1</b> データ構造の変更</a></li>
+<li class="chapter" data-level="12.6.2" data-path="アンケートデータと知覚マップ.html"><a href="アンケートデータと知覚マップ.html#因子分析の実行"><i class="fa fa-check"></i><b>12.6.2</b> 因子分析の実行</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="練習問題-7.html"><a href="練習問題-7.html"><i class="fa fa-check"></i><b>12.7</b> 練習問題</a></li>
+<li class="chapter" data-level="12.8" data-path="参考文献-10.html"><a href="参考文献-10.html"><i class="fa fa-check"></i><b>12.8</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="psm.html"><a href="psm.html"><i class="fa fa-check"></i><b>13</b> 価格感度測定 (PSM)</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="本章の概要-10.html"><a href="本章の概要-10.html"><i class="fa fa-check"></i><b>13.1</b> 本章の概要</a></li>
+<li class="chapter" data-level="13.2" data-path="psmrunning.html"><a href="psmrunning.html"><i class="fa fa-check"></i><b>13.2</b> PSMの実行と結果</a></li>
+<li class="chapter" data-level="13.3" data-path="price_concept.html"><a href="price_concept.html"><i class="fa fa-check"></i><b>13.3</b> マーケティングにおける価格概念</a></li>
+<li class="chapter" data-level="13.4" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html"><i class="fa fa-check"></i><b>13.4</b> PSMに関する既存研究</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#受容価格に関する知見"><i class="fa fa-check"></i><b>13.4.1</b> 受容価格に関する知見</a></li>
+<li class="chapter" data-level="13.4.2" data-path="psmに関する既存研究.html"><a href="psmに関する既存研究.html#内的参照価格に関する知見"><i class="fa fa-check"></i><b>13.4.2</b> 内的参照価格に関する知見</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="受容価格帯と内的参照価格帯の応用とpsm.html"><a href="受容価格帯と内的参照価格帯の応用とpsm.html"><i class="fa fa-check"></i><b>13.5</b> 受容価格帯と内的参照価格帯の応用とPSM</a></li>
+<li class="chapter" data-level="13.6" data-path="集計方法に関する注意点.html"><a href="集計方法に関する注意点.html"><i class="fa fa-check"></i><b>13.6</b> 集計方法に関する注意点</a></li>
+<li class="chapter" data-level="13.7" data-path="練習問題-8.html"><a href="練習問題-8.html"><i class="fa fa-check"></i><b>13.7</b> 練習問題</a></li>
+<li class="chapter" data-level="13.8" data-path="参考文献-11.html"><a href="参考文献-11.html"><i class="fa fa-check"></i><b>13.8</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="consumer.html"><a href="consumer.html"><i class="fa fa-check"></i><b>14</b> コラム1（消費者行動研究の系譜概観）</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="参考文献-12.html"><a href="参考文献-12.html"><i class="fa fa-check"></i><b>14.1</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="causation1.html"><a href="causation1.html"><i class="fa fa-check"></i><b>15</b> コラム2-1（マーケティングにおける因果推論導入）</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="参考文献-13.html"><a href="参考文献-13.html"><i class="fa fa-check"></i><b>15.1</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="causation2.html"><a href="causation2.html"><i class="fa fa-check"></i><b>16</b> コラム2-2（ランダム化比較試験とカゴ落ちメール）</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="ランダム化比較試験概要.html"><a href="ランダム化比較試験概要.html"><i class="fa fa-check"></i><b>16.1</b> ランダム化比較試験概要</a></li>
+<li class="chapter" data-level="16.2" data-path="li-et-al.-2021-によるカゴ落ちメールに関するフィールド実験.html"><a href="li-et-al.-2021-によるカゴ落ちメールに関するフィールド実験.html"><i class="fa fa-check"></i><b>16.2</b> Li et al. (2021) によるカゴ落ちメールに関するフィールド実験</a></li>
+<li class="chapter" data-level="16.3" data-path="参考文献-14.html"><a href="参考文献-14.html"><i class="fa fa-check"></i><b>16.3</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="causation3.html"><a href="causation3.html"><i class="fa fa-check"></i><b>17</b> コラム3（非遵守と操作変数法）</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="操作変数法の概要.html"><a href="操作変数法の概要.html"><i class="fa fa-check"></i><b>17.1</b> 操作変数法の概要</a></li>
+<li class="chapter" data-level="17.2" data-path="complier.html"><a href="complier.html"><i class="fa fa-check"></i><b>17.2</b> 実験非遵守における操作変数法の活用</a></li>
+<li class="chapter" data-level="17.3" data-path="参考文献-15.html"><a href="参考文献-15.html"><i class="fa fa-check"></i><b>17.3</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
+<ul>
+<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
+<li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
+<li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="causation5.html"><a href="causation5.html"><i class="fa fa-check"></i><b>19</b> コラム5（差の差の分析法）</a>
+<ul>
+<li class="chapter" data-level="19.1" data-path="fisher-et-al.-2019-による配送能力と小売成果の研究.html"><a href="fisher-et-al.-2019-による配送能力と小売成果の研究.html"><i class="fa fa-check"></i><b>19.1</b> Fisher et al. (2019) による配送能力と小売成果の研究</a></li>
+<li class="chapter" data-level="19.2" data-path="参考文献-17.html"><a href="参考文献-17.html"><i class="fa fa-check"></i><b>19.2</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="コラム-wide型とlong型データセット.html"><a href="コラム-wide型とlong型データセット.html"><i class="fa fa-check"></i><b>20</b> コラム： Wide型とLong型データセット</a></li>
+<li class="chapter" data-level="21" data-path="コラム研究課題理論質問項目の作成.html"><a href="コラム研究課題理論質問項目の作成.html"><i class="fa fa-check"></i><b>21</b> コラム：研究課題・理論・質問項目の作成</a>
+<ul>
+<li class="chapter" data-level="21.1" data-path="参考文献-18.html"><a href="参考文献-18.html"><i class="fa fa-check"></i><b>21.1</b> 参考文献</a></li>
+</ul></li>
+<li class="chapter" data-level="22" data-path="コラム分析結果のまとめ出力上の工夫.html"><a href="コラム分析結果のまとめ出力上の工夫.html"><i class="fa fa-check"></i><b>22</b> コラム：分析結果のまとめ・出力上の工夫</a></li>
+<li class="chapter" data-level="23" data-path="pcafa.html"><a href="pcafa.html"><i class="fa fa-check"></i><b>23</b> コラム：主成分分析と因子分析との違い</a>
+<ul>
+<li class="chapter" data-level="23.1" data-path="参考文献-19.html"><a href="参考文献-19.html"><i class="fa fa-check"></i><b>23.1</b> 参考文献</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">マーケティングリサーチの進め方</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="因子分析とは" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> 因子分析とは<a href="因子分析とは.html#因子分析とは" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>心理尺度の構成において、各項目が概念をきちんと捉えているか検討することが重要だと述べた。尺度の構成においては概念的な検討に加え統計的な分析の両面から確認することが求められる。特に、尺度の全体的な構造を統計的に検討するための手法として探索的因子分析を紹介する。因子分析は、項目間の相関関係に基づき、項目同士に共通している成分（因子）を見つけるための手法である（南風原, 2002）。そのため、この因子は<a href="尺度の種類と質問項目.html#measurement">4.4.1</a> で説明した構成概念に該当する。探索的因子分析は、観測された項目の相関関係に基づき、何個のどのような因子を用いることでデータを説明できるか推測する方法である（南風原, 2002）。より具体的には、探索的因子分析においては主に（1） 因子数と（2）各因子に含まれる項目、という二側面から尺度の構成を検討する（小塩, 2024）。</p>
+<div id="因子分析の概要とモデルの構造" class="section level3 hasAnchor" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> 因子分析の概要とモデルの構造<a href="因子分析とは.html#因子分析の概要とモデルの構造" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>因子分析は、観測された変数の背後に潜在的な共通因子（common factor）が存在することを仮定する。そして、「潜在因子から観測変数の影響」を捉えた構造のモデルを定式化することで、観測された変数同士のまとまり（相関）を説明する方法である。因子分析は心理学分野で発展した手法であり、人々の心理的特徴（例えば、価格志向やコスモポリタニズム）を多面的に捉えることや、情報の複雑さを削減することができる。</p>
+<p>因子分析には大きく分けて1つのアプローチが存在する。第1に、探索的因子分析である。これは、複数の観測変数間の相関関係から、その背後にいくつ潜在的な因子を導入すれば観測変数間の関係をうまく説明できるのかを探索的に調査・分析する方法である。第2に、確認的因子分析である。これは、先行研究などに基づき、因子の数と因子負荷量について仮説的な構造を想定し、その構造をデータに基づき検証する方法である。この手法は、共分散構造分析と呼ばれる分析手法を応用したものである。これら2つのうち本講義では、探索的因子分析に焦点を合わせる。</p>
+<p>因子分析では、観測変数の値を規定するような、共通する潜在因子が存在すると考える。図<a href="因子分析とは.html#fig:factor">12.1</a> は、3つの観測変数と1つの潜在因子との関係を表す因子モデルを図示したものである。因子分析では観測変数間の相関を捉えており、観測変数間に高い相関があるということは、その背後に共通する因子があると考える。図<a href="因子分析とは.html#fig:factor">12.1</a> における <span class="math inline">\(f\)</span> は潜在因子、 <span class="math inline">\(x_j~(j=1,2,3)\)</span> は観測変数を表している。また、因子と変数の関連性は <span class="math inline">\(a_j\)</span> という因子負荷量で表現され、 <span class="math inline">\(e_j\)</span> は因子では説明できない変数のばらつきを表す独自因子と呼ばれる。図示化においては、一般的に観測変数は四角形、潜在因子と独自因子は円や楕円で表現される事が多い。</p>
+<div class="figure"><span style="display:block;" id="fig:factor"></span>
+<img src="factor/factor.jpg" alt="因子分析モデル" width="1391" />
+<p class="caption">
+Figure 12.1: 因子分析モデル
+</p>
+</div>
+<p>図<a href="因子分析とは.html#fig:factor">12.1</a>のパス図は、以下のような式で表すことができる。</p>
+<p><span class="math display">\[
+x_{1i}=a_1f_i+e_{1i}\\
+x_{2i}=a_2f_i+e_{2i}\\
+x_{3i}=a_3f_i+e_{3i},
+\]</span>
+ただし、<span class="math inline">\(i\)</span> は <span class="math inline">\(1,..,n\)</span> の個人を指す。そのため、因子分析のモデルは、各観測変数それぞれを被説名変数とし、潜在因子を説明変数とした回帰モデルのような形で捉えることができる。このことからも、潜在因子が観測変数を規定しているという考えのもとモデルが構築されていることがうかがえる。因子分析においては、上記の式をもとに、因子負荷量を求める<a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a>のだが、ここで潜在因子を式に含めていることの問題が浮上する。説名変数として用いている潜在変数は、本来観察できないものであるため、単位や基準点が存在せず、式が変形可能になってしまい、因子負荷量についての解が定まらない（分寺、2022）。そこで、因子分析の実行においては以下のいずれかの制約をおく：</p>
+<ul>
+<li>因子の分散が1、平均が0と仮定する。</li>
+<li>1つ目の観測変数の因子負荷量を1に固定する。</li>
+</ul>
+<p>このような仮定の下、因子負荷量を計算するのだが、因子負荷量の計算方法はいくつか存在する。詳細についてはぜひ分寺（2022）を参照してほしい。ここでは、分析後に算出されるいくつかの重要な指標について簡単に説明する。まずは、想定した因子モデルがどの程度うまく観測変数のばらつきを説明できているのかを表す共通性と独自性について説明する。
+ここで、<span class="math inline">\(j\)</span> 番目の観測変数（<span class="math inline">\(j=1,...,J\)</span>）に対応する以下のような因子モデルを考える。</p>
+<p><span class="math display">\[
+x_{ji}=a_jf_i+e_{ji}
+\]</span>
+この時、<span class="math inline">\(\hat{x}_{ji}\)</span> は <span class="math inline">\(x_{ji}\)</span> の予測値、<span class="math inline">\(\hat{e}_{ji}\)</span> は 残差とすると、以下のような式を得ることができる。</p>
+<p><span class="math display">\[
+x_{ij}=\hat{x}_{ji}+\hat{e}_{ji}=\hat{a}_jf+\hat{x}_{ji}
+\]</span></p>
+<p>上記の式において説明変数に潜在因子が使われていることには注意が必要であるが、<span class="math inline">\(x\)</span> の分散と予測値や残差との関係について、回帰分析の場合と同様に、以下のように捉えることができる。</p>
+<p><span class="math display">\[
+\sum_{i=1}^n(x_{ji}-\bar{x}_j)^2=\sum(\hat{x}_{ji}-\bar{x}_j)+\sum(x_{ji}-\hat{x}_{ji})
+\]</span></p>
+<p>この時、<span class="math inline">\(\sum(x_{ji}-\bar{x}_j)^2\)</span> をSST（Total Sum of Squares）、<span class="math inline">\(\sum(\hat{x}_{ji}-\bar{x}_j)\)</span> をSSE（Sum of Squares Explained）、<span class="math inline">\(\sum(x_{ji}-\hat{x}_{ji})\)</span> をSSR（Residual Sum of Squares）と定義すると、以下のように変形できる。</p>
+<p><span class="math display">\[
+1=\frac{SSE}{SST}+\frac{SSR}{SST}
+\]</span>
+この時、右辺第一項は共通性（観測変数全体の変動のうち、因子で説明できる部分）、第二項は独自性（観測変数全体の変動のうち、因子で説明できない部分）と呼ばれる。</p>
+<p>これまでの因子モデルにおいて <span class="math inline">\(a_j\)</span>として示された因子負荷量は、因子がそれぞれの観測変数にどの程度影響を与えているかを表しており、因子負荷量が高い程、因子と観測変数の関連が強いことを示す。また、因子分析を実行すると、因子寄与率（分散比率）が算出される。これは、観測項目全体の分散を因子によってどの程度説明しているかを示している。</p>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="42">
+<li id="fn42"><p>詳細は、南風原（2002）を参照。<a href="因子分析とは.html#fnref42" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="本章の概要-9.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="因子モデル.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-positioning.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
