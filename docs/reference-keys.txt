@@ -37,6 +37,7 @@ tab:clusSummary
 fig:factor
 fig:rotate
 fig:scree
+tab:scoreexample
 fig:perExp
 fig:luxurity
 tab:faData
@@ -255,9 +256,10 @@ factor
 因子分析とは
 因子分析の概要とモデルの構造
 因子モデル
+因子モデル概要
 因子軸の回転
 因子数の決定
-因子スコア
+得点化
 因子モデルまとめ
 ポジショニングと知覚マップ概要
 ポジショニングについて

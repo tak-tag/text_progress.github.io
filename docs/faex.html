@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-17" />
+<meta name="date" content="2025-04-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -408,10 +408,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="因子モデル.html"><a href="因子モデル.html"><i class="fa fa-check"></i><b>12.3</b> 2因子モデル</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="因子モデル.html"><a href="因子モデル.html#因子軸の回転"><i class="fa fa-check"></i><b>12.3.1</b> 因子軸の回転</a></li>
-<li class="chapter" data-level="12.3.2" data-path="因子モデル.html"><a href="因子モデル.html#因子数の決定"><i class="fa fa-check"></i><b>12.3.2</b> 因子数の決定</a></li>
-<li class="chapter" data-level="12.3.3" data-path="因子モデル.html"><a href="因子モデル.html#因子スコア"><i class="fa fa-check"></i><b>12.3.3</b> 因子スコア</a></li>
-<li class="chapter" data-level="12.3.4" data-path="因子モデル.html"><a href="因子モデル.html#因子モデルまとめ"><i class="fa fa-check"></i><b>12.3.4</b> 2因子モデルまとめ</a></li>
+<li class="chapter" data-level="12.3.1" data-path="因子モデル.html"><a href="因子モデル.html#因子モデル概要"><i class="fa fa-check"></i><b>12.3.1</b> 2因子モデル概要*</a></li>
+<li class="chapter" data-level="12.3.2" data-path="因子モデル.html"><a href="因子モデル.html#因子軸の回転"><i class="fa fa-check"></i><b>12.3.2</b> 因子軸の回転</a></li>
+<li class="chapter" data-level="12.3.3" data-path="因子モデル.html"><a href="因子モデル.html#因子数の決定"><i class="fa fa-check"></i><b>12.3.3</b> 因子数の決定</a></li>
+<li class="chapter" data-level="12.3.4" data-path="因子モデル.html"><a href="因子モデル.html#得点化"><i class="fa fa-check"></i><b>12.3.4</b> 得点化</a></li>
+<li class="chapter" data-level="12.3.5" data-path="因子モデル.html"><a href="因子モデル.html#因子モデルまとめ"><i class="fa fa-check"></i><b>12.3.5</b> 2因子モデルまとめ</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="ポジショニングと知覚マップ概要.html"><a href="ポジショニングと知覚マップ概要.html"><i class="fa fa-check"></i><b>12.4</b> ポジショニングと知覚マップ概要</a>
 <ul>
@@ -527,7 +528,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>ここからは実際にRを用いて分析を行っていくが、そのために <code>psych</code>と<code>GPArotation</code> というパッケージを新たに使うため、以下の要領でインストールしてほしい。</p>
 <div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="faex.html#cb291-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span>
 <span id="cb291-2"><a href="faex.html#cb291-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;GPArotation&quot;</span>)</span></code></pre></div>
-<p>まずは、データとパッケージの読み込みを行う。なお、今回因子分析で用いる<code>psych::fa()</code> という関数は、指定されているデータセットすべての変数を参照し分析を行ってしまう。そのため、このタイミングで、分析の対象となる変数のみを取り出したデータセットを作成、定義する。そのうえで、以下のコードではV1からV6までの変数間の相関関係を確認している。表<a href="faex.html#tab:faData">12.1</a> を見ると、V1はV3、V5と正の相関が高く、V2はV4、V6と正の相関が高いことが伺える。</p>
+<p>まずは、データとパッケージの読み込みを行う。なお、今回因子分析で用いる<code>psych::fa()</code> という関数は、指定されているデータセットすべての変数を参照し分析を行ってしまう。そのため、このタイミングで、分析の対象となる変数のみを取り出したデータセットを作成、定義する。そのうえで、以下のコードではV1からV6までの変数間の相関関係を確認している。表<a href="faex.html#tab:faData">12.2</a> を見ると、V1はV3、V5と正の相関が高く、V2はV4、V6と正の相関が高いことが伺える。</p>
 <div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="faex.html#cb292-1" tabindex="-1"></a>factor_exdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/factor_ex.xlsx&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
 <span id="cb292-2"><a href="faex.html#cb292-2" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
 <span id="cb292-3"><a href="faex.html#cb292-3" tabindex="-1"></a><span class="fu">library</span>(GPArotation)</span>
@@ -619,7 +620,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="faex.html#cb293-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">cor</span>(factor_exdata2), <span class="at">caption=</span><span class="st">&quot;相関行列&quot;</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:faData">Table 12.1: </span>相関行列</caption>
+<caption><span id="tab:faData">Table 12.2: </span>相関行列</caption>
 <colgroup>
 <col width="4%" />
 <col width="15%" />
@@ -771,7 +772,7 @@ Figure 12.7: 図示化された因子モデル
 <span id="cb298-4"><a href="faex.html#cb298-4" tabindex="-1"></a>factor_exdata2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(factor_exdata2, fs, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
 <span id="cb298-5"><a href="faex.html#cb298-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(factor_exdata2),<span class="at">caption =</span> <span class="st">&quot;結合後データ&quot;</span>)</span></code></pre></div>
 <table>
-<caption><span id="tab:fascoremerge">Table 12.2: </span>結合後データ</caption>
+<caption><span id="tab:fascoremerge">Table 12.3: </span>結合後データ</caption>
 <thead>
 <tr class="header">
 <th align="right">V1</th>

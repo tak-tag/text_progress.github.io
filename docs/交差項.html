@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-17" />
+<meta name="date" content="2025-04-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -408,10 +408,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="因子モデル.html"><a href="因子モデル.html"><i class="fa fa-check"></i><b>12.3</b> 2因子モデル</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="因子モデル.html"><a href="因子モデル.html#因子軸の回転"><i class="fa fa-check"></i><b>12.3.1</b> 因子軸の回転</a></li>
-<li class="chapter" data-level="12.3.2" data-path="因子モデル.html"><a href="因子モデル.html#因子数の決定"><i class="fa fa-check"></i><b>12.3.2</b> 因子数の決定</a></li>
-<li class="chapter" data-level="12.3.3" data-path="因子モデル.html"><a href="因子モデル.html#因子スコア"><i class="fa fa-check"></i><b>12.3.3</b> 因子スコア</a></li>
-<li class="chapter" data-level="12.3.4" data-path="因子モデル.html"><a href="因子モデル.html#因子モデルまとめ"><i class="fa fa-check"></i><b>12.3.4</b> 2因子モデルまとめ</a></li>
+<li class="chapter" data-level="12.3.1" data-path="因子モデル.html"><a href="因子モデル.html#因子モデル概要"><i class="fa fa-check"></i><b>12.3.1</b> 2因子モデル概要*</a></li>
+<li class="chapter" data-level="12.3.2" data-path="因子モデル.html"><a href="因子モデル.html#因子軸の回転"><i class="fa fa-check"></i><b>12.3.2</b> 因子軸の回転</a></li>
+<li class="chapter" data-level="12.3.3" data-path="因子モデル.html"><a href="因子モデル.html#因子数の決定"><i class="fa fa-check"></i><b>12.3.3</b> 因子数の決定</a></li>
+<li class="chapter" data-level="12.3.4" data-path="因子モデル.html"><a href="因子モデル.html#得点化"><i class="fa fa-check"></i><b>12.3.4</b> 得点化</a></li>
+<li class="chapter" data-level="12.3.5" data-path="因子モデル.html"><a href="因子モデル.html#因子モデルまとめ"><i class="fa fa-check"></i><b>12.3.5</b> 2因子モデルまとめ</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="ポジショニングと知覚マップ概要.html"><a href="ポジショニングと知覚マップ概要.html"><i class="fa fa-check"></i><b>12.4</b> ポジショニングと知覚マップ概要</a>
 <ul>
@@ -710,8 +711,7 @@ y_i = \beta_0 + \beta_1 (x_i-\bar{x})+\beta_2(z_i-\bar{z})+\beta_3(x_i-\bar{x})\
 <span id="cb203-4"><a href="交差項.html#cb203-4" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;R&amp;D Investment&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Sales&quot;</span>)<span class="sc">+</span> </span>
 <span id="cb203-5"><a href="交差項.html#cb203-5" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Promotion level&quot;</span>, <span class="at">labels=</span>leg)</span></code></pre></div>
 <pre><code>## Scale for colour is already present.
-## Adding another scale for colour, which will replace the
-## existing scale.</code></pre>
+## Adding another scale for colour, which will replace the existing scale.</code></pre>
 <div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="交差項.html#cb205-1" tabindex="-1"></a>int_fig1</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/slopeHeadphone-1.png" width="672" /></p>
 <p>続いて、二つ目の方法を実行するために、以下の要領でパッケージをインストールしてほしい。<code>marginaleffects</code> は、<code>margins</code> や <code>emtrends</code> の機能を引き継ぎ、限界効果に関する計算結果を図示化するためのパッケージである<a href="#fn21" class="footnote-ref" id="fnref21"><sup>21</sup></a>。</p>

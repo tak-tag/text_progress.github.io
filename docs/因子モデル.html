@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-17" />
+<meta name="date" content="2025-04-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -408,10 +408,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="因子モデル.html"><a href="因子モデル.html"><i class="fa fa-check"></i><b>12.3</b> 2因子モデル</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="因子モデル.html"><a href="因子モデル.html#因子軸の回転"><i class="fa fa-check"></i><b>12.3.1</b> 因子軸の回転</a></li>
-<li class="chapter" data-level="12.3.2" data-path="因子モデル.html"><a href="因子モデル.html#因子数の決定"><i class="fa fa-check"></i><b>12.3.2</b> 因子数の決定</a></li>
-<li class="chapter" data-level="12.3.3" data-path="因子モデル.html"><a href="因子モデル.html#因子スコア"><i class="fa fa-check"></i><b>12.3.3</b> 因子スコア</a></li>
-<li class="chapter" data-level="12.3.4" data-path="因子モデル.html"><a href="因子モデル.html#因子モデルまとめ"><i class="fa fa-check"></i><b>12.3.4</b> 2因子モデルまとめ</a></li>
+<li class="chapter" data-level="12.3.1" data-path="因子モデル.html"><a href="因子モデル.html#因子モデル概要"><i class="fa fa-check"></i><b>12.3.1</b> 2因子モデル概要*</a></li>
+<li class="chapter" data-level="12.3.2" data-path="因子モデル.html"><a href="因子モデル.html#因子軸の回転"><i class="fa fa-check"></i><b>12.3.2</b> 因子軸の回転</a></li>
+<li class="chapter" data-level="12.3.3" data-path="因子モデル.html"><a href="因子モデル.html#因子数の決定"><i class="fa fa-check"></i><b>12.3.3</b> 因子数の決定</a></li>
+<li class="chapter" data-level="12.3.4" data-path="因子モデル.html"><a href="因子モデル.html#得点化"><i class="fa fa-check"></i><b>12.3.4</b> 得点化</a></li>
+<li class="chapter" data-level="12.3.5" data-path="因子モデル.html"><a href="因子モデル.html#因子モデルまとめ"><i class="fa fa-check"></i><b>12.3.5</b> 2因子モデルまとめ</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="ポジショニングと知覚マップ概要.html"><a href="ポジショニングと知覚マップ概要.html"><i class="fa fa-check"></i><b>12.4</b> ポジショニングと知覚マップ概要</a>
 <ul>
@@ -506,7 +507,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="因子モデル" class="section level2 hasAnchor" number="12.3">
 <h2><span class="header-section-number">12.3</span> 2因子モデル<a href="因子モデル.html#因子モデル" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>ここまでの説明では、1つの因子を想定した1因子モデルを紹介したが、因子分析は複数の因子を想定したモデルも採用できる。この場合も、基本的には1因子モデルと同じように計算が可能だが、複数因子モデルにおいては、（1）軸の回転と、（2）因子数の決定、という2点について追加的に考える必要が出てくる。複数因子モデルでは、因子<span class="math inline">\(\times\)</span>因子負荷量の解の座標の取り方が一意に定まらないという性質を持っている。例えば、観測変数を <span class="math inline">\(J\)</span>個、潜在因子を2個含むモデルを行列表記を用いて以下のように示す。</p>
+<p>ここまでの説明では、1つの因子を想定した1因子モデルを紹介したが、因子分析は複数の因子を想定したモデルも採用できる。この場合も、基本的には1因子モデルと同じように計算が可能だが、複数因子モデルにおいては、（1）軸の回転と、（2）因子数の決定、という2点について追加的に考える必要が出てくる。複数因子モデルでは、因子<span class="math inline">\(\times\)</span>因子負荷量の解の座標の取り方が一意に定まらないという性質を持っている。因子分析の実行においては、この特徴を逆手にとり、解釈が容易になるよう（単純構造化した）軸を回転させることが可能になる。ここでいう単純構造とは各変数が1つの因子だけから強い影響を受け、他の因子からの影響が0に近くなるように見える構造を意味している。</p>
+<div id="因子モデル概要" class="section level3 hasAnchor" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> 2因子モデル概要*<a href="因子モデル.html#因子モデル概要" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>例えば、観測変数を <span class="math inline">\(J\)</span>個、潜在因子を2個含むモデルを行列表記を用いて以下のように示す。</p>
 <p><span class="math display">\[
 \boldsymbol{x}=\boldsymbol{Af}+\boldsymbol{e}
 \]</span></p>
@@ -515,11 +519,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 \boldsymbol{x}=\boldsymbol{Af}(\boldsymbol{TT}^{-1})+\boldsymbol{e} \\
 = \boldsymbol{A}^*\boldsymbol{f}^*+\boldsymbol{e}
 \]</span></p>
-<p>この<span class="math inline">\(\boldsymbol{A^*}\)</span>と<span class="math inline">\(\boldsymbol{f^*}\)</span>もまた2因子モデルの解である。そのため、座標軸の変換についての不定性がうかがえる。因子分析の実行においては、この特徴を逆手にとり、解釈が容易になるよう（単純構造化した）軸を回転させることが可能になる。ここでいう単純構造とは各変数が1つの因子だけから強い影響を受け、他の因子からの影響が0に近くなるように見える構造を意味している。</p>
-<div id="因子軸の回転" class="section level3 hasAnchor" number="12.3.1">
-<h3><span class="header-section-number">12.3.1</span> 因子軸の回転<a href="因子モデル.html#因子軸の回転" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>この<span class="math inline">\(\boldsymbol{A^*}\)</span>と<span class="math inline">\(\boldsymbol{f^*}\)</span>もまた2因子モデルの解である。そのため、座標軸の変換についての不定性がうかがえる。</p>
+</div>
+<div id="因子軸の回転" class="section level3 hasAnchor" number="12.3.2">
+<h3><span class="header-section-number">12.3.2</span> 因子軸の回転<a href="因子モデル.html#因子軸の回転" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>軸の回転の方法としては主に、直交回転と斜交回転という2つのアプローチが存在する。直交回転とは、因子負荷量行列に直交行列をかけた解のことである。この方法では、因子間に相関がないことを仮定している。直交回転法代表例がバリマックス回転である。一方で斜交回転は、直交ではない回転を表しており、因子間の相関を認める方法である。斜交回転法の代表例はプロマックス回転である。図<a href="因子モデル.html#fig:rotate">12.2</a> は、川端ほか（2019 p.180）を参照した因子軸の回転について直感的に示した概要図である。この図は1から8までの変数同士の関係について示しており、1から4と、5から８という二つのグループに分かれているように伺える。</p>
-<p>しかしながら、回転なしで因子分析を実行するとこのようなデータの構造を明示的に捉えることができないかもしれない。回転なしの図において、<span class="math inline">\(f1\)</span>の軸においてはそれぞれ異なる程度をもっていることが伺えるものの、<span class="math inline">\(f2\)</span>の軸では、すべての観測変数が <span class="math inline">\(f2\)</span> に同じような負荷を持っていることがうかがえる。そのため、因子負荷量に基づき、それぞれの変数に対する因子構造について解釈することが難しい。このような場合、データの特徴を変えることはできないが、軸を回転させることで、あるグループにとっては <span class="math inline">\(f1\)</span>（<span class="math inline">\(f2\)</span>）への負荷量が小さいが、<span class="math inline">\(f2\)</span>（<span class="math inline">\(f1\)</span>）への負荷量は大きいというような構造を実現することができる。例えば直交回転では、直交（軸同士の角度が90度）である条件は守ったままではあるが、1から4はf1に高いがf2には低い値を取っていることがうかがえる。さらに斜交回転においては、軸の角度を自由に取ることができ、より単純構造化されていることがうかがえる。このように、複数因子を採用して探索的因子分析を実行する場合、因子軸の回転を採用することで、分析者にとってより解釈しやすい単純構造化を実現することが多い。</p>
+<p>しかしながら、回転なしで因子分析を実行するとこのようなデータの構造を明示的に捉えることができないかもしれない。回転なし（初期解）の図において、<span class="math inline">\(f1\)</span>の軸においてはそれぞれ異なる程度をもっていることが伺えるものの、<span class="math inline">\(f2\)</span>の軸では、すべての観測変数が <span class="math inline">\(f2\)</span> に同じような負荷を持っていることがうかがえる。そのため、因子負荷量に基づき、それぞれの変数に対する因子構造について解釈することが難しい。このような場合、データの特徴を変えることはできないが、軸を回転させることで、あるグループにとっては <span class="math inline">\(f1\)</span>（<span class="math inline">\(f2\)</span>）への負荷量が小さいが、<span class="math inline">\(f2\)</span>（<span class="math inline">\(f1\)</span>）への負荷量は大きいというような構造を実現することができる。例えば直交回転では、直交（軸同士の角度が90度）である条件は守ったままではあるが、1から4はf1に高いがf2には低い値を取っていることがうかがえる。さらに斜交回転においては、軸の角度を自由に取ることができ、より単純構造化されていることがうかがえる。このように、複数因子を採用して探索的因子分析を実行する場合、因子軸の回転を採用することで、分析者にとってより解釈しやすい単純構造化を実現することが多い。</p>
 <div class="figure"><span style="display:block;" id="fig:rotate"></span>
 <img src="factor/rotate.jpg" alt="因子軸の回転概要" width="2010" />
 <p class="caption">
@@ -527,8 +532,8 @@ Figure 12.2: 因子軸の回転概要
 </p>
 </div>
 </div>
-<div id="因子数の決定" class="section level3 hasAnchor" number="12.3.2">
-<h3><span class="header-section-number">12.3.2</span> 因子数の決定<a href="因子モデル.html#因子数の決定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="因子数の決定" class="section level3 hasAnchor" number="12.3.3">
+<h3><span class="header-section-number">12.3.3</span> 因子数の決定<a href="因子モデル.html#因子数の決定" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>因子分析では、モデルで採用する因子の数を自由に決定する事ができる。因子負荷量の行列は、データの相関行列を固有ベクトルと固有値（を持つ行列）にそれぞれ分解（固有値分解）することで計算されている（分寺、2022）。そして因子の数はこのプロセスに求められた固有値の値を用いて検討される。固有値分解の詳細について本書では扱わない。基本的には、より少ない因子数で全体を説明できることが好ましいのだが、因子数を少なくしすぎて説明力が下がるのは好ましくない。そのため、<a href="cluster.html#cluster">11</a> 章での説明と同様、効率性と有効性のバランスを探ることになる。以下では、因子数を決めるために用いられている基準をいくつか紹介する。</p>
 <p>第1に、各因子の固有値（eigen value）に基づく基準である。項目間の相関行列の次元（固有値の数）について、固有値分解によって求めた固有値を確認することで検討する。固有値の数は項目の数だけ計算可能であり、固有値は通常正の値を取ることが想定される（小塩, 2024）。因子数判断の基準では、固有値の値を確認し、その固有値に対応する因子を残すかどうかを判断することになる。固有値の値は直感的には、項目何個分の情報量を有しているかを意味する。そのため、1を越えていない因子についてはモデルに含めないと判断する事が多い。このような判断基準はガットマン基準やカイザー基準と呼ばれる。この時計算される各因子の固有値はその因子の寄与率にも対応しており、固有値が1ということは、（直感的には）観測変数1項目分の分散を説明していると解釈することも可能である。そのため、固有値が1以上の因子のみをモデルに用いるという方法が慣習的に広く用いられている。しかしながら、この基準に対する批判も存在していることに注意が必要である。</p>
 <p>第2の因子数判断基準にスクリープロットの活用がある。これは、因子数を横軸にとり、それに対応する固有値を縦にプロットしたものである。図<a href="因子モデル.html#fig:scree">12.3</a> はスクリープロットの例である。スクリープロットでは、固有値そのものに加え、因子数を増やすことによる固有値の変化量（傾き）の変化にも着目する。例えば図<a href="因子モデル.html#fig:scree">12.3</a> については、因子数が2から3への変化では傾きが急であるが、3以上になった点からプロットの傾きが緩やかになっている。この場合、3因子目は説明力が低く、それ以降の因子についても説明力が高くない事が伺える。そのため、<a href="因子モデル.html#fig:scree">12.3</a> の結果では、2因子モデルを採用することが有力となる。</p>
@@ -540,20 +545,58 @@ Figure 12.3: スクリープロット
 </div>
 <p>固有値とスクリープロットによる因子数の決定は伝統的に広く用いられている基準であるが、この他にも、乱数を用いて計算された固有値との比較（平行分析）などがあるので、関心がある人はぜひ学習してみてほしい。</p>
 </div>
-<div id="因子スコア" class="section level3 hasAnchor" number="12.3.3">
-<h3><span class="header-section-number">12.3.3</span> 因子スコア<a href="因子モデル.html#因子スコア" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>因子分析ではその結果に基づき、各個体が因子に対してどれだけの特性値を持っているのか、因子の得点を割り振ることができる。このように割り振られた因子についての値を因子スコア（因子得点）という。これは、抽出された因子についての予測値として解釈でき、最も基本的なスコアの求め方は回帰推定法と呼ばれる計算方法である。この方法では、個人 <span class="math inline">\(i\)</span> における因子 <span class="math inline">\(f\)</span> に対して（簡単化のために1因子モデルを考える）<span class="math inline">\(J\)</span> 個の観測変数と、係数 <span class="math inline">\(b\)</span> を想定すると、因子スコアの理論モデルは以下のように示すことができる。</p>
-<p><span class="math display">\[
-f_i = b_1x_{i1}+ b_2x_{i2}+...+ b_Jx_{iJ}+u_{ij}\\
-= \sum^J_{j = 1}b_{j}x_{ij} + u_{i}
-\]</span>
-ただし、<span class="math inline">\(u_{i}\)</span> は、誤差項である。この因子の予測値を <span class="math inline">\(\hat{f}_i\)</span> とし、以下の <span class="math inline">\(G1\)</span> を最小化するような <span class="math inline">\(b\)</span> を求めるのが、回帰推定法である。</p>
-<p><span class="math display">\[
-G1 = \sum^n_{i = 1} \left(f_i-\hat{f}_i\right)
-\]</span></p>
+<div id="得点化" class="section level3 hasAnchor" number="12.3.4">
+<h3><span class="header-section-number">12.3.4</span> 得点化<a href="因子モデル.html#得点化" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>因子分析は、心理尺度と密接な関係を持つ分析手法である。心理尺度は何らかの心理的特性や状況を数値化して表現するために用いられる。そして因子分析は尺度全体の構造を評価するための統計的手法として機能する。心理尺度を分析に使うためには、因子構造をもとにその尺度を得点化する必要がある。ここでは代表的な得点化の方法を紹介する。</p>
+<p>因子分析の結果複数の因子が発見された場合、それぞれの因子に対して高い因子負荷量を持つ項目がそれぞれに対応する形で得点化される。このときの得点化方法として最も単純なものは、対応する項目の合計値を計算することや、それを項目数で割った平均値を計算する方法である。例えば、表 (tab:scoreexample) では、項目 1、 2、 3は因子1に、項目 4、 5、 6は因子2にそれぞれ高い因子負荷量を持っている。合計値（平均値）法ではこのとき、各人の項目1から3の合計値（平均値）を因子1の得点として、項目4から6の合計値（平均値）を因子2の得点として用いる。</p>
+<table>
+<caption><span id="tab:scoreexample">Table 12.1: </span>因子分析結果例</caption>
+<thead>
+<tr class="header">
+<th align="center">項目</th>
+<th align="center">因子1</th>
+<th align="center">因子2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">項目1</td>
+<td align="center"><strong>0.82</strong></td>
+<td align="center">0.21</td>
+</tr>
+<tr class="even">
+<td align="center">項目2</td>
+<td align="center"><strong>0.91</strong></td>
+<td align="center">0.03</td>
+</tr>
+<tr class="odd">
+<td align="center">項目3</td>
+<td align="center"><strong>0.79</strong></td>
+<td align="center">0.3</td>
+</tr>
+<tr class="even">
+<td align="center">項目4</td>
+<td align="center">0.02</td>
+<td align="center"><strong>0.96</strong></td>
+</tr>
+<tr class="odd">
+<td align="center">項目5</td>
+<td align="center">0.2</td>
+<td align="center"><strong>0.84</strong></td>
+</tr>
+<tr class="even">
+<td align="center">項目6</td>
+<td align="center">0.14</td>
+<td align="center"><strong>0.89</strong></td>
+</tr>
+</tbody>
+</table>
+<p>合計値に比べて平均値はその値の解釈が容易であるという利点を持つ。例えば、7点尺度項目の合計値の場合、合算する項目件数をその都度確認しなければ解釈が難しいが、平均値であればその必要はない。以下では便宜的に合計値を使う方法も平均値を使う方法もどちらも含めて合計値法と呼ぶ。</p>
+<p>これらの方法に加え、因子分析の結果に基づき、各個体が因子に対してどれだけの特性値を持っているのか、因子の推定値を割り振ることができる。このように割り振られた数値を因子得点（因子スコア）と呼ぶ、これは、因子モデルの誤差を排除した状態で算出される因子の予測値として解釈できる。そのため、因子スコアを採用することによる利点もあるが、現状では合計値法を用いることが多い（小塩, 2024）。</p>
+<p>合計値法は計算が簡便であり、作業量を節約することができる。また、合計値法の方が因子得点よりも研究間での結果比較可能性が高いという利点も有する。因子スコアは分析された因子負荷量に基づき計算されるため、同じ因子を捉えていても研究ごとで使用されたサンプルに応じて因子負荷量は異なる。一方で合計値法は全ての項目の負荷量を1にしたときの因子スコアと同値である（小塩, 2024）。そのため、研究間で結果を比較することが可能になる。また、尺度を得点化した場合にも、それを用いた分析結果の解釈を容易にするため、平均0、標準偏差1になるように標準化することも多い。</p>
 </div>
-<div id="因子モデルまとめ" class="section level3 hasAnchor" number="12.3.4">
-<h3><span class="header-section-number">12.3.4</span> 2因子モデルまとめ<a href="因子モデル.html#因子モデルまとめ" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="因子モデルまとめ" class="section level3 hasAnchor" number="12.3.5">
+<h3><span class="header-section-number">12.3.5</span> 2因子モデルまとめ<a href="因子モデル.html#因子モデルまとめ" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>本節では、因子分析の概要についての説明を行った。因子分析の概念的な理解のためには、観測できる変数の背後に潜在因子というものが存在することを想定する必要がある。しかしながら観察できない潜在因子を測定するためには、観測変数間の共分散を用いる。ある変数同士が似ているということは、その背後に共通する因子が存在し、その因子から影響を受けているのではないかと考えているわけである。分析の結果、複数の変数を一纏めに捉えることができる因子が発見された場合、事後的に、「それはどのような因子か」を解釈し、名前をつける。このように、データに基づく結果を事後的に解釈することで因子を発見しようとするアプローチを「探索的因子分析」という。次節では、Rを用いた因子分析の実行方法を紹介しながら、探索的因子分析の手順や結果の解釈について説明する。</p>
 </div>
 </div>

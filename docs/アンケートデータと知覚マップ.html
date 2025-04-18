@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-17" />
+<meta name="date" content="2025-04-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -408,10 +408,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="因子モデル.html"><a href="因子モデル.html"><i class="fa fa-check"></i><b>12.3</b> 2因子モデル</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="因子モデル.html"><a href="因子モデル.html#因子軸の回転"><i class="fa fa-check"></i><b>12.3.1</b> 因子軸の回転</a></li>
-<li class="chapter" data-level="12.3.2" data-path="因子モデル.html"><a href="因子モデル.html#因子数の決定"><i class="fa fa-check"></i><b>12.3.2</b> 因子数の決定</a></li>
-<li class="chapter" data-level="12.3.3" data-path="因子モデル.html"><a href="因子モデル.html#因子スコア"><i class="fa fa-check"></i><b>12.3.3</b> 因子スコア</a></li>
-<li class="chapter" data-level="12.3.4" data-path="因子モデル.html"><a href="因子モデル.html#因子モデルまとめ"><i class="fa fa-check"></i><b>12.3.4</b> 2因子モデルまとめ</a></li>
+<li class="chapter" data-level="12.3.1" data-path="因子モデル.html"><a href="因子モデル.html#因子モデル概要"><i class="fa fa-check"></i><b>12.3.1</b> 2因子モデル概要*</a></li>
+<li class="chapter" data-level="12.3.2" data-path="因子モデル.html"><a href="因子モデル.html#因子軸の回転"><i class="fa fa-check"></i><b>12.3.2</b> 因子軸の回転</a></li>
+<li class="chapter" data-level="12.3.3" data-path="因子モデル.html"><a href="因子モデル.html#因子数の決定"><i class="fa fa-check"></i><b>12.3.3</b> 因子数の決定</a></li>
+<li class="chapter" data-level="12.3.4" data-path="因子モデル.html"><a href="因子モデル.html#得点化"><i class="fa fa-check"></i><b>12.3.4</b> 得点化</a></li>
+<li class="chapter" data-level="12.3.5" data-path="因子モデル.html"><a href="因子モデル.html#因子モデルまとめ"><i class="fa fa-check"></i><b>12.3.5</b> 2因子モデルまとめ</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="ポジショニングと知覚マップ概要.html"><a href="ポジショニングと知覚マップ概要.html"><i class="fa fa-check"></i><b>12.4</b> ポジショニングと知覚マップ概要</a>
 <ul>
@@ -524,11 +525,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <div id="データ構造の変更" class="section level3 hasAnchor" number="12.6.1">
 <h3><span class="header-section-number">12.6.1</span> データ構造の変更<a href="アンケートデータと知覚マップ.html#データ構造の変更" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>多くのテキスト等で紹介、共有されている知覚マップの作成方法やそこで利用されているデータは、すでに企業レベルで集計されている事が多い。しかしながら、消費者から複数の企業に対する複数属性についてのアンケートを取ると、多くの場合表<a href="アンケートデータと知覚マップ.html#tab:cafedata">12.3</a> のような構造を持つだろう。表<a href="アンケートデータと知覚マップ.html#tab:cafedata">12.3</a>では、“y1_1” と “y2_1” はそれぞれ企業1への質問1、企業1への質問2を表している。そのため、例えば、“y1_2” は企業2への質問1を表している。なお、照井・佐藤（2022）のように、新聞等ですでに公表されている企業レベルで集計された調査結果を利用する場合、本節で紹介するデータの変換作業は不要である。</p>
+<p>多くのテキスト等で紹介、共有されている知覚マップの作成方法やそこで利用されているデータは、すでに企業レベルで集計されている事が多い。しかしながら、消費者から複数の企業に対する複数属性についてのアンケートを取ると、多くの場合表<a href="アンケートデータと知覚マップ.html#tab:cafedata">12.4</a> のような構造を持つだろう。表<a href="アンケートデータと知覚マップ.html#tab:cafedata">12.4</a>では、“y1_1” と “y2_1” はそれぞれ企業1への質問1、企業1への質問2を表している。そのため、例えば、“y1_2” は企業2への質問1を表している。なお、照井・佐藤（2022）のように、新聞等ですでに公表されている企業レベルで集計された調査結果を利用する場合、本節で紹介するデータの変換作業は不要である。</p>
 <div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="アンケートデータと知覚マップ.html#cb301-1" tabindex="-1"></a>df_cafe <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/2021_cafeSurvey.xlsx&quot;</span>)</span>
 <span id="cb301-2"><a href="アンケートデータと知覚マップ.html#cb301-2" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(df_cafe), <span class="at">caption =</span> <span class="st">&quot;カフェデータ概要&quot;</span>)</span></code></pre></div>
 <table style="width:100%;">
-<caption><span id="tab:cafedata">Table 12.3: </span>カフェデータ概要</caption>
+<caption><span id="tab:cafedata">Table 12.4: </span>カフェデータ概要</caption>
 <colgroup>
 <col width="1%" />
 <col width="2%" />
@@ -879,7 +880,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb302-38"><a href="アンケートデータと知覚マップ.html#cb302-38" tabindex="-1"></a>  tibble<span class="sc">::</span><span class="fu">column_to_rownames</span>(<span class="at">var =</span> <span class="st">&quot;company&quot;</span>)</span>
 <span id="cb302-39"><a href="アンケートデータと知覚マップ.html#cb302-39" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(brand_based, <span class="at">caption =</span> <span class="st">&quot;変換後データ&quot;</span>) </span></code></pre></div>
 <table>
-<caption><span id="tab:widetolong">Table 12.4: </span>変換後データ</caption>
+<caption><span id="tab:widetolong">Table 12.5: </span>変換後データ</caption>
 <thead>
 <tr class="header">
 <th align="left"></th>

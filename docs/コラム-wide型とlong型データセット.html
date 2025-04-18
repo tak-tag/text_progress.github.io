@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-17" />
+<meta name="date" content="2025-04-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -408,10 +408,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12.3" data-path="因子モデル.html"><a href="因子モデル.html"><i class="fa fa-check"></i><b>12.3</b> 2因子モデル</a>
 <ul>
-<li class="chapter" data-level="12.3.1" data-path="因子モデル.html"><a href="因子モデル.html#因子軸の回転"><i class="fa fa-check"></i><b>12.3.1</b> 因子軸の回転</a></li>
-<li class="chapter" data-level="12.3.2" data-path="因子モデル.html"><a href="因子モデル.html#因子数の決定"><i class="fa fa-check"></i><b>12.3.2</b> 因子数の決定</a></li>
-<li class="chapter" data-level="12.3.3" data-path="因子モデル.html"><a href="因子モデル.html#因子スコア"><i class="fa fa-check"></i><b>12.3.3</b> 因子スコア</a></li>
-<li class="chapter" data-level="12.3.4" data-path="因子モデル.html"><a href="因子モデル.html#因子モデルまとめ"><i class="fa fa-check"></i><b>12.3.4</b> 2因子モデルまとめ</a></li>
+<li class="chapter" data-level="12.3.1" data-path="因子モデル.html"><a href="因子モデル.html#因子モデル概要"><i class="fa fa-check"></i><b>12.3.1</b> 2因子モデル概要*</a></li>
+<li class="chapter" data-level="12.3.2" data-path="因子モデル.html"><a href="因子モデル.html#因子軸の回転"><i class="fa fa-check"></i><b>12.3.2</b> 因子軸の回転</a></li>
+<li class="chapter" data-level="12.3.3" data-path="因子モデル.html"><a href="因子モデル.html#因子数の決定"><i class="fa fa-check"></i><b>12.3.3</b> 因子数の決定</a></li>
+<li class="chapter" data-level="12.3.4" data-path="因子モデル.html"><a href="因子モデル.html#得点化"><i class="fa fa-check"></i><b>12.3.4</b> 得点化</a></li>
+<li class="chapter" data-level="12.3.5" data-path="因子モデル.html"><a href="因子モデル.html#因子モデルまとめ"><i class="fa fa-check"></i><b>12.3.5</b> 2因子モデルまとめ</a></li>
 </ul></li>
 <li class="chapter" data-level="12.4" data-path="ポジショニングと知覚マップ概要.html"><a href="ポジショニングと知覚マップ概要.html"><i class="fa fa-check"></i><b>12.4</b> ポジショニングと知覚マップ概要</a>
 <ul>
@@ -514,7 +515,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>手元にあるWide型データをLong型に変換したい場合の対応策として、ここでは tidyverseに含まれているtidyrのgather()関数を用いる方法を紹介する。この関数の利用方法を実演するためにManabaにアップされている sales_wide.csv をダウンロードし、プロジェクト内のdataディレクトリに移して欲しい。データを読み込むと、以下のようにデータ構造を確認することができる。</p>
 <div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="コラム-wide型とlong型データセット.html#cb314-1" tabindex="-1"></a>sales_wide <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/sales_wide.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
 <pre><code>## Rows: 4 Columns: 6
-## ── Column specification ─────────────────────────────────
+## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## dbl (6): store, sales06, sales07, sales08, sales09, sales10
 ## 
