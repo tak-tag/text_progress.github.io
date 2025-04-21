@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-20" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
-<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="psychscale.html"><a href="psychscale.html#データのタイプ"><i class="fa fa-check"></i><b>4.2.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="4.2.2" data-path="psychscale.html"><a href="psychscale.html#質問紙調査とは"><i class="fa fa-check"></i><b>4.2.2</b> 質問紙調査とは</a></li>
+<li class="chapter" data-level="4.2.3" data-path="psychscale.html"><a href="psychscale.html#マーケティングと質問紙調査"><i class="fa fa-check"></i><b>4.2.3</b> マーケティングと質問紙調査</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.1" data-path="データのタイプ-1.html"><a href="データのタイプ-1.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
 <li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
 <li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
 <li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
@@ -546,7 +551,7 @@ E(y|x)=\beta_0+\beta_1x
 <div id="企業データを用いた回帰分析の実行" class="section level3 hasAnchor" number="7.4.1">
 <h3><span class="header-section-number">7.4.1</span> 企業データを用いた回帰分析の実行<a href="回帰分析における推定と検定.html#企業データを用いた回帰分析の実行" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>なお、Rで回帰係数の検定結果を得るのは非常に簡単である。 <code>lm()</code> 関数の実行結果をストアしたオブジェクトに対して、<code>summary()</code> 関数を実行することで統計的検定結果を得ることができる。先程分析した <code>reg1</code> を再度利用すると、以下のような結果を得る。</p>
-<div class="sourceCode" id="cb173"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb173-1"><a href="回帰分析における推定と検定.html#cb173-1" tabindex="-1"></a><span class="fu">summary</span>(reg1)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="回帰分析における推定と検定.html#cb174-1" tabindex="-1"></a><span class="fu">summary</span>(reg1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sales ~ emp, data = firmdata19)
@@ -593,7 +598,7 @@ P\left(\left|\frac{\hat{\beta}-\beta}{se(\hat{\beta})}\right|\leq z_{\alpha/2}\r
 P(\hat{\beta}-se(\hat{\beta})\cdot z_{\alpha/2}\leq\beta\leq\hat{\beta}+se(\hat{\beta})\cdot z_{\alpha/2})=1-\alpha
 \]</span></p>
 <p>したがって、<span class="math inline">\(\small [\hat{\beta}\pm se(\hat{\beta})\cdot z_{\alpha/2}]\)</span> という観察可能な情報によって信頼区間推定できる。Rによって信頼区間を得るには、回帰分析の結果に対して、<code>confint()</code> 関数を用いる（デフォルトで95%信頼係数が設定されている）。例えば、先程の <code>reg1</code>の結果を用いて、99%信頼区間を得ると、以下のような結果を得る。</p>
-<div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="回帰分析における推定と検定.html#cb175-1" tabindex="-1"></a><span class="fu">confint</span>(reg1,<span class="at">level =</span> <span class="fl">0.99</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="回帰分析における推定と検定.html#cb176-1" tabindex="-1"></a><span class="fu">confint</span>(reg1,<span class="at">level =</span> <span class="fl">0.99</span>)</span></code></pre></div>
 <pre><code>##                    0.5 %       99.5 %
 ## (Intercept) -208335.9722 253955.32943
 ## emp              51.4537     64.81018</code></pre>

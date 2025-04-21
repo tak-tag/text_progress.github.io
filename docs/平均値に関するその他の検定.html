@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-20" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
-<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="psychscale.html"><a href="psychscale.html#データのタイプ"><i class="fa fa-check"></i><b>4.2.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="4.2.2" data-path="psychscale.html"><a href="psychscale.html#質問紙調査とは"><i class="fa fa-check"></i><b>4.2.2</b> 質問紙調査とは</a></li>
+<li class="chapter" data-level="4.2.3" data-path="psychscale.html"><a href="psychscale.html#マーケティングと質問紙調査"><i class="fa fa-check"></i><b>4.2.3</b> マーケティングと質問紙調査</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.1" data-path="データのタイプ-1.html"><a href="データのタイプ-1.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
 <li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
 <li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
 <li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
@@ -531,13 +536,13 @@ t=\frac{(\bar{X}-\bar{Y})}{\sqrt{s^2\left(\frac{1}{m}+\frac{1}{n}\right)}}\sim t
 \]</span>
 Rにおいて平均の差の検定を行うことはさほど難しくない。先程の等分散性についても、<code>var.equal=TRUE</code>または<code>var.equal=FALSE</code>という引数で設定できる。<code>var.equal=</code> 引数についてはTRUEが等分散性を仮定するが、デフォルトでは、FALSEとなっている。</p>
 <p>平均の差の検定では、 <code>t.test(outcome ~ category)</code> のように、はじめに着目する成果変数を、その後 ~（チルダ）のあとに着目するカテゴリ変数を指示することで、どの変数（outcome）の平均の差をどのカテゴリ変数（category）で検定するのかが特定化できる。ここでは、以前の章で利用した `firm2018’ データを利用して、広告集中度の高い企業と低い企業とで売上高の平均値に差があるか否かを以下のように分析する。</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="平均値に関するその他の検定.html#cb149-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb149-2"><a href="平均値に関するその他の検定.html#cb149-2" tabindex="-1"></a>firmdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/MktRes_firmdata.xlsx&quot;</span>)</span>
-<span id="cb149-3"><a href="平均値に関するその他の検定.html#cb149-3" tabindex="-1"></a>firm2018 <span class="ot">&lt;-</span> firmdata <span class="sc">%&gt;%</span> </span>
-<span id="cb149-4"><a href="平均値に関するその他の検定.html#cb149-4" tabindex="-1"></a>  <span class="fu">filter</span>(fyear <span class="sc">==</span> <span class="dv">2018</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb149-5"><a href="平均値に関するその他の検定.html#cb149-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ad_dummy =</span> <span class="fu">ifelse</span>(adint <span class="sc">&gt;</span> <span class="fu">median</span>(adint),<span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb149-6"><a href="平均値に関するその他の検定.html#cb149-6" tabindex="-1"></a></span>
-<span id="cb149-7"><a href="平均値に関するその他の検定.html#cb149-7" tabindex="-1"></a><span class="fu">t.test</span>(sales <span class="sc">~</span> ad_dummy, <span class="at">data =</span> firm2018)</span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="平均値に関するその他の検定.html#cb150-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb150-2"><a href="平均値に関するその他の検定.html#cb150-2" tabindex="-1"></a>firmdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/MktRes_firmdata.xlsx&quot;</span>)</span>
+<span id="cb150-3"><a href="平均値に関するその他の検定.html#cb150-3" tabindex="-1"></a>firm2018 <span class="ot">&lt;-</span> firmdata <span class="sc">%&gt;%</span> </span>
+<span id="cb150-4"><a href="平均値に関するその他の検定.html#cb150-4" tabindex="-1"></a>  <span class="fu">filter</span>(fyear <span class="sc">==</span> <span class="dv">2018</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb150-5"><a href="平均値に関するその他の検定.html#cb150-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ad_dummy =</span> <span class="fu">ifelse</span>(adint <span class="sc">&gt;</span> <span class="fu">median</span>(adint),<span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb150-6"><a href="平均値に関するその他の検定.html#cb150-6" tabindex="-1"></a></span>
+<span id="cb150-7"><a href="平均値に関するその他の検定.html#cb150-7" tabindex="-1"></a><span class="fu">t.test</span>(sales <span class="sc">~</span> ad_dummy, <span class="at">data =</span> firm2018)</span></code></pre></div>
 <pre><code>## 
 ##  Welch Two Sample t-test
 ## 
@@ -549,7 +554,7 @@ Rにおいて平均の差の検定を行うことはさほど難しくない。�
 ## sample estimates:
 ## mean in group 0 mean in group 1 
 ##        725009.7       1763295.7</code></pre>
-<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="平均値に関するその他の検定.html#cb151-1" tabindex="-1"></a><span class="fu">t.test</span>(sales <span class="sc">~</span> ad_dummy, <span class="at">data =</span> firm2018,<span class="at">var.equal=</span>T)</span></code></pre></div>
+<div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="平均値に関するその他の検定.html#cb152-1" tabindex="-1"></a><span class="fu">t.test</span>(sales <span class="sc">~</span> ad_dummy, <span class="at">data =</span> firm2018,<span class="at">var.equal=</span>T)</span></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -563,7 +568,7 @@ Rにおいて平均の差の検定を行うことはさほど難しくない。�
 ##        725009.7       1763295.7</code></pre>
 <p>分析の結果、等分散性を仮定するか否かで、計算結果は微妙に異なるが、どちらの検定結果においても1%有意水準で帰無仮説を棄却できた。そのため、グループ間で売上高には差があり、広告集中度の高いグループのほうが売上高が高い（もしくは、売上高の高い企業ほど広告集中度が高いグループに属している）といえる。</p>
 <p>なおRにおいては、等分散性に関する検定も<code>var.test(outcome ~ category)</code>で実行可能である。先程のidposデータに関する男女差について、等分散性の分析を以下のように実施する。</p>
-<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="平均値に関するその他の検定.html#cb153-1" tabindex="-1"></a><span class="fu">var.test</span>(sales <span class="sc">~</span> ad_dummy, <span class="at">data =</span> firm2018, <span class="at">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="平均値に関するその他の検定.html#cb154-1" tabindex="-1"></a><span class="fu">var.test</span>(sales <span class="sc">~</span> ad_dummy, <span class="at">data =</span> firm2018, <span class="at">ratio =</span> <span class="dv">1</span>)</span></code></pre></div>
 <pre><code>## 
 ##  F test to compare two variances
 ## 

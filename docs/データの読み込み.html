@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-20" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
-<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="psychscale.html"><a href="psychscale.html#データのタイプ"><i class="fa fa-check"></i><b>4.2.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="4.2.2" data-path="psychscale.html"><a href="psychscale.html#質問紙調査とは"><i class="fa fa-check"></i><b>4.2.2</b> 質問紙調査とは</a></li>
+<li class="chapter" data-level="4.2.3" data-path="psychscale.html"><a href="psychscale.html#マーケティングと質問紙調査"><i class="fa fa-check"></i><b>4.2.3</b> マーケティングと質問紙調査</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.1" data-path="データのタイプ-1.html"><a href="データのタイプ-1.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
 <li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
 <li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
 <li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
@@ -508,20 +513,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="データの読み込み" class="section level2 hasAnchor" number="5.2">
 <h2><span class="header-section-number">5.2</span> データの読み込み<a href="データの読み込み.html#データの読み込み" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>本節で用いるパッケージをまだインストールしていない読者は、以下のコマンドを用いてインストールしてほしい。また、インストールを完了したら、library()関数によって各パッケージを起動すること。</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="データの読み込み.html#cb48-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>,<span class="st">&quot;readr&quot;</span>,<span class="st">&quot;readxl&quot;</span>))</span></code></pre></div>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="データの読み込み.html#cb49-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb49-2"><a href="データの読み込み.html#cb49-2" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb49-3"><a href="データの読み込み.html#cb49-3" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="データの読み込み.html#cb49-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">&quot;tidyverse&quot;</span>,<span class="st">&quot;readr&quot;</span>,<span class="st">&quot;readxl&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="データの読み込み.html#cb50-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb50-2"><a href="データの読み込み.html#cb50-2" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb50-3"><a href="データの読み込み.html#cb50-3" tabindex="-1"></a><span class="fu">library</span>(readxl)</span></code></pre></div>
 <p>ここからは、データセットを用いた分析を行う。基本的な操作においては、R外部で作成されたデータを取り込み利用するのだが、あるソフトウェアで作成・保存されたデータセットが他の環境で利用できるとは限らないという点に注意が必要である。具体的には、エクセルファイルが誰にでも開けるとは思ってはいけない。そのため、ソフト特性に依存しない汎用的な形式を使うことが好ましい。汎用性の高いファイル形式の代表的な例がCSV (comma separated values) である。以下は、mktData.csvという架空のファイルをdfというオブジェクト名で取り込むための、見本コードである。ここで用いる関数は、readrというパッケージのread_csv() という関数である。なお、以下のコードは、実在しない ’mktData.csv’というデータセットを引数に利用した見本コードであるため、このコードをそのまま実行してもエラーを返すだけであることに注意をしてほしい。実際には、自身が利用するファイル名を指定してファイルを読み込むことになる。なお、以下のコードの2行目は、データの1行目に変数名（列名）が含まれていない場合の引数の指定方法である。また、下記コードで利用している <code>::</code> は用いるパッケージを指示するための演算子である。これにより、<code>library()</code> を用いなくても、指定したパッケージ内の関数を利用することができる。</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="データの読み込み.html#cb50-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;mktData.csv&quot;</span>)</span>
-<span id="cb50-2"><a href="データの読み込み.html#cb50-2" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;mktData.csv&quot;</span>, <span class="at">col_name =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="データの読み込み.html#cb51-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;mktData.csv&quot;</span>)</span>
+<span id="cb51-2"><a href="データの読み込み.html#cb51-2" tabindex="-1"></a>df2 <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;mktData.csv&quot;</span>, <span class="at">col_name =</span> <span class="cn">FALSE</span>)</span></code></pre></div>
 <p>なお、デスクトップ版を利用している場合には、ファイルが格納されているディレクトリ名も指定する必要がある。Rにおいては様々なファイルを入力・出力することになるため、利用するディレクトリが一貫していないとそれだけで作業が煩雑になる。そのため、「（補足）デスクトップ版の利用とプロジェクト機能」節で紹介している「プロジェクト機能」必ずを活用するようにほしい。</p>
 <p>本書で用いるデータは、出版社のウェブサイトを通じて配布している。そのため、読者においては各自のコンピュータにダウンロードし、分析用に活用してほしい。ここではまず、分析に利用するデータを格納するディレクトリを作成するコードを紹介する。以下のコードは、Project を作成しそのためのディレクトリを指定していることを前提にしている。 具体的は、以下の通りdir.create() を使ってproject内に新たに data というディレクトリ（フォルダ）を作成する。</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="データの読み込み.html#cb51-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="データの読み込み.html#cb52-1" tabindex="-1"></a><span class="fu">dir.create</span>(<span class="st">&quot;data&quot;</span>)</span></code></pre></div>
 <p>新たなディレクトリを作成したら、そこに、ウェブサイトよりダウンロードしたデータを入れてほしい。ここではまず “2022idpos.csv”というデータを用いる。データが無事 data ディレクトリに含まれたら、以下のコマンドによってそのデータファイルをR の作業スペースに読み込み、それに “idpos” というオブジェクト名を定義する。なお、ここで分析者はディレクトリを指定することも必要になる。また、コード内の na は、欠損値がどのように保存されているかを指定するための引数であり、もし欠損値が空欄であればnaによる指定は必要ない。</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="データの読み込み.html#cb52-1" tabindex="-1"></a>idpos <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/2022idpos.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="データの読み込み.html#cb53-1" tabindex="-1"></a>idpos <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">&quot;data/2022idpos.csv&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span></code></pre></div>
 <p>問題なくデータを読み込むことができたら、そのデータの冒頭数行を head() 関数によって表示する。head() 関数の結果によると、このidposデータは、3000行、5列のデータセットであることがわかる。なお、同様の情報は R studio 画面内の Environment タブから確認することできる。</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="データの読み込み.html#cb53-1" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="データの読み込み.html#cb54-1" tabindex="-1"></a><span class="fu">head</span>(idpos)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 4
 ##      id date      spent coupon
 ##   &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;  &lt;dbl&gt;
@@ -532,9 +537,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5    46 2019/9/10  7595      1
 ## 6    44 2019/9/14  7858      0</code></pre>
 <p>また、読み込んだデータ特徴の確認は他の関数でも実行できる。例えば、name() 関数を使えば、データ内の変数名 (列名) を確認できるし、tidyverseに含まれる glimpse() 関数によってもデータの冒頭数行を含むいくつかの情報を返してくれる。</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="データの読み込み.html#cb55-1" tabindex="-1"></a><span class="fu">names</span>(idpos)</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="データの読み込み.html#cb56-1" tabindex="-1"></a><span class="fu">names</span>(idpos)</span></code></pre></div>
 <pre><code>## [1] &quot;id&quot;     &quot;date&quot;   &quot;spent&quot;  &quot;coupon&quot;</code></pre>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="データの読み込み.html#cb57-1" tabindex="-1"></a><span class="fu">glimpse</span>(idpos)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="データの読み込み.html#cb58-1" tabindex="-1"></a><span class="fu">glimpse</span>(idpos)</span></code></pre></div>
 <pre><code>## Rows: 3,000
 ## Columns: 4
 ## $ id     &lt;dbl&gt; 12, 32, 30, 29, 46, 44, 44, 32, 3, 34, 36, 3, 42, 18, 38, 4, 19…
@@ -542,7 +547,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## $ spent  &lt;dbl&gt; 14326, 10232, 6881, 6365, 7595, 7858, 9405, 1821, 8375, 1828, 6…
 ## $ coupon &lt;dbl&gt; 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 1, …</code></pre>
 <p>なお、このidposデータは、POS (Point of sales) という小売店レジでの取引データとロイヤルティプログラムなどの会員IDを含むID-POSと呼ばれるデータを想定し作成した、簡易的な人工データである。データには、小売店舗での取引日（date）、金額（spent）、クーポン利用の有無 (coupon)、性別 (gender) が含まれている。本来のPOSデータは、より詳細な日時や具体的な製品単品レベルの取引品目など、より詳細な情報が含まれているはずだが、ここでは簡単化のためにこのようなデータにしている。また、もしスプレッドシート形式で表示したい場合には View() 関数をconsoleに直接入力することでそれが可能になる。例えば、idposデータを用いて以下のようなコードを入力することで、Sourceウィンドウに新しいタブができ、そこにデータセットが表示される。</p>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="データの読み込み.html#cb59-1" tabindex="-1"></a><span class="fu">View</span>(idpos)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="データの読み込み.html#cb60-1" tabindex="-1"></a><span class="fu">View</span>(idpos)</span></code></pre></div>
 </div>
             </section>
 

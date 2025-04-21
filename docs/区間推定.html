@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-20" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
-<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="psychscale.html"><a href="psychscale.html#データのタイプ"><i class="fa fa-check"></i><b>4.2.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="4.2.2" data-path="psychscale.html"><a href="psychscale.html#質問紙調査とは"><i class="fa fa-check"></i><b>4.2.2</b> 質問紙調査とは</a></li>
+<li class="chapter" data-level="4.2.3" data-path="psychscale.html"><a href="psychscale.html#マーケティングと質問紙調査"><i class="fa fa-check"></i><b>4.2.3</b> マーケティングと質問紙調査</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.1" data-path="データのタイプ-1.html"><a href="データのタイプ-1.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
 <li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
 <li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
 <li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
@@ -604,14 +609,14 @@ P\left(\bar{X}-t_{\alpha/2}(n-1)\cdot \frac{s}{\sqrt{n}}\leq \mu \leq \bar{X}+t_
 </tbody>
 </table>
 <p>このデータは、平均が <span class="math inline">\(\small \mu\)</span>、分散が <span class="math inline">\(\small 180^2\)</span> である正規分布（<span class="math inline">\(\small N(\mu, \sigma^2=180^2)\)</span> と表記する）からの無作為標本 <span class="math inline">\(X_1,..., X_{16}\)</span>の実現値とみなすことができる。なお、このデータの標本平均は1,951（時間）、不偏標本標準偏差は 154.46 である。このデータに基づく、新型電球寿命の期待値に関する95% 信頼区間（95%の確率で真の母数を含む区間）は<code>t.test()</code> 関数を用いると以下の様に求まる（ただし後述するが、この方法はこの例に対しては適切ではない）。</p>
-<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="区間推定.html#cb138-1" tabindex="-1"></a>bulb <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb138-2"><a href="区間推定.html#cb138-2" tabindex="-1"></a>  <span class="fl">1939.6</span>, <span class="fl">1680.3</span>, <span class="fl">1982.1</span>, <span class="fl">2215.6</span>,</span>
-<span id="cb138-3"><a href="区間推定.html#cb138-3" tabindex="-1"></a>  <span class="fl">2092.5</span>, <span class="fl">1928.9</span>, <span class="fl">2003.8</span>, <span class="fl">1955.5</span>,</span>
-<span id="cb138-4"><a href="区間推定.html#cb138-4" tabindex="-1"></a>  <span class="fl">1800.1</span>, <span class="fl">1659.5</span>, <span class="fl">2066.2</span>, <span class="fl">2107.2</span>,</span>
-<span id="cb138-5"><a href="区間推定.html#cb138-5" tabindex="-1"></a>  <span class="fl">2085.5</span>, <span class="fl">1878.6</span>, <span class="fl">2007.6</span>, <span class="fl">1816.1</span>)</span>
-<span id="cb138-6"><a href="区間推定.html#cb138-6" tabindex="-1"></a></span>
-<span id="cb138-7"><a href="区間推定.html#cb138-7" tabindex="-1"></a>bulb_ci <span class="ot">&lt;-</span> <span class="fu">t.test</span>(bulb) <span class="co">#t検定の実施と格納</span></span>
-<span id="cb138-8"><a href="区間推定.html#cb138-8" tabindex="-1"></a>bulb_ci<span class="sc">$</span>conf.int <span class="co">#信頼区間の出力（デフォルトで95%信頼水準）</span></span></code></pre></div>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="区間推定.html#cb139-1" tabindex="-1"></a>bulb <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb139-2"><a href="区間推定.html#cb139-2" tabindex="-1"></a>  <span class="fl">1939.6</span>, <span class="fl">1680.3</span>, <span class="fl">1982.1</span>, <span class="fl">2215.6</span>,</span>
+<span id="cb139-3"><a href="区間推定.html#cb139-3" tabindex="-1"></a>  <span class="fl">2092.5</span>, <span class="fl">1928.9</span>, <span class="fl">2003.8</span>, <span class="fl">1955.5</span>,</span>
+<span id="cb139-4"><a href="区間推定.html#cb139-4" tabindex="-1"></a>  <span class="fl">1800.1</span>, <span class="fl">1659.5</span>, <span class="fl">2066.2</span>, <span class="fl">2107.2</span>,</span>
+<span id="cb139-5"><a href="区間推定.html#cb139-5" tabindex="-1"></a>  <span class="fl">2085.5</span>, <span class="fl">1878.6</span>, <span class="fl">2007.6</span>, <span class="fl">1816.1</span>)</span>
+<span id="cb139-6"><a href="区間推定.html#cb139-6" tabindex="-1"></a></span>
+<span id="cb139-7"><a href="区間推定.html#cb139-7" tabindex="-1"></a>bulb_ci <span class="ot">&lt;-</span> <span class="fu">t.test</span>(bulb) <span class="co">#t検定の実施と格納</span></span>
+<span id="cb139-8"><a href="区間推定.html#cb139-8" tabindex="-1"></a>bulb_ci<span class="sc">$</span>conf.int <span class="co">#信頼区間の出力（デフォルトで95%信頼水準）</span></span></code></pre></div>
 <pre><code>## [1] 1868.890 2033.498
 ## attr(,&quot;conf.level&quot;)
 ## [1] 0.95</code></pre>
@@ -623,20 +628,20 @@ P\left(\bar{X}-t_{\alpha/2}(n-1)\cdot \frac{s}{\sqrt{n}}\leq \mu \leq \bar{X}+t_
 \]</span>
 このとき、仮定より <span class="math inline">\(\small \bar{X}=1951.194\)</span>, <span class="math inline">\(\sigma=180\)</span> であることがわかっている。また、慣習より95%信頼水準を仮定すると、確率 <span class="math inline">\(\small \alpha = 0.05\)</span>となる。そのため、区間推定の計算で必要な要素のうち現時点で不明なのは、 <span class="math inline">\(z_{\alpha/2}=z_{0.025}\)</span>の値である。この値は、任意の確率に対応する区間の閾値を表している。今回の場合、分布が左右対称の分布であり正負どちらか一方の値さえ分かればよいため、閾値（<span class="math inline">\(z_{0.025}\)</span>）以上の区間を取る確率が2.5%になるような閾値に着目する。このような閾値は、Rによって以下のように求める（なお先述の通り、統計学教科書に掲載されている分布表を使っても同様の数値を求めることができる）。<code>qnorm</code> は、標準正規分布に従う確率変数について、引数で定義した確率に対応する境界値（分位点: quantile）を求める
 関数である。</p>
-<div class="sourceCode" id="cb140"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb140-1"><a href="区間推定.html#cb140-1" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>) <span class="co">#標準正規分布における上側2.5%点の分位点を求める。</span></span></code></pre></div>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="区間推定.html#cb141-1" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>) <span class="co">#標準正規分布における上側2.5%点の分位点を求める。</span></span></code></pre></div>
 <pre><code>## [1] 1.959964</code></pre>
 <p>これにより、計算に必要な情報が揃ったため、以下の要領で信頼区間を出力できる。</p>
-<div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb142-1"><a href="区間推定.html#cb142-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(bulb)</span>
-<span id="cb142-2"><a href="区間推定.html#cb142-2" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span>
-<span id="cb142-3"><a href="区間推定.html#cb142-3" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(bulb)</span>
-<span id="cb142-4"><a href="区間推定.html#cb142-4" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">180</span></span>
-<span id="cb142-5"><a href="区間推定.html#cb142-5" tabindex="-1"></a><span class="co">#信頼区間の計算</span></span>
-<span id="cb142-6"><a href="区間推定.html#cb142-6" tabindex="-1"></a>upper <span class="ot">&lt;-</span> xbar<span class="sc">+</span>z<span class="sc">*</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
-<span id="cb142-7"><a href="区間推定.html#cb142-7" tabindex="-1"></a>lower <span class="ot">&lt;-</span> xbar<span class="sc">-</span>z<span class="sc">*</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
-<span id="cb142-8"><a href="区間推定.html#cb142-8" tabindex="-1"></a><span class="co">#結果のまとめと出力</span></span>
-<span id="cb142-9"><a href="区間推定.html#cb142-9" tabindex="-1"></a>ci.bulb <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(lower,upper),<span class="at">nrow=</span><span class="dv">1</span>)</span>
-<span id="cb142-10"><a href="区間推定.html#cb142-10" tabindex="-1"></a><span class="fu">colnames</span>(ci.bulb) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ci.lower&quot;</span>, <span class="st">&quot;ci.upper&quot;</span>)</span>
-<span id="cb142-11"><a href="区間推定.html#cb142-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ci.bulb, <span class="at">caption =</span> <span class="st">&quot;Bulb data CI（95%）&quot;</span>, <span class="at">align =</span> <span class="st">&quot;cc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="区間推定.html#cb143-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(bulb)</span>
+<span id="cb143-2"><a href="区間推定.html#cb143-2" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span>
+<span id="cb143-3"><a href="区間推定.html#cb143-3" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(bulb)</span>
+<span id="cb143-4"><a href="区間推定.html#cb143-4" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">180</span></span>
+<span id="cb143-5"><a href="区間推定.html#cb143-5" tabindex="-1"></a><span class="co">#信頼区間の計算</span></span>
+<span id="cb143-6"><a href="区間推定.html#cb143-6" tabindex="-1"></a>upper <span class="ot">&lt;-</span> xbar<span class="sc">+</span>z<span class="sc">*</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb143-7"><a href="区間推定.html#cb143-7" tabindex="-1"></a>lower <span class="ot">&lt;-</span> xbar<span class="sc">-</span>z<span class="sc">*</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb143-8"><a href="区間推定.html#cb143-8" tabindex="-1"></a><span class="co">#結果のまとめと出力</span></span>
+<span id="cb143-9"><a href="区間推定.html#cb143-9" tabindex="-1"></a>ci.bulb <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(lower,upper),<span class="at">nrow=</span><span class="dv">1</span>)</span>
+<span id="cb143-10"><a href="区間推定.html#cb143-10" tabindex="-1"></a><span class="fu">colnames</span>(ci.bulb) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;ci.lower&quot;</span>, <span class="st">&quot;ci.upper&quot;</span>)</span>
+<span id="cb143-11"><a href="区間推定.html#cb143-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ci.bulb, <span class="at">caption =</span> <span class="st">&quot;Bulb data CI（95%）&quot;</span>, <span class="at">align =</span> <span class="st">&quot;cc&quot;</span>)</span></code></pre></div>
 <table>
 <caption>(#tab:ci_bulb)Bulb data CI（95%）</caption>
 <thead>

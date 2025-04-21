@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-20" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
-<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="psychscale.html"><a href="psychscale.html#データのタイプ"><i class="fa fa-check"></i><b>4.2.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="4.2.2" data-path="psychscale.html"><a href="psychscale.html#質問紙調査とは"><i class="fa fa-check"></i><b>4.2.2</b> 質問紙調査とは</a></li>
+<li class="chapter" data-level="4.2.3" data-path="psychscale.html"><a href="psychscale.html#マーケティングと質問紙調査"><i class="fa fa-check"></i><b>4.2.3</b> マーケティングと質問紙調査</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.1" data-path="データのタイプ-1.html"><a href="データのタイプ-1.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
 <li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
 <li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
 <li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
@@ -526,20 +531,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>ただし、V5は値が高いほど重要性が低いことを意味する項目になっていることに注意が必要である。このような質問項目を、逆転項目（Reverse-coded item）と呼ばれ、分析の際に調整する必要がある。</p>
 <p>ここからは実際にRを用いて分析を行っていくが、そのために <code>psych</code>と<code>GPArotation</code> というパッケージを新たに使うため、以下の要領でインストールしてほしい。</p>
-<div class="sourceCode" id="cb291"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb291-1"><a href="faex.html#cb291-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span>
-<span id="cb291-2"><a href="faex.html#cb291-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;GPArotation&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="faex.html#cb292-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span>
+<span id="cb292-2"><a href="faex.html#cb292-2" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;GPArotation&quot;</span>)</span></code></pre></div>
 <p>まずは、データとパッケージの読み込みを行う。なお、今回因子分析で用いる<code>psych::fa()</code> という関数は、指定されているデータセットすべての変数を参照し分析を行ってしまう。そのため、このタイミングで、分析の対象となる変数のみを取り出したデータセットを作成、定義する。そのうえで、以下のコードではV1からV6までの変数間の相関関係を確認している。表<a href="faex.html#tab:faData">12.2</a> を見ると、V1はV3、V5と正の相関が高く、V2はV4、V6と正の相関が高いことが伺える。</p>
-<div class="sourceCode" id="cb292"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb292-1"><a href="faex.html#cb292-1" tabindex="-1"></a>factor_exdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/factor_ex.xlsx&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
-<span id="cb292-2"><a href="faex.html#cb292-2" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
-<span id="cb292-3"><a href="faex.html#cb292-3" tabindex="-1"></a><span class="fu">library</span>(GPArotation)</span>
-<span id="cb292-4"><a href="faex.html#cb292-4" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb292-5"><a href="faex.html#cb292-5" tabindex="-1"></a></span>
-<span id="cb292-6"><a href="faex.html#cb292-6" tabindex="-1"></a>factor_exdata<span class="sc">$</span>V5 <span class="ot">&lt;-</span> <span class="dv">8</span> <span class="sc">-</span> factor_exdata<span class="sc">$</span>V5</span>
-<span id="cb292-7"><a href="faex.html#cb292-7" tabindex="-1"></a><span class="fu">rownames</span>(factor_exdata) <span class="ot">&lt;-</span> factor_exdata<span class="sc">$</span>ID</span>
-<span id="cb292-8"><a href="faex.html#cb292-8" tabindex="-1"></a></span>
-<span id="cb292-9"><a href="faex.html#cb292-9" tabindex="-1"></a>factor_exdata2 <span class="ot">&lt;-</span> factor_exdata <span class="sc">%&gt;%</span> </span>
-<span id="cb292-10"><a href="faex.html#cb292-10" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ID)</span>
-<span id="cb292-11"><a href="faex.html#cb292-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summary</span>(factor_exdata2))</span></code></pre></div>
+<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="faex.html#cb293-1" tabindex="-1"></a>factor_exdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/factor_ex.xlsx&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb293-2"><a href="faex.html#cb293-2" tabindex="-1"></a><span class="fu">library</span>(psych)</span>
+<span id="cb293-3"><a href="faex.html#cb293-3" tabindex="-1"></a><span class="fu">library</span>(GPArotation)</span>
+<span id="cb293-4"><a href="faex.html#cb293-4" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb293-5"><a href="faex.html#cb293-5" tabindex="-1"></a></span>
+<span id="cb293-6"><a href="faex.html#cb293-6" tabindex="-1"></a>factor_exdata<span class="sc">$</span>V5 <span class="ot">&lt;-</span> <span class="dv">8</span> <span class="sc">-</span> factor_exdata<span class="sc">$</span>V5</span>
+<span id="cb293-7"><a href="faex.html#cb293-7" tabindex="-1"></a><span class="fu">rownames</span>(factor_exdata) <span class="ot">&lt;-</span> factor_exdata<span class="sc">$</span>ID</span>
+<span id="cb293-8"><a href="faex.html#cb293-8" tabindex="-1"></a></span>
+<span id="cb293-9"><a href="faex.html#cb293-9" tabindex="-1"></a>factor_exdata2 <span class="ot">&lt;-</span> factor_exdata <span class="sc">%&gt;%</span> </span>
+<span id="cb293-10"><a href="faex.html#cb293-10" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ID)</span>
+<span id="cb293-11"><a href="faex.html#cb293-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">summary</span>(factor_exdata2))</span></code></pre></div>
 <table>
 <colgroup>
 <col width="3%" />
@@ -618,7 +623,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb293"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb293-1"><a href="faex.html#cb293-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">cor</span>(factor_exdata2), <span class="at">caption=</span><span class="st">&quot;相関行列&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="faex.html#cb294-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">cor</span>(factor_exdata2), <span class="at">caption=</span><span class="st">&quot;相関行列&quot;</span>)</span></code></pre></div>
 <table>
 <caption><span id="tab:faData">Table 12.2: </span>相関行列</caption>
 <colgroup>
@@ -699,9 +704,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>続いて、スクリープロットを描画し、固有値を確認する。図<a href="faex.html#fig:screeplot">12.6</a> を確認すると、因子数が2から3へ増える際に大きく固有値が低下しており、3つめの因子の固有値も1を下回っている。そのため、前節で確認した判断基準から、2因子モデルを採用し、因子分析を実行する。</p>
-<div class="sourceCode" id="cb294"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb294-1"><a href="faex.html#cb294-1" tabindex="-1"></a>cor.exdata<span class="ot">&lt;-</span><span class="fu">cor</span>(factor_exdata2)</span>
-<span id="cb294-2"><a href="faex.html#cb294-2" tabindex="-1"></a></span>
-<span id="cb294-3"><a href="faex.html#cb294-3" tabindex="-1"></a><span class="fu">VSS.scree</span>(cor.exdata)</span></code></pre></div>
+<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="faex.html#cb295-1" tabindex="-1"></a>cor.exdata<span class="ot">&lt;-</span><span class="fu">cor</span>(factor_exdata2)</span>
+<span id="cb295-2"><a href="faex.html#cb295-2" tabindex="-1"></a></span>
+<span id="cb295-3"><a href="faex.html#cb295-3" tabindex="-1"></a><span class="fu">VSS.scree</span>(cor.exdata)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:screeplot"></span>
 <img src="mktres_lecture_files/figure-html/screeplot-1.png" alt="スマホデータスクリープロット" width="672" />
 <p class="caption">
@@ -709,9 +714,9 @@ Figure 12.6: スマホデータスクリープロット
 </p>
 </div>
 <p>因子分析では、<code>psych::fa()</code> という関数を用いるのだが、この関数では引数として因子数（<code>nfactors =</code>）、回転（<code>rotate =</code>）とモデルの推定方法（<code>fm =</code>）を指定する。以下では、斜交（プロマックス）回転を用いた2因子モデルを最尤法（<code>ml</code>）で分析している。</p>
-<div class="sourceCode" id="cb295"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb295-1"><a href="faex.html#cb295-1" tabindex="-1"></a>fa<span class="ot">&lt;-</span><span class="fu">fa</span>(<span class="at">r =</span> factor_exdata2, <span class="at">nfactors=</span><span class="dv">2</span>,</span>
-<span id="cb295-2"><a href="faex.html#cb295-2" tabindex="-1"></a>        <span class="at">rotate =</span> <span class="st">&quot;promax&quot;</span>,<span class="at">fm=</span><span class="st">&quot;ml&quot;</span>)</span>
-<span id="cb295-3"><a href="faex.html#cb295-3" tabindex="-1"></a>fa</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb296-1"><a href="faex.html#cb296-1" tabindex="-1"></a>fa<span class="ot">&lt;-</span><span class="fu">fa</span>(<span class="at">r =</span> factor_exdata2, <span class="at">nfactors=</span><span class="dv">2</span>,</span>
+<span id="cb296-2"><a href="faex.html#cb296-2" tabindex="-1"></a>        <span class="at">rotate =</span> <span class="st">&quot;promax&quot;</span>,<span class="at">fm=</span><span class="st">&quot;ml&quot;</span>)</span>
+<span id="cb296-3"><a href="faex.html#cb296-3" tabindex="-1"></a>fa</span></code></pre></div>
 <pre><code>## Factor Analysis using method =  ml
 ## Call: fa(r = factor_exdata2, nfactors = 2, rotate = &quot;promax&quot;, fm = &quot;ml&quot;)
 ## Standardized loadings (pattern matrix) based upon correlation matrix
@@ -758,7 +763,7 @@ Figure 12.6: スマホデータスクリープロット
 ## Minimum correlation of possible factor scores     0.92 0.68</code></pre>
 <p>分析を実行すると、いくつかの数値が表示される。<code>Standardized loadings</code>は、各変数に対する標準化された因子負荷量を表示している。 ML1（ML2）は、最尤法によって算出された因子1（因子2）の因子負荷量を示している。そのうえでML1（因子1） はV1, 3, 5に対して因子負荷量が大きくかつそれらが正である。また、M2（因子2）はV2, 4, 6に対して因子負荷量が大きくかつそれらが正であることが示されている。また、その下の<code>SS loadings</code> は因子負荷の二乗和、<code>Propotion Var</code> は各因子の寄与率（説明された分散比率）、<code>Cumulative Var</code> は累積寄与率、<code>Proportion Explained</code> は潜在因子で説明されている分散のうち、各因子が占める分散の比率を表している。これらを踏まえると、因子1は「マルチタスクの快適性」（V1）、「無線通信」（V2）、「操作容易性」（V3）に、因子2は「洗練された見た目」（V4）、「人目を引くデザイン」（V5）、「デザイン」（V6）に影響を与えるものであり、2つの因子で全体の約74%を説明していることになる。この結果を踏まえ、これら2つの因子が何を表しているかを解釈することになる。例えば、因子1は「使いやすさ」、因子2は「デザインの良さ」という名前をつけるかたちで、上記の結果を解釈する事ができる。</p>
 <p>Rを使うと簡単に、因子、観測変数と、因子負荷量との関係を図示化することもできる。<code>fa.diagram()</code>という関数をつかうのだが、これを用いると、高い因子負荷量を持つ因子からのみ矢印を引くように設定されている。<code>simple = FALSE</code> という引数を設定することで、複数の因子から線を引くことも可能であるが、図が複雑になり見にくくなる。そのため、デフォルトの設定で図示化を行うと、図<a href="faex.html#fig:factorplot">12.7</a> の通りの結果を得る。</p>
-<div class="sourceCode" id="cb297"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb297-1"><a href="faex.html#cb297-1" tabindex="-1"></a><span class="fu">fa.diagram</span>(fa)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="faex.html#cb298-1" tabindex="-1"></a><span class="fu">fa.diagram</span>(fa)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:factorplot"></span>
 <img src="mktres_lecture_files/figure-html/factorplot-1.png" alt="図示化された因子モデル" width="672" />
 <p class="caption">
@@ -766,11 +771,11 @@ Figure 12.7: 図示化された因子モデル
 </p>
 </div>
 <p>因子スコアは、因子分析の結果から抽出できる。<code>fa</code> でストアされた結果の場合、<code>fa$scores</code> と指示することで、因子スコアにアクセスできる。ここでは、因子スコアを元データに結合してみる。</p>
-<div class="sourceCode" id="cb298"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb298-1"><a href="faex.html#cb298-1" tabindex="-1"></a>fs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(fa<span class="sc">$</span>scores)</span>
-<span id="cb298-2"><a href="faex.html#cb298-2" tabindex="-1"></a>factor_exdata2<span class="sc">$</span>rowname <span class="ot">&lt;-</span> <span class="fu">rownames</span>(factor_exdata2)</span>
-<span id="cb298-3"><a href="faex.html#cb298-3" tabindex="-1"></a>fs<span class="sc">$</span>rowname <span class="ot">&lt;-</span> <span class="fu">rownames</span>(fs)</span>
-<span id="cb298-4"><a href="faex.html#cb298-4" tabindex="-1"></a>factor_exdata2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(factor_exdata2, fs, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
-<span id="cb298-5"><a href="faex.html#cb298-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(factor_exdata2),<span class="at">caption =</span> <span class="st">&quot;結合後データ&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="faex.html#cb299-1" tabindex="-1"></a>fs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(fa<span class="sc">$</span>scores)</span>
+<span id="cb299-2"><a href="faex.html#cb299-2" tabindex="-1"></a>factor_exdata2<span class="sc">$</span>rowname <span class="ot">&lt;-</span> <span class="fu">rownames</span>(factor_exdata2)</span>
+<span id="cb299-3"><a href="faex.html#cb299-3" tabindex="-1"></a>fs<span class="sc">$</span>rowname <span class="ot">&lt;-</span> <span class="fu">rownames</span>(fs)</span>
+<span id="cb299-4"><a href="faex.html#cb299-4" tabindex="-1"></a>factor_exdata2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(factor_exdata2, fs, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
+<span id="cb299-5"><a href="faex.html#cb299-5" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(factor_exdata2),<span class="at">caption =</span> <span class="st">&quot;結合後データ&quot;</span>)</span></code></pre></div>
 <table>
 <caption><span id="tab:fascoremerge">Table 12.3: </span>結合後データ</caption>
 <thead>
@@ -856,14 +861,14 @@ Figure 12.7: 図示化された因子モデル
 </tbody>
 </table>
 <p>せっかくなので、今結合したデータを用いて、抽出された因子に基づくクラスター分析を実行してみる。まず、階層的クラスター分析を実施し、図<a href="faex.html#fig:fahier">12.8</a> を参照し、便宜的に3クラスターモデルを仮定する（エルボー法などは省略）。</p>
-<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb299-1"><a href="faex.html#cb299-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;cluster&quot;</span>)</span>
-<span id="cb299-2"><a href="faex.html#cb299-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;factoextra&quot;</span>)</span>
-<span id="cb299-3"><a href="faex.html#cb299-3" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;useful&quot;</span>)</span>
-<span id="cb299-4"><a href="faex.html#cb299-4" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggrepel&quot;</span>)</span>
-<span id="cb299-5"><a href="faex.html#cb299-5" tabindex="-1"></a>ex_cluster <span class="ot">&lt;-</span> factor_exdata2 <span class="sc">%&gt;%</span> </span>
-<span id="cb299-6"><a href="faex.html#cb299-6" tabindex="-1"></a>  <span class="fu">select</span>(ML1, ML2)</span>
-<span id="cb299-7"><a href="faex.html#cb299-7" tabindex="-1"></a>Hier1 <span class="ot">&lt;-</span> <span class="fu">agnes</span>(ex_cluster, <span class="at">metric =</span> <span class="st">&quot;euclidian&quot;</span>, <span class="at">stand =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb299-8"><a href="faex.html#cb299-8" tabindex="-1"></a><span class="fu">pltree</span>(Hier1)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="faex.html#cb300-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;cluster&quot;</span>)</span>
+<span id="cb300-2"><a href="faex.html#cb300-2" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;factoextra&quot;</span>)</span>
+<span id="cb300-3"><a href="faex.html#cb300-3" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;useful&quot;</span>)</span>
+<span id="cb300-4"><a href="faex.html#cb300-4" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ggrepel&quot;</span>)</span>
+<span id="cb300-5"><a href="faex.html#cb300-5" tabindex="-1"></a>ex_cluster <span class="ot">&lt;-</span> factor_exdata2 <span class="sc">%&gt;%</span> </span>
+<span id="cb300-6"><a href="faex.html#cb300-6" tabindex="-1"></a>  <span class="fu">select</span>(ML1, ML2)</span>
+<span id="cb300-7"><a href="faex.html#cb300-7" tabindex="-1"></a>Hier1 <span class="ot">&lt;-</span> <span class="fu">agnes</span>(ex_cluster, <span class="at">metric =</span> <span class="st">&quot;euclidian&quot;</span>, <span class="at">stand =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb300-8"><a href="faex.html#cb300-8" tabindex="-1"></a><span class="fu">pltree</span>(Hier1)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:fahier"></span>
 <img src="mktres_lecture_files/figure-html/fahier-1.png" alt="2因子に基づくデンドログラム" width="672" />
 <p class="caption">
@@ -871,19 +876,19 @@ Figure 12.8: 2因子に基づくデンドログラム
 </p>
 </div>
 <p>ここでは3クラスターを仮定し、K-means法でクラスター分析を実施し、その結果を図示化する。なお、以下では図のみを載せるが、関心のある学生はクラスター分析の結果も出力してみてほしい。図<a href="faex.html#fig:faclusterplot">12.9</a> を見ると、デザインと使いやすさのどちらも求めている顧客層はおらず、使いやすさを重視している人たちはあまりデザインを重視していない事が伺える。一方でデザインと使いやすさの両方で低いスコアを有しているグループもあり、このグループの人たちはデザインと使いやすさの両方に対するスコアが低い。</p>
-<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb300-1"><a href="faex.html#cb300-1" tabindex="-1"></a>cl_1<span class="ot">&lt;-</span> <span class="fu">kmeans</span>(ex_cluster,<span class="dv">3</span>)</span>
-<span id="cb300-2"><a href="faex.html#cb300-2" tabindex="-1"></a>clus_fa <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(cl_1<span class="sc">$</span>cluster)</span>
-<span id="cb300-3"><a href="faex.html#cb300-3" tabindex="-1"></a>clus_fa<span class="sc">$</span>rowname <span class="ot">&lt;-</span> <span class="fu">rownames</span>(clus_fa)</span>
-<span id="cb300-4"><a href="faex.html#cb300-4" tabindex="-1"></a>factor_exdata2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(factor_exdata2, clus_fa, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
-<span id="cb300-5"><a href="faex.html#cb300-5" tabindex="-1"></a>factor_exdata2<span class="sc">$</span>cl_1.cluster <span class="ot">&lt;-</span> <span class="fu">factor</span>(factor_exdata2<span class="sc">$</span>cl_1.cluster)</span>
-<span id="cb300-6"><a href="faex.html#cb300-6" tabindex="-1"></a></span>
-<span id="cb300-7"><a href="faex.html#cb300-7" tabindex="-1"></a></span>
-<span id="cb300-8"><a href="faex.html#cb300-8" tabindex="-1"></a><span class="do">##Visualizing the clusters with 2 factors</span></span>
-<span id="cb300-9"><a href="faex.html#cb300-9" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> factor_exdata2,</span>
-<span id="cb300-10"><a href="faex.html#cb300-10" tabindex="-1"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> ML1, <span class="at">y =</span> ML2, <span class="at">color =</span> cl_1.cluster))</span>
-<span id="cb300-11"><a href="faex.html#cb300-11" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb300-12"><a href="faex.html#cb300-12" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">rownames</span>(factor_exdata2))) <span class="sc">+</span></span>
-<span id="cb300-13"><a href="faex.html#cb300-13" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Ease of use&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Design&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb301"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb301-1"><a href="faex.html#cb301-1" tabindex="-1"></a>cl_1<span class="ot">&lt;-</span> <span class="fu">kmeans</span>(ex_cluster,<span class="dv">3</span>)</span>
+<span id="cb301-2"><a href="faex.html#cb301-2" tabindex="-1"></a>clus_fa <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(cl_1<span class="sc">$</span>cluster)</span>
+<span id="cb301-3"><a href="faex.html#cb301-3" tabindex="-1"></a>clus_fa<span class="sc">$</span>rowname <span class="ot">&lt;-</span> <span class="fu">rownames</span>(clus_fa)</span>
+<span id="cb301-4"><a href="faex.html#cb301-4" tabindex="-1"></a>factor_exdata2 <span class="ot">&lt;-</span> <span class="fu">left_join</span>(factor_exdata2, clus_fa, <span class="at">by =</span> <span class="st">&quot;rowname&quot;</span>)</span>
+<span id="cb301-5"><a href="faex.html#cb301-5" tabindex="-1"></a>factor_exdata2<span class="sc">$</span>cl_1.cluster <span class="ot">&lt;-</span> <span class="fu">factor</span>(factor_exdata2<span class="sc">$</span>cl_1.cluster)</span>
+<span id="cb301-6"><a href="faex.html#cb301-6" tabindex="-1"></a></span>
+<span id="cb301-7"><a href="faex.html#cb301-7" tabindex="-1"></a></span>
+<span id="cb301-8"><a href="faex.html#cb301-8" tabindex="-1"></a><span class="do">##Visualizing the clusters with 2 factors</span></span>
+<span id="cb301-9"><a href="faex.html#cb301-9" tabindex="-1"></a>p1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> factor_exdata2,</span>
+<span id="cb301-10"><a href="faex.html#cb301-10" tabindex="-1"></a>             <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> ML1, <span class="at">y =</span> ML2, <span class="at">color =</span> cl_1.cluster))</span>
+<span id="cb301-11"><a href="faex.html#cb301-11" tabindex="-1"></a>p1 <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb301-12"><a href="faex.html#cb301-12" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">label =</span> <span class="fu">rownames</span>(factor_exdata2))) <span class="sc">+</span></span>
+<span id="cb301-13"><a href="faex.html#cb301-13" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Ease of use&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Design&quot;</span>)</span></code></pre></div>
 <div class="figure"><span style="display:block;" id="fig:faclusterplot"></span>
 <img src="mktres_lecture_files/figure-html/faclusterplot-1.png" alt="2因子に基づくクラスター" width="672" />
 <p class="caption">

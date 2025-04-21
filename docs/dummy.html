@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-20" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
-<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="psychscale.html"><a href="psychscale.html#データのタイプ"><i class="fa fa-check"></i><b>4.2.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="4.2.2" data-path="psychscale.html"><a href="psychscale.html#質問紙調査とは"><i class="fa fa-check"></i><b>4.2.2</b> 質問紙調査とは</a></li>
+<li class="chapter" data-level="4.2.3" data-path="psychscale.html"><a href="psychscale.html#マーケティングと質問紙調査"><i class="fa fa-check"></i><b>4.2.3</b> マーケティングと質問紙調査</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.1" data-path="データのタイプ-1.html"><a href="データのタイプ-1.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
 <li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
 <li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
 <li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
@@ -527,23 +532,23 @@ E(y_i|D_i=0)=\alpha+\beta x_i
 <div id="企業データを用いた分析の実行" class="section level3 hasAnchor" number="8.2.1">
 <h3><span class="header-section-number">8.2.1</span> 企業データを用いた分析の実行<a href="dummy.html#企業データを用いた分析の実行" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>例えば、本章で使っている firmdata19 を使って分析を行ってみる。具体的には、営業利益率（営業利益/売上）が小売産業に属する企業とそれ以外で異なるかを分析する。しかし、データセット上にこの分類に対応するカテゴリー変数は存在しないため、以下のように、“Retail Stores, NEC” もしくは “Supermarket Chains” のどちらかに含まれる企業であれば1、それ以外であれば0を取るカテゴリー変数（<code>format</code>）を作成する。<code>%in%</code> は二つのベクトル間の要素の一致を確認するための演算子で、下記<code>mutate</code>コマンドでは、<code>ind_en</code> 列に書かれている情報が <code>retail</code> リストに「含まれる」か否かをチェックしている。そのため、以下コマンドでは、事前に作成した <code>retail</code> を参照し、<code>ind_en</code> で観察されるカテゴリーが <code>retail</code> に当てはまれば、<code>"Retail"</code>を、そうでなければ、<code>"Others"</code> を返すように指示していることになる。</p>
-<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="dummy.html#cb185-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb185-2"><a href="dummy.html#cb185-2" tabindex="-1"></a>firmdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/MktRes_firmdata.xlsx&quot;</span>)</span>
-<span id="cb185-3"><a href="dummy.html#cb185-3" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata <span class="sc">%&gt;%</span> </span>
-<span id="cb185-4"><a href="dummy.html#cb185-4" tabindex="-1"></a>  <span class="fu">filter</span>(fyear <span class="sc">==</span> <span class="dv">2019</span>)</span>
-<span id="cb185-5"><a href="dummy.html#cb185-5" tabindex="-1"></a><span class="co">#産業名を特定したオブジェクト&quot;Retail&quot;の作成</span></span>
-<span id="cb185-6"><a href="dummy.html#cb185-6" tabindex="-1"></a>retail <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Retail Stores, NEC&quot;</span>, <span class="st">&quot;Supermarket Chains&quot;</span>)</span>
-<span id="cb185-7"><a href="dummy.html#cb185-7" tabindex="-1"></a><span class="co"># Retailを使ったカテゴリー変数の作成</span></span>
-<span id="cb185-8"><a href="dummy.html#cb185-8" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
-<span id="cb185-9"><a href="dummy.html#cb185-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">format =</span> <span class="fu">ifelse</span>(ind_en <span class="sc">%in%</span> retail, <span class="st">&quot;Retail&quot;</span>, <span class="st">&quot;Other&quot;</span>))</span>
-<span id="cb185-10"><a href="dummy.html#cb185-10" tabindex="-1"></a><span class="co">#カテゴリーの頻度チェック</span></span>
-<span id="cb185-11"><a href="dummy.html#cb185-11" tabindex="-1"></a><span class="fu">with</span>(firmdata19, <span class="fu">table</span>(format))</span></code></pre></div>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="dummy.html#cb186-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb186-2"><a href="dummy.html#cb186-2" tabindex="-1"></a>firmdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/MktRes_firmdata.xlsx&quot;</span>)</span>
+<span id="cb186-3"><a href="dummy.html#cb186-3" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata <span class="sc">%&gt;%</span> </span>
+<span id="cb186-4"><a href="dummy.html#cb186-4" tabindex="-1"></a>  <span class="fu">filter</span>(fyear <span class="sc">==</span> <span class="dv">2019</span>)</span>
+<span id="cb186-5"><a href="dummy.html#cb186-5" tabindex="-1"></a><span class="co">#産業名を特定したオブジェクト&quot;Retail&quot;の作成</span></span>
+<span id="cb186-6"><a href="dummy.html#cb186-6" tabindex="-1"></a>retail <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Retail Stores, NEC&quot;</span>, <span class="st">&quot;Supermarket Chains&quot;</span>)</span>
+<span id="cb186-7"><a href="dummy.html#cb186-7" tabindex="-1"></a><span class="co"># Retailを使ったカテゴリー変数の作成</span></span>
+<span id="cb186-8"><a href="dummy.html#cb186-8" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb186-9"><a href="dummy.html#cb186-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">format =</span> <span class="fu">ifelse</span>(ind_en <span class="sc">%in%</span> retail, <span class="st">&quot;Retail&quot;</span>, <span class="st">&quot;Other&quot;</span>))</span>
+<span id="cb186-10"><a href="dummy.html#cb186-10" tabindex="-1"></a><span class="co">#カテゴリーの頻度チェック</span></span>
+<span id="cb186-11"><a href="dummy.html#cb186-11" tabindex="-1"></a><span class="fu">with</span>(firmdata19, <span class="fu">table</span>(format))</span></code></pre></div>
 <pre><code>## format
 ##  Other Retail 
 ##     98     49</code></pre>
 <p>そして、作成したカテゴリー変数も含めて、以下のような回帰モデルを分析する。</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="dummy.html#cb187-1" tabindex="-1"></a>fit.d1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span> mkexp <span class="sc">+</span> format, <span class="at">data =</span> firmdata19)</span>
-<span id="cb187-2"><a href="dummy.html#cb187-2" tabindex="-1"></a><span class="fu">summary</span>(fit.d1)</span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="dummy.html#cb188-1" tabindex="-1"></a>fit.d1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span> mkexp <span class="sc">+</span> format, <span class="at">data =</span> firmdata19)</span>
+<span id="cb188-2"><a href="dummy.html#cb188-2" tabindex="-1"></a><span class="fu">summary</span>(fit.d1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = op ~ mkexp + format, data = firmdata19)
@@ -564,17 +569,17 @@ E(y_i|D_i=0)=\alpha+\beta x_i
 ## Multiple R-squared:  0.1042, Adjusted R-squared:  0.09178 
 ## F-statistic: 8.377 on 2 and 144 DF,  p-value: 0.0003617</code></pre>
 <p>上記のように、カテゴリー変数（format）を回帰モデルに含めるだけで、自動的にダミー変数化して分析を実行してくれる。今回はたまたま我々の意図通り Othersをベースライングループに設定されているが、これは、指示した結果ではない。　 もし確実に特定のカテゴリーを1と定義したい場合には、自身でダミー変数を作成して回帰分析を行えばいい。</p>
-<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="dummy.html#cb189-1" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
-<span id="cb189-2"><a href="dummy.html#cb189-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">retail =</span> <span class="fu">ifelse</span>(format <span class="sc">==</span> <span class="st">&quot;Retail&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb189-3"><a href="dummy.html#cb189-3" tabindex="-1"></a></span>
-<span id="cb189-4"><a href="dummy.html#cb189-4" tabindex="-1"></a><span class="co">#確認</span></span>
-<span id="cb189-5"><a href="dummy.html#cb189-5" tabindex="-1"></a><span class="fu">with</span>(firmdata19, <span class="fu">table</span>(retail, format))</span></code></pre></div>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="dummy.html#cb190-1" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb190-2"><a href="dummy.html#cb190-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">retail =</span> <span class="fu">ifelse</span>(format <span class="sc">==</span> <span class="st">&quot;Retail&quot;</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb190-3"><a href="dummy.html#cb190-3" tabindex="-1"></a></span>
+<span id="cb190-4"><a href="dummy.html#cb190-4" tabindex="-1"></a><span class="co">#確認</span></span>
+<span id="cb190-5"><a href="dummy.html#cb190-5" tabindex="-1"></a><span class="fu">with</span>(firmdata19, <span class="fu">table</span>(retail, format))</span></code></pre></div>
 <pre><code>##       format
 ## retail Other Retail
 ##      0    98      0
 ##      1     0     49</code></pre>
-<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="dummy.html#cb191-1" tabindex="-1"></a>fit.d2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span>  mkexp <span class="sc">+</span> retail, <span class="at">data =</span> firmdata19)</span>
-<span id="cb191-2"><a href="dummy.html#cb191-2" tabindex="-1"></a><span class="fu">summary</span>(fit.d2)</span></code></pre></div>
+<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="dummy.html#cb192-1" tabindex="-1"></a>fit.d2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(op <span class="sc">~</span>  mkexp <span class="sc">+</span> retail, <span class="at">data =</span> firmdata19)</span>
+<span id="cb192-2"><a href="dummy.html#cb192-2" tabindex="-1"></a><span class="fu">summary</span>(fit.d2)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = op ~ mkexp + retail, data = firmdata19)

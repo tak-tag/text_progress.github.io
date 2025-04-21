@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-20" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
-<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="psychscale.html"><a href="psychscale.html#データのタイプ"><i class="fa fa-check"></i><b>4.2.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="4.2.2" data-path="psychscale.html"><a href="psychscale.html#質問紙調査とは"><i class="fa fa-check"></i><b>4.2.2</b> 質問紙調査とは</a></li>
+<li class="chapter" data-level="4.2.3" data-path="psychscale.html"><a href="psychscale.html#マーケティングと質問紙調査"><i class="fa fa-check"></i><b>4.2.3</b> マーケティングと質問紙調査</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.1" data-path="データのタイプ-1.html"><a href="データのタイプ-1.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
 <li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
 <li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
 <li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
@@ -507,6 +512,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="単回帰モデルと予測値" class="section level2 hasAnchor" number="7.3">
 <h2><span class="header-section-number">7.3</span> 単回帰モデルと予測値<a href="単回帰モデルと予測値.html#単回帰モデルと予測値" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>二変数間の関係を捉える分析手法として <a href="handling.html#handling">5</a> 章では相関係数を紹介した。相関係数は二変数間の線形関係を表す -1から 1 の値を取る指標である。 しかしながら、相関係数は線形関係の強さ（どれだけデータが直線上に近く分布しているか）を表しているものの、示されている直線の切片や傾きといった線形関数の特徴は捉えられない。例えば、下図の二つのデータは異なる切片と傾きを有しているが、相関係数は等しくなるはずである。</p>
+<div class="float">
+<img src="reg/cor.png" style="width:70.0%" alt="相関と線形関係" />
+<div class="figcaption">相関と線形関係</div>
+</div>
 <p>本章では、二変数間の関係について「予測」と「検証」の二点からより深掘りしていく方法を紹介する。マーケティングを実行する企業の立場に立てば、マーケティングに関連する方策や投資を導入することで成果（売上や利益）を向上させたいと考えるだろう。しかしながら、マーケティングの施策により得られる成果や、そのために投入される労働力、金銭、時間などの資源は、採用する施策案により異なる。そのため、企業も闇雲に意思決定を行うわけには行かず、その意思決定によって、どの程度の成果の向上を見込めるかの予測ができると良い。最も基本的な予測の形式は、ある説明変数（先行要因）が被説明変数（成果）に対してどのような影響を与えるのかを特定し、それに基づき予測値を算出するという方法である。</p>
 <p>回帰分析絵では、二つの異なる変数 <span class="math inline">\(y,~x\)</span> の関係を <span class="math inline">\(\small y=f(x)\)</span> のように<span class="math inline">\(y\)</span>を<span class="math inline">\(x\)</span>の関数（<span class="math inline">\(f(x)\)</span>）で示すというアイディアで分析を行う。このとき <span class="math inline">\(y\)</span> を「被説明変数（Explained variable）もしくは従属変数（dependent variable）」、<span class="math inline">\(x\)</span> を「説明変数（Explaining variable）もしくは独立変数（independent variable）」という。そして、被説明変数と説明変数の関係を特定化した式のことを一般的に回帰モデルという。最も基本的な関数型の特定方法は以下のような一次関数による特定化である。</p>
 <p><span class="math display">\[
@@ -536,8 +546,8 @@ y=\beta_0+\beta_1x
 \hat{\beta}_1=\frac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i-\bar{x})^2}
 \]</span></p>
 <p>Rによる回帰分析は、<code>lm()</code>という関数（linear model）を用いて簡単に実行できる。この関数内では、<code>lm(y ~ x, data = df)</code> という要領で、説明変数と被説明変数を <span class="math inline">\(\sim\)</span>（チルダ）で繋いでモデルを指定する。例えば、先程の企業データにおける2019年の観測を用いて、従業員数と売上高の関係について分析するためには、以下のように分析を実行する。</p>
-<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="単回帰モデルと予測値.html#cb171-1" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> emp, <span class="at">data =</span> firmdata19)</span>
-<span id="cb171-2"><a href="単回帰モデルと予測値.html#cb171-2" tabindex="-1"></a><span class="fu">coef</span>(reg1)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="単回帰モデルと予測値.html#cb172-1" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> emp, <span class="at">data =</span> firmdata19)</span>
+<span id="cb172-2"><a href="単回帰モデルと予測値.html#cb172-2" tabindex="-1"></a><span class="fu">coef</span>(reg1)</span></code></pre></div>
 <pre><code>## (Intercept)         emp 
 ## 22809.67863    58.13194</code></pre>
 <p>分析の結果、定数項（Intercept）は 22809.7 で、傾きは 58.1 であることがわかった。つまり、従業員数を一単位増やすと、売上高が58.1（百万円）増えることを示唆している。仮に従業員数が10人であれば、売上高の「予測値」は以下のように計算できる。</p>

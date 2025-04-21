@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-20" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
-<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="psychscale.html"><a href="psychscale.html#データのタイプ"><i class="fa fa-check"></i><b>4.2.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="4.2.2" data-path="psychscale.html"><a href="psychscale.html#質問紙調査とは"><i class="fa fa-check"></i><b>4.2.2</b> 質問紙調査とは</a></li>
+<li class="chapter" data-level="4.2.3" data-path="psychscale.html"><a href="psychscale.html#マーケティングと質問紙調査"><i class="fa fa-check"></i><b>4.2.3</b> マーケティングと質問紙調査</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.1" data-path="データのタイプ-1.html"><a href="データのタイプ-1.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
 <li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
 <li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
 <li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
@@ -651,10 +656,10 @@ P(T_0\in R|H_0~\text{が偽})=1-\beta
 <li><span class="math inline">\(H_1:~\mu\neq1800\)</span></li>
 </ul>
 <p>改めて以下の通り、新型電球に関する16個の無作為標本から得た製品寿命の平均値を計算すると、<span class="math inline">\(\small \bar{X}=1951.194\)</span> であった。では、この1951は 1800 から十分に離れていると言えるのだろうか？もし、十分に離れていると判断されれば帰無仮説を棄却するが、この差が十分でなければ帰無仮説を採択する。</p>
-<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="統計的仮説検定.html#cb143-1" tabindex="-1"></a><span class="fu">mean</span>(bulb)</span></code></pre></div>
+<div class="sourceCode" id="cb144"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb144-1"><a href="統計的仮説検定.html#cb144-1" tabindex="-1"></a><span class="fu">mean</span>(bulb)</span></code></pre></div>
 <pre><code>## [1] 1951.194</code></pre>
 <p>Rを用いて統計的検定を実行すること自体は難しくない。まず、t検定に基づく母平均の検定は <code>t.test()</code> で実施することが可能である。母平均が特定の値を取るか否かについての検定では、<code>mu=</code> という引数を使って帰無仮説に対応する値を指定する。今回の分析に関するコマンドおよびその結果は以下のとおりである。</p>
-<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="統計的仮説検定.html#cb145-1" tabindex="-1"></a><span class="fu">t.test</span>(bulb, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">mu =</span> <span class="dv">1800</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb146"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb146-1"><a href="統計的仮説検定.html#cb146-1" tabindex="-1"></a><span class="fu">t.test</span>(bulb, <span class="at">alternative =</span> <span class="st">&quot;two.sided&quot;</span>, <span class="at">mu =</span> <span class="dv">1800</span>)</span></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -673,15 +678,15 @@ P(T_0\in R|H_0~\text{が偽})=1-\beta
 Z=\frac{1951-1800}{\sqrt{180^2/16}}
 \]</span></p>
 <p>ここまでの議論を踏まえ、新型電球に関する統計的検定を標準正規分布に基づき以下のように実施する。</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="統計的仮説検定.html#cb147-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(bulb)</span>
-<span id="cb147-2"><a href="統計的仮説検定.html#cb147-2" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span>
-<span id="cb147-3"><a href="統計的仮説検定.html#cb147-3" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(bulb)</span>
-<span id="cb147-4"><a href="統計的仮説検定.html#cb147-4" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">180</span></span>
-<span id="cb147-5"><a href="統計的仮説検定.html#cb147-5" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">1800</span></span>
-<span id="cb147-6"><a href="統計的仮説検定.html#cb147-6" tabindex="-1"></a></span>
-<span id="cb147-7"><a href="統計的仮説検定.html#cb147-7" tabindex="-1"></a><span class="co">#Test statistic</span></span>
-<span id="cb147-8"><a href="統計的仮説検定.html#cb147-8" tabindex="-1"></a>Z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu)<span class="sc">/</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
-<span id="cb147-9"><a href="統計的仮説検定.html#cb147-9" tabindex="-1"></a>Z</span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="統計的仮説検定.html#cb148-1" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">length</span>(bulb)</span>
+<span id="cb148-2"><a href="統計的仮説検定.html#cb148-2" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>, <span class="at">lower.tail=</span><span class="cn">FALSE</span>)</span>
+<span id="cb148-3"><a href="統計的仮説検定.html#cb148-3" tabindex="-1"></a>xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(bulb)</span>
+<span id="cb148-4"><a href="統計的仮説検定.html#cb148-4" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">180</span></span>
+<span id="cb148-5"><a href="統計的仮説検定.html#cb148-5" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">1800</span></span>
+<span id="cb148-6"><a href="統計的仮説検定.html#cb148-6" tabindex="-1"></a></span>
+<span id="cb148-7"><a href="統計的仮説検定.html#cb148-7" tabindex="-1"></a><span class="co">#Test statistic</span></span>
+<span id="cb148-8"><a href="統計的仮説検定.html#cb148-8" tabindex="-1"></a>Z <span class="ot">&lt;-</span> (xbar <span class="sc">-</span> mu)<span class="sc">/</span>(sigma<span class="sc">/</span><span class="fu">sqrt</span>(n))</span>
+<span id="cb148-9"><a href="統計的仮説検定.html#cb148-9" tabindex="-1"></a>Z</span></code></pre></div>
 <pre><code>## [1] 3.359861</code></pre>
 <p>分析の結果、検定統計量 <em>Z</em> の実現値が5%有意水準に基づく臨界値（1.96）よりも大きいことが示されたため、5%有意水準で帰無仮説が棄却された。つまり、5%の第一種の誤りの確率を残した上ではあるが、新型電球の製品寿命は旧型製品の寿命よりも長いと言える。このような結果は一般的に、「統計的に有意」な結果と表現される。</p>
 <p>ここまでは、有意水準の意味を踏まえ、検定の手順及び結果の解釈について説明した。しかしながら、先述の通りもし統計的に有意でない（帰無仮説を棄却できない）結果を得たときには、その解釈について注意が必要であるもし今回の仮説検定で帰無仮説を棄却できていなかったとしたら、その結論は「新型電球寿命の平均は1800時間ではないとは言えない」となる。なんとも歯切れの悪い結論だということは理解できるが、統計的検定の特性上、このような解釈を提示しないといけない。</p>

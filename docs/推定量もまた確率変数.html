@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-20" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
-<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="psychscale.html"><a href="psychscale.html#データのタイプ"><i class="fa fa-check"></i><b>4.2.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="4.2.2" data-path="psychscale.html"><a href="psychscale.html#質問紙調査とは"><i class="fa fa-check"></i><b>4.2.2</b> 質問紙調査とは</a></li>
+<li class="chapter" data-level="4.2.3" data-path="psychscale.html"><a href="psychscale.html#マーケティングと質問紙調査"><i class="fa fa-check"></i><b>4.2.3</b> マーケティングと質問紙調査</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.1" data-path="データのタイプ-1.html"><a href="データのタイプ-1.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
 <li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
 <li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
 <li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
@@ -511,25 +516,25 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 結論としては、点推定の推定値は母数そのものではなく、ひとつのある実現値でしかないことに注意が必要である。この理由は、「確率変数から計算される推定量もまた確率変数である」という事実から理解することができる。</p>
 <p>例えば、我々が神戸大学経営学部生の一ヶ月あたりの平均収入（仕送りは除く）に関心があるとする。（実現可能性は置いておいて）経営学部全体を母集団とする無作為標本を100件収集し、標本平均を計算した結果 <span class="math inline">\(\small \bar{X}=\)</span> 0 だったとする。もしこのような極端な結果を得た場合、多くの人が「標本平均の実現値は必ずしも真の母平均そのものではない」という説明に納得がいくだろう。同様の調査（100件のランダムサンプリング）をもう一度行い平均収入を計算し直すと、おそらく0とは異なる推定値を得る可能性が高い。仮に、<span class="math inline">\(\small\bar{X}=\)</span> 50,000 だった場合、その結果をどのように解釈するだろうか。仕送りを除く大学生の月当たり収入の平均が5万円だという結果はなんとも尤もらしい。しかしながら、たとえ尤もらしい結果を得たとしても、それはひとつの分析結果であり、真の母平均を示す唯一の値ではない。</p>
 <p>確率変数から計算される推定量もまた確率変数であるという点を直感的に経験するために、細工のない6面サイコロを（バーチャルに）振ってもらう。なお、コード内では、出力結果を少し見やすくするために、<code>knitr</code> というパッケージを利用しているため、以下のようにインストールしてほしい。</p>
-<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="推定量もまた確率変数.html#cb133-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;knitr&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="推定量もまた確率変数.html#cb134-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;knitr&quot;</span>)</span></code></pre></div>
 <p>標本平均についての議論を行う前に、理論的な期待値を求める。6面サイコロの出目の期待値 <span class="math inline">\(\mu\)</span> は以下の通りである。</p>
 <p><span class="math display">\[
 \mu = 1\cdot \frac{1}{6}+2\cdot \frac{1}{6}+...+6\cdot \frac{1}{6}=3.5
 \]</span></p>
 <p>ここで、以下のようなコマンドを用いてR内でサイコロを振ってみてほしい（実際にサイコロを振ってもらっても構わないが、面倒くさい）。<code>sample()</code> 関数は指定した標本空間からランダムに <code>size</code> の数だけサンプルを抽出するための関数である。<code>replace = TRUE</code> は、復元を認めるという指示になっている。</p>
-<div class="sourceCode" id="cb134"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb134-1"><a href="推定量もまた確率変数.html#cb134-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">442</span>)<span class="co"># 乱数の再現性確保のための指示。関数内の数字に特に意味はないため各自別の値を使っても良い。</span></span>
-<span id="cb134-2"><a href="推定量もまた確率変数.html#cb134-2" tabindex="-1"></a>die <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
-<span id="cb134-3"><a href="推定量もまた確率変数.html#cb134-3" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">1</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb134-4"><a href="推定量もまた確率変数.html#cb134-4" tabindex="-1"></a>d</span></code></pre></div>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="推定量もまた確率変数.html#cb135-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">442</span>)<span class="co"># 乱数の再現性確保のための指示。関数内の数字に特に意味はないため各自別の値を使っても良い。</span></span>
+<span id="cb135-2"><a href="推定量もまた確率変数.html#cb135-2" tabindex="-1"></a>die <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span></span>
+<span id="cb135-3"><a href="推定量もまた確率変数.html#cb135-3" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">1</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb135-4"><a href="推定量もまた確率変数.html#cb135-4" tabindex="-1"></a>d</span></code></pre></div>
 <pre><code>## [1] 6</code></pre>
 <p>本書内では以上で示されている通り、6という出目を得た。上記のコマンドを実施した各自がそれぞれ異なる値を得ているだろう。ここで得た6という数字は、サイコロの出目という確率変数の実現値（<span class="math inline">\(n=1\)</span>）である。そのため、本データの標本平均も6であり、真の期待値とは異なる。ただし、読者によっては1件の標本による標本平均という表現を直感的に理解しにくいかもしれない。そのため、以下のように サイコロを10回振る試行を3回実施し、各サンプリング結果に基づき標本平均を以下のように計算する。</p>
-<div class="sourceCode" id="cb136"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb136-1"><a href="推定量もまた確率変数.html#cb136-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">352</span>) </span>
-<span id="cb136-2"><a href="推定量もまた確率変数.html#cb136-2" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">10</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb136-3"><a href="推定量もまた確率変数.html#cb136-3" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">10</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb136-4"><a href="推定量もまた確率変数.html#cb136-4" tabindex="-1"></a>d3 <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">10</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb136-5"><a href="推定量もまた確率変数.html#cb136-5" tabindex="-1"></a>d_mean <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">mean</span>(d1),<span class="fu">mean</span>(d2),<span class="fu">mean</span>(d3)),<span class="at">nrow =</span> <span class="dv">1</span>)</span>
-<span id="cb136-6"><a href="推定量もまた確率変数.html#cb136-6" tabindex="-1"></a><span class="fu">colnames</span>(d_mean) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;d1の平均&quot;</span>, <span class="st">&quot;d2の平均&quot;</span>, <span class="st">&quot;d3の平均&quot;</span>)</span>
-<span id="cb136-7"><a href="推定量もまた確率変数.html#cb136-7" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(d_mean, <span class="at">caption =</span> <span class="st">&quot;サイコロの標本平均比較&quot;</span>, <span class="at">align =</span> <span class="st">&quot;ccc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="推定量もまた確率変数.html#cb137-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">352</span>) </span>
+<span id="cb137-2"><a href="推定量もまた確率変数.html#cb137-2" tabindex="-1"></a>d1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">10</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb137-3"><a href="推定量もまた確率変数.html#cb137-3" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">10</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb137-4"><a href="推定量もまた確率変数.html#cb137-4" tabindex="-1"></a>d3 <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">10</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb137-5"><a href="推定量もまた確率変数.html#cb137-5" tabindex="-1"></a>d_mean <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">mean</span>(d1),<span class="fu">mean</span>(d2),<span class="fu">mean</span>(d3)),<span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb137-6"><a href="推定量もまた確率変数.html#cb137-6" tabindex="-1"></a><span class="fu">colnames</span>(d_mean) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;d1の平均&quot;</span>, <span class="st">&quot;d2の平均&quot;</span>, <span class="st">&quot;d3の平均&quot;</span>)</span>
+<span id="cb137-7"><a href="推定量もまた確率変数.html#cb137-7" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(d_mean, <span class="at">caption =</span> <span class="st">&quot;サイコロの標本平均比較&quot;</span>, <span class="at">align =</span> <span class="st">&quot;ccc&quot;</span>)</span></code></pre></div>
 <table>
 <caption><span id="tab:rolldice">Table 6.2: </span>サイコロの標本平均比較</caption>
 <thead>
@@ -549,13 +554,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </table>
 <p>上記の通り、d1, d2, d3 いずれの標本平均も互いに異なるものであり、また3.5とも異なる。このことからも、確率変数（サイコロの出目）を用いて計算された推定値（標本平均）もまた確率変数であり、推定値と未知パラメータとの間にはズレ（誤差）が生じうることがわかる。なお、中には3.5と等しい標本平均を偶然得た読者もいると考えられるが、それもあくまで一つの実現値である。</p>
 <p>では、標本平均の推定値がサンプルサイズによってどれだけ真の期待値に近づくのかについて、サイコロの試行回数を10回、100回、1,000回と増やして確認する。以下の結果を見ると、サンプルサイズ（試行回数）が増えるごとに真の期待値に近づいていることが伺える。ただし、これらの結果もあくまで確率的な試行結果の実現値である。そのため、読者によっては異なる傾向を示すような結果を得る可能性があることに注意が必要である。</p>
-<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="推定量もまた確率変数.html#cb137-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">541</span>) </span>
-<span id="cb137-2"><a href="推定量もまた確率変数.html#cb137-2" tabindex="-1"></a>d10 <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">10</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb137-3"><a href="推定量もまた確率変数.html#cb137-3" tabindex="-1"></a>d100 <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">100</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb137-4"><a href="推定量もまた確率変数.html#cb137-4" tabindex="-1"></a>d1000 <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">1000</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb137-5"><a href="推定量もまた確率変数.html#cb137-5" tabindex="-1"></a>d_lln <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">mean</span>(d10),<span class="fu">mean</span>(d100),<span class="fu">mean</span>(d1000)),<span class="at">nrow =</span> <span class="dv">1</span>)</span>
-<span id="cb137-6"><a href="推定量もまた確率変数.html#cb137-6" tabindex="-1"></a><span class="fu">colnames</span>(d_lln) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;10回試行の平均&quot;</span>, <span class="st">&quot;100回試行の平均&quot;</span>, <span class="st">&quot;1,000回試行の平均&quot;</span>)</span>
-<span id="cb137-7"><a href="推定量もまた確率変数.html#cb137-7" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(d_lln, <span class="at">caption =</span> <span class="st">&quot;サイコロの標本平均比較２&quot;</span>, <span class="at">align =</span> <span class="st">&quot;ccc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb138"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb138-1"><a href="推定量もまた確率変数.html#cb138-1" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">541</span>) </span>
+<span id="cb138-2"><a href="推定量もまた確率変数.html#cb138-2" tabindex="-1"></a>d10 <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">10</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb138-3"><a href="推定量もまた確率変数.html#cb138-3" tabindex="-1"></a>d100 <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">100</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb138-4"><a href="推定量もまた確率変数.html#cb138-4" tabindex="-1"></a>d1000 <span class="ot">&lt;-</span> <span class="fu">sample</span>(die,<span class="at">size=</span><span class="dv">1000</span>,<span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb138-5"><a href="推定量もまた確率変数.html#cb138-5" tabindex="-1"></a>d_lln <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fu">mean</span>(d10),<span class="fu">mean</span>(d100),<span class="fu">mean</span>(d1000)),<span class="at">nrow =</span> <span class="dv">1</span>)</span>
+<span id="cb138-6"><a href="推定量もまた確率変数.html#cb138-6" tabindex="-1"></a><span class="fu">colnames</span>(d_lln) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;10回試行の平均&quot;</span>, <span class="st">&quot;100回試行の平均&quot;</span>, <span class="st">&quot;1,000回試行の平均&quot;</span>)</span>
+<span id="cb138-7"><a href="推定量もまた確率変数.html#cb138-7" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(d_lln, <span class="at">caption =</span> <span class="st">&quot;サイコロの標本平均比較２&quot;</span>, <span class="at">align =</span> <span class="st">&quot;ccc&quot;</span>)</span></code></pre></div>
 <table>
 <caption><span id="tab:llnsimulation">Table 6.3: </span>サイコロの標本平均比較２</caption>
 <thead>

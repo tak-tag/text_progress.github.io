@@ -98,6 +98,9 @@ elaboration
 survey
 本章の概要-1
 psychscale
+データのタイプ
+質問紙調査とは
+マーケティングと質問紙調査
 sampling
 サンプリング手法
 サンプルサイズの決定
@@ -294,7 +297,7 @@ causation3
 complier
 参考文献-15
 causation4
-データのタイプ
+データのタイプ-1
 パネルデータ分析と固定効果
 chief-marketing-officerの影響に関する分析
 参考文献-16

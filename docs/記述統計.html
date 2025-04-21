@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-20" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
-<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="psychscale.html"><a href="psychscale.html#データのタイプ"><i class="fa fa-check"></i><b>4.2.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="4.2.2" data-path="psychscale.html"><a href="psychscale.html#質問紙調査とは"><i class="fa fa-check"></i><b>4.2.2</b> 質問紙調査とは</a></li>
+<li class="chapter" data-level="4.2.3" data-path="psychscale.html"><a href="psychscale.html#マーケティングと質問紙調査"><i class="fa fa-check"></i><b>4.2.3</b> マーケティングと質問紙調査</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.1" data-path="データのタイプ-1.html"><a href="データのタイプ-1.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
 <li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
 <li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
 <li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
@@ -509,11 +514,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.5</span> 記述統計<a href="記述統計.html#記述統計" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>記述統計の利用においては、データのタイプ別に利用すべき統計量が異なることに注意が必要である。「データのタイプ」という節で確認したように、データには量的変数とカテゴリ（を示す質的）変数がある。量的変数は数値で測定できるものであり、その計算結果を解釈することも可能である。一方でカテゴリ変数は、各観測個体が属している状態やグループを表す指標であり、それを計算してもそこから含意を得るのが難しい。Rのような統計ソフトは非常に素直なので、たとえカテゴリ変数であってもそこに数値が入力されていれば、記述統計に必要な計算を実行し、結果を返してくれる。しかしながら研究においてはそれらの結果を適切に解釈する必要があり、自身が用いている変数のタイプに応じた分析を実行する必要がある。</p>
 <p>その上で本節ではまずひとつの量的変数の情報を要約するための記述統計を紹介する。一つの数値によってデータ全体を代表させるような数値を代表値と呼ぶ。代表値はおもにデータの中心を示す指標と考えられる。本節ではデータの中心を表す指標として中央値 (median) と平均値 (mean) を紹介する。中央値は、データのすべての観測値において、その値より小さな観測値の数と大きな観測値の数が等しくなるような真ん中の値を表す。そのため、（1, 3, 2, 5, 4）というデータにおける中央値は3である。これは、このデータを、1, 2, 3, 4, 5 と並べ替えると、3よりより小さな観測値の数と大きな観測値の数が等しくなっていることから確認できる<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>。</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="記述統計.html#cb82-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>)</span>
-<span id="cb82-2"><a href="記述統計.html#cb82-2" tabindex="-1"></a><span class="fu">median</span>(d)</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="記述統計.html#cb83-1" tabindex="-1"></a>d <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>)</span>
+<span id="cb83-2"><a href="記述統計.html#cb83-2" tabindex="-1"></a><span class="fu">median</span>(d)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="記述統計.html#cb84-1" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
-<span id="cb84-2"><a href="記述統計.html#cb84-2" tabindex="-1"></a><span class="fu">median</span>(d2)</span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="記述統計.html#cb85-1" tabindex="-1"></a>d2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">4</span>, <span class="dv">6</span>)</span>
+<span id="cb85-2"><a href="記述統計.html#cb85-2" tabindex="-1"></a><span class="fu">median</span>(d2)</span></code></pre></div>
 <pre><code>## [1] 3.5</code></pre>
 <p>平均値（算術平均と呼ばれる）は、最もよく使われる代表値の一つである。平均値は、n個のデータ、<span class="math inline">\(\small x_1,x_2,...,x_n\)</span> に対して以下のように定義される。</p>
 <p><span class="math display">\[\bar{x} = \frac{1}{n}\sum_i^n x_i\]</span></p>
@@ -523,20 +528,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>国語: (2,3,3,5,5,5,7,7,8)</li>
 </ul>
 <p>このときの平均値は以下のように求まる。</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="記述統計.html#cb86-1" tabindex="-1"></a>math <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>)</span>
-<span id="cb86-2"><a href="記述統計.html#cb86-2" tabindex="-1"></a>jpn <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
-<span id="cb86-3"><a href="記述統計.html#cb86-3" tabindex="-1"></a></span>
-<span id="cb86-4"><a href="記述統計.html#cb86-4" tabindex="-1"></a><span class="fu">mean</span>(math)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="記述統計.html#cb87-1" tabindex="-1"></a>math <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>)</span>
+<span id="cb87-2"><a href="記述統計.html#cb87-2" tabindex="-1"></a>jpn <span class="ot">&lt;-</span>  <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">7</span>,<span class="dv">8</span>)</span>
+<span id="cb87-3"><a href="記述統計.html#cb87-3" tabindex="-1"></a></span>
+<span id="cb87-4"><a href="記述統計.html#cb87-4" tabindex="-1"></a><span class="fu">mean</span>(math)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="記述統計.html#cb88-1" tabindex="-1"></a><span class="fu">mean</span>(jpn)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="記述統計.html#cb89-1" tabindex="-1"></a><span class="fu">mean</span>(jpn)</span></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>計算の結果、どちらも平均値は5であった。データの中心を表す代表値の値が等しかったため、これら2科目のテスト結果は同じ分布を持つと判断して良いのだろうか。自明かもしれないが、そのような解釈は不適切である。具体的には、データの「ばらつき」についても確認する必要がある。分布のばらつきは、平均値からの離れ方(平均値からの偏差) によって判断される事が多く、これが大きなデータが多い場合は、よりデータは散らばっ て分布していると解釈される。一方でデータが平均の近くに集まって分布している場合、ばらつきが小さいと捉えられる。この分布のばらつきは主に、分散や標準偏差という指標で測られる。</p>
 <p>分散 (Variance, <span class="math inline">\(S^2\)</span>で定義する) は以下のように、平均からの偏差の二乗の和をデータ数で割ったものだと定義される。平均からの偏差の和を計算すると、正の方向へのズレとマイナス方向へのずれがあるので、互いに相殺しあって合計は 0 になる。そこで、偏差の二乗和を用いることでデータ全体がどの程度平均からばらついているかを把握する。
 <span class="math display">\[S^2 = \frac{1}{n}\sum_i^n (x_i-\bar{x})^2\]</span></p>
 <p>しかしながら、分散は元の値を二乗しているのでもとのデータと単位が異なる。そのため、分散の正の平方根 (<span class="math inline">\(\sqrt{\cdot}\)</span>) を取った値を標準偏差と呼び、この標準偏差を用いることも多い<a href="#fn14" class="footnote-ref" id="fnref14"><sup>14</sup></a>。なお、Rでは <code>var()</code> と <code>sd()</code> によって分散と標準偏差をそれぞれ求める。ただし、Rの関数による計算では <span class="math inline">\(s^2=\frac{1}{n-1}\sum_i^n (x_i-\bar{x})^2\)</span> で定義される「不偏標本分散」および「不偏標準誤差」という指標を用いる。これらの指標は、不偏性（<a href="pestimate.html#pestimate">6.4</a>節参照）という統計的に好ましい性質を持っているため、分析ソフトではこちらの計算方法が用いられる。そのため、Rを用いた分散の計算値が n で割った際の手計算値と異なることがあるのでその点には注意が必要である。</p>
-<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="記述統計.html#cb90-1" tabindex="-1"></a><span class="fu">var</span>(math)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="記述統計.html#cb91-1" tabindex="-1"></a><span class="fu">var</span>(math)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="記述統計.html#cb92-1" tabindex="-1"></a><span class="fu">var</span>(jpn)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="記述統計.html#cb93-1" tabindex="-1"></a><span class="fu">var</span>(jpn)</span></code></pre></div>
 <pre><code>## [1] 4.25</code></pre>
 <p>先程の数学と国語のテスト結果データを用いて分散を計算すると、国語の方が分散が大きいことがわかる。つまり、両テストとも平均値は同じであるものの、国語のほうがそのスコアのばらつきが大きいことがわかる。このように、代表値とともにデータのばらつきに関する情報も踏まえてデータの特徴を把握することが好ましい。</p>
 <p>観察されたデータと標準偏差を用いて、特定の観測結果がデータ内において「相対的に」どのような位置にいるのかを捉えることも可能になる。具体的には、任意の量的変数 <span class="math inline">\(x_1,...,x_n\)</span> に対して、標準化されたスコア <span class="math inline">\(z_1,..,z_n\)</span> は以下のように定義できる。</p>

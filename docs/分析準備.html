@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-20" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
-<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="psychscale.html"><a href="psychscale.html#データのタイプ"><i class="fa fa-check"></i><b>4.2.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="4.2.2" data-path="psychscale.html"><a href="psychscale.html#質問紙調査とは"><i class="fa fa-check"></i><b>4.2.2</b> 質問紙調査とは</a></li>
+<li class="chapter" data-level="4.2.3" data-path="psychscale.html"><a href="psychscale.html#マーケティングと質問紙調査"><i class="fa fa-check"></i><b>4.2.3</b> マーケティングと質問紙調査</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.1" data-path="データのタイプ-1.html"><a href="データのタイプ-1.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
 <li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
 <li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
 <li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
@@ -509,24 +514,24 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">7.2</span> 分析準備<a href="分析準備.html#分析準備" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>本章では、変数間の関係を捉える回帰分析について、そのモデルの基礎と統計的推測に基づく解釈を説明する。回帰分析結果から得られる含意は、「予測」と「検証」の二つに大別することができる。その上で特に本書では、「検証」という側面、特に「研究上関心のある説明変数の係数の解釈」を重視する立場を取る。立場が異なれば、回帰分析上何を重視するかという観点も異なるため、特に回帰分析による予測に関心のある読者においては別の図書を参照してほしい。</p>
 <p>なお本章では、<a href="handling.html#handling">5</a> 章でも利用した <code>MktRes_firmdata.xlsx</code>という企業データを用いた分析を行う。次節に移る前に以下の要領でデータを読み込んでほしい。</p>
-<div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb166-1"><a href="分析準備.html#cb166-1" tabindex="-1"></a>firmdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/MktRes_firmdata.xlsx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="分析準備.html#cb167-1" tabindex="-1"></a>firmdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/MktRes_firmdata.xlsx&quot;</span>)</span></code></pre></div>
 <p>本章では主に、<code>firmdata</code> における2019年のデータ抽出し、クロスセクショナルデータとして用いる。以下の様に全データから2019年の情報を抽出してほしい。</p>
-<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="分析準備.html#cb167-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb167-2"><a href="分析準備.html#cb167-2" tabindex="-1"></a></span>
-<span id="cb167-3"><a href="分析準備.html#cb167-3" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata <span class="sc">%&gt;%</span> </span>
-<span id="cb167-4"><a href="分析準備.html#cb167-4" tabindex="-1"></a>  <span class="fu">filter</span>(fyear <span class="sc">==</span> <span class="dv">2019</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="分析準備.html#cb168-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb168-2"><a href="分析準備.html#cb168-2" tabindex="-1"></a></span>
+<span id="cb168-3"><a href="分析準備.html#cb168-3" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata <span class="sc">%&gt;%</span> </span>
+<span id="cb168-4"><a href="分析準備.html#cb168-4" tabindex="-1"></a>  <span class="fu">filter</span>(fyear <span class="sc">==</span> <span class="dv">2019</span>)</span></code></pre></div>
 <p>データを用いた分析を行う場合、取得したデータの記述統計や分布を確認する必要がある。本来であれば研究上重要な変数を対象にデータの特徴を整理するが、ここでは複数の変数の特徴を一括で整理、図示化する方法を提示する。この方法では、<code>GGally</code>というパッケージの<code>ggpairs()</code>という関数を用いるため、以下のようにパッケージをダウンロードしてほしい。</p>
-<div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="分析準備.html#cb168-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;GGally&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="分析準備.html#cb169-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;GGally&quot;</span>)</span></code></pre></div>
 <p><code>firmdata19</code> データセットから、例として四つの変数を抽出して、ggpairsを実行する。これにより、各変数のヒストグラム（密度形式）と、それぞれの変数間の相関係数と散布図が同図内で示されている。また、<code>ggpairs()</code>内の引数設定によって様々な図示形式を指定できるため、興味のある人は調べてみてほしい。</p>
-<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="分析準備.html#cb169-1" tabindex="-1"></a>firmdata19 <span class="sc">%&gt;%</span> </span>
-<span id="cb169-2"><a href="分析準備.html#cb169-2" tabindex="-1"></a>  <span class="fu">select</span>(sales, mkexp, emp, operating_profit) <span class="sc">%&gt;%</span> </span>
-<span id="cb169-3"><a href="分析準備.html#cb169-3" tabindex="-1"></a>GGally<span class="sc">::</span><span class="fu">ggpairs</span>()<span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;ggpairs example&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="分析準備.html#cb170-1" tabindex="-1"></a>firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb170-2"><a href="分析準備.html#cb170-2" tabindex="-1"></a>  <span class="fu">select</span>(sales, mkexp, emp, operating_profit) <span class="sc">%&gt;%</span> </span>
+<span id="cb170-3"><a href="分析準備.html#cb170-3" tabindex="-1"></a>GGally<span class="sc">::</span><span class="fu">ggpairs</span>()<span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;ggpairs example&quot;</span>)</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/ggpairs-1.png" width="672" /></p>
 <p>なお、記述統計については既出の <code>summary()</code>関数にデータフレームを指定することで、データセット全体の記述統計を出力する。ここでは例として先程と同じ変数の記述統計を以下のように出力してみる。</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="分析準備.html#cb170-1" tabindex="-1"></a>ds1 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
-<span id="cb170-2"><a href="分析準備.html#cb170-2" tabindex="-1"></a>  <span class="fu">select</span>(sales, mkexp, emp, operating_profit) <span class="sc">%&gt;%</span> </span>
-<span id="cb170-3"><a href="分析準備.html#cb170-3" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
-<span id="cb170-4"><a href="分析準備.html#cb170-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ds1, <span class="at">align =</span> <span class="st">&quot;cccc&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="分析準備.html#cb171-1" tabindex="-1"></a>ds1 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb171-2"><a href="分析準備.html#cb171-2" tabindex="-1"></a>  <span class="fu">select</span>(sales, mkexp, emp, operating_profit) <span class="sc">%&gt;%</span> </span>
+<span id="cb171-3"><a href="分析準備.html#cb171-3" tabindex="-1"></a>  <span class="fu">summary</span>()</span>
+<span id="cb171-4"><a href="分析準備.html#cb171-4" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ds1, <span class="at">align =</span> <span class="st">&quot;cccc&quot;</span>)</span></code></pre></div>
 <table>
 <colgroup>
 <col width="4%" />

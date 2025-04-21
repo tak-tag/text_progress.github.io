@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-20" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
-<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="psychscale.html"><a href="psychscale.html#データのタイプ"><i class="fa fa-check"></i><b>4.2.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="4.2.2" data-path="psychscale.html"><a href="psychscale.html#質問紙調査とは"><i class="fa fa-check"></i><b>4.2.2</b> 質問紙調査とは</a></li>
+<li class="chapter" data-level="4.2.3" data-path="psychscale.html"><a href="psychscale.html#マーケティングと質問紙調査"><i class="fa fa-check"></i><b>4.2.3</b> マーケティングと質問紙調査</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.1" data-path="データのタイプ-1.html"><a href="データのタイプ-1.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
 <li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
 <li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
 <li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
@@ -536,11 +541,11 @@ P(y_i = 1|x_i)=\beta_0+\beta_1x_i
 </ol>
 <p>第一の問題点については、LPMで推定してしまうことで分散均一という、OLS推定量が好ましい性質を持つための仮定を満たさないことにつながる。分散が均一であるとは、誤差項の分散がどの観測個体 <span class="math inline">\(i\)</span> に対しても同じ大きさであることを指す。そのため、特定の主体だけ誤差項の分散が大きい場合や、<span class="math inline">\(x\)</span> の値の変化に伴って誤差項の分散が大きくなるような状態ではこの仮定は満たされず、分散不均一であると言われる。ここで、上記のモデルの誤差項は <span class="math inline">\(e_i= y_i - (\beta_0+\beta_1x_i)\)</span> である。ここで、<span class="math inline">\(y_i\)</span> の条件付き期待値を <span class="math inline">\(P_i=E(y_i|x_i)=P(y_i = 1|x_i)=\beta_0+\beta_1x_i\)</span> と定義すると、誤差項の分散は <span class="math inline">\(Var(e_i|x_i)=P_i(1-P_i)\)</span> となることが知られている（西山ほか,2019）。<span class="math inline">\(P_i\)</span> の大きさはその定義より各主体によって <span class="math inline">\(x_i\)</span> に依存する形で変化することが伺える。そのため、LPMによる推定では、分散不均一の問題が生じるといえる。しかしながらこの問題は通常、分散不均一に対して頑健な標準誤差（例えば、ホワイトの標準誤差）を用いた分析を用いることで対応される。</p>
 <p>第二に予測値の論理的整合性について説明する。LPM推定によって得た <span class="math inline">\(y\)</span> の予測値は、反応確率の予測値を表すため、 <span class="math inline">\(y\)</span> の予測値は 0 から 1 の間に収まらないといけない。しかし、LPMでは予測値が負の値を取ったり、1 を上回ることもある。言い換えると確率の定義に反するような、論理的に整合的ではない予測値を返してしまう。ここで、以下のような簡単な人工データを用いて、LPMによる分析を実行してみる。下記df1の成果変数（Y）はダミー変数であり、説明変数は連続変数だとする。これを線形モデルで回帰し、予測値を出力してみる。すると、1つ目と4つ目の観測は負の値、7つ目と8つ目の観測は1を越える予測値を得たことが伺える。</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="discrete.html#cb226-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb226-2"><a href="discrete.html#cb226-2" tabindex="-1"></a>                  <span class="at">X =</span> <span class="fu">c</span>(<span class="fl">3.4</span>, <span class="fl">5.22</span>, <span class="fl">7.06</span>, <span class="fl">2.81</span>, <span class="fl">4.11</span>, <span class="fl">10.34</span>, <span class="fl">13.67</span>, <span class="fl">15.99</span>, <span class="fl">9.09</span>))</span>
-<span id="cb226-3"><a href="discrete.html#cb226-3" tabindex="-1"></a>lpm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> df1)</span>
-<span id="cb226-4"><a href="discrete.html#cb226-4" tabindex="-1"></a>pred_lpm1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lpm1)</span>
-<span id="cb226-5"><a href="discrete.html#cb226-5" tabindex="-1"></a>pred_lpm1 </span></code></pre></div>
+<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="discrete.html#cb227-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb227-2"><a href="discrete.html#cb227-2" tabindex="-1"></a>                  <span class="at">X =</span> <span class="fu">c</span>(<span class="fl">3.4</span>, <span class="fl">5.22</span>, <span class="fl">7.06</span>, <span class="fl">2.81</span>, <span class="fl">4.11</span>, <span class="fl">10.34</span>, <span class="fl">13.67</span>, <span class="fl">15.99</span>, <span class="fl">9.09</span>))</span>
+<span id="cb227-3"><a href="discrete.html#cb227-3" tabindex="-1"></a>lpm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> df1)</span>
+<span id="cb227-4"><a href="discrete.html#cb227-4" tabindex="-1"></a>pred_lpm1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lpm1)</span>
+<span id="cb227-5"><a href="discrete.html#cb227-5" tabindex="-1"></a>pred_lpm1 </span></code></pre></div>
 <pre><code>##            1            2            3            4            5            6 
 ## -0.006342894  0.173357681  0.355032986 -0.064597476  0.063760077  0.678888967 
 ##            7            8            9 

@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-20" />
+<meta name="date" content="2025-04-21" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -187,7 +187,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4" data-path="survey.html"><a href="survey.html"><i class="fa fa-check"></i><b>4</b> 尺度と質問紙調査設計</a>
 <ul>
 <li class="chapter" data-level="4.1" data-path="本章の概要-1.html"><a href="本章の概要-1.html"><i class="fa fa-check"></i><b>4.1</b> 本章の概要</a></li>
-<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a></li>
+<li class="chapter" data-level="4.2" data-path="psychscale.html"><a href="psychscale.html"><i class="fa fa-check"></i><b>4.2</b> マーケティングリサーチにおける質問紙調査の活用</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="psychscale.html"><a href="psychscale.html#データのタイプ"><i class="fa fa-check"></i><b>4.2.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="4.2.2" data-path="psychscale.html"><a href="psychscale.html#質問紙調査とは"><i class="fa fa-check"></i><b>4.2.2</b> 質問紙調査とは</a></li>
+<li class="chapter" data-level="4.2.3" data-path="psychscale.html"><a href="psychscale.html#マーケティングと質問紙調査"><i class="fa fa-check"></i><b>4.2.3</b> マーケティングと質問紙調査</a></li>
+</ul></li>
 <li class="chapter" data-level="4.3" data-path="sampling.html"><a href="sampling.html"><i class="fa fa-check"></i><b>4.3</b> 調査対象者の確保</a>
 <ul>
 <li class="chapter" data-level="4.3.1" data-path="sampling.html"><a href="sampling.html#サンプリング手法"><i class="fa fa-check"></i><b>4.3.1</b> サンプリング手法</a></li>
@@ -465,7 +470,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="18" data-path="causation4.html"><a href="causation4.html"><i class="fa fa-check"></i><b>18</b> コラム4（パネルデータと固定効果：差の差の分析法準備）</a>
 <ul>
-<li class="chapter" data-level="18.1" data-path="データのタイプ.html"><a href="データのタイプ.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
+<li class="chapter" data-level="18.1" data-path="データのタイプ-1.html"><a href="データのタイプ-1.html"><i class="fa fa-check"></i><b>18.1</b> データのタイプ</a></li>
 <li class="chapter" data-level="18.2" data-path="パネルデータ分析と固定効果.html"><a href="パネルデータ分析と固定効果.html"><i class="fa fa-check"></i><b>18.2</b> パネルデータ分析と固定効果</a></li>
 <li class="chapter" data-level="18.3" data-path="chief-marketing-officerの影響に関する分析.html"><a href="chief-marketing-officerの影響に関する分析.html"><i class="fa fa-check"></i><b>18.3</b> Chief Marketing Officerの影響に関する分析</a></li>
 <li class="chapter" data-level="18.4" data-path="参考文献-16.html"><a href="参考文献-16.html"><i class="fa fa-check"></i><b>18.4</b> 参考文献</a></li>
@@ -508,10 +513,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="カテゴリ変数の要約" class="section level2 hasAnchor" number="5.6">
 <h2><span class="header-section-number">5.6</span> カテゴリ変数の要約<a href="カテゴリ変数の要約.html#カテゴリ変数の要約" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>一方でカテゴリ変数は、代表値や分散によって含意を得るのではなく、頻度のカウント（集計）や、クロス集計を用いることが多い。これにより、各カテゴリにどれぐらいの観測数があるのかを確認することが可能になる。カテゴリ変数の内容（出現頻度）の確認には、<code>table()</code> 関数を用いる。また、<code>with()</code>関数を用いて同様の結果を得ることも可能である。ここでは、先ほど用いた <code>firmdata</code> から2018年度の情報を抽出し、日経業種に基づく産業の違いから、どのカテゴリの企業がどれだけデータ内にいるのかを確認する。なお、tidyverseを起動していない場合には、必要に応じて <code>library(tidyverse)</code> を事前に指示してほしい。</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="カテゴリ変数の要約.html#cb94-1" tabindex="-1"></a>firm2018 <span class="ot">&lt;-</span> firmdata <span class="sc">%&gt;%</span> </span>
-<span id="cb94-2"><a href="カテゴリ変数の要約.html#cb94-2" tabindex="-1"></a>  <span class="fu">filter</span>(fyear <span class="sc">==</span> <span class="dv">2018</span>)</span>
-<span id="cb94-3"><a href="カテゴリ変数の要約.html#cb94-3" tabindex="-1"></a></span>
-<span id="cb94-4"><a href="カテゴリ変数の要約.html#cb94-4" tabindex="-1"></a><span class="fu">table</span>(firm2018<span class="sc">$</span>ind_en)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="カテゴリ変数の要約.html#cb95-1" tabindex="-1"></a>firm2018 <span class="ot">&lt;-</span> firmdata <span class="sc">%&gt;%</span> </span>
+<span id="cb95-2"><a href="カテゴリ変数の要約.html#cb95-2" tabindex="-1"></a>  <span class="fu">filter</span>(fyear <span class="sc">==</span> <span class="dv">2018</span>)</span>
+<span id="cb95-3"><a href="カテゴリ変数の要約.html#cb95-3" tabindex="-1"></a></span>
+<span id="cb95-4"><a href="カテゴリ変数の要約.html#cb95-4" tabindex="-1"></a><span class="fu">table</span>(firm2018<span class="sc">$</span>ind_en)</span></code></pre></div>
 <pre><code>## 
 ##       Air Transportation       Amusement Services          Bakery Products 
 ##                        8                        4                        1 
@@ -527,7 +532,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                        1                       35                       14 
 ##                 Trucking 
 ##                        1</code></pre>
-<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="カテゴリ変数の要約.html#cb96-1" tabindex="-1"></a><span class="fu">with</span>(firm2018, <span class="fu">table</span>(ind_en))</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="カテゴリ変数の要約.html#cb97-1" tabindex="-1"></a><span class="fu">with</span>(firm2018, <span class="fu">table</span>(ind_en))</span></code></pre></div>
 <pre><code>## ind_en
 ##       Air Transportation       Amusement Services          Bakery Products 
 ##                        8                        4                        1 
@@ -544,9 +549,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##                 Trucking 
 ##                        1</code></pre>
 <p>また、table関数にて2つのカテゴリ変数を指定することで、両変数に対応するカテゴリの出現頻度を返してくれる。このような表のことをクロス集計表とよぶ。例えば、同データにおける広告集中的な企業を把握するため、広告集中度が中央値よりも高ければ1、それ以外であれば0を取るダミー変数（<a href="dummy.html#dummy">8.2</a>節参照）を作成し、各産業カテゴリとの関係を確認する。</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="カテゴリ変数の要約.html#cb98-1" tabindex="-1"></a>firm2018 <span class="ot">&lt;-</span> firm2018 <span class="sc">%&gt;%</span> </span>
-<span id="cb98-2"><a href="カテゴリ変数の要約.html#cb98-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ad_dummy =</span> <span class="fu">ifelse</span>(adint <span class="sc">&gt;</span> <span class="fu">median</span>(adint),<span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb98-3"><a href="カテゴリ変数の要約.html#cb98-3" tabindex="-1"></a><span class="fu">with</span>(firm2018, <span class="fu">table</span>(ind_en,ad_dummy))</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="カテゴリ変数の要約.html#cb99-1" tabindex="-1"></a>firm2018 <span class="ot">&lt;-</span> firm2018 <span class="sc">%&gt;%</span> </span>
+<span id="cb99-2"><a href="カテゴリ変数の要約.html#cb99-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">ad_dummy =</span> <span class="fu">ifelse</span>(adint <span class="sc">&gt;</span> <span class="fu">median</span>(adint),<span class="dv">1</span>, <span class="dv">0</span>))</span>
+<span id="cb99-3"><a href="カテゴリ変数の要約.html#cb99-3" tabindex="-1"></a><span class="fu">with</span>(firm2018, <span class="fu">table</span>(ind_en,ad_dummy))</span></code></pre></div>
 <pre><code>##                           ad_dummy
 ## ind_en                      0  1
 ##   Air Transportation        4  4
@@ -570,9 +575,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   Trucking                  1  0</code></pre>
 <p>上の表では、各行に産業明が記載されており、その右隣に、広告集中度が低い（<code>ad_dummy=0</code>）企業数が、さらにその右隣には広告集中度が高い（<code>ad_dummy=1</code>）企業数がそれぞれ記載されている。これらのデータを確認すると、広告集中度が高い企業は鉄道会社やアミューズメント、ホテル、トラック運送業において少ないことがわかる。それ以外の産業では産業内でも広告集中度の高い企業と低い企業とが比較的バラけている。</p>
 <p>特定のカテゴリ（例、デシルランク）に着目して、カテゴリ変数（例、性別）についての集計を行うことも可能である。例えば、広告集中度が高い企業における産業のばらつきを調べたいときには、<code>filter()</code> 関数を用いれば良い。</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="カテゴリ変数の要約.html#cb100-1" tabindex="-1"></a>firm2018 <span class="sc">%&gt;%</span> </span>
-<span id="cb100-2"><a href="カテゴリ変数の要約.html#cb100-2" tabindex="-1"></a>  <span class="fu">filter</span>(ad_dummy <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb100-3"><a href="カテゴリ変数の要約.html#cb100-3" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">table</span>(ind_en))</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="カテゴリ変数の要約.html#cb101-1" tabindex="-1"></a>firm2018 <span class="sc">%&gt;%</span> </span>
+<span id="cb101-2"><a href="カテゴリ変数の要約.html#cb101-2" tabindex="-1"></a>  <span class="fu">filter</span>(ad_dummy <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb101-3"><a href="カテゴリ変数の要約.html#cb101-3" tabindex="-1"></a>  <span class="fu">with</span>(<span class="fu">table</span>(ind_en))</span></code></pre></div>
 <pre><code>## ind_en
 ##       Air Transportation          Bakery Products   Communication Services 
 ##                        4                        1                        1 
@@ -585,13 +590,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##       Retail Stores, NEC       Supermarket Chains 
 ##                       24                       12</code></pre>
 <p>カテゴリ変数と量的変数の関係を調べることも、グループ別に量的変数の要約を行う形で可能である。具体的には、 <code>group_by()</code> 関数を用いる。<code>group_by()</code> は関数内で指定した変数を用いてデータをグループ化し、グループごとの集計や処理を可能にする関数である。例えば、売上高と広告集中度の平均と標準偏差を産業ごとに確認することは、以下のような指示で可能になる。</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="カテゴリ変数の要約.html#cb102-1" tabindex="-1"></a>firm2018 <span class="sc">%&gt;%</span> </span>
-<span id="cb102-2"><a href="カテゴリ変数の要約.html#cb102-2" tabindex="-1"></a>  <span class="fu">group_by</span>(ind_en) <span class="sc">%&gt;%</span> </span>
-<span id="cb102-3"><a href="カテゴリ変数の要約.html#cb102-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">obs =</span> <span class="fu">n</span>(),</span>
-<span id="cb102-4"><a href="カテゴリ変数の要約.html#cb102-4" tabindex="-1"></a>            <span class="at">sales_m =</span> <span class="fu">mean</span>(sales),</span>
-<span id="cb102-5"><a href="カテゴリ変数の要約.html#cb102-5" tabindex="-1"></a>            <span class="at">sales_sd =</span> <span class="fu">sd</span>(sales),</span>
-<span id="cb102-6"><a href="カテゴリ変数の要約.html#cb102-6" tabindex="-1"></a>            <span class="at">adint_m =</span> <span class="fu">mean</span>(adint),</span>
-<span id="cb102-7"><a href="カテゴリ変数の要約.html#cb102-7" tabindex="-1"></a>            <span class="at">adint_sd =</span> <span class="fu">sd</span>(adint))</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="カテゴリ変数の要約.html#cb103-1" tabindex="-1"></a>firm2018 <span class="sc">%&gt;%</span> </span>
+<span id="cb103-2"><a href="カテゴリ変数の要約.html#cb103-2" tabindex="-1"></a>  <span class="fu">group_by</span>(ind_en) <span class="sc">%&gt;%</span> </span>
+<span id="cb103-3"><a href="カテゴリ変数の要約.html#cb103-3" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">obs =</span> <span class="fu">n</span>(),</span>
+<span id="cb103-4"><a href="カテゴリ変数の要約.html#cb103-4" tabindex="-1"></a>            <span class="at">sales_m =</span> <span class="fu">mean</span>(sales),</span>
+<span id="cb103-5"><a href="カテゴリ変数の要約.html#cb103-5" tabindex="-1"></a>            <span class="at">sales_sd =</span> <span class="fu">sd</span>(sales),</span>
+<span id="cb103-6"><a href="カテゴリ変数の要約.html#cb103-6" tabindex="-1"></a>            <span class="at">adint_m =</span> <span class="fu">mean</span>(adint),</span>
+<span id="cb103-7"><a href="カテゴリ変数の要約.html#cb103-7" tabindex="-1"></a>            <span class="at">adint_sd =</span> <span class="fu">sd</span>(adint))</span></code></pre></div>
 <pre><code>## # A tibble: 19 × 6
 ##    ind_en                     obs  sales_m sales_sd adint_m adint_sd
 ##    &lt;chr&gt;                    &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
