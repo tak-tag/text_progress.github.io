@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-04-22" />
+<meta name="date" content="2025-04-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -171,10 +171,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>3.4</b> 研究課題（問い）の設定</a></li>
 <li class="chapter" data-level="3.5" data-path="問題と分析をつなげる仮説の提示.html"><a href="問題と分析をつなげる仮説の提示.html"><i class="fa fa-check"></i><b>3.5</b> 問題と分析をつなげる仮説の提示</a></li>
-<li class="chapter" data-level="3.6" data-path="philosphy.html"><a href="philosphy.html"><i class="fa fa-check"></i><b>3.6</b> 学術的研究のための留意点</a>
+<li class="chapter" data-level="3.6" data-path="philophy.html"><a href="philophy.html"><i class="fa fa-check"></i><b>3.6</b> 学術的研究のための留意点</a>
 <ul>
-<li class="chapter" data-level="3.6.1" data-path="philosphy.html"><a href="philosphy.html#マーケティング研究と科学哲学"><i class="fa fa-check"></i><b>3.6.1</b> マーケティング研究と科学哲学</a></li>
-<li class="chapter" data-level="3.6.2" data-path="philosphy.html"><a href="philosphy.html#elaboration"><i class="fa fa-check"></i><b>3.6.2</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.6.1" data-path="philophy.html"><a href="philophy.html#マーケティング研究と科学哲学"><i class="fa fa-check"></i><b>3.6.1</b> マーケティング研究と科学哲学</a></li>
+<li class="chapter" data-level="3.6.2" data-path="philophy.html"><a href="philophy.html#elaboration"><i class="fa fa-check"></i><b>3.6.2</b> 研究における理論の利用と精緻化</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="研究課題と仮説の設定例.html"><a href="研究課題と仮説の設定例.html"><i class="fa fa-check"></i><b>3.7</b> 研究課題と仮説の設定例</a></li>
 <li class="chapter" data-level="3.8" data-path="練習問題.html"><a href="練習問題.html"><i class="fa fa-check"></i><b>3.8</b> 練習問題</a>
@@ -569,7 +569,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="データの整形.html#cb68-1" tabindex="-1"></a>data2<span class="ot">&lt;-</span> <span class="fu">select</span>(data, var1<span class="sc">:</span>var5)</span></code></pre></div>
 <p>また、tidyverseのstarts_with()（ends_with()）を使うことで、変数名の冒頭（末尾）が特定の文字列から始まる変数を指定するようなことも可能である。例えば、“v” という文字から始まる変数を取り出すための指示は、いかのようになる。</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="データの整形.html#cb69-1" tabindex="-1"></a>data3<span class="ot">&lt;-</span> <span class="fu">select</span>(data, <span class="fu">starts_with</span>(<span class="st">&quot;v&quot;</span>))</span></code></pre></div>
-<p>arrangeは、データの並べかえを可能にする関数である。例えば、以下ではvar1の値が小さい順（昇順）に並べ替えるような指示を示す。一方で、降順にする場合は、desc(var1)と引数を指定する必要がある<a href="#fn12" class="footnote-ref" id="fnref12"><sup>12</sup></a>。</p>
+<p>arrangeは、データの並べかえを可能にする関数である。例えば、以下ではvar1の値が小さい順（昇順）に並べ替えるような指示を示す。一方で、降順にする場合は、desc(var1)と引数を指定する必要がある<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>。</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="データの整形.html#cb70-1" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(data, var1) </span>
 <span id="cb70-2"><a href="データの整形.html#cb70-2" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(data, <span class="fu">desc</span>(var1)) </span></code></pre></div>
 <p>また、tidyverse環境において、変数名を変更することも、rename() 関数で可能になる。</p>
@@ -681,8 +681,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="footnotes">
 <hr />
-<ol start="12">
-<li id="fn12"><p>“desc”は、descending orderの略であり、降順を表す。<a href="データの整形.html#fnref12" class="footnote-back">↩︎</a></p></li>
+<ol start="13">
+<li id="fn13"><p>“desc”は、descending orderの略であり、降順を表す。<a href="データの整形.html#fnref13" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
