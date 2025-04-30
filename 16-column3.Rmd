@@ -57,8 +57,8 @@ library(kableExtra)
 
 # Create the table data
 df <- data.frame("T/D" = c("$T = 0$", "$T = 1$"),
-  "$D = 1$" = c("AT", "C or NT"),
-  "$D = 0$" = c("C or AT", "NT")
+  "$D = 1$" = c("AT", "C or AT"),
+  "$D = 0$" = c("C or NT", "NT")
 )
 colnames(df)[1] <-""
 
