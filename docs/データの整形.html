@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-26" />
+<meta name="date" content="2025-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -569,7 +569,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="データの整形.html#cb68-1" tabindex="-1"></a>data2<span class="ot">&lt;-</span> <span class="fu">select</span>(data, var1<span class="sc">:</span>var5)</span></code></pre></div>
 <p>また、tidyverseのstarts_with()（ends_with()）を使うことで、変数名の冒頭（末尾）が特定の文字列から始まる変数を指定するようなことも可能である。例えば、“v” という文字から始まる変数を取り出すための指示は、いかのようになる。</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="データの整形.html#cb69-1" tabindex="-1"></a>data3<span class="ot">&lt;-</span> <span class="fu">select</span>(data, <span class="fu">starts_with</span>(<span class="st">&quot;v&quot;</span>))</span></code></pre></div>
-<p>arrangeは、データの並べかえを可能にする関数である。例えば、以下ではvar1の値が小さい順（昇順）に並べ替えるような指示を示す。一方で、降順にする場合は、desc(var1)と引数を指定する必要がある<a href="#fn13" class="footnote-ref" id="fnref13"><sup>13</sup></a>。</p>
+<p>arrangeは、データの並べかえを可能にする関数である。例えば、以下ではvar1の値が小さい順（昇順）に並べ替えるような指示を示す。一方で、降順にする場合は、desc(var1)と引数を指定する必要がある<a href="#fn15" class="footnote-ref" id="fnref15"><sup>15</sup></a>。</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="データの整形.html#cb70-1" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(data, var1) </span>
 <span id="cb70-2"><a href="データの整形.html#cb70-2" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(data, <span class="fu">desc</span>(var1)) </span></code></pre></div>
 <p>また、tidyverse環境において、変数名を変更することも、rename() 関数で可能になる。以下の指示によって、<code>var_name</code> という変数を <code>new_name</code> に変更する事ができる。</p>
@@ -680,8 +680,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="footnotes">
 <hr />
-<ol start="13">
-<li id="fn13"><p>“desc”は、descending orderの略であり、降順を表す。<a href="データの整形.html#fnref13" class="footnote-back">↩︎</a></p></li>
+<ol start="15">
+<li id="fn15"><p>“desc”は、descending orderの略であり、降順を表す。<a href="データの整形.html#fnref15" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

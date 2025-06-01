@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-05-26" />
+<meta name="date" content="2025-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -602,7 +602,7 @@ Figure 9.2: 非線形での近似イメージ
 <!-- # プロットを表示 -->
 <!-- print(combined_plot) -->
 <!-- ``` -->
-<p>標準正規分布の累積分布関数を<span class="math inline">\(\Phi\)</span>（ファイ）で示すと、反応確率は以下のように表すことができる<a href="#fn33" class="footnote-ref" id="fnref33"><sup>33</sup></a>。</p>
+<p>標準正規分布の累積分布関数を<span class="math inline">\(\Phi\)</span>（ファイ）で示すと、反応確率は以下のように表すことができる<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a>。</p>
 <p><span class="math display">\[
 P(y_i=1|x_{1i},...,x_{ki})=\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})=\int^{\beta_0+\sum^k_{j =1}\beta_jx_{ji}}_{-\infty}\phi(z)~dz
 \]</span></p>
@@ -610,7 +610,7 @@ P(y_i=1|x_{1i},...,x_{ki})=\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})=\int^{\
 <span class="math display">\[
 P(y_i=0|x_{1i},...,x_{ki})=1-P(y_i=1|x_{1i},...,x_{ki})=1-\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})
 \]</span>
-これにより、選択肢を選ぶことへの条件付き確率と選ばないことへの条件付き確率を、回帰モデルと標準正規分布の累積分布関数との関係から定義する事ができた。これを <span class="math inline">\(y_i=1\)</span> か <span class="math inline">\(y_i=0\)</span> という値を取る事象に対応させるため、ベルヌーイ確率関数<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>に代入すると、以下のような確率密度関数を考えることができる。</p>
+これにより、選択肢を選ぶことへの条件付き確率と選ばないことへの条件付き確率を、回帰モデルと標準正規分布の累積分布関数との関係から定義する事ができた。これを <span class="math inline">\(y_i=1\)</span> か <span class="math inline">\(y_i=0\)</span> という値を取る事象に対応させるため、ベルヌーイ確率関数<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a>に代入すると、以下のような確率密度関数を考えることができる。</p>
 <p><span class="math display" id="eq:probit">\[\begin{equation}
 P(y_i|x_{1i},...,x_{ki})=\\
 \Big(\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki}) \Big)^{y_i}\times \Big(1-\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki}) \Big)^{1-y_i} \tag{9.1}
@@ -665,9 +665,9 @@ P(y_i=1|x_{1i},...,x_{ki})=\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})
 </div>
 <div class="footnotes">
 <hr />
-<ol start="33">
-<li id="fn33"><p>ただし、<span class="math inline">\(\Phi&#39;(z)=\phi(z)=\frac{1}{\sqrt{2\pi}}\exp(\frac{-z^2}{2})\)</span>とする。<a href="discrete.html#fnref33" class="footnote-back">↩︎</a></p></li>
-<li id="fn34"><p><span class="math inline">\(f(y_i)=P_i^{y_i}\times\big(1-P_i)^{1-y_i}\)</span><a href="discrete.html#fnref34" class="footnote-back">↩︎</a></p></li>
+<ol start="35">
+<li id="fn35"><p>ただし、<span class="math inline">\(\Phi&#39;(z)=\phi(z)=\frac{1}{\sqrt{2\pi}}\exp(\frac{-z^2}{2})\)</span>とする。<a href="discrete.html#fnref35" class="footnote-back">↩︎</a></p></li>
+<li id="fn36"><p><span class="math inline">\(f(y_i)=P_i^{y_i}\times\big(1-P_i)^{1-y_i}\)</span><a href="discrete.html#fnref36" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
