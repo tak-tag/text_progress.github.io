@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-01" />
+<meta name="date" content="2025-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -172,10 +172,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>3.4</b> 研究課題（問い）の設定</a></li>
 <li class="chapter" data-level="3.5" data-path="08-choicemodel.html"><a href="#%E5%95%8F%E9%A1%8C%E3%81%A8%E5%88%86%E6%9E%90%E3%82%92%E3%81%A4%E3%81%AA%E3%81%92%E3%82%8B%E4%BB%AE%E8%AA%AC%E3%81%AE%E6%8F%90%E7%A4%BA"><i class="fa fa-check"></i><b>3.5</b> 問題と分析をつなげる仮説の提示</a></li>
-<li class="chapter" data-level="3.6" data-path="philophy.html"><a href="philophy.html"><i class="fa fa-check"></i><b>3.6</b> 学術的研究のための留意点</a>
+<li class="chapter" data-level="3.6" data-path="philosophy.html"><a href="philosophy.html"><i class="fa fa-check"></i><b>3.6</b> 学術的研究のための留意点</a>
 <ul>
 <li class="chapter" data-level="3.6.1" data-path="08-choicemodel.html"><a href="#%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E7%A0%94%E7%A9%B6%E3%81%A8%E7%A7%91%E5%AD%A6%E5%93%B2%E5%AD%A6"><i class="fa fa-check"></i><b>3.6.1</b> マーケティング研究と科学哲学</a></li>
-<li class="chapter" data-level="3.6.2" data-path="philophy.html"><a href="philophy.html#elaboration"><i class="fa fa-check"></i><b>3.6.2</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.6.2" data-path="philosophy.html"><a href="philosophy.html#elaboration"><i class="fa fa-check"></i><b>3.6.2</b> 研究における理論の利用と精緻化</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="08-choicemodel.html"><a href="#%E7%A0%94%E7%A9%B6%E8%AA%B2%E9%A1%8C%E3%81%A8%E4%BB%AE%E8%AA%AC%E3%81%AE%E8%A8%AD%E5%AE%9A%E4%BE%8B"><i class="fa fa-check"></i><b>3.7</b> 研究課題と仮説の設定例</a></li>
 <li class="chapter" data-level="3.8" data-path="08-choicemodel.html"><a href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C"><i class="fa fa-check"></i><b>3.8</b> 練習問題</a>
@@ -602,7 +602,7 @@ Figure 9.2: 非線形での近似イメージ
 <!-- # プロットを表示 -->
 <!-- print(combined_plot) -->
 <!-- ``` -->
-<p>標準正規分布の累積分布関数を<span class="math inline">\(\Phi\)</span>（ファイ）で示すと、反応確率は以下のように表すことができる<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a>。</p>
+<p>標準正規分布の累積分布関数を<span class="math inline">\(\Phi\)</span>（ファイ）で示すと、反応確率は以下のように表すことができる<a href="#fn34" class="footnote-ref" id="fnref34"><sup>34</sup></a>。</p>
 <p><span class="math display">\[
 P(y_i=1|x_{1i},...,x_{ki})=\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})=\int^{\beta_0+\sum^k_{j =1}\beta_jx_{ji}}_{-\infty}\phi(z)~dz
 \]</span></p>
@@ -610,7 +610,7 @@ P(y_i=1|x_{1i},...,x_{ki})=\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})=\int^{\
 <span class="math display">\[
 P(y_i=0|x_{1i},...,x_{ki})=1-P(y_i=1|x_{1i},...,x_{ki})=1-\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})
 \]</span>
-これにより、選択肢を選ぶことへの条件付き確率と選ばないことへの条件付き確率を、回帰モデルと標準正規分布の累積分布関数との関係から定義する事ができた。これを <span class="math inline">\(y_i=1\)</span> か <span class="math inline">\(y_i=0\)</span> という値を取る事象に対応させるため、ベルヌーイ確率関数<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a>に代入すると、以下のような確率密度関数を考えることができる。</p>
+これにより、選択肢を選ぶことへの条件付き確率と選ばないことへの条件付き確率を、回帰モデルと標準正規分布の累積分布関数との関係から定義する事ができた。これを <span class="math inline">\(y_i=1\)</span> か <span class="math inline">\(y_i=0\)</span> という値を取る事象に対応させるため、ベルヌーイ確率関数<a href="#fn35" class="footnote-ref" id="fnref35"><sup>35</sup></a>に代入すると、以下のような確率密度関数を考えることができる。</p>
 <p><span class="math display" id="eq:probit">\[\begin{equation}
 P(y_i|x_{1i},...,x_{ki})=\\
 \Big(\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki}) \Big)^{y_i}\times \Big(1-\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki}) \Big)^{1-y_i} \tag{9.1}
@@ -665,9 +665,9 @@ P(y_i=1|x_{1i},...,x_{ki})=\Phi(\beta_0+\beta_1x_{1i}+...+\beta_kx_{ki})
 </div>
 <div class="footnotes">
 <hr />
-<ol start="35">
-<li id="fn35"><p>ただし、<span class="math inline">\(\Phi&#39;(z)=\phi(z)=\frac{1}{\sqrt{2\pi}}\exp(\frac{-z^2}{2})\)</span>とする。<a href="discrete.html#fnref35" class="footnote-back">↩︎</a></p></li>
-<li id="fn36"><p><span class="math inline">\(f(y_i)=P_i^{y_i}\times\big(1-P_i)^{1-y_i}\)</span><a href="discrete.html#fnref36" class="footnote-back">↩︎</a></p></li>
+<ol start="34">
+<li id="fn34"><p>ただし、<span class="math inline">\(\Phi&#39;(z)=\phi(z)=\frac{1}{\sqrt{2\pi}}\exp(\frac{-z^2}{2})\)</span>とする。<a href="discrete.html#fnref34" class="footnote-back">↩︎</a></p></li>
+<li id="fn35"><p><span class="math inline">\(f(y_i)=P_i^{y_i}\times\big(1-P_i)^{1-y_i}\)</span><a href="discrete.html#fnref35" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

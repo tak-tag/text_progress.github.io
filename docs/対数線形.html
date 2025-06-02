@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-01" />
+<meta name="date" content="2025-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -172,10 +172,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>3.4</b> 研究課題（問い）の設定</a></li>
 <li class="chapter" data-level="3.5" data-path="07-reg2.html"><a href="#%E5%95%8F%E9%A1%8C%E3%81%A8%E5%88%86%E6%9E%90%E3%82%92%E3%81%A4%E3%81%AA%E3%81%92%E3%82%8B%E4%BB%AE%E8%AA%AC%E3%81%AE%E6%8F%90%E7%A4%BA"><i class="fa fa-check"></i><b>3.5</b> 問題と分析をつなげる仮説の提示</a></li>
-<li class="chapter" data-level="3.6" data-path="philophy.html"><a href="philophy.html"><i class="fa fa-check"></i><b>3.6</b> 学術的研究のための留意点</a>
+<li class="chapter" data-level="3.6" data-path="philosophy.html"><a href="philosophy.html"><i class="fa fa-check"></i><b>3.6</b> 学術的研究のための留意点</a>
 <ul>
 <li class="chapter" data-level="3.6.1" data-path="07-reg2.html"><a href="#%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E7%A0%94%E7%A9%B6%E3%81%A8%E7%A7%91%E5%AD%A6%E5%93%B2%E5%AD%A6"><i class="fa fa-check"></i><b>3.6.1</b> マーケティング研究と科学哲学</a></li>
-<li class="chapter" data-level="3.6.2" data-path="philophy.html"><a href="philophy.html#elaboration"><i class="fa fa-check"></i><b>3.6.2</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.6.2" data-path="philosophy.html"><a href="philosophy.html#elaboration"><i class="fa fa-check"></i><b>3.6.2</b> 研究における理論の利用と精緻化</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="07-reg2.html"><a href="#%E7%A0%94%E7%A9%B6%E8%AA%B2%E9%A1%8C%E3%81%A8%E4%BB%AE%E8%AA%AC%E3%81%AE%E8%A8%AD%E5%AE%9A%E4%BE%8B"><i class="fa fa-check"></i><b>3.7</b> 研究課題と仮説の設定例</a></li>
 <li class="chapter" data-level="3.8" data-path="07-reg2.html"><a href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C"><i class="fa fa-check"></i><b>3.8</b> 練習問題</a>
@@ -527,7 +527,7 @@ Y=AL^\alpha K^\beta
 \]</span></p>
 <div id="対数線形モデルの分析実行" class="section level3 hasAnchor" number="8.5.1">
 <h3><span class="header-section-number">8.5.1</span> 対数線形モデルの分析実行<a href="#%E5%AF%BE%E6%95%B0%E7%B7%9A%E5%BD%A2%E3%83%A2%E3%83%87%E3%83%AB%E3%81%AE%E5%88%86%E6%9E%90%E5%AE%9F%E8%A1%8C" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>このような回帰式をR上で構築することは難しくない。<code>lm()</code> 関数内のモデル定式化において、<code>log()</code> を用いれば良い。例えば、上の式を firmdata19 に当てはめて、<em>Y</em>を売上、<em>L</em>を人件費、<em>K</em> を有形固定資産とおいて、以下のようにモデルを推定してみる<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a>。</p>
+<p>このような回帰式をR上で構築することは難しくない。<code>lm()</code> 関数内のモデル定式化において、<code>log()</code> を用いれば良い。例えば、上の式を firmdata19 に当てはめて、<em>Y</em>を売上、<em>L</em>を人件費、<em>K</em> を有形固定資産とおいて、以下のようにモデルを推定してみる<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a>。</p>
 <div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="対数線形.html#cb212-1" tabindex="-1"></a>fit_prod <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="fu">log</span>(sales) <span class="sc">~</span> <span class="fu">log</span>(labor_cost) <span class="sc">+</span> <span class="fu">log</span>(ppent), <span class="at">data =</span> firmdata19)</span>
 <span id="cb212-2"><a href="対数線形.html#cb212-2" tabindex="-1"></a></span>
 <span id="cb212-3"><a href="対数線形.html#cb212-3" tabindex="-1"></a><span class="fu">summary</span>(fit_prod)</span></code></pre></div>
@@ -644,8 +644,8 @@ Y=AL^\alpha K^\beta
 </div>
 <div class="footnotes">
 <hr />
-<ol start="26">
-<li id="fn26"><p>なお、実際に研究において生産関数を推定する場合には、変数の特定化に関して、先行研究に基づきより慎重に検討する必要があるため注意して欲しい<a href="対数線形.html#fnref26" class="footnote-back">↩︎</a></p></li>
+<ol start="25">
+<li id="fn25"><p>なお、実際に研究において生産関数を推定する場合には、変数の特定化に関して、先行研究に基づきより慎重に検討する必要があるため注意して欲しい<a href="対数線形.html#fnref25" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

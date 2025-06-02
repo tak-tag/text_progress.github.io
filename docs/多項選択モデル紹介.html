@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-01" />
+<meta name="date" content="2025-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -172,10 +172,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>3.4</b> 研究課題（問い）の設定</a></li>
 <li class="chapter" data-level="3.5" data-path="08-choicemodel.html"><a href="#%E5%95%8F%E9%A1%8C%E3%81%A8%E5%88%86%E6%9E%90%E3%82%92%E3%81%A4%E3%81%AA%E3%81%92%E3%82%8B%E4%BB%AE%E8%AA%AC%E3%81%AE%E6%8F%90%E7%A4%BA"><i class="fa fa-check"></i><b>3.5</b> 問題と分析をつなげる仮説の提示</a></li>
-<li class="chapter" data-level="3.6" data-path="philophy.html"><a href="philophy.html"><i class="fa fa-check"></i><b>3.6</b> 学術的研究のための留意点</a>
+<li class="chapter" data-level="3.6" data-path="philosophy.html"><a href="philosophy.html"><i class="fa fa-check"></i><b>3.6</b> 学術的研究のための留意点</a>
 <ul>
 <li class="chapter" data-level="3.6.1" data-path="08-choicemodel.html"><a href="#%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E7%A0%94%E7%A9%B6%E3%81%A8%E7%A7%91%E5%AD%A6%E5%93%B2%E5%AD%A6"><i class="fa fa-check"></i><b>3.6.1</b> マーケティング研究と科学哲学</a></li>
-<li class="chapter" data-level="3.6.2" data-path="philophy.html"><a href="philophy.html#elaboration"><i class="fa fa-check"></i><b>3.6.2</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.6.2" data-path="philosophy.html"><a href="philosophy.html#elaboration"><i class="fa fa-check"></i><b>3.6.2</b> 研究における理論の利用と精緻化</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="08-choicemodel.html"><a href="#%E7%A0%94%E7%A9%B6%E8%AA%B2%E9%A1%8C%E3%81%A8%E4%BB%AE%E8%AA%AC%E3%81%AE%E8%A8%AD%E5%AE%9A%E4%BE%8B"><i class="fa fa-check"></i><b>3.7</b> 研究課題と仮説の設定例</a></li>
 <li class="chapter" data-level="3.8" data-path="08-choicemodel.html"><a href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C"><i class="fa fa-check"></i><b>3.8</b> 練習問題</a>
@@ -588,7 +588,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 18            89            65 sunshine
 ## 19           106            69 sunshine
 ## 20           106            69 sunshine</code></pre>
-<p>このデータ構造を、long型に変更する<a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a>。</p>
+<p>このデータ構造を、long型に変更する<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>。</p>
 <div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="多項選択モデル紹介.html#cb243-1" tabindex="-1"></a>cracker <span class="ot">&lt;-</span> <span class="fu">mlogit.data</span>(Cracker, <span class="at">choice =</span> <span class="st">&quot;choice&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;wide&quot;</span>, <span class="at">varying=</span><span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>))</span>
 <span id="cb243-2"><a href="多項選択モデル紹介.html#cb243-2" tabindex="-1"></a><span class="fu">head</span>(cracker, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## ~~~~~~~
@@ -640,7 +640,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 20    5 sunshine
 ## indexes:  1, 2</code></pre>
 <p>変換後のデータセットでは、各選択肢の特徴と、それに対する個人の選択結果（<code>TRUE</code> or <code>FALSE</code>）を含める形で行が構成されている。このようにデータの構造を修正することで、分析を行う。</p>
-<p>分析についても <code>mlogit</code>パッケージを利用して実行するのだが、分析結果の解釈を確かなものにするため、多項ロジットモデルについての説明を加える。多項ロジットモデルでは、<span class="math inline">\(m\)</span> 個の選択肢の中からある選択肢 <span class="math inline">\(j\)</span> を選ぶ行為を分析対象としている。分析モデルにおいては、説明変数 <span class="math inline">\(x_{1i},...,x_{ki}\)</span> が与えられたときにある選択肢 <span class="math inline">\(j\)</span> を選ぶ確率は 0 から 1 の間の値を取る必要がある。そのため、各選択肢に対する選択確率の合計が1になるように調整しなければならない。これに対して多項ロジットモデルでは、ある特定の選択肢（仮に選択肢 1 とする）を基準とし、その選択肢に対応する回帰係数パラメータ（<span class="math inline">\(\beta_{10},\beta_{11},...,\beta_{1k},\)</span>）をすべて 0 に固定する<a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a>。多項ロジットモデルは以下のように表すことができる。</p>
+<p>分析についても <code>mlogit</code>パッケージを利用して実行するのだが、分析結果の解釈を確かなものにするため、多項ロジットモデルについての説明を加える。多項ロジットモデルでは、<span class="math inline">\(m\)</span> 個の選択肢の中からある選択肢 <span class="math inline">\(j\)</span> を選ぶ行為を分析対象としている。分析モデルにおいては、説明変数 <span class="math inline">\(x_{1i},...,x_{ki}\)</span> が与えられたときにある選択肢 <span class="math inline">\(j\)</span> を選ぶ確率は 0 から 1 の間の値を取る必要がある。そのため、各選択肢に対する選択確率の合計が1になるように調整しなければならない。これに対して多項ロジットモデルでは、ある特定の選択肢（仮に選択肢 1 とする）を基準とし、その選択肢に対応する回帰係数パラメータ（<span class="math inline">\(\beta_{10},\beta_{11},...,\beta_{1k},\)</span>）をすべて 0 に固定する<a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a>。多項ロジットモデルは以下のように表すことができる。</p>
 <p><span class="math display">\[
 \begin{aligned}
 P(y_i=j|x_{1i},...,x_{ki})=
@@ -708,9 +708,9 @@ V_{ij}=\alpha_j+\beta x_{ij}+\gamma_j z_i+\delta_j w_{ij}
 </div>
 <div class="footnotes">
 <hr />
-<ol start="42">
-<li id="fn42"><p>なお、<code>mlogit.data()</code> 関数の引数の設定については、元々のデータ構造によって変わるので、[Cranにあるソフトウェア](<a href="https://cran.r-project.org/package=mlogit%EF%BC%89%E3%81%AE%E8%AA%AC%E6%98%8E%E3%81%AA%E3%81%A9%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97%E3%80%81%E5%BF%9C%E7%94%A8%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%82%92%E9%80%B2%E3%82%81%E3%82%8B" class="uri">https://cran.r-project.org/package=mlogit）の説明などを確認し、応用することを進める</a>。<a href="多項選択モデル紹介.html#fnref42" class="footnote-back">↩︎</a></p></li>
-<li id="fn43"><p>ただし。<span class="math inline">\(\exp(0)=1\)</span> 。<a href="多項選択モデル紹介.html#fnref43" class="footnote-back">↩︎</a></p></li>
+<ol start="41">
+<li id="fn41"><p>なお、<code>mlogit.data()</code> 関数の引数の設定については、元々のデータ構造によって変わるので、[Cranにあるソフトウェア](<a href="https://cran.r-project.org/package=mlogit%EF%BC%89%E3%81%AE%E8%AA%AC%E6%98%8E%E3%81%AA%E3%81%A9%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%97%E3%80%81%E5%BF%9C%E7%94%A8%E3%81%99%E3%82%8B%E3%81%93%E3%81%A8%E3%82%92%E9%80%B2%E3%82%81%E3%82%8B" class="uri">https://cran.r-project.org/package=mlogit）の説明などを確認し、応用することを進める</a>。<a href="多項選択モデル紹介.html#fnref41" class="footnote-back">↩︎</a></p></li>
+<li id="fn42"><p>ただし。<span class="math inline">\(\exp(0)=1\)</span> 。<a href="多項選択モデル紹介.html#fnref42" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

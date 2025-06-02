@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-01" />
+<meta name="date" content="2025-06-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -172,10 +172,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="question.html"><a href="question.html"><i class="fa fa-check"></i><b>3.4</b> 研究課題（問い）の設定</a></li>
 <li class="chapter" data-level="3.5" data-path="04-datahandling.html"><a href="#%E5%95%8F%E9%A1%8C%E3%81%A8%E5%88%86%E6%9E%90%E3%82%92%E3%81%A4%E3%81%AA%E3%81%92%E3%82%8B%E4%BB%AE%E8%AA%AC%E3%81%AE%E6%8F%90%E7%A4%BA"><i class="fa fa-check"></i><b>3.5</b> 問題と分析をつなげる仮説の提示</a></li>
-<li class="chapter" data-level="3.6" data-path="philophy.html"><a href="philophy.html"><i class="fa fa-check"></i><b>3.6</b> 学術的研究のための留意点</a>
+<li class="chapter" data-level="3.6" data-path="philosophy.html"><a href="philosophy.html"><i class="fa fa-check"></i><b>3.6</b> 学術的研究のための留意点</a>
 <ul>
 <li class="chapter" data-level="3.6.1" data-path="04-datahandling.html"><a href="#%E3%83%9E%E3%83%BC%E3%82%B1%E3%83%86%E3%82%A3%E3%83%B3%E3%82%B0%E7%A0%94%E7%A9%B6%E3%81%A8%E7%A7%91%E5%AD%A6%E5%93%B2%E5%AD%A6"><i class="fa fa-check"></i><b>3.6.1</b> マーケティング研究と科学哲学</a></li>
-<li class="chapter" data-level="3.6.2" data-path="philophy.html"><a href="philophy.html#elaboration"><i class="fa fa-check"></i><b>3.6.2</b> 研究における理論の利用と精緻化</a></li>
+<li class="chapter" data-level="3.6.2" data-path="philosophy.html"><a href="philosophy.html#elaboration"><i class="fa fa-check"></i><b>3.6.2</b> 研究における理論の利用と精緻化</a></li>
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="04-datahandling.html"><a href="#%E7%A0%94%E7%A9%B6%E8%AA%B2%E9%A1%8C%E3%81%A8%E4%BB%AE%E8%AA%AC%E3%81%AE%E8%A8%AD%E5%AE%9A%E4%BE%8B"><i class="fa fa-check"></i><b>3.7</b> 研究課題と仮説の設定例</a></li>
 <li class="chapter" data-level="3.8" data-path="04-datahandling.html"><a href="#%E7%B7%B4%E7%BF%92%E5%95%8F%E9%A1%8C"><i class="fa fa-check"></i><b>3.8</b> 練習問題</a>
@@ -514,7 +514,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.7</span> 二変数間の関係の要約<a href="#%E4%BA%8C%E5%A4%89%E6%95%B0%E9%96%93%E3%81%AE%E9%96%A2%E4%BF%82%E3%81%AE%E8%A6%81%E7%B4%84" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>ここまでの内容は（カテゴリ変数に関する一部の説明を除き）、一つの変数に関する要約と可視化を扱っていた。しかし、データ分析では二つの異なる変数間の関係を捉えたいと考えることも多い。二変数間の関係を数量的に要約するための指標の代表例が共分散や相関係数である。データ数をnとする変数xとyの共分散（<span class="math inline">\(S_{xy}\)</span>）は、以下のように定義される。なお、Rで共分散を求める際には <code>cov()</code> 関数を用いる。</p>
 <p><span class="math inline">\(S_{xy}=\frac{1}{n}\sum_i^n (x_i-\bar{x})(y_i-\bar{y})\)</span></p>
-<p>また、<span class="math inline">\(S_x\)</span>と<span class="math inline">\(S_y\)</span>をそれぞれxとyの分散としたとき、相関係数（<span class="math inline">\(\rho_{xy}\)</span><a href="#fn18" class="footnote-ref" id="fnref18"><sup>18</sup></a>）は以下のように定義される。Rで相関係数を求める際には <code>cor()</code> 関数を用いる。</p>
+<p>また、<span class="math inline">\(S_x\)</span>と<span class="math inline">\(S_y\)</span>をそれぞれxとyの分散としたとき、相関係数（<span class="math inline">\(\rho_{xy}\)</span><a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>）は以下のように定義される。Rで相関係数を求める際には <code>cor()</code> 関数を用いる。</p>
 <p><span class="math inline">\(\rho_{xy}=\frac{S_{xy}}{\sqrt{S_x^2}\cdot \sqrt{S_y^2}}\)</span></p>
 <p>共分散は、二つのデータ間の共変動を示す指標であるものの、この数値を持って我々研究者が二変数の関係について（例えばその強弱などを）解釈するのは困難である。そこで、二変数間の関係を数値的に解釈する場合には、一般的に相関係数を用いる。相関係数は、-1 から 1 までの値を取り、正の値を取る場合は正の相関、負の値を取る場合は負の相関を示している。また、相関係数が正（負）の値かつ1に近いほど強い正（負）の相関であることが知られている。ただし、相関係数で表される二変数間の関係は、どれだけ線形関係に近いかである。言い換えると、相関が高いとはデータがどれだけ直線上に集まって分布しているかを示しており、グラフ等で示される線形関係の傾きについては何も回答することができないという点に注意が必要である。
 例えば、以下のようなデータセットを考える。</p>
@@ -606,8 +606,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="footnotes">
 <hr />
-<ol start="18">
-<li id="fn18"><p>なお、<span class="math inline">\(\rho\)</span>はローと読む<a href="二変数間の関係の要約.html#fnref18" class="footnote-back">↩︎</a></p></li>
+<ol start="17">
+<li id="fn17"><p>なお、<span class="math inline">\(\rho\)</span>はローと読む<a href="二変数間の関係の要約.html#fnref17" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
