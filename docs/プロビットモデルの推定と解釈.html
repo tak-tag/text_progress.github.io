@@ -527,7 +527,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4     1     0  4.62  8.03     0     0
 ## 5     1     0  7.81 19.2      1     1
 ## 6     1     0  7.49  8.84     0     0</code></pre>
-<p>この<code>choice_data.xlsx</code>を用いて製品1の選択に関するプロビットモデルを推定してみる。Rでは<code>glm()</code>関数において、<code>family = binomial(link = probit)</code> という引数を指定することで実行が可能である<a href="#fn36" class="footnote-ref" id="fnref36"><sup>36</sup></a>。以下では分析の実行と結果の出力を行う。</p>
+<p>この<code>choice_data.xlsx</code>を用いて製品1の選択に関するプロビットモデルを推定してみる。Rでは<code>glm()</code>関数において、<code>family = binomial(link = probit)</code> という引数を指定することで実行が可能である<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>。以下では分析の実行と結果の出力を行う。</p>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="プロビットモデルの推定と解釈.html#cb224-1" tabindex="-1"></a>probit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
 <span id="cb224-2"><a href="プロビットモデルの推定と解釈.html#cb224-2" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit),</span>
 <span id="cb224-3"><a href="プロビットモデルの推定と解釈.html#cb224-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
@@ -753,7 +753,7 @@ window.addEventListener('load', function () { styleCell_tinytable_q03mvfj38fu9wg
 <div id="限界効果の計算" class="section level3 hasAnchor" number="9.5.2">
 <h3><span class="header-section-number">9.5.2</span> 限界効果の計算<a href="#%E9%99%90%E7%95%8C%E5%8A%B9%E6%9E%9C%E3%81%AE%E8%A8%88%E7%AE%97" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>プロビットモデルの分析には成功したが、非線形モデルで推定された係数の解釈には注意が必要である。特に、プロビットモデルによって推定されたある変数の係数値は、「他の変数の影響をコントロールした場合にその変数が選択確率に与える影響」を意味しない。そのため、OLSの分析結果のように、係数の推定値のみを見て変数の影響の程度を議論することはできず、そのような解釈を行うためには特定の変数が持つ「限界効果」を追加的に分析する必要がある。限界効果の必要性や、平均的な限界効果、個別限界効果の平均値については次節で説明を加えている。</p>
-<p>限界効果の計算には、<code>mfx::probitmfx()</code> を用いる<a href="#fn37" class="footnote-ref" id="fnref37"><sup>37</sup></a>ため、以下のようにパッケージをインストールしてほしい。</p>
+<p>限界効果の計算には、<code>mfx::probitmfx()</code> を用いる<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>ため、以下のようにパッケージをインストールしてほしい。</p>
 <div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="プロビットモデルの推定と解釈.html#cb227-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;mfx&quot;</span>)</span></code></pre></div>
 <p><code>mfx</code> パッケージを用いた限界効果の計算では、線形モデルやプロビットモデルの推定同様、以下のようにモデルを指定し、分析を行う。平均的な限界効果の計算方法については、<code>atmean</code> という引数で指定する。<code>atmean = FALSE</code> とすることで、個別限界効果の平均値を計算できる。個別限界効果の平均値とは、データ内の個人の個別限界効果を計算し、その平均値求める方法である。一方で、平均値における限界効果は<code>atmean = TRUE</code> と指示することで計算できる。平均値における限界効果は、モデル内の説明変数の値について、それぞれ平均値を計算し、そのうえで限界効果を求める方法である。</p>
 <div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="プロビットモデルの推定と解釈.html#cb228-1" tabindex="-1"></a><span class="fu">library</span>(mfx)</span>
@@ -966,7 +966,7 @@ window.addEventListener('load', function () { styleCell_tinytable_3fcjwfxp3lsdkh
   </body>
 
 </html>
-<p>最後に、プロビットモデルのモデル評価指標について紹介する。プロビットモデルを最尤法で推定した場合、OLSにおける決定係数 <span class="math inline">\(R^2\)</span> を用いてモデルの当てはまりの良さを用いることはできない。そこで、通常疑似決定係数（Pseudo <span class="math inline">\(R^2\)</span>）を用いる事が多い<a href="#fn38" class="footnote-ref" id="fnref38"><sup>38</sup></a>。疑似決定係数は0から1の間の値を取り、自身の立てたモデルの当てはまりが良いほど1に近づくという特徴を持っている。Rにおいては、<code>DescTools::PseudoR2()</code> を用いて計算可能である。<code>install.packages("DescTools")</code> でインストールしてほしい。</p>
+<p>最後に、プロビットモデルのモデル評価指標について紹介する。プロビットモデルを最尤法で推定した場合、OLSにおける決定係数 <span class="math inline">\(R^2\)</span> を用いてモデルの当てはまりの良さを用いることはできない。そこで、通常疑似決定係数（Pseudo <span class="math inline">\(R^2\)</span>）を用いる事が多い<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>。疑似決定係数は0から1の間の値を取り、自身の立てたモデルの当てはまりが良いほど1に近づくという特徴を持っている。Rにおいては、<code>DescTools::PseudoR2()</code> を用いて計算可能である。<code>install.packages("DescTools")</code> でインストールしてほしい。</p>
 <div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="プロビットモデルの推定と解釈.html#cb233-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">PseudoR2</span>(probit1)</span></code></pre></div>
 <pre><code>##  McFadden 
 ## 0.1293345</code></pre>
@@ -981,7 +981,7 @@ window.addEventListener('load', function () { styleCell_tinytable_3fcjwfxp3lsdkh
 <p><span class="math display">\[
 \frac{\partial \hat{P}(y_i=1|x_{1i},...,x_{ki})}{\partial x_{1i}}=\phi(\hat{\beta}_0+\hat{\beta}_1x_{1i}+...+\hat{\beta}_kx_{ki})\hat{\beta}_1
 \]</span></p>
-<p>ただし、<span class="math inline">\(\phi\)</span> は標準正規分布の確率密度関数であり、累積分布関数を微分することで得る。このように、OLSのような線形モデルと異なり、<span class="math inline">\(\hat{\beta}_1\)</span> が直接的に限界効果を示しているわけではないことが伺える<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>。</p>
+<p>ただし、<span class="math inline">\(\phi\)</span> は標準正規分布の確率密度関数であり、累積分布関数を微分することで得る。このように、OLSのような線形モデルと異なり、<span class="math inline">\(\hat{\beta}_1\)</span> が直接的に限界効果を示しているわけではないことが伺える<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>。</p>
 <p>また同式より、ある変数の変化が反応確率へ与える限界効果は、個人が持つ全ての説明変数（<span class="math inline">\(x_{1i},...,x_{ki}\)</span>）の値によって変化することもわかる。そのため、限界効果の報告においては「平均的な」限界効果を報告することが一般的である。ただし、「何の平均を取るか」という点において、2種類の計算方法が存在する。第1に、個人の個別限界効果を計算し、その平均値求めるという以下のような方法である。</p>
 <p><span class="math display" id="eq:avgmarg1">\[\begin{equation}
 \frac{1}{n}\sum^n_{i=1}\Big[\phi(\hat{\beta}_0+\hat{\beta}_1x_{1i}+...+\hat{\beta}_kx_{ki})\hat{\beta}_1 \Big] \tag{9.2}
@@ -1001,13 +1001,13 @@ window.addEventListener('load', function () { styleCell_tinytable_3fcjwfxp3lsdkh
 </div>
 <div class="footnotes">
 <hr />
-<ol start="36">
-<li id="fn36"><p>ロジットモデルの場合は、<code>family = binomial(link = logit)</code> で計算可能である。<a href="プロビットモデルの推定と解釈.html#fnref36" class="footnote-back">↩︎</a></p></li>
-<li id="fn37"><p>ロジットモデルの場合は、<code>mfx::logitmfx()</code> で計算可能である。<a href="プロビットモデルの推定と解釈.html#fnref37" class="footnote-back">↩︎</a></p></li>
-<li id="fn38"><p>この指標は、最尤推定で用いる対数尤度関数 <a href="ml.html#eq:llprobit">(9.5)</a> に実際の観測値と最尤推定値を代入して求まる対数尤度の和（<span class="math inline">\(L_{full}\)</span>）と、定数項だけを含むプロビットモデルを推定したときの対数尤度の和（<span class="math inline">\(L_0\)</span>）を用いて、<span class="math inline">\(\Big(1-(L_{full}/L_0) \Big)\)</span> と定義される<a href="プロビットモデルの推定と解釈.html#fnref38" class="footnote-back">↩︎</a></p></li>
-<li id="fn39"><p><span class="math inline">\(\hat{y}_i=\hat{\beta}_0+\hat{\beta_1}x_{1i}+...+\hat{\beta}_kx_{ki}\)</span> という線形モデルの限界効果は、以下のようになる。
+<ol start="38">
+<li id="fn38"><p>ロジットモデルの場合は、<code>family = binomial(link = logit)</code> で計算可能である。<a href="プロビットモデルの推定と解釈.html#fnref38" class="footnote-back">↩︎</a></p></li>
+<li id="fn39"><p>ロジットモデルの場合は、<code>mfx::logitmfx()</code> で計算可能である。<a href="プロビットモデルの推定と解釈.html#fnref39" class="footnote-back">↩︎</a></p></li>
+<li id="fn40"><p>この指標は、最尤推定で用いる対数尤度関数 <a href="ml.html#eq:llprobit">(9.5)</a> に実際の観測値と最尤推定値を代入して求まる対数尤度の和（<span class="math inline">\(L_{full}\)</span>）と、定数項だけを含むプロビットモデルを推定したときの対数尤度の和（<span class="math inline">\(L_0\)</span>）を用いて、<span class="math inline">\(\Big(1-(L_{full}/L_0) \Big)\)</span> と定義される<a href="プロビットモデルの推定と解釈.html#fnref40" class="footnote-back">↩︎</a></p></li>
+<li id="fn41"><p><span class="math inline">\(\hat{y}_i=\hat{\beta}_0+\hat{\beta_1}x_{1i}+...+\hat{\beta}_kx_{ki}\)</span> という線形モデルの限界効果は、以下のようになる。
 <span class="math display">\[\frac{\partial \hat{y}_i}{\partial x_{1i}}=\hat{\beta}_1
-\]</span><a href="プロビットモデルの推定と解釈.html#fnref39" class="footnote-back">↩︎</a></p></li>
+\]</span><a href="プロビットモデルの推定と解釈.html#fnref41" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>
