@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>12.3 2因子モデル | マーケティングリサーチの進め方</title>
   <meta name="description" content="12.3 2因子モデル | マーケティングリサーチの進め方" />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="12.3 2因子モデル | マーケティングリサーチの進め方" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-02" />
+<meta name="date" content="2025-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -528,16 +528,65 @@ x_{Ji} = \alpha_{J1}f_{1i} +\alpha_{J2}f_{2i} + e_{Ji}\\
 \end{aligned}
 \]</span></p>
 <p>ただし、ここでは表記の簡単化のために、以下のような行列での表記を採用する。</p>
-<p>$$
-<em>{J }
+<p><span class="math display">\[
+\underbrace{
+\begin{bmatrix}
+x_{1i} \\ x_{2i} \\ \vdots \\ x_{Ji}
+\end{bmatrix}
+}_{J \times 1}
 =
-</em>{J }
-<em>{2 }
+\underbrace{
+\begin{bmatrix}
+\alpha_{11} &amp; \alpha_{12} \\
+\alpha_{21} &amp; \alpha_{22} \\
+\vdots &amp; \vdots \\
+\alpha_{J1} &amp; \alpha_{J2}
+\end{bmatrix}
+}_{J \times 2}
+\underbrace{
+\begin{bmatrix}
+f_{1i} \\ f_{2i}
+\end{bmatrix}
+}_{2 \times 1}
 +
-</em>{J }</p>
-<p>\
-=+, ~~i=1,2,…,n
-$$</p>
+\underbrace{
+\begin{bmatrix}
+e_{1i} \\ e_{2i} \\ \vdots \\ e_{Ji}
+\end{bmatrix}
+}_{J \times 1}
+\]</span></p>
+<p><span class="math display">\[
+\Leftrightarrow \boldsymbol{x_i} = \boldsymbol{\alpha f_i} + \boldsymbol{e_i}, \quad i = 1, 2, \ldots, n
+\]</span></p>
+<!-- $$ -->
+<!-- \underbrace{ -->
+<!-- \begin{bmatrix} -->
+<!-- x_{1i} \\ x_{2i} \\ \vdots \\ x_{Ji} -->
+<!-- \end{bmatrix} -->
+<!-- }_{J \times 1} -->
+<!-- = -->
+<!-- \underbrace{ -->
+<!-- \begin{bmatrix} -->
+<!-- \alpha_{11} & \alpha_{12} \\ -->
+<!-- \alpha_{21} & \alpha_{22} \\ -->
+<!-- \vdots & \vdots \\ -->
+<!-- \alpha_{J1} & \alpha_{J2} -->
+<!-- \end{bmatrix} -->
+<!-- }_{J \times 2} -->
+<!-- \underbrace{ -->
+<!-- \begin{bmatrix} -->
+<!-- f_{1i} \\ f_{2i} -->
+<!-- \end{bmatrix} -->
+<!-- }_{2 \times 1} -->
+<!-- + -->
+<!-- \underbrace{ -->
+<!-- \begin{bmatrix} -->
+<!-- e_{1i} \\ e_{2i} \\ \vdots \\ e_{Ji} -->
+<!-- \end{bmatrix} -->
+<!-- }_{J \times 1} -->
+<!-- \\ -->
+<!-- \Leftrightarrow \boldsymbol{x_i}=\boldsymbol{\alpha f_i}+\boldsymbol{e_i}, ~~i=1,2,...,n -->
+<!-- $$ -->
 <p>ここで、上記の式は、任意の（<span class="math inline">\(2\times 2\)</span>）の正則行列（逆行列が存在する正方行列）<span class="math inline">\(\boldsymbol{T}\)</span>を用いて以下のように示すこともできる。</p>
 <p><span class="math display">\[
 \boldsymbol{x_i}=\boldsymbol{\alpha}(\boldsymbol{TT}^{-1})\boldsymbol{f_i}+\boldsymbol{e_i} \\
@@ -550,7 +599,7 @@ $$</p>
 <p>軸の回転の方法としては主に、直交回転と斜交回転という2つのアプローチが存在する。直交回転とは、因子負荷量行列に直交行列をかけた解のことである。この方法では、因子間に相関がないことを仮定している。直交回転法代表例がバリマックス回転である。一方で斜交回転は、直交ではない回転を表しており、因子間の相関を認める方法である。斜交回転法の代表例はプロマックス回転である。図<a href="因子モデル.html#fig:rotate">12.2</a> は、因子軸の回転について直感的に示した概要図である。この図は1から8までの観測変数同士の関係について示しており、1から4と、5から８という二つのグループに分かれているように伺える。</p>
 <p>しかしながら、回転なしで因子分析を実行するとこのようなデータの構造を明示的に捉えることができないかもしれない。回転なし（初期解）の図において、<span class="math inline">\(f1\)</span>の軸においてはそれぞれ異なる程度をもっていることが伺えるものの、<span class="math inline">\(f2\)</span>の軸では、すべての観測変数が <span class="math inline">\(f2\)</span> に同じような負荷を持っていることがうかがえる。そのため、因子負荷量に基づき、それぞれの変数に対する因子構造について解釈することが難しい。このような場合、データの特徴を変えることはできないが、軸を回転させることで、あるグループにとっては <span class="math inline">\(f1\)</span>（<span class="math inline">\(f2\)</span>）への負荷量が小さいが、<span class="math inline">\(f2\)</span>（<span class="math inline">\(f1\)</span>）への負荷量は大きいというような構造を実現することができる。例えば直交回転では、直交（軸同士の角度が90度）である条件は守ったままではあるが、1から4はf1に高いがf2には低い値を取っていることがうかがえる。さらに斜交回転においては、軸の角度を自由に取ることができ、より単純構造化されていることがうかがえる。このように、複数因子を採用して探索的因子分析を実行する場合、因子軸の回転を採用することで、分析者にとってより解釈しやすい単純構造化を実現することが多い。</p>
 <div class="figure"><span style="display:block;" id="fig:rotate"></span>
-<img src="factor/rotate.jpg" alt="因子軸の回転概要" width="2010" />
+<img src="factor/rotate.jpg" alt="因子軸の回転概要"  />
 <p class="caption">
 Figure 12.2: 因子軸の回転概要
 </p>
@@ -576,39 +625,39 @@ Figure 12.3: スクリープロット
 <table>
 <caption><span id="tab:scoreexample">Table 12.1: </span>因子分析結果例</caption>
 <thead>
-<tr>
+<tr class="header">
 <th align="center">項目</th>
 <th align="center">因子1</th>
 <th align="center">因子2</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="center">項目1</td>
 <td align="center"><strong>0.82</strong></td>
 <td align="center">0.21</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="center">項目2</td>
 <td align="center"><strong>0.91</strong></td>
 <td align="center">0.03</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="center">項目3</td>
 <td align="center"><strong>0.79</strong></td>
 <td align="center">0.3</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="center">項目4</td>
 <td align="center">0.02</td>
 <td align="center"><strong>0.96</strong></td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="center">項目5</td>
 <td align="center">0.2</td>
 <td align="center"><strong>0.84</strong></td>
 </tr>
-<tr>
+<tr class="even">
 <td align="center">項目6</td>
 <td align="center">0.14</td>
 <td align="center"><strong>0.89</strong></td>
@@ -650,42 +699,42 @@ Figure 12.3: スクリープロット
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-positioning.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/11-positioning.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

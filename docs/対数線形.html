@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>8.5 対数線形 | マーケティングリサーチの進め方</title>
   <meta name="description" content="8.5 対数線形 | マーケティングリサーチの進め方" />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="8.5 対数線形 | マーケティングリサーチの進め方" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-02" />
+<meta name="date" content="2025-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -611,9 +611,8 @@ Y=AL^\alpha K^\beta
 <p>そして、<code>linearHypothesis()</code>において、参照する分析結果と、着目する変数（の係数）とその値について入力することで、検定を行う。</p>
 <div class="sourceCode" id="cb217"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb217-1"><a href="対数線形.html#cb217-1" tabindex="-1"></a><span class="fu">library</span>(car)</span>
 <span id="cb217-2"><a href="対数線形.html#cb217-2" tabindex="-1"></a><span class="fu">linearHypothesis</span>(fit_q, <span class="fu">c</span>(<span class="st">&quot;log(p) = -1&quot;</span>)) </span></code></pre></div>
-<pre><code>## Linear hypothesis test
-## 
-## Hypothesis:
+<pre><code>## 
+## Linear hypothesis test:
 ## log(p) = - 1
 ## 
 ## Model 1: restricted model
@@ -668,42 +667,42 @@ Y=AL^\alpha K^\beta
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-reg2.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/07-reg2.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

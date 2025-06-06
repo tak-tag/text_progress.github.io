@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 23 コラム：主成分分析と因子分析との違い | マーケティングリサーチの進め方</title>
   <meta name="description" content="Chapter 23 コラム：主成分分析と因子分析との違い | マーケティングリサーチの進め方" />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 23 コラム：主成分分析と因子分析との違い | マーケティングリサーチの進め方" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-02" />
+<meta name="date" content="2025-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -515,7 +515,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>因子分析とよく対比される手法として主成分分析（Principal component analysis）がある。主成分分析は、複数の変数間の類似性を分析し、これらの変数をできるだけ少ない数の合成変数（主成分）にまとめることを目的とした分析手法である。そのため、この主成分はできるだけ高い寄与率を持つことが求められる。主成分分析は、変数が多いとき情報の損失を最小限に押さえながらできるだけ少ない（理想的にはひとつの）主成分に縮約する方法であるといえる。一方で因子分析は、観測変数を「メリハリのある分かれ方（単純構造）」にするように因子数の決定や負荷量の計算が行われる（分寺, 2022, p.55）。主成分の計算方法は本資料では省略するが、興味のある人は田中・脇本（1998）や、渡辺（2017）を参考にしてほしい。</p>
 主成分分析のモデルは、図<a href="pcafa.html#fig:pcafig">23.1</a> のように示される。因子分析のパス図（<a href="因子分析とは.html#fig:factor">12.1</a>）と比べると、矢印の向きに違いがあることがわかる。
 <div class="figure"><span style="display:block;" id="fig:pcafig"></span>
-<img src="factor/pca.jpg" alt="主成分分析モデル" width="740" />
+<img src="factor/pca.jpg" alt="主成分分析モデル"  />
 <p class="caption">
 Figure 23.1: 主成分分析モデル
 </p>
@@ -575,33 +575,33 @@ z_i=b_1x_{1i}+b_2x_{2i}+b_3x_{3i}
 <table>
 <caption><span id="tab:calculationcheck">Table 23.1: </span>計算結果</caption>
 <thead>
-<tr>
+<tr class="header">
 <th align="right">PC1</th>
 <th align="right">PC2</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="right">0.9283425</td>
 <td align="right">-0.2532285</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="right">-0.3005297</td>
 <td align="right">-0.7952496</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="right">0.9361812</td>
 <td align="right">-0.1308894</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="right">-0.3415817</td>
 <td align="right">-0.7889663</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="right">0.8687553</td>
 <td align="right">-0.3507939</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="right">-0.1766389</td>
 <td align="right">-0.8711581</td>
 </tr>
@@ -628,42 +628,42 @@ z_i=b_1x_{1i}+b_2x_{2i}+b_3x_{3i}
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/22-columnpcafa.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/22-columnpcafa.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

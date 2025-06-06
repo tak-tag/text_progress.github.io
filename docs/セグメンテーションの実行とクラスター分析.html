@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.3 セグメンテーションの実行とクラスター分析 | マーケティングリサーチの進め方</title>
   <meta name="description" content="11.3 セグメンテーションの実行とクラスター分析 | マーケティングリサーチの進め方" />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.3 セグメンテーションの実行とクラスター分析 | マーケティングリサーチの進め方" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-02" />
+<meta name="date" content="2025-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -536,39 +536,39 @@ Figure 11.3: デンドログラム
 <table>
 <caption><span id="tab:exampledata">Table 11.1: </span>データ例</caption>
 <thead>
-<tr>
+<tr class="header">
 <th align="left"></th>
 <th align="right">x</th>
 <th align="right">y</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">a</td>
 <td align="right">1</td>
 <td align="right">2</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">b</td>
 <td align="right">2</td>
 <td align="right">3</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">c</td>
 <td align="right">2</td>
 <td align="right">5</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">d</td>
 <td align="right">3</td>
 <td align="right">5</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">e</td>
 <td align="right">7</td>
 <td align="right">2</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">f</td>
 <td align="right">6</td>
 <td align="right">3</td>
@@ -589,14 +589,14 @@ Figure 11.4: 階層的クラスター分析
 <p>図 <a href="セグメンテーションの実行とクラスター分析.html#fig:dendrogram">11.3</a> のようなデンドログラムでは、一番下に全観測値が表示される。図における水平な線は、クラスタとしての併合を意味しており、下でのつながりほど初期に併合されたクラスタであることを示す。そのため、最終的には（一番上では）すべてが一つのクラスタにまとまっていることがうかがえる。この時、デンドログラムの高さ（縦軸）は距離を示している。したがってデンドログラムは、どの程度の離れ具合を許容するかによって何組でデータをまとめられるかが変わることを表している。例えば図<a href="セグメンテーションの実行とクラスター分析.html#fig:dendrogram">11.3</a> では、高さを2に定めれば3つのクラスターにまとめることができ、4を設定すれば2つのクラスターにまとめることができる。</p>
 <p>階層的クラスター分析ではクラスター同士を段階的に合併させていくのだが、クラスター同士の類似性を測るための方法もいくつか存在する。ここでは、代表的なものをいくつか紹介する。クラスター同士の距離の決め方として、図 <a href="セグメンテーションの実行とクラスター分析.html#fig:clusterdis">11.5</a> に示すように、最短距離法（Single linkage method）、再遠距離法（Complete linkage method）群平均法（Group average method）がある。最短（遠）距離法はクラスタ間の最も近い（遠い）観測の組み合わせの距離を測るものである。一方で群平均法は、クラスタ間のすべての観察の組についての距離を計算する方法である。</p>
 <div class="figure"><span style="display:block;" id="fig:clusterdis"></span>
-<img src="cluster/cluster_comb.jpg" alt="クラスター類似性測定手法" width="1796" />
+<img src="cluster/cluster_comb.jpg" alt="クラスター類似性測定手法"  />
 <p class="caption">
 Figure 11.5: クラスター類似性測定手法
 </p>
 </div>
 <p>また、非常に頻繁に使われる手法としてウォード法も存在する。ウォード法は最小分散法とも呼ばれ、クラスター内の平均までの二乗距離を最小化する方法である。ウォード法では、異なるクラスター間の類似性について、まずそれらを構成する観測値を一括にして捉えた仮のクラスターを形成し、そのまとめられたクラスター内の観測値同士の距離が近い（分散が小さい）ものから併合される。図 <a href="セグメンテーションの実行とクラスター分析.html#fig:wards">11.6</a>ではその直感的な概略図を示している。ウォード法ではこのようにクラスター間の類似性を分散の形式で測定することで段階的に併合するグループを決定していく。</p>
 <div class="figure"><span style="display:block;" id="fig:wards"></span>
-<img src="cluster/wards.jpg" alt="ウォード法概要" width="1616" />
+<img src="cluster/wards.jpg" alt="ウォード法概要"  />
 <p class="caption">
 Figure 11.6: ウォード法概要
 </p>
@@ -624,42 +624,42 @@ Figure 11.6: ウォード法概要
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-cluster.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-cluster.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

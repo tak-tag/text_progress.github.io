@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>11.5 Rによるクラスター分析の実行 | マーケティングリサーチの進め方</title>
   <meta name="description" content="11.5 Rによるクラスター分析の実行 | マーケティングリサーチの進め方" />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="11.5 Rによるクラスター分析の実行 | マーケティングリサーチの進め方" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-02" />
+<meta name="date" content="2025-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -717,7 +717,7 @@ Figure 11.15: 4クラスターモデル図
 <col width="13%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="right">県番号</th>
 <th align="right">q12_4</th>
 <th align="right">q13_3</th>
@@ -733,7 +733,7 @@ Figure 11.15: 4クラスターモデル図
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="right">13</td>
 <td align="right">2</td>
 <td align="right">2</td>
@@ -747,7 +747,7 @@ Figure 11.15: 4クラスターモデル図
 <td align="left">Not Married</td>
 <td align="left">5</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="right">13</td>
 <td align="right">2</td>
 <td align="right">1</td>
@@ -761,7 +761,7 @@ Figure 11.15: 4クラスターモデル図
 <td align="left">Not Married</td>
 <td align="left">5</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="right">13</td>
 <td align="right">1</td>
 <td align="right">2</td>
@@ -775,7 +775,7 @@ Figure 11.15: 4クラスターモデル図
 <td align="left">Married</td>
 <td align="left">5</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="right">13</td>
 <td align="right">4</td>
 <td align="right">5</td>
@@ -789,7 +789,7 @@ Figure 11.15: 4クラスターモデル図
 <td align="left">Married</td>
 <td align="left">4</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="right">28</td>
 <td align="right">3</td>
 <td align="right">3</td>
@@ -803,7 +803,7 @@ Figure 11.15: 4クラスターモデル図
 <td align="left">Married</td>
 <td align="left">3</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="right">28</td>
 <td align="right">3</td>
 <td align="right">3</td>
@@ -845,7 +845,7 @@ Figure 11.15: 4クラスターモデル図
 <col width="13%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">cluster_id</th>
 <th align="right">N</th>
 <th align="right">Loyalty_m</th>
@@ -857,7 +857,7 @@ Figure 11.15: 4クラスターモデル図
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">1</td>
 <td align="right">80</td>
 <td align="right">5.000000</td>
@@ -867,7 +867,7 @@ Figure 11.15: 4クラスターモデル図
 <td align="right">0.8753925</td>
 <td align="right">0.5250000</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">2</td>
 <td align="right">298</td>
 <td align="right">3.261745</td>
@@ -877,7 +877,7 @@ Figure 11.15: 4クラスターモデル図
 <td align="right">0.9400188</td>
 <td align="right">0.6107383</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">3</td>
 <td align="right">760</td>
 <td align="right">2.582895</td>
@@ -887,7 +887,7 @@ Figure 11.15: 4クラスターモデル図
 <td align="right">1.0100683</td>
 <td align="right">0.5618421</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">4</td>
 <td align="right">592</td>
 <td align="right">3.447635</td>
@@ -897,7 +897,7 @@ Figure 11.15: 4クラスターモデル図
 <td align="right">1.0191680</td>
 <td align="right">0.4712838</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">5</td>
 <td align="right">243</td>
 <td align="right">1.699588</td>
@@ -938,42 +938,42 @@ Figure 11.15: 4クラスターモデル図
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-cluster.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/10-cluster.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>

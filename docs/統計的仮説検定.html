@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>6.8 統計的仮説検定 | マーケティングリサーチの進め方</title>
   <meta name="description" content="6.8 統計的仮説検定 | マーケティングリサーチの進め方" />
-  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.43 and GitBook 2.6.7" />
 
   <meta property="og:title" content="6.8 統計的仮説検定 | マーケティングリサーチの進め方" />
   <meta property="og:type" content="book" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-02" />
+<meta name="date" content="2025-06-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -564,7 +564,7 @@ Z=\frac{\bar{X}-\mu_0}{\sqrt{\sigma^2/n}}
 \]</span></p>
 <p>臨界値 <em>c</em> の求め方は区間推定と同様、分析に対応する確率分布（今回であれば標準正規分布）に基づくある区間の確率計算で求まる。研究者はまず、任意の確率 <span class="math inline">\(\small \alpha\)</span> を決める。この確率は「有意水準（significance level）」と呼ばれ、この有意水準と標準正規分布に基づく確率計算によって臨界値（下図内では <span class="math inline">\(\small \pm z_{\alpha/2}\)</span>）を求める。その上で、統計量の計算結果が臨界値より外側（下図における斜線部）にある場合には帰無仮説を棄却する。そのため、斜線部のような領域を棄却域、確率 <span class="math inline">\(\small 1-\alpha\)</span> に対応する範囲を採択域と一般に呼ぶ。</p>
 <div class="figure"><span style="display:block;" id="fig:ztest"></span>
-<img src="stat/ztest_twotails.png" alt="臨界値と確率計算" width="1322" />
+<img src="stat/ztest_twotails.png" alt="臨界値と確率計算"  />
 <p class="caption">
 Figure 6.1: 臨界値と確率計算
 </p>
@@ -593,19 +593,19 @@ Figure 6.1: 臨界値と確率計算
 <table>
 <caption><span id="tab:errortypes">Table 6.4: </span>検定の誤り</caption>
 <thead>
-<tr>
+<tr class="header">
 <th align="center"></th>
 <th align="center">H0が真</th>
 <th align="center">H0が偽</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="center">H0を棄却</td>
 <td align="center">Type 1 error</td>
 <td align="center">✓</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="center">H0を採択</td>
 <td align="center">✓</td>
 <td align="center">Type 2 error</td>
@@ -716,42 +716,42 @@ Z=\frac{1951-1800}{\sqrt{180^2/16}}
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-stat.Rmd",
-"text": "Edit"
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": null,
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
+  "sharing": {
+    "github": false,
+    "facebook": true,
+    "twitter": true,
+    "linkedin": false,
+    "weibo": false,
+    "instapaper": false,
+    "vk": false,
+    "whatsapp": false,
+    "all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+  },
+  "fontsettings": {
+    "theme": "white",
+    "family": "sans",
+    "size": 2
+  },
+  "edit": {
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/05-stat.Rmd",
+    "text": "Edit"
+  },
+  "history": {
+    "link": null,
+    "text": null
+  },
+  "view": {
+    "link": null,
+    "text": null
+  },
+  "download": null,
+  "search": {
+    "engine": "fuse",
+    "options": null
+  },
+  "toc": {
+    "collapse": "subsection"
+  }
 });
 });
 </script>
