@@ -3,8 +3,8 @@ bookdown::gitbook:
   css: style.css
   config:
     toc:
-      before: |
-        <li><a href="./">Marketing Research Lecture Note</a></li>
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+      collapse: subsection
+      scroll_highlight: true
+      before: null
+      after: null
     edit: https://github.com/USERNAME/REPO/edit/BRANCH/%s
