@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-06" />
+<meta name="date" content="2025-06-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -136,7 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="07-reg2.html"><a href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB%E6%9C%AC%E6%9B%B8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fa fa-check"></i><b>1</b> はじめに（本書について）</a></li>
+<li class="chapter" data-level="1" data-path="07-reg2.html"><a href="#%E3%81%BE%E3%81%88%E3%81%8C%E3%81%8D"><i class="fa fa-check"></i><b>1</b> まえがき</a></li>
 <li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="07-reg2.html"><a href="#%E6%9C%AC%E7%AB%A0%E3%81%AE%E6%A6%82%E8%A6%81"><i class="fa fa-check"></i><b>2.1</b> 本章の概要</a></li>
@@ -596,7 +596,7 @@ D_i=0\Rightarrow &amp; \frac{\Delta y_i}{\Delta x_i}=\beta_1
 <span id="cb195-6"><a href="交差項.html#cb195-6" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&quot;Retail Dummy&quot;</span>)</span>
 <span id="cb195-7"><a href="交差項.html#cb195-7" tabindex="-1"></a>pred</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/slopeanalysis-1.png" width="672" /></p>
-<p>分析の結果、小売企業においてはマーケティング支出と利益率の関係は右上がりである一方で、その他の企業では右下がりである。回帰分析における交差項の係数がこの傾きの違いを示している。また、実線を比較すると マーケティング支出が 0.5 辺りを境に小売企業の利益率の予測値のほうがその他グループよりも高くなっているように見える<a href="#fn25" class="footnote-ref" id="fnref25"><sup>25</sup></a>。しかしながら、両直線の95%信頼区間は重なっており、統計的に有意な差があるとは言えない。そのため、マーケティング支出が高いとき、小売企業の利益率（の予測値）のほうが有意に高いとは言えない。</p>
+<p>分析の結果、小売企業においてはマーケティング支出と利益率の関係は右上がりである一方で、その他の企業では右下がりである。回帰分析における交差項の係数がこの傾きの違いを示している。また、実線を比較すると マーケティング支出が 0.5 辺りを境に小売企業の利益率の予測値のほうがその他グループよりも高くなっているように見える<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a>。しかしながら、両直線の95%信頼区間は重なっており、統計的に有意な差があるとは言えない。そのため、マーケティング支出が高いとき、小売企業の利益率（の予測値）のほうが有意に高いとは言えない。</p>
 </div>
 <div id="量的変数同士の交差項" class="section level3 hasAnchor" number="8.3.3">
 <h3><span class="header-section-number">8.3.3</span> 量的変数同士の交差項<a href="#%E9%87%8F%E7%9A%84%E5%A4%89%E6%95%B0%E5%90%8C%E5%A3%AB%E3%81%AE%E4%BA%A4%E5%B7%AE%E9%A0%85" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -713,7 +713,7 @@ y_i = \beta_0 + \beta_1 (x_i-\bar{x})+\beta_2(z_i-\bar{z})+\beta_3(x_i-\bar{x})\
 ## Adding another scale for colour, which will replace the existing scale.</code></pre>
 <div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="交差項.html#cb204-1" tabindex="-1"></a>int_fig1</span></code></pre></div>
 <p><img src="mktres_lecture_files/figure-html/slopeHeadphone-1.png" width="672" /></p>
-<p>続いて、二つ目の方法を実行するために、以下の要領でパッケージをインストールしてほしい。<code>marginaleffects</code> は、<code>margins</code> や <code>emtrends</code> の機能を引き継ぎ、限界効果に関する計算結果を図示化するためのパッケージである<a href="#fn26" class="footnote-ref" id="fnref26"><sup>26</sup></a>。</p>
+<p>続いて、二つ目の方法を実行するために、以下の要領でパッケージをインストールしてほしい。<code>marginaleffects</code> は、<code>margins</code> や <code>emtrends</code> の機能を引き継ぎ、限界効果に関する計算結果を図示化するためのパッケージである<a href="#fn27" class="footnote-ref" id="fnref27"><sup>27</sup></a>。</p>
 <div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="交差項.html#cb205-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;marginaleffects&quot;</span>)</span></code></pre></div>
 <p>R&amp;D が 売上に与える影響（傾き）がどのように変化するかは、<code>plot_slopes()</code> という関数を用いる。以下は、傾きの変化に関する図の出力結果である。</p>
 <div class="sourceCode" id="cb206"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb206-1"><a href="交差項.html#cb206-1" tabindex="-1"></a><span class="fu">library</span>(marginaleffects)</span>
@@ -741,9 +741,9 @@ y_i = \beta_0 + \beta_1 (x_i-\bar{x})+\beta_2(z_i-\bar{z})+\beta_3(x_i-\bar{x})\
 </div>
 <div class="footnotes">
 <hr />
-<ol start="25">
-<li id="fn25"><p>試しに、<code>plot_model</code> 内の信頼区間に関する引数を <code>ci.lvl = NA</code>とし、実線のみの比較を確認して見て欲しい<a href="交差項.html#fnref25" class="footnote-back">↩︎</a></p></li>
-<li id="fn26"><p>本講義では、詳細は割愛するが以下から詳細を確認できる <a href="https://vincentarelbundock.github.io/marginaleffects/dev/" class="uri">https://vincentarelbundock.github.io/marginaleffects/dev/</a><a href="交差項.html#fnref26" class="footnote-back">↩︎</a></p></li>
+<ol start="26">
+<li id="fn26"><p>試しに、<code>plot_model</code> 内の信頼区間に関する引数を <code>ci.lvl = NA</code>とし、実線のみの比較を確認して見て欲しい<a href="交差項.html#fnref26" class="footnote-back">↩︎</a></p></li>
+<li id="fn27"><p>本講義では、詳細は割愛するが以下から詳細を確認できる <a href="https://vincentarelbundock.github.io/marginaleffects/dev/" class="uri">https://vincentarelbundock.github.io/marginaleffects/dev/</a><a href="交差項.html#fnref27" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

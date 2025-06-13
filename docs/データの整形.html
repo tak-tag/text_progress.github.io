@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-06" />
+<meta name="date" content="2025-06-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -136,7 +136,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="1" data-path="04-datahandling.html"><a href="#%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB%E6%9C%AC%E6%9B%B8%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6"><i class="fa fa-check"></i><b>1</b> はじめに（本書について）</a></li>
+<li class="chapter" data-level="1" data-path="04-datahandling.html"><a href="#%E3%81%BE%E3%81%88%E3%81%8C%E3%81%8D"><i class="fa fa-check"></i><b>1</b> まえがき</a></li>
 <li class="chapter" data-level="2" data-path="rusage.html"><a href="rusage.html"><i class="fa fa-check"></i><b>2</b> R と R studioに慣れる</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="04-datahandling.html"><a href="#%E6%9C%AC%E7%AB%A0%E3%81%AE%E6%A6%82%E8%A6%81"><i class="fa fa-check"></i><b>2.1</b> 本章の概要</a></li>
@@ -563,7 +563,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="データの整形.html#cb68-1" tabindex="-1"></a>data2<span class="ot">&lt;-</span> <span class="fu">select</span>(data, var1<span class="sc">:</span>var5)</span></code></pre></div>
 <p>また、tidyverseのstarts_with()（ends_with()）を使うことで、変数名の冒頭（末尾）が特定の文字列から始まる変数を指定するようなことも可能である。例えば、“v” という文字から始まる変数を取り出すための指示は、いかのようになる。</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="データの整形.html#cb69-1" tabindex="-1"></a>data3<span class="ot">&lt;-</span> <span class="fu">select</span>(data, <span class="fu">starts_with</span>(<span class="st">&quot;v&quot;</span>))</span></code></pre></div>
-<p>arrangeは、データの並べかえを可能にする関数である。例えば、以下ではvar1の値が小さい順（昇順）に並べ替えるような指示を示す。一方で、降順にする場合は、desc(var1)と引数を指定する必要がある<a href="#fn16" class="footnote-ref" id="fnref16"><sup>16</sup></a>。</p>
+<p>arrangeは、データの並べかえを可能にする関数である。例えば、以下ではvar1の値が小さい順（昇順）に並べ替えるような指示を示す。一方で、降順にする場合は、desc(var1)と引数を指定する必要がある<a href="#fn17" class="footnote-ref" id="fnref17"><sup>17</sup></a>。</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="データの整形.html#cb70-1" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(data, var1) </span>
 <span id="cb70-2"><a href="データの整形.html#cb70-2" tabindex="-1"></a>data2 <span class="ot">&lt;-</span> <span class="fu">arrange</span>(data, <span class="fu">desc</span>(var1)) </span></code></pre></div>
 <p>また、tidyverse環境において、変数名を変更することも、rename() 関数で可能になる。以下の指示によって、<code>var_name</code> という変数を <code>new_name</code> に変更する事ができる。</p>
@@ -674,8 +674,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div class="footnotes">
 <hr />
-<ol start="16">
-<li id="fn16"><p>“desc”は、descending orderの略であり、降順を表す。<a href="データの整形.html#fnref16" class="footnote-back">↩︎</a></p></li>
+<ol start="17">
+<li id="fn17"><p>“desc”は、descending orderの略であり、降順を表す。<a href="データの整形.html#fnref17" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
             </section>

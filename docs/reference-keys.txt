@@ -67,7 +67,7 @@ tab:timeseries
 tab:panel
 fig:pcafig
 tab:calculationcheck
-はじめに本書について
+まえがき
 rusage
 本章の概要
 desktop
