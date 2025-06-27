@@ -12,7 +12,7 @@
   <meta property="og:type" content="book" />
   
   
-  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+  <meta name="github-repo" content="https://github.com/tak-tag/text_progress.git" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="7.4 回帰分析における推定と検定 | マーケティングリサーチの進め方" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -511,13 +511,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 y_i = \beta_0+\beta_1x_i+u_i,
 \]</span>
 ただし、<span class="math inline">\(\small u_i\)</span> は誤差項、<span class="math inline">\(\small \beta_0\)</span>切片、<span class="math inline">\(\small \beta_1\)</span>は傾きのパラメータである。つまり、このモデルは母集団での統計的特徴を反映した理論的モデルだと理解できる。なお、通常レポートや論文内に回帰モデルを記載する際には、上記のような回帰パラメータと誤差項を含んだ理論モデルを用いる。理論的なモデルは <span class="math inline">\(\small y\)</span> を説明する要素として確率的な誤差項 <span class="math inline">\(u\)</span> を含んでおり、被説明変数 <span class="math inline">\(\small y\)</span> は確率変数として捉えられる。一方で、説明変数 <span class="math inline">\(\small x\)</span> は、定数として扱う。また、前節で紹介した回帰係数の推定量（OLSE）は、 <span class="math inline">\(\small y\)</span> や <span class="math inline">\(\small \bar{y}\)</span> を含んでいるため、推定量（OLSE）もまた確率変数であると考えられる。データのばらつきと回帰モデルとの関係は以下の図のように示すことができる。</p>
-<p><img src="mktres_lecture_files/figure-html/plotLine-1.png" width="672" /></p>
+<p><img src="06-reg_files/figure-html/plotLine-1.png" width="672" /></p>
 <p>回帰モデルにおいて、<span class="math inline">\(y\)</span> の値が確率的にバラつくと考え、誤差項を含んでいるのだとしたら、回帰直線は何を表しているのだろうか。この点に答えるためには、期待値（条件付き期待値）の考え方に基づき説明する必要がある。上記の回帰モデルは、理論的にはある <span class="math inline">\(x\)</span> の値が与えられたとき、<span class="math inline">\(y\)</span> の「平均値（期待値）」と <span class="math inline">\(x\)</span> の間には線形の関係があることを捉えている。より具体的には、回帰直線は以下のように <span class="math inline">\(x\)</span> を所与とした際の <span class="math inline">\(y\)</span> の条件付き期待値として表される。</p>
 <p><span class="math display">\[
 E(y|x)=\beta_0+\beta_1x
 \]</span>
 この関係について、Wooldridge, (2013, p.24）を参考に視覚化で示したものが以下の図である。</p>
-<p><img src="mktres_lecture_files/figure-html/conditional-1.png" width="672" /></p>
+<p><img src="06-reg_files/figure-html/conditional-1.png" width="672" /></p>
 <p>したがって、回帰モデルは、ある <span class="math inline">\(x\)</span> の値に基づき <span class="math inline">\(y\)</span> の期待値（平均）示してくれるが、具体的にどのような値を取るかは確率的に決まるものだと言える。つまり、回帰分析の結果によって言えることは、例えば、「身長（<span class="math inline">\(x\)</span>）の高い人は、<span class="math inline">\(\color{red}{\text{平均的に}}\)</span>重い（<span class="math inline">\(y\)</span>）」ということである。</p>
 <p>なお、モデル化に際して誤差項について以下のようないくつかの仮定が存在する。なお、5つめの仮定は回帰係数の検定の際に用いられる。</p>
 <ol style="list-style-type: decimal">
@@ -542,7 +542,7 @@ E(y|x)=\beta_0+\beta_1x
 <div id="企業データを用いた回帰分析の実行" class="section level3 hasAnchor" number="7.4.1">
 <h3><span class="header-section-number">7.4.1</span> 企業データを用いた回帰分析の実行<a href="#%E4%BC%81%E6%A5%AD%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E7%94%A8%E3%81%84%E3%81%9F%E5%9B%9E%E5%B8%B0%E5%88%86%E6%9E%90%E3%81%AE%E5%AE%9F%E8%A1%8C" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Rで回帰係数の検定結果を得るのは非常に簡単である。 <code>lm()</code> 関数の実行結果をストアしたオブジェクトに対して、<code>summary()</code> 関数を実行することで統計的検定結果を得ることができる。先程分析した <code>reg1</code> を再度利用すると、以下のような結果を得る。</p>
-<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="回帰分析における推定と検定.html#cb172-1" tabindex="-1"></a><span class="fu">summary</span>(reg1)</span></code></pre></div>
+<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="回帰分析における推定と検定.html#cb174-1" tabindex="-1"></a><span class="fu">summary</span>(reg1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sales ~ emp, data = firmdata19)
@@ -589,7 +589,7 @@ P\left(\left|\frac{\hat{\beta}-\beta}{se(\hat{\beta})}\right|\leq z_{\alpha/2}\r
 P(\hat{\beta}-se(\hat{\beta})\cdot z_{\alpha/2}\leq\beta\leq\hat{\beta}+se(\hat{\beta})\cdot z_{\alpha/2})=1-\alpha
 \]</span></p>
 <p>したがって、<span class="math inline">\(\small [\hat{\beta}\pm se(\hat{\beta})\cdot z_{\alpha/2}]\)</span> という観察可能な情報によって信頼区間推定できる。Rによって信頼区間を得るには、回帰分析の結果に対して、<code>confint()</code> 関数を用いる（デフォルトで95%信頼係数が設定されている）。例えば、先程の <code>reg1</code>の結果を用いて、99%信頼区間を得ると、以下のような結果を得る。</p>
-<div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="回帰分析における推定と検定.html#cb174-1" tabindex="-1"></a><span class="fu">confint</span>(reg1,<span class="at">level =</span> <span class="fl">0.99</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="回帰分析における推定と検定.html#cb176-1" tabindex="-1"></a><span class="fu">confint</span>(reg1,<span class="at">level =</span> <span class="fl">0.99</span>)</span></code></pre></div>
 <pre><code>##                    0.5 %       99.5 %
 ## (Intercept) -208335.9722 253955.32943
 ## emp              51.4537     64.81018</code></pre>

@@ -22,6 +22,7 @@ sales_wide
 その上で、さきほどのsalesデータをLong型に変換するために、以下のようなコマンドを利用する。
 
 ```{r gather}
+library(tidyverse)
 sales_long<- gather(data = sales_wide, key = "month",
                value = "sales", starts_with("sales"))
 sales_long

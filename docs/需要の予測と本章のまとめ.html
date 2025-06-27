@@ -12,7 +12,7 @@
   <meta property="og:type" content="book" />
   
   
-  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+  <meta name="github-repo" content="https://github.com/tak-tag/text_progress.git" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="9.9 需要の予測と本章のまとめ | マーケティングリサーチの進め方" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -507,38 +507,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="需要の予測と本章のまとめ" class="section level2 hasAnchor" number="9.9">
 <h2><span class="header-section-number">9.9</span> 需要の予測と本章のまとめ<a href="#%E9%9C%80%E8%A6%81%E3%81%AE%E4%BA%88%E6%B8%AC%E3%81%A8%E6%9C%AC%E7%AB%A0%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>ここまでは、離散選択モデルを用いて消費者の選択に関わるパラメータを推定する方法について紹介してきた。これを用いることで、モデルに基づく各選択肢の選択確率を計算することが可能になる。例えば以下では、先ほど推定した2項選択モデルである <code>probit2</code> を用いて、推定結果から選択確率の予測値を計算する。</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="需要の予測と本章のまとめ.html#cb247-1" tabindex="-1"></a><span class="co">#パラメータの推定値(beta)の抽出</span></span>
-<span id="cb247-2"><a href="需要の予測と本章のまとめ.html#cb247-2" tabindex="-1"></a>beta <span class="ot">&lt;-</span> probit2<span class="sc">$</span>coefficients</span>
-<span id="cb247-3"><a href="需要の予測と本章のまとめ.html#cb247-3" tabindex="-1"></a><span class="co">#パラメータ betaと説明変数の線形結合を作成（beta_0は定数項なので1をかける）</span></span>
-<span id="cb247-4"><a href="需要の予測と本章のまとめ.html#cb247-4" tabindex="-1"></a>est_probit2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, choice_df<span class="sc">$</span>p_ratio, choice_df<span class="sc">$</span>a1, </span>
-<span id="cb247-5"><a href="需要の予測と本章のまとめ.html#cb247-5" tabindex="-1"></a>                      choice_df<span class="sc">$</span>a2) <span class="sc">%*%</span> beta</span>
-<span id="cb247-6"><a href="需要の予測と本章のまとめ.html#cb247-6" tabindex="-1"></a>  </span>
-<span id="cb247-7"><a href="需要の予測と本章のまとめ.html#cb247-7" tabindex="-1"></a><span class="co">#pnormによって標準正規分布の分布関数による計算を実行する。</span></span>
-<span id="cb247-8"><a href="需要の予測と本章のまとめ.html#cb247-8" tabindex="-1"></a><span class="co">#製品1(c1) を選ぶ確率の予測値</span></span>
-<span id="cb247-9"><a href="需要の予測と本章のまとめ.html#cb247-9" tabindex="-1"></a>pred_probit_c1 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(est_probit2)</span>
-<span id="cb247-10"><a href="需要の予測と本章のまとめ.html#cb247-10" tabindex="-1"></a><span class="fu">mean</span>(pred_probit_c1)</span></code></pre></div>
-<pre><code>## [1] 0.4789384</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="需要の予測と本章のまとめ.html#cb249-1" tabindex="-1"></a><span class="co">#ロジットモデルの場合</span></span>
-<span id="cb249-2"><a href="需要の予測と本章のまとめ.html#cb249-2" tabindex="-1"></a>logit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p_ratio <span class="sc">+</span> a1 <span class="sc">+</span> a2, </span>
-<span id="cb249-3"><a href="需要の予測と本章のまとめ.html#cb249-3" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit),</span>
-<span id="cb249-4"><a href="需要の予測と本章のまとめ.html#cb249-4" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
-<span id="cb249-5"><a href="需要の予測と本章のまとめ.html#cb249-5" tabindex="-1"></a>beta_logit <span class="ot">&lt;-</span> logit2<span class="sc">$</span>coefficients</span>
-<span id="cb249-6"><a href="需要の予測と本章のまとめ.html#cb249-6" tabindex="-1"></a>est_logit2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, choice_df<span class="sc">$</span>p_ratio, choice_df<span class="sc">$</span>a1, </span>
-<span id="cb249-7"><a href="需要の予測と本章のまとめ.html#cb249-7" tabindex="-1"></a>                      choice_df<span class="sc">$</span>a2) <span class="sc">%*%</span> beta_logit</span>
-<span id="cb249-8"><a href="需要の予測と本章のまとめ.html#cb249-8" tabindex="-1"></a>pred_logit_c1 <span class="ot">&lt;-</span> (<span class="fu">exp</span>(est_logit2))<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(est_logit2))</span>
-<span id="cb249-9"><a href="需要の予測と本章のまとめ.html#cb249-9" tabindex="-1"></a><span class="fu">mean</span>(pred_logit_c1)</span></code></pre></div>
-<pre><code>## [1] 0.479</code></pre>
-<p><code>probit2</code> モデルにおける製品1の選択確率は約 <span class="math inline">\(47.9\%\)</span> であり、製品2とほぼ半分ずつ分け合っているが、わずかに製品2の選択確率のほうが高いことが伺える。ここで、製品1の企業が値下げを行ったら、選択確率はどの様に変化するのだろうか。このような架空の状況について、今回の分析結果（パラメータの推定値）を用いて予測してみる。<code>choice_df</code> における <code>p1</code> の平均はおよそ10（千円）である。仮に、製品2の価格を変えず、製品1の価格を平均価格の <span class="math inline">\(10\%\)</span> （1000円）値引き（<span class="math inline">\(p1-1\)</span>）した場合の価格差を考える。</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="需要の予測と本章のまとめ.html#cb251-1" tabindex="-1"></a>choice_df_v <span class="ot">&lt;-</span> choice_df <span class="sc">%&gt;%</span> </span>
-<span id="cb251-2"><a href="需要の予測と本章のまとめ.html#cb251-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p1_v =</span> p1 <span class="sc">-</span> <span class="dv">1</span>,</span>
-<span id="cb251-3"><a href="需要の予測と本章のまとめ.html#cb251-3" tabindex="-1"></a>         <span class="at">p_ratio_v =</span> p1_v <span class="sc">-</span> p2)</span>
-<span id="cb251-4"><a href="需要の予測と本章のまとめ.html#cb251-4" tabindex="-1"></a>est_probit_v <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, choice_df_v<span class="sc">$</span>p_ratio_v, choice_df_v<span class="sc">$</span>a1, </span>
-<span id="cb251-5"><a href="需要の予測と本章のまとめ.html#cb251-5" tabindex="-1"></a>                      choice_df_v<span class="sc">$</span>a2) <span class="sc">%*%</span> beta</span>
-<span id="cb251-6"><a href="需要の予測と本章のまとめ.html#cb251-6" tabindex="-1"></a></span>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="需要の予測と本章のまとめ.html#cb251-1" tabindex="-1"></a><span class="co">#パラメータの推定値(beta)の抽出</span></span>
+<span id="cb251-2"><a href="需要の予測と本章のまとめ.html#cb251-2" tabindex="-1"></a>beta <span class="ot">&lt;-</span> probit2<span class="sc">$</span>coefficients</span>
+<span id="cb251-3"><a href="需要の予測と本章のまとめ.html#cb251-3" tabindex="-1"></a><span class="co">#パラメータ betaと説明変数の線形結合を作成（beta_0は定数項なので1をかける）</span></span>
+<span id="cb251-4"><a href="需要の予測と本章のまとめ.html#cb251-4" tabindex="-1"></a>est_probit2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, choice_df<span class="sc">$</span>p_ratio, choice_df<span class="sc">$</span>a1, </span>
+<span id="cb251-5"><a href="需要の予測と本章のまとめ.html#cb251-5" tabindex="-1"></a>                      choice_df<span class="sc">$</span>a2) <span class="sc">%*%</span> beta</span>
+<span id="cb251-6"><a href="需要の予測と本章のまとめ.html#cb251-6" tabindex="-1"></a>  </span>
 <span id="cb251-7"><a href="需要の予測と本章のまとめ.html#cb251-7" tabindex="-1"></a><span class="co">#pnormによって標準正規分布の分布関数による計算を実行する。</span></span>
 <span id="cb251-8"><a href="需要の予測と本章のまとめ.html#cb251-8" tabindex="-1"></a><span class="co">#製品1(c1) を選ぶ確率の予測値</span></span>
-<span id="cb251-9"><a href="需要の予測と本章のまとめ.html#cb251-9" tabindex="-1"></a>pred_probit_v <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(est_probit_v)</span>
-<span id="cb251-10"><a href="需要の予測と本章のまとめ.html#cb251-10" tabindex="-1"></a><span class="fu">mean</span>(pred_probit_v)</span></code></pre></div>
+<span id="cb251-9"><a href="需要の予測と本章のまとめ.html#cb251-9" tabindex="-1"></a>pred_probit_c1 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(est_probit2)</span>
+<span id="cb251-10"><a href="需要の予測と本章のまとめ.html#cb251-10" tabindex="-1"></a><span class="fu">mean</span>(pred_probit_c1)</span></code></pre></div>
+<pre><code>## [1] 0.4789384</code></pre>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="需要の予測と本章のまとめ.html#cb253-1" tabindex="-1"></a><span class="co">#ロジットモデルの場合</span></span>
+<span id="cb253-2"><a href="需要の予測と本章のまとめ.html#cb253-2" tabindex="-1"></a>logit2 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p_ratio <span class="sc">+</span> a1 <span class="sc">+</span> a2, </span>
+<span id="cb253-3"><a href="需要の予測と本章のまとめ.html#cb253-3" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit),</span>
+<span id="cb253-4"><a href="需要の予測と本章のまとめ.html#cb253-4" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
+<span id="cb253-5"><a href="需要の予測と本章のまとめ.html#cb253-5" tabindex="-1"></a>beta_logit <span class="ot">&lt;-</span> logit2<span class="sc">$</span>coefficients</span>
+<span id="cb253-6"><a href="需要の予測と本章のまとめ.html#cb253-6" tabindex="-1"></a>est_logit2 <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, choice_df<span class="sc">$</span>p_ratio, choice_df<span class="sc">$</span>a1, </span>
+<span id="cb253-7"><a href="需要の予測と本章のまとめ.html#cb253-7" tabindex="-1"></a>                      choice_df<span class="sc">$</span>a2) <span class="sc">%*%</span> beta_logit</span>
+<span id="cb253-8"><a href="需要の予測と本章のまとめ.html#cb253-8" tabindex="-1"></a>pred_logit_c1 <span class="ot">&lt;-</span> (<span class="fu">exp</span>(est_logit2))<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(est_logit2))</span>
+<span id="cb253-9"><a href="需要の予測と本章のまとめ.html#cb253-9" tabindex="-1"></a><span class="fu">mean</span>(pred_logit_c1)</span></code></pre></div>
+<pre><code>## [1] 0.479</code></pre>
+<p><code>probit2</code> モデルにおける製品1の選択確率は約 <span class="math inline">\(47.9\%\)</span> であり、製品2とほぼ半分ずつ分け合っているが、わずかに製品2の選択確率のほうが高いことが伺える。ここで、製品1の企業が値下げを行ったら、選択確率はどの様に変化するのだろうか。このような架空の状況について、今回の分析結果（パラメータの推定値）を用いて予測してみる。<code>choice_df</code> における <code>p1</code> の平均はおよそ10（千円）である。仮に、製品2の価格を変えず、製品1の価格を平均価格の <span class="math inline">\(10\%\)</span> （1000円）値引き（<span class="math inline">\(p1-1\)</span>）した場合の価格差を考える。</p>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb255-1"><a href="需要の予測と本章のまとめ.html#cb255-1" tabindex="-1"></a>choice_df_v <span class="ot">&lt;-</span> choice_df <span class="sc">%&gt;%</span> </span>
+<span id="cb255-2"><a href="需要の予測と本章のまとめ.html#cb255-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">p1_v =</span> p1 <span class="sc">-</span> <span class="dv">1</span>,</span>
+<span id="cb255-3"><a href="需要の予測と本章のまとめ.html#cb255-3" tabindex="-1"></a>         <span class="at">p_ratio_v =</span> p1_v <span class="sc">-</span> p2)</span>
+<span id="cb255-4"><a href="需要の予測と本章のまとめ.html#cb255-4" tabindex="-1"></a>est_probit_v <span class="ot">&lt;-</span> <span class="fu">cbind</span>(<span class="dv">1</span>, choice_df_v<span class="sc">$</span>p_ratio_v, choice_df_v<span class="sc">$</span>a1, </span>
+<span id="cb255-5"><a href="需要の予測と本章のまとめ.html#cb255-5" tabindex="-1"></a>                      choice_df_v<span class="sc">$</span>a2) <span class="sc">%*%</span> beta</span>
+<span id="cb255-6"><a href="需要の予測と本章のまとめ.html#cb255-6" tabindex="-1"></a></span>
+<span id="cb255-7"><a href="需要の予測と本章のまとめ.html#cb255-7" tabindex="-1"></a><span class="co">#pnormによって標準正規分布の分布関数による計算を実行する。</span></span>
+<span id="cb255-8"><a href="需要の予測と本章のまとめ.html#cb255-8" tabindex="-1"></a><span class="co">#製品1(c1) を選ぶ確率の予測値</span></span>
+<span id="cb255-9"><a href="需要の予測と本章のまとめ.html#cb255-9" tabindex="-1"></a>pred_probit_v <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(est_probit_v)</span>
+<span id="cb255-10"><a href="需要の予測と本章のまとめ.html#cb255-10" tabindex="-1"></a><span class="fu">mean</span>(pred_probit_v)</span></code></pre></div>
 <pre><code>## [1] 0.5459071</code></pre>
 <p>分析の結果、1000円の値下げによって企業1は製品の選択確率を約<span class="math inline">\(54.6\%\)</span>まで上昇することが示された。この値下げ幅によって生じる損失や費用と、上昇する選択確率による便益をどう捉えるのか、そしてどのような意思決定を行うのかは、企業の意思決定者に委ねるべき問題である。しかしながら、既存の消費者行動データをきちんと蓄積、分析することで、実際に値下げを実行しなくても消費者の選択がどう変わりうるかを予測できることは実務的にも非常に有効な手段であるだろう。</p>
 <p>離散選択モデルは、プロビットモデルやロジットモデルを実行するための関数を用いて分析が可能である。しかしながら、引数の設定や出力される結果の解釈、ひいてはモデルそのものに内包されている理論的仮定について最低限の理論的知識が必要になる。そのため、本章では理論に関する説明も含め離散選択モデルについての紹介を行った。</p>

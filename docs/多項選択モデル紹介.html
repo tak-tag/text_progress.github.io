@@ -12,7 +12,7 @@
   <meta property="og:type" content="book" />
   
   
-  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+  <meta name="github-repo" content="https://github.com/tak-tag/text_progress.git" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="9.8 多項選択モデル紹介 | マーケティングリサーチの進め方" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -516,9 +516,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>feat.z: ブランドz (各ブランド) が新聞広告を掲載していたか</li>
 <li>price.z: ブランドz (各ブランド) の価格</li>
 </ul>
-<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="多項選択モデル紹介.html#cb241-1" tabindex="-1"></a><span class="fu">library</span>(mlogit)</span>
-<span id="cb241-2"><a href="多項選択モデル紹介.html#cb241-2" tabindex="-1"></a><span class="fu">data</span>(Cracker, <span class="at">package =</span> <span class="st">&quot;mlogit&quot;</span>)</span>
-<span id="cb241-3"><a href="多項選択モデル紹介.html#cb241-3" tabindex="-1"></a><span class="fu">head</span>(Cracker, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="多項選択モデル紹介.html#cb245-1" tabindex="-1"></a><span class="fu">library</span>(mlogit)</span>
+<span id="cb245-2"><a href="多項選択モデル紹介.html#cb245-2" tabindex="-1"></a><span class="fu">data</span>(Cracker, <span class="at">package =</span> <span class="st">&quot;mlogit&quot;</span>)</span>
+<span id="cb245-3"><a href="多項選択モデル紹介.html#cb245-3" tabindex="-1"></a><span class="fu">head</span>(Cracker, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
 <pre><code>##    id disp.sunshine disp.keebler disp.nabisco disp.private feat.sunshine
 ## 1   1             0            0            0            0             0
 ## 2   1             0            0            0            0             0
@@ -583,8 +583,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 19           106            69 sunshine
 ## 20           106            69 sunshine</code></pre>
 <p>このデータ構造を、long型に変更する<a href="#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a>。</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="多項選択モデル紹介.html#cb243-1" tabindex="-1"></a>cracker <span class="ot">&lt;-</span> <span class="fu">mlogit.data</span>(Cracker, <span class="at">choice =</span> <span class="st">&quot;choice&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;wide&quot;</span>, <span class="at">varying=</span><span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>))</span>
-<span id="cb243-2"><a href="多項選択モデル紹介.html#cb243-2" tabindex="-1"></a><span class="fu">head</span>(cracker, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb247-1"><a href="多項選択モデル紹介.html#cb247-1" tabindex="-1"></a>cracker <span class="ot">&lt;-</span> <span class="fu">mlogit.data</span>(Cracker, <span class="at">choice =</span> <span class="st">&quot;choice&quot;</span>, <span class="at">shape =</span> <span class="st">&quot;wide&quot;</span>, <span class="at">varying=</span><span class="fu">c</span>(<span class="dv">2</span><span class="sc">:</span><span class="dv">13</span>))</span>
+<span id="cb247-2"><a href="多項選択モデル紹介.html#cb247-2" tabindex="-1"></a><span class="fu">head</span>(cracker, <span class="at">n=</span><span class="dv">20</span>)</span></code></pre></div>
 <pre><code>## ~~~~~~~
 ##  first 20 observations out of 13168 
 ## ~~~~~~~
@@ -660,10 +660,10 @@ V_{ij}=\alpha_j+\beta x_{ij}+\gamma_j z_i+\delta_j w_{ij}
 \]</span>
 そのため、どの変数については選択肢ごとの係数を推定すべきなのかについて、分析者側が、既存の理論やドメイン知識（実務・社会的知識）を用いて決定する必要がある。例えば、価格と効用の関係についてはブランド間で統一だと仮定しても良さそうだが、特殊なマーケティング方策を行っている企業・ブランドがある場合、選択肢ごとに推定できるモデルも検討したほうが良いかもしれない。しかしながら、消費者一般的に成立する価格への反応を推定したい場合には、ブランドごとに異なる価格反応を前提としたモデル化は適切ではないかもしれない。このように、研究目的や採用する理論、着目するデータの背景などに注意してモデルを構築する必要がある。</p>
 <p>Rでのコード作成では、<code>formula = choice ~ x|z|w</code> という形でモデルを定義することができる。以下では、価格に対する消費者の反応はブランドごとに異なるものではないが、広告や陳列については各ブランドの具体的な戦術の特徴によって影響の程度が変わるかもしれないと考え、以下のように分析を行う（プロビットモデルを使うときには、<code>probit=TRUE</code>とする）。なお、このような選択肢に関する特徴を説明変数に含む多項ロジットモデルは、条件付きロジットモデル（Conditional logit model）と呼ばれることもある。</p>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="多項選択モデル紹介.html#cb245-1" tabindex="-1"></a>ml_cracker <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(choice <span class="sc">~</span> price<span class="sc">|</span><span class="dv">1</span><span class="sc">|</span>disp <span class="sc">+</span> feat, <span class="at">probit =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb245-2"><a href="多項選択モデル紹介.html#cb245-2" tabindex="-1"></a>                     <span class="at">data =</span> cracker)</span>
-<span id="cb245-3"><a href="多項選択モデル紹介.html#cb245-3" tabindex="-1"></a></span>
-<span id="cb245-4"><a href="多項選択モデル紹介.html#cb245-4" tabindex="-1"></a><span class="fu">summary</span>(ml_cracker)</span></code></pre></div>
+<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb249-1"><a href="多項選択モデル紹介.html#cb249-1" tabindex="-1"></a>ml_cracker <span class="ot">&lt;-</span> <span class="fu">mlogit</span>(choice <span class="sc">~</span> price<span class="sc">|</span><span class="dv">1</span><span class="sc">|</span>disp <span class="sc">+</span> feat, <span class="at">probit =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb249-2"><a href="多項選択モデル紹介.html#cb249-2" tabindex="-1"></a>                     <span class="at">data =</span> cracker)</span>
+<span id="cb249-3"><a href="多項選択モデル紹介.html#cb249-3" tabindex="-1"></a></span>
+<span id="cb249-4"><a href="多項選択モデル紹介.html#cb249-4" tabindex="-1"></a><span class="fu">summary</span>(ml_cracker)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## mlogit(formula = choice ~ price | 1 | disp + feat, data = cracker, 

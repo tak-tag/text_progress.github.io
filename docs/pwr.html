@@ -12,7 +12,7 @@
   <meta property="og:type" content="book" />
   
   
-  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+  <meta name="github-repo" content="https://github.com/tak-tag/text_progress.git" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="6.11 検定力分析とサンプルサイズ | マーケティングリサーチの進め方" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -533,7 +533,7 @@ H_1:~~\mu_1\neq\mu_2
 ## NOTE: n is number in *each* group</code></pre>
 <p>出力結果の通り、上記の条件に基づくサンプルサイズは各グループ26人ずつであるとわかる。そのため、2グループ間の比較を行う場合のサンプルサイズの合計は52となる。また、検定力とサンプルサイズの関係について、<code>plot()</code> 関数を用いて以下のように出力することも可能である。</p>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb162-1"><a href="pwr.html#cb162-1" tabindex="-1"></a><span class="fu">plot</span>(est_n)</span></code></pre></div>
-<p><img src="mktres_lecture_files/figure-html/pwr_plot-1.png" width="672" /></p>
+<p><img src="05-stat_files/figure-html/pwr_plot-1.png" width="672" /></p>
 <p>なお、<code>pwr.t.test()</code> 関数内の引数設定次第で、検定力を計算することも可能である。
 例えば、<span class="math inline">\(d=0.8\)</span>, <span class="math inline">\(n=30\)</span>, <span class="math inline">\(\alpha=0.05\)</span> の場合の検定力は以下のように計算できる。</p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="pwr.html#cb163-1" tabindex="-1"></a><span class="fu">pwr.t.test</span>(<span class="at">d=</span><span class="fl">0.8</span>, <span class="at">n=</span><span class="dv">26</span>, <span class="at">sig.level=</span><span class="fl">0.05</span>)</span></code></pre></div>

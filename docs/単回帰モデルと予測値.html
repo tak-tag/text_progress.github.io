@@ -12,7 +12,7 @@
   <meta property="og:type" content="book" />
   
   
-  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+  <meta name="github-repo" content="https://github.com/tak-tag/text_progress.git" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="7.3 単回帰モデルと予測値 | マーケティングリサーチの進め方" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -518,7 +518,7 @@ y=\beta_0+\beta_1x
 \]</span>
 このとき、<span class="math inline">\(\small \beta_0\)</span> は切片、<span class="math inline">\(\small \beta_1\)</span> は傾きを表す係数であり、回帰係数と呼ばれる。</p>
 <p>回帰モデルは線形の関係を捉えているものの、実際にデータを入手し散布図を作成すると、以下のように、直線とは異なる結果を得る。そのため、上記のモデルは正確な表現でないことがわかる。</p>
-<p><img src="mktres_lecture_files/figure-html/scatterplot-1.png" width="672" /></p>
+<p><img src="06-reg_files/figure-html/scatterplot-1.png" width="672" /></p>
 <p>分析者がデータとして得る情報は、<span class="math inline">\(y\)</span> や <span class="math inline">\(x\)</span> の実現値であり、回帰モデルの切片や傾きの値は直接はわからない。そこで、モデルで捉えた直線と実現値のズレを考え、得たデータから回帰モデルのパラメータ（係数）を推定するという方針をとる。モデルで捉えた直線による（係数の推定値に基づく）<span class="math inline">\(y\)</span> と<span class="math inline">\(x\)</span> の関係は、<span class="math inline">\(\small x=x_i\)</span> のとき、<span class="math inline">\(y_i\)</span> の予測値である<span class="math inline">\(\small \hat{y}_i\)</span>（ワイハット）と、係数の推定値 <span class="math inline">\(\small \hat{\beta}_0\)</span>、 <span class="math inline">\(\small \hat{\beta}_1\)</span> を用いて以下のように定義できる。</p>
 <p><span class="math display">\[
 \hat{y}_i=\hat{\beta}_0+ \hat{\beta}_1 x_i
@@ -540,8 +540,8 @@ y=\beta_0+\beta_1x
 \hat{\beta}_1=\frac{\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y})}{\sum_{i=1}^n(x_i-\bar{x})^2}
 \]</span></p>
 <p>Rによる回帰分析は、<code>lm()</code>という関数（linear model）を用いて簡単に実行できる。この関数内では、<code>lm(y ~ x, data = df)</code> という要領で、説明変数と被説明変数を <span class="math inline">\(\sim\)</span>（チルダ）で繋いでモデルを指定する。例えば、先程の企業データにおける2019年の観測を用いて、従業員数と売上高の関係について分析するためには、以下のように分析を実行する。</p>
-<div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="単回帰モデルと予測値.html#cb170-1" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> emp, <span class="at">data =</span> firmdata19)</span>
-<span id="cb170-2"><a href="単回帰モデルと予測値.html#cb170-2" tabindex="-1"></a><span class="fu">coef</span>(reg1)</span></code></pre></div>
+<div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="単回帰モデルと予測値.html#cb172-1" tabindex="-1"></a>reg1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> emp, <span class="at">data =</span> firmdata19)</span>
+<span id="cb172-2"><a href="単回帰モデルと予測値.html#cb172-2" tabindex="-1"></a><span class="fu">coef</span>(reg1)</span></code></pre></div>
 <pre><code>## (Intercept)         emp 
 ## 22809.67863    58.13194</code></pre>
 <p>分析の結果、定数項（Intercept）は 22809.7 で、傾きは 58.1 であることがわかった。つまり、従業員数を一単位増やすと、売上高が58.1（百万円）増えることを示唆している。仮に従業員数が10人であれば、売上高の「予測値」は以下のように計算できる。</p>

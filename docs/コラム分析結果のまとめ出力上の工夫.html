@@ -12,7 +12,7 @@
   <meta property="og:type" content="book" />
   
   
-  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+  <meta name="github-repo" content="https://github.com/tak-tag/text_progress.git" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 22 コラム：分析結果のまとめ・出力上の工夫 | マーケティングリサーチの進め方" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -507,36 +507,36 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="コラム分析結果のまとめ出力上の工夫" class="section level1 hasAnchor" number="22">
 <h1><span class="header-section-number">Chapter 22</span> コラム：分析結果のまとめ・出力上の工夫<a href="#%E3%82%B3%E3%83%A9%E3%83%A0%E5%88%86%E6%9E%90%E7%B5%90%E6%9E%9C%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81%E5%87%BA%E5%8A%9B%E4%B8%8A%E3%81%AE%E5%B7%A5%E5%A4%AB" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>本書では教育的意図を持ち、Rで出力される分析結果をそのまま記載していた。しかしながら、Rでの出力結果をレポートや論文にベタ貼りすることは、可読性の低下につながるため好ましくない。論文やレポート執筆の際には、Rで出力された結果から表を作成することが必要になるのだが、Excelなどのスプレッドシートに一つ一つの値をコピー・アンド・ペースト（コピペ）して表を作成していく方法は、操作ミスによる間違いの可能性が高まることと、作業プロセスを記録できないという問題を有している。また、その作業自体が面倒くさいことも重要な障害である。そこで、分析結果を読みやすく見た目も良い表の形式で楽に出力してくれるコマンドをR上で実行する。そのために用いるパッケージは色々あるが、本書では <code>modelsummary</code> パッケージを 紹介する。以下のようにインストールして欲しい。</p>
-<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb314-1"><a href="コラム分析結果のまとめ出力上の工夫.html#cb314-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;modelsummary&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb320-1"><a href="コラム分析結果のまとめ出力上の工夫.html#cb320-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;modelsummary&quot;</span>)</span></code></pre></div>
 <p>ここでは試しに、<a href="regtechnic.html#regtechnic">8</a> 章で実行した <code>fit_int</code>を <code>msummary()</code> 関数で出力する。Rstudio上で<code>msummary()</code> を実行すると、結果がコンソールではなく、Viewerに表示される（本書では紙幅のために出力結果は省略する）。</p>
-<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb315-1"><a href="コラム分析結果のまとめ出力上の工夫.html#cb315-1" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
-<span id="cb315-2"><a href="コラム分析結果のまとめ出力上の工夫.html#cb315-2" tabindex="-1"></a><span class="fu">msummary</span>(fit_int, <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="コラム分析結果のまとめ出力上の工夫.html#cb321-1" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb321-2"><a href="コラム分析結果のまとめ出力上の工夫.html#cb321-2" tabindex="-1"></a><span class="fu">msummary</span>(fit_int, <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>)</span></code></pre></div>
 <p>上記のように引数をほぼ指定せずとも（なお、<code>statistic = 'conf.int'</code> は信頼区間を出力する引数である。デフォルトでは標準誤差を表示する。）、このような表形式で結果を出力することができる。引数を用いることで、研究者に都合の良い表なるように編集が可能であることもこの関数の利点である。例えば、モデル適合度として不必要な情報があれば、以下のように表から削除することもできる。</p>
-<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb316-1"><a href="コラム分析結果のまとめ出力上の工夫.html#cb316-1" tabindex="-1"></a><span class="fu">msummary</span>(fit_int, <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb322-1"><a href="コラム分析結果のまとめ出力上の工夫.html#cb322-1" tabindex="-1"></a><span class="fu">msummary</span>(fit_int, <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>)</span></code></pre></div>
 <p>また、<code>msummary()</code> は二つ以上のモデルを並べて表示させる場合にも便利である。複数の分析結果を <code>list</code> としてまとめ以下のように出力できる。ここでは、交差項を用いた回帰モデルにおける中心化のありなしを併記し比較可能にする。更に、表示される変数名も調整する。</p>
-<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb317-1"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-1" tabindex="-1"></a>var_nam <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;rd&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D&quot;</span>, <span class="st">&quot;promotion&quot;</span> <span class="ot">=</span> <span class="st">&quot;Promotion&quot;</span>, <span class="st">&quot;rd:promotion&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D * Promotion&quot;</span>,</span>
-<span id="cb317-2"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-2" tabindex="-1"></a>             <span class="st">&quot;rd_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D_c&quot;</span>, <span class="st">&quot;promotion_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;Promotion_c&quot;</span>, <span class="st">&quot;rd_c:promotion_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D_c * Promotion_c&quot;</span>,</span>
-<span id="cb317-3"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-3" tabindex="-1"></a>             <span class="st">&quot;(Intercept)&quot;</span> <span class="ot">=</span> <span class="st">&quot;定数項&quot;</span>)</span>
-<span id="cb317-4"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-4" tabindex="-1"></a>Int <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
-<span id="cb317-5"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-5" tabindex="-1"></a>Int[[<span class="st">&quot;Without centering&quot;</span>]] <span class="ot">&lt;-</span> fit_int</span>
-<span id="cb317-6"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-6" tabindex="-1"></a>Int[[<span class="st">&quot;With centering&quot;</span>]] <span class="ot">&lt;-</span> fit_int_c</span>
-<span id="cb317-7"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-7" tabindex="-1"></a></span>
-<span id="cb317-8"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-8" tabindex="-1"></a><span class="fu">msummary</span>(Int, </span>
-<span id="cb317-9"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-9" tabindex="-1"></a>         <span class="at">coef_map =</span> var_nam,</span>
-<span id="cb317-10"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-10" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Comparing Interaction Models&quot;</span>,</span>
-<span id="cb317-11"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-11" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show 95% confidence intervals&quot;</span>,</span>
-<span id="cb317-12"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-12" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb317-13"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-13" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>, <span class="at">conf_level =</span> .<span class="dv">95</span>,</span>
-<span id="cb317-14"><a href="コラム分析結果のまとめ出力上の工夫.html#cb317-14" tabindex="-1"></a>         <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb323-1"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-1" tabindex="-1"></a>var_nam <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;rd&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D&quot;</span>, <span class="st">&quot;promotion&quot;</span> <span class="ot">=</span> <span class="st">&quot;Promotion&quot;</span>, <span class="st">&quot;rd:promotion&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D * Promotion&quot;</span>,</span>
+<span id="cb323-2"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-2" tabindex="-1"></a>             <span class="st">&quot;rd_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D_c&quot;</span>, <span class="st">&quot;promotion_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;Promotion_c&quot;</span>, <span class="st">&quot;rd_c:promotion_c&quot;</span> <span class="ot">=</span> <span class="st">&quot;R&amp;D_c * Promotion_c&quot;</span>,</span>
+<span id="cb323-3"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-3" tabindex="-1"></a>             <span class="st">&quot;(Intercept)&quot;</span> <span class="ot">=</span> <span class="st">&quot;定数項&quot;</span>)</span>
+<span id="cb323-4"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-4" tabindex="-1"></a>Int <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
+<span id="cb323-5"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-5" tabindex="-1"></a>Int[[<span class="st">&quot;Without centering&quot;</span>]] <span class="ot">&lt;-</span> fit_int</span>
+<span id="cb323-6"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-6" tabindex="-1"></a>Int[[<span class="st">&quot;With centering&quot;</span>]] <span class="ot">&lt;-</span> fit_int_c</span>
+<span id="cb323-7"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-7" tabindex="-1"></a></span>
+<span id="cb323-8"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-8" tabindex="-1"></a><span class="fu">msummary</span>(Int, </span>
+<span id="cb323-9"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-9" tabindex="-1"></a>         <span class="at">coef_map =</span> var_nam,</span>
+<span id="cb323-10"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-10" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Comparing Interaction Models&quot;</span>,</span>
+<span id="cb323-11"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-11" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show 95% confidence intervals&quot;</span>,</span>
+<span id="cb323-12"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-12" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb323-13"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-13" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>, <span class="at">conf_level =</span> .<span class="dv">95</span>,</span>
+<span id="cb323-14"><a href="コラム分析結果のまとめ出力上の工夫.html#cb323-14" tabindex="-1"></a>         <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>)</span></code></pre></div>
 <p>対外的に分析結果を共有する場合には、このような分析結果をViewer上ではなく、文書ファイル等に貼り付けたいと考えることも多いだろう。<code>msummary()</code> 関数では、引数を変更することで、出力形式を変更することも可能である。そのうえで、本書が最もおすすめする方法が、Latex形式での表の出力と、それを用いたLatexによる文書作成である。</p>
 <p>Latex（ラテック or レイテック）は、ソースファイルにコマンドと文章を記載していきながらpdfを出力することで文書を作成するためのツールである。Latexは、数式や表の入力が簡単であり、出力結果もきれいであることや、文書フォーマットについて細かく気にせず文書を作成できるという利点がある。そのため、定量的な分析を伴う文書を作成するのに適したツールである。逆に短所としては、ソースコードの入力や、コンピュータ内へのLatex用環境構築に関する手間がかかるという点が挙げられる。しかし近年では、ウェブブラウザ上でLatexを動かせる “Overleaf” というサービスも普及し、環境構築による問題は解決されている。本書では、LatexやOverleafの詳細や設定方法については割愛するが、基本的にはOverleafの活用をおすすめするので、以下のリンクを参照して欲しい（<a href="https://dreamer-uma.com/overleaf/" class="uri">https://dreamer-uma.com/overleaf/</a>）。特に、卒業論文や修士論文に取り組む学生にとって、Overleafによってウェブ上にファイルを保管できることは非常に重要な利点となるだろう（毎年少なくない学生が論文のファイル保管ミスやノートPCの故障などのトラブルに見舞われるのを観察している）。</p>
 <p>先程の交差項比較の表について、<code>output = "latex"</code> と引数を設定することで、出力形式を変更する。</p>
-<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb318-1"><a href="コラム分析結果のまとめ出力上の工夫.html#cb318-1" tabindex="-1"></a><span class="fu">msummary</span>(Int, </span>
-<span id="cb318-2"><a href="コラム分析結果のまとめ出力上の工夫.html#cb318-2" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Comparing Interaction Models&quot;</span>,</span>
-<span id="cb318-3"><a href="コラム分析結果のまとめ出力上の工夫.html#cb318-3" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show 95% confidence intervals&quot;</span>,</span>
-<span id="cb318-4"><a href="コラム分析結果のまとめ出力上の工夫.html#cb318-4" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb318-5"><a href="コラム分析結果のまとめ出力上の工夫.html#cb318-5" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>, <span class="at">conf_level =</span> .<span class="dv">95</span>,</span>
-<span id="cb318-6"><a href="コラム分析結果のまとめ出力上の工夫.html#cb318-6" tabindex="-1"></a>         <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>, <span class="at">output=</span> <span class="st">&quot;latex&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb324-1"><a href="コラム分析結果のまとめ出力上の工夫.html#cb324-1" tabindex="-1"></a><span class="fu">msummary</span>(Int, </span>
+<span id="cb324-2"><a href="コラム分析結果のまとめ出力上の工夫.html#cb324-2" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;Comparing Interaction Models&quot;</span>,</span>
+<span id="cb324-3"><a href="コラム分析結果のまとめ出力上の工夫.html#cb324-3" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show 95% confidence intervals&quot;</span>,</span>
+<span id="cb324-4"><a href="コラム分析結果のまとめ出力上の工夫.html#cb324-4" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb324-5"><a href="コラム分析結果のまとめ出力上の工夫.html#cb324-5" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&#39;conf.int&#39;</span>, <span class="at">conf_level =</span> .<span class="dv">95</span>,</span>
+<span id="cb324-6"><a href="コラム分析結果のまとめ出力上の工夫.html#cb324-6" tabindex="-1"></a>         <span class="at">gof_omit =</span> <span class="st">&quot;Log.Lik.|AIC|BIC|RMSE&quot;</span>, <span class="at">output=</span> <span class="st">&quot;latex&quot;</span>)</span></code></pre></div>
 <p>これにより出力される結果のうち、<code>\begin{table}</code> から <code>\end{table}</code> までのコード内容をそのままlatexにコピペし、コンパイル（文書出力）をすれば、以下のような表が出力される<a href="#fn52" class="footnote-ref" id="fnref52"><sup>52</sup></a>。</p>
 <div class="float">
 <img src="reg/textable.png" alt="Latex出力例" />

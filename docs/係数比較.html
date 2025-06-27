@@ -12,7 +12,7 @@
   <meta property="og:type" content="book" />
   
   
-  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+  <meta name="github-repo" content="https://github.com/tak-tag/text_progress.git" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="8.4 係数比較 | マーケティングリサーチの進め方" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -521,13 +521,13 @@ Y = \alpha_0 +(\theta - \alpha_2) X_1 + \alpha_2 X_2 + u \\
 <div id="係数比較の実行" class="section level3 hasAnchor" number="8.4.1">
 <h3><span class="header-section-number">8.4.1</span> 係数比較の実行<a href="#%E4%BF%82%E6%95%B0%E6%AF%94%E8%BC%83%E3%81%AE%E5%AE%9F%E8%A1%8C" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>ここでは例として、企業の広告投資とR&amp;Dへの投資が売上に与える影響について比較する。分析にはfirmdata19を用いる。このデータの広告とR&amp;D変数の単位はともに百万円であり揃っているが、本書では教育的意図から変数を標準化するプロセスを提示し、標準化した変数を用いる。そのため、分析結果の係数解釈には注意が必要になる。本書ではまず、以下の通り変数を作成した後、通常の重回帰モデルを実行する。</p>
-<div class="sourceCode" id="cb208"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb208-1"><a href="係数比較.html#cb208-1" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
-<span id="cb208-2"><a href="係数比較.html#cb208-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">adv =</span> (adv <span class="sc">-</span><span class="fu">mean</span>(adv))<span class="sc">/</span><span class="fu">sd</span>(adv),</span>
-<span id="cb208-3"><a href="係数比較.html#cb208-3" tabindex="-1"></a>         <span class="at">rd =</span> (rd <span class="sc">-</span><span class="fu">mean</span>(rd))<span class="sc">/</span><span class="fu">sd</span>(rd),</span>
-<span id="cb208-4"><a href="係数比較.html#cb208-4" tabindex="-1"></a>         <span class="at">ad_rd =</span> adv <span class="sc">+</span>rd)</span>
-<span id="cb208-5"><a href="係数比較.html#cb208-5" tabindex="-1"></a></span>
-<span id="cb208-6"><a href="係数比較.html#cb208-6" tabindex="-1"></a>fit_linear <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> adv <span class="sc">+</span> rd, <span class="at">data =</span> firmdata19)</span>
-<span id="cb208-7"><a href="係数比較.html#cb208-7" tabindex="-1"></a><span class="fu">summary</span>(fit_linear)</span></code></pre></div>
+<div class="sourceCode" id="cb212"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb212-1"><a href="係数比較.html#cb212-1" tabindex="-1"></a>firmdata19 <span class="ot">&lt;-</span> firmdata19 <span class="sc">%&gt;%</span> </span>
+<span id="cb212-2"><a href="係数比較.html#cb212-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">adv =</span> (adv <span class="sc">-</span><span class="fu">mean</span>(adv))<span class="sc">/</span><span class="fu">sd</span>(adv),</span>
+<span id="cb212-3"><a href="係数比較.html#cb212-3" tabindex="-1"></a>         <span class="at">rd =</span> (rd <span class="sc">-</span><span class="fu">mean</span>(rd))<span class="sc">/</span><span class="fu">sd</span>(rd),</span>
+<span id="cb212-4"><a href="係数比較.html#cb212-4" tabindex="-1"></a>         <span class="at">ad_rd =</span> adv <span class="sc">+</span>rd)</span>
+<span id="cb212-5"><a href="係数比較.html#cb212-5" tabindex="-1"></a></span>
+<span id="cb212-6"><a href="係数比較.html#cb212-6" tabindex="-1"></a>fit_linear <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> adv <span class="sc">+</span> rd, <span class="at">data =</span> firmdata19)</span>
+<span id="cb212-7"><a href="係数比較.html#cb212-7" tabindex="-1"></a><span class="fu">summary</span>(fit_linear)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sales ~ adv + rd, data = firmdata19)
@@ -548,8 +548,8 @@ Y = \alpha_0 +(\theta - \alpha_2) X_1 + \alpha_2 X_2 + u \\
 ## Multiple R-squared:  0.7709, Adjusted R-squared:  0.7677 
 ## F-statistic: 242.3 on 2 and 144 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>これを見ると、一見広告投資のほうが係数が大きそうである。では次に、<code>ad+rd</code> を用いた係数比較モデルを分析することでこの差が統計的に有意かを検討する。</p>
-<div class="sourceCode" id="cb210"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb210-1"><a href="係数比較.html#cb210-1" tabindex="-1"></a>fit_comp <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> adv <span class="sc">+</span> ad_rd, <span class="at">data =</span> firmdata19)</span>
-<span id="cb210-2"><a href="係数比較.html#cb210-2" tabindex="-1"></a><span class="fu">summary</span>(fit_comp)</span></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb214-1"><a href="係数比較.html#cb214-1" tabindex="-1"></a>fit_comp <span class="ot">&lt;-</span> <span class="fu">lm</span>(sales <span class="sc">~</span> adv <span class="sc">+</span> ad_rd, <span class="at">data =</span> firmdata19)</span>
+<span id="cb214-2"><a href="係数比較.html#cb214-2" tabindex="-1"></a><span class="fu">summary</span>(fit_comp)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = sales ~ adv + ad_rd, data = firmdata19)

@@ -12,7 +12,7 @@
   <meta property="og:type" content="book" />
   
   
-  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+  <meta name="github-repo" content="https://github.com/tak-tag/text_progress.git" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="9.4 離散選択モデル | マーケティングリサーチの進め方" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -536,18 +536,18 @@ P(y_i = 1|x_i)=\beta_0+\beta_1x_i
 <p>第一の問題点については、LPMで推定してしまうことで、OLS推定量が好ましい性質を持つための仮定（均一分散）を満たさないことにつながる。分散が均一であるとは、誤差項の分散がどの観測個体 <span class="math inline">\(i\)</span> に対しても同じ大きさであることを指す。そのため、特定の主体だけ誤差項の分散が大きい場合や、<span class="math inline">\(x\)</span> の値の変化に伴って誤差項の分散が大きくなるような状態ではこの仮定は満たされず、分散不均一であると言われる。</p>
 <p>ここで、上記のモデルの誤差項は <span class="math inline">\(e_i= y_i - (\beta_0+\beta_1x_i)\)</span> である。ここで、<span class="math inline">\(y_i\)</span> の条件付き期待値を <span class="math inline">\(P_i=E(y_i|x_i)=P(y_i = 1|x_i)=\beta_0+\beta_1x_i\)</span> と定義すると、誤差項の分散は <span class="math inline">\(Var(e_i|x_i)=P_i(1-P_i)\)</span> となることが知られている（西山ほか,2019）。<span class="math inline">\(P_i\)</span> の大きさはその定義より各主体によって <span class="math inline">\(x_i\)</span> に依存する形で変化することが伺える。そのため、LPMによる推定では、分散不均一の問題が生じるといえる。しかしながらこの問題は通常、分散不均一に対して頑健な標準誤差（例えば、ホワイトの標準誤差）を用いた分析を用いることで対応される。</p>
 <p>第二に予測値の論理的整合性について説明する。LPM推定によって得た <span class="math inline">\(y\)</span> の予測値は、反応確率の予測値を表すため、 <span class="math inline">\(y\)</span> の予測値は 0 から 1 の間に収まらないといけない。しかし、LPMでは予測値が負の値を取ったり、1 を上回ることもある。言い換えると確率の定義に反するような、論理的に整合的ではない予測値を返してしまう。ここで、以下のような簡単な人工データを用いて、LPMによる分析を実行してみる。下記df1の成果変数（Y）はダミー変数であり、説明変数（X）は連続変数だとする。これを線形モデルで回帰し、予測値を出力してみる。すると、1つ目と4つ目の観測は負の値、7つ目と8つ目の観測は1を越える予測値を得たことが伺える。</p>
-<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb220-1"><a href="discrete.html#cb220-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
-<span id="cb220-2"><a href="discrete.html#cb220-2" tabindex="-1"></a>                  <span class="at">X =</span> <span class="fu">c</span>(<span class="fl">3.4</span>, <span class="fl">5.22</span>, <span class="fl">7.06</span>, <span class="fl">2.81</span>, <span class="fl">4.11</span>, <span class="fl">10.34</span>, <span class="fl">13.67</span>, <span class="fl">15.99</span>, <span class="fl">9.09</span>))</span>
-<span id="cb220-3"><a href="discrete.html#cb220-3" tabindex="-1"></a>lpm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> df1)</span>
-<span id="cb220-4"><a href="discrete.html#cb220-4" tabindex="-1"></a>pred_lpm1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lpm1)</span>
-<span id="cb220-5"><a href="discrete.html#cb220-5" tabindex="-1"></a>pred_lpm1 </span></code></pre></div>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="discrete.html#cb224-1" tabindex="-1"></a>df1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Y =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>),</span>
+<span id="cb224-2"><a href="discrete.html#cb224-2" tabindex="-1"></a>                  <span class="at">X =</span> <span class="fu">c</span>(<span class="fl">3.4</span>, <span class="fl">5.22</span>, <span class="fl">7.06</span>, <span class="fl">2.81</span>, <span class="fl">4.11</span>, <span class="fl">10.34</span>, <span class="fl">13.67</span>, <span class="fl">15.99</span>, <span class="fl">9.09</span>))</span>
+<span id="cb224-3"><a href="discrete.html#cb224-3" tabindex="-1"></a>lpm1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> df1)</span>
+<span id="cb224-4"><a href="discrete.html#cb224-4" tabindex="-1"></a>pred_lpm1 <span class="ot">&lt;-</span> <span class="fu">predict</span>(lpm1)</span>
+<span id="cb224-5"><a href="discrete.html#cb224-5" tabindex="-1"></a>pred_lpm1 </span></code></pre></div>
 <pre><code>##            1            2            3            4            5            6 
 ## -0.006342894  0.173357681  0.355032986 -0.064597476  0.063760077  0.678888967 
 ##            7            8            9 
 ##  1.007681776  1.236750640  0.555468243</code></pre>
 図 <a href="discrete.html#fig:lpm-plot">9.1</a> は、このデータのプロットとLPMで推定した際の回帰直線との関係の例を示している。この結果からも、いくつかの観測主体によって確率の範囲を越えた予測値を得ていることが伺える。
 <div class="figure"><span style="display:block;" id="fig:lpm-plot"></span>
-<img src="mktres_lecture_files/figure-html/lpm-plot-1.png" alt="LPM と回帰直線" width="672" />
+<img src="08-choicemodel_files/figure-html/lpm-plot-1.png" alt="LPM と回帰直線" width="672" />
 <p class="caption">
 Figure 9.1: LPM と回帰直線
 </p>
@@ -568,7 +568,7 @@ P(y_i = 1|x_{1i},...,x_{ki})=F\left(\beta_0+\beta_1x_i+...+\beta_kx_{ki}\right)
 ただし、<span class="math inline">\(F(\cdot)\)</span>は選択（反応確率）と説明変数を非線形な形で結びつけるためのなんらかの関数である。ここで採用する<span class="math inline">\(F(\cdot)\)</span>によって回帰曲線の形状が決まる。</p>
 <p>例えば、図 <a href="discrete.html#fig:norm-cdf">9.2</a>は図<a href="discrete.html#fig:lpm-plot">9.1</a>との対比として（説明変数が一つのモデルを）非線形でのモデル化を示したものである。図 <a href="discrete.html#fig:norm-cdf">9.2</a>のように、非線形の近似曲線で回帰分析を行うことで、確率を意味する予測値が0から1の範囲に収まる。</p>
 <div class="figure"><span style="display:block;" id="fig:norm-cdf"></span>
-<img src="mktres_lecture_files/figure-html/norm-cdf-1.png" alt="非線形での近似イメージ" width="672" />
+<img src="08-choicemodel_files/figure-html/norm-cdf-1.png" alt="非線形での近似イメージ" width="672" />
 <p class="caption">
 Figure 9.2: 非線形での近似イメージ
 </p>

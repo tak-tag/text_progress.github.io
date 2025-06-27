@@ -12,7 +12,7 @@
   <meta property="og:type" content="book" />
   
   
-  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+  <meta name="github-repo" content="https://github.com/tak-tag/text_progress.git" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Chapter 23 コラム：主成分分析と因子分析との違い | マーケティングリサーチの進め方" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -522,23 +522,43 @@ z_i=b_1x_{1i}+b_2x_{2i}+b_3x_{3i}
 <p>主成分分析は計算方法においても因子分析とは異なる点を有する。結論から述べると、主成分分析は因子分析の特殊形と考えられる（渡辺, 2017 参照）。計算上では、主成分分析は因子分析における主因子法というアプローチの特殊な場合と位置づけられる。主因子法とは、ある制約のもとで、各因子が観測変数の分散を説明する寄与率を最大にするように因子を求める計算方法である。この方法では、共通性を最初に計算し、因子負荷量を算出、因子数を決定した後再度共通性を計算する。そして新しく得られた共通性をもとに再度因子負荷量を算出するというプロセスを繰り返す。計算における共通性の初期値は1や、重相関係数の2乗値、相関行列の行の相関の最大絶対値などが使われる。</p>
 <p>これに対して主成分分析は、共通性初期値を1とし、繰り返し計算を行わない主因子法といえる。より細かく述べれば、主成分分析によって求められる主成分係数（上式の <span class="math inline">\(b_1, b_2, b_3\)</span>）は項目間分散共分散行列の固有ベクトルとして計算される一方で、因子負荷量は対角要素に共通性を代入した項目間相関行列の固有ベクトルに固有値の平方根を乗じたものだといえる（渡辺, 2017）。そのため、標準化された項目を用いた主成分分析によって得る主成分係数（項目間相関行列の固有ベクトル）に固有値の平方根を乗じると、対角要素を1とした項目間相関行列の因子負荷量（ただし、繰り返し計算は行わない）と等しくなる。</p>
 <p>Rで主成分分析を行う際は、<code>psych::pca()</code> を用いる。ここで、<a href="faex.html#faex">12.5</a> 節で用いた演習用データを用いて、主成分分析を実行し、それが、「項目間相関行列の固有ベクトルに固有値の平方根を乗じたもの」と等しくなるかを検討する。まず主成分分析を実行するが、デフォルトでは軸の回転を行ってしまうので、ここでは <code>rotate = "none"</code>とする。</p>
-<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb319-1"><a href="pcafa.html#cb319-1" tabindex="-1"></a>factor_exdata3 <span class="ot">&lt;-</span> factor_exdata <span class="sc">%&gt;%</span> </span>
-<span id="cb319-2"><a href="pcafa.html#cb319-2" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ID)</span>
-<span id="cb319-3"><a href="pcafa.html#cb319-3" tabindex="-1"></a>pca_res <span class="ot">&lt;-</span> <span class="fu">pca</span>(factor_exdata3, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">rotate =</span> <span class="st">&quot;none&quot;</span>)</span>
-<span id="cb319-4"><a href="pcafa.html#cb319-4" tabindex="-1"></a>pca_res</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb325-1"><a href="pcafa.html#cb325-1" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.2     ✔ tibble    3.3.0
+## ✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.4     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb327-1"><a href="pcafa.html#cb327-1" tabindex="-1"></a><span class="fu">library</span>(psych)</span></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;psych&#39;
+## 
+## The following objects are masked from &#39;package:ggplot2&#39;:
+## 
+##     %+%, alpha</code></pre>
+<div class="sourceCode" id="cb329"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb329-1"><a href="pcafa.html#cb329-1" tabindex="-1"></a>factor_exdata <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">&quot;data/factor_ex.xlsx&quot;</span>, <span class="at">na =</span> <span class="st">&quot;.&quot;</span>)</span>
+<span id="cb329-2"><a href="pcafa.html#cb329-2" tabindex="-1"></a></span>
+<span id="cb329-3"><a href="pcafa.html#cb329-3" tabindex="-1"></a>factor_exdata3 <span class="ot">&lt;-</span> factor_exdata <span class="sc">%&gt;%</span> </span>
+<span id="cb329-4"><a href="pcafa.html#cb329-4" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>ID)</span>
+<span id="cb329-5"><a href="pcafa.html#cb329-5" tabindex="-1"></a>pca_res <span class="ot">&lt;-</span> <span class="fu">pca</span>(factor_exdata3, <span class="at">nfactors =</span> <span class="dv">2</span>, <span class="at">rotate =</span> <span class="st">&quot;none&quot;</span>)</span>
+<span id="cb329-6"><a href="pcafa.html#cb329-6" tabindex="-1"></a>pca_res</span></code></pre></div>
 <pre><code>## Principal Components Analysis
 ## Call: principal(r = r, nfactors = nfactors, residuals = residuals, 
 ##     rotate = rotate, n.obs = n.obs, covar = covar, scores = scores, 
 ##     missing = missing, impute = impute, oblique.scores = oblique.scores, 
 ##     method = method, use = use, cor = cor, correct = 0.5, weight = NULL)
 ## Standardized loadings (pattern matrix) based upon correlation matrix
-##      PC1  PC2   h2    u2 com
-## V1  0.93 0.25 0.93 0.074 1.1
-## V2 -0.30 0.80 0.72 0.277 1.3
-## V3  0.94 0.13 0.89 0.106 1.0
-## V4 -0.34 0.79 0.74 0.261 1.4
-## V5  0.87 0.35 0.88 0.122 1.3
-## V6 -0.18 0.87 0.79 0.210 1.1
+##      PC1   PC2   h2    u2 com
+## V1  0.93  0.25 0.93 0.074 1.1
+## V2 -0.30  0.80 0.72 0.277 1.3
+## V3  0.94  0.13 0.89 0.106 1.0
+## V4 -0.34  0.79 0.74 0.261 1.4
+## V5 -0.87 -0.35 0.88 0.122 1.3
+## V6 -0.18  0.87 0.79 0.210 1.1
 ## 
 ##                        PC1  PC2
 ## SS loadings           2.73 2.22
@@ -555,17 +575,17 @@ z_i=b_1x_{1i}+b_2x_{2i}+b_3x_{3i}
 ## 
 ## Fit based upon off diagonal values = 0.98</code></pre>
 <p>続いて、項目間相関係数の固有ベクトルを計算し、それに固有値の平方根を乗じる。その結果、表<a href="pcafa.html#tab:calculationcheck">23.1</a> は（PC2については符号は異なるものの）上記の主成分分析の結果と一致している事がわかる。</p>
-<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb321-1"><a href="pcafa.html#cb321-1" tabindex="-1"></a><span class="co">#データの相関行列から固有値と固有ベクトルを抽出</span></span>
-<span id="cb321-2"><a href="pcafa.html#cb321-2" tabindex="-1"></a>cor_ex <span class="ot">&lt;-</span> <span class="fu">cor</span>(factor_exdata3)</span>
-<span id="cb321-3"><a href="pcafa.html#cb321-3" tabindex="-1"></a>eigen_list <span class="ot">&lt;-</span> <span class="fu">eigen</span>(cor_ex)</span>
-<span id="cb321-4"><a href="pcafa.html#cb321-4" tabindex="-1"></a><span class="co">#固有ベクトルについての情報をオブジェクトとして定義</span></span>
-<span id="cb321-5"><a href="pcafa.html#cb321-5" tabindex="-1"></a>pc1_eig <span class="ot">&lt;-</span> eigen_list<span class="sc">$</span>vectors[, <span class="dv">1</span>]</span>
-<span id="cb321-6"><a href="pcafa.html#cb321-6" tabindex="-1"></a>pc2_eig <span class="ot">&lt;-</span> eigen_list<span class="sc">$</span>vectors[, <span class="dv">2</span>]</span>
-<span id="cb321-7"><a href="pcafa.html#cb321-7" tabindex="-1"></a><span class="co">#固有ベクトルに、固有値の平方根を乗じる</span></span>
-<span id="cb321-8"><a href="pcafa.html#cb321-8" tabindex="-1"></a>PC1 <span class="ot">&lt;-</span> pc1_eig<span class="sc">*</span> <span class="fu">sqrt</span>(eigen_list<span class="sc">$</span>values[<span class="dv">1</span>])</span>
-<span id="cb321-9"><a href="pcafa.html#cb321-9" tabindex="-1"></a>PC2 <span class="ot">&lt;-</span> pc2_eig<span class="sc">*</span> <span class="fu">sqrt</span>(eigen_list<span class="sc">$</span>values[<span class="dv">2</span>])</span>
-<span id="cb321-10"><a href="pcafa.html#cb321-10" tabindex="-1"></a></span>
-<span id="cb321-11"><a href="pcafa.html#cb321-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="fu">cbind</span>(PC1,PC2)), <span class="at">caption=</span><span class="st">&quot;計算結果&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb331-1"><a href="pcafa.html#cb331-1" tabindex="-1"></a><span class="co">#データの相関行列から固有値と固有ベクトルを抽出</span></span>
+<span id="cb331-2"><a href="pcafa.html#cb331-2" tabindex="-1"></a>cor_ex <span class="ot">&lt;-</span> <span class="fu">cor</span>(factor_exdata3)</span>
+<span id="cb331-3"><a href="pcafa.html#cb331-3" tabindex="-1"></a>eigen_list <span class="ot">&lt;-</span> <span class="fu">eigen</span>(cor_ex)</span>
+<span id="cb331-4"><a href="pcafa.html#cb331-4" tabindex="-1"></a><span class="co">#固有ベクトルについての情報をオブジェクトとして定義</span></span>
+<span id="cb331-5"><a href="pcafa.html#cb331-5" tabindex="-1"></a>pc1_eig <span class="ot">&lt;-</span> eigen_list<span class="sc">$</span>vectors[, <span class="dv">1</span>]</span>
+<span id="cb331-6"><a href="pcafa.html#cb331-6" tabindex="-1"></a>pc2_eig <span class="ot">&lt;-</span> eigen_list<span class="sc">$</span>vectors[, <span class="dv">2</span>]</span>
+<span id="cb331-7"><a href="pcafa.html#cb331-7" tabindex="-1"></a><span class="co">#固有ベクトルに、固有値の平方根を乗じる</span></span>
+<span id="cb331-8"><a href="pcafa.html#cb331-8" tabindex="-1"></a>PC1 <span class="ot">&lt;-</span> pc1_eig<span class="sc">*</span> <span class="fu">sqrt</span>(eigen_list<span class="sc">$</span>values[<span class="dv">1</span>])</span>
+<span id="cb331-9"><a href="pcafa.html#cb331-9" tabindex="-1"></a>PC2 <span class="ot">&lt;-</span> pc2_eig<span class="sc">*</span> <span class="fu">sqrt</span>(eigen_list<span class="sc">$</span>values[<span class="dv">2</span>])</span>
+<span id="cb331-10"><a href="pcafa.html#cb331-10" tabindex="-1"></a></span>
+<span id="cb331-11"><a href="pcafa.html#cb331-11" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">data.frame</span>(<span class="fu">cbind</span>(PC1,PC2)), <span class="at">caption=</span><span class="st">&quot;計算結果&quot;</span>)</span></code></pre></div>
 <table>
 <caption><span id="tab:calculationcheck">Table 23.1: </span>計算結果</caption>
 <thead>
@@ -592,8 +612,8 @@ z_i=b_1x_{1i}+b_2x_{2i}+b_3x_{3i}
 <td align="right">-0.7889663</td>
 </tr>
 <tr class="odd">
-<td align="right">0.8687553</td>
-<td align="right">-0.3507939</td>
+<td align="right">-0.8687553</td>
+<td align="right">0.3507939</td>
 </tr>
 <tr class="even">
 <td align="right">-0.1766389</td>

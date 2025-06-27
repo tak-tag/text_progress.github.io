@@ -10,7 +10,7 @@ output: bookdown::gitbook
 documentclass: book
 # url: your book url like https://bookdown.org/yihui/bookdown
 # cover-image: path to the social sharing image like images/cover.jpg
-github-repo: https://github.com/tak-tag/MktRes_Lecture.git
+github-repo: https://github.com/tak-tag/text_progress.git
 ---
 # まえがき
 

@@ -20,6 +20,10 @@ $$
 Rで主成分分析を行う際は、`psych::pca()` を用いる。ここで、\@ref(faex) 節で用いた演習用データを用いて、主成分分析を実行し、それが、「項目間相関行列の固有ベクトルに固有値の平方根を乗じたもの」と等しくなるかを検討する。まず主成分分析を実行するが、デフォルトでは軸の回転を行ってしまうので、ここでは `rotate = "none"`とする。
 
 ```{r pca}
+library(tidyverse)
+library(psych)
+factor_exdata <- readxl::read_excel("data/factor_ex.xlsx", na = ".")
+
 factor_exdata3 <- factor_exdata %>% 
   select(-ID)
 pca_res <- pca(factor_exdata3, nfactors = 2, rotate = "none")

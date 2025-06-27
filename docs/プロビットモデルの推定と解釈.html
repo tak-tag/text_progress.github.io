@@ -12,7 +12,7 @@
   <meta property="og:type" content="book" />
   
   
-  <meta name="github-repo" content="https://github.com/tak-tag/MktRes_Lecture.git" />
+  <meta name="github-repo" content="https://github.com/tak-tag/text_progress.git" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="9.5 プロビットモデルの推定と解釈 | マーケティングリサーチの進め方" />
@@ -22,7 +22,7 @@
 
 
 
-<meta name="date" content="2025-06-13" />
+<meta name="date" content="2025-06-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -510,8 +510,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">9.5.1</span> 分析の実行と結果のまとめ<a href="#%E5%88%86%E6%9E%90%E3%81%AE%E5%AE%9F%E8%A1%8C%E3%81%A8%E7%B5%90%E6%9E%9C%E3%81%AE%E3%81%BE%E3%81%A8%E3%82%81" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>プロビットモデルを構築できたら、次はモデル内のパラメータに関する推定値（<span class="math inline">\(\hat{\beta}_0, \hat{\beta}_1,...,\hat{\beta}_k\)</span>）を求め、選択確率に関する含意を得る。プロビットモデルのパラメータ推定においては、最小二乗法ではなく、最尤（Maximum Likelihood: ML）法を用いるが、詳細については補足（<a href="ml.html#ml">9.6</a>）を参照してほしい。</p>
 <p>プロビットモデルを推定する場合のデータセットには、説明変数に関する列（<span class="math inline">\(x_{1i},.., x_{ki}\)</span>）と、それに対応する個人 <span class="math inline">\(i\)</span> の選択結果 <span class="math inline">\(y_i\)</span>（選択していれば1、選択していなければ 0）が記録されている。<code>choice_data.xlsx</code> は、二つの製品に対する消費者の選択結果を捉えた人工データセットである。データには製品1の価格 <span class="math inline">\(p1\)</span>、製品2の価格 <span class="math inline">\(p2\)</span>（千円）、製品1のクーポン広告を受け取ったかのダミー変数 <span class="math inline">\(a1\)</span>、製品2のクーポン広告ダミー変数 <span class="math inline">\(a2\)</span> と、製品1の選択結果 <span class="math inline">\(y1\)</span>、製品2の選択結果 <span class="math inline">\(y2\)</span> が含まれている。</p>
-<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb222-1"><a href="プロビットモデルの推定と解釈.html#cb222-1" tabindex="-1"></a>choice_df <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/choice_data.xlsx&quot;</span>)</span>
-<span id="cb222-2"><a href="プロビットモデルの推定と解釈.html#cb222-2" tabindex="-1"></a><span class="fu">head</span>(choice_df)</span></code></pre></div>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="プロビットモデルの推定と解釈.html#cb226-1" tabindex="-1"></a>choice_df <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_xlsx</span>(<span class="st">&quot;data/choice_data.xlsx&quot;</span>)</span>
+<span id="cb226-2"><a href="プロビットモデルの推定と解釈.html#cb226-2" tabindex="-1"></a><span class="fu">head</span>(choice_df)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 6
 ##      y1    y2    p1    p2    a1    a2
 ##   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
@@ -522,10 +522,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5     1     0  7.81 19.2      1     1
 ## 6     1     0  7.49  8.84     0     0</code></pre>
 <p>この<code>choice_data.xlsx</code>を用いて製品1の選択に関するプロビットモデルを推定してみる。Rでは<code>glm()</code>関数において、<code>family = binomial(link = probit)</code> という引数を指定することで実行が可能である<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a>。以下では分析の実行と結果の出力を行う。</p>
-<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb224-1"><a href="プロビットモデルの推定と解釈.html#cb224-1" tabindex="-1"></a>probit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
-<span id="cb224-2"><a href="プロビットモデルの推定と解釈.html#cb224-2" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit),</span>
-<span id="cb224-3"><a href="プロビットモデルの推定と解釈.html#cb224-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
-<span id="cb224-4"><a href="プロビットモデルの推定と解釈.html#cb224-4" tabindex="-1"></a><span class="fu">summary</span>(probit1)</span></code></pre></div>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="プロビットモデルの推定と解釈.html#cb228-1" tabindex="-1"></a>probit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
+<span id="cb228-2"><a href="プロビットモデルの推定と解釈.html#cb228-2" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> probit),</span>
+<span id="cb228-3"><a href="プロビットモデルの推定と解釈.html#cb228-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
+<span id="cb228-4"><a href="プロビットモデルの推定と解釈.html#cb228-4" tabindex="-1"></a><span class="fu">summary</span>(probit1)</span></code></pre></div>
 <pre><code>## 
 ## Call:
 ## glm(formula = y1 ~ p1 + a1, family = binomial(link = probit), 
@@ -547,31 +547,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## Number of Fisher Scoring iterations: 3</code></pre>
 <p>ここまで、我々は線形確率、プロビット、ロジットという3種類のモデルでの推定方法を概観してきた。以下では、これらの異なる推定方法を用いた分析結果を併記する。</p>
-<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb226-1"><a href="プロビットモデルの推定と解釈.html#cb226-1" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
-<span id="cb226-2"><a href="プロビットモデルの推定と解釈.html#cb226-2" tabindex="-1"></a>ols1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
-<span id="cb226-3"><a href="プロビットモデルの推定と解釈.html#cb226-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
-<span id="cb226-4"><a href="プロビットモデルの推定と解釈.html#cb226-4" tabindex="-1"></a></span>
-<span id="cb226-5"><a href="プロビットモデルの推定と解釈.html#cb226-5" tabindex="-1"></a>logit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
-<span id="cb226-6"><a href="プロビットモデルの推定と解釈.html#cb226-6" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit),</span>
-<span id="cb226-7"><a href="プロビットモデルの推定と解釈.html#cb226-7" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
-<span id="cb226-8"><a href="プロビットモデルの推定と解釈.html#cb226-8" tabindex="-1"></a>models <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
-<span id="cb226-9"><a href="プロビットモデルの推定と解釈.html#cb226-9" tabindex="-1"></a>models[[<span class="st">&quot;Linear probability model&quot;</span>]] <span class="ot">&lt;-</span> ols1</span>
-<span id="cb226-10"><a href="プロビットモデルの推定と解釈.html#cb226-10" tabindex="-1"></a>models[[<span class="st">&quot;Probit model&quot;</span>]] <span class="ot">&lt;-</span> probit1</span>
-<span id="cb226-11"><a href="プロビットモデルの推定と解釈.html#cb226-11" tabindex="-1"></a>models[[<span class="st">&quot;Logit model&quot;</span>]] <span class="ot">&lt;-</span> logit1</span>
-<span id="cb226-12"><a href="プロビットモデルの推定と解釈.html#cb226-12" tabindex="-1"></a></span>
-<span id="cb226-13"><a href="プロビットモデルの推定と解釈.html#cb226-13" tabindex="-1"></a><span class="fu">modelsummary</span>(models, </span>
-<span id="cb226-14"><a href="プロビットモデルの推定と解釈.html#cb226-14" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;モデル比較&quot;</span>,</span>
-<span id="cb226-15"><a href="プロビットモデルの推定と解釈.html#cb226-15" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show robust standard errors&quot;</span>,</span>
-<span id="cb226-16"><a href="プロビットモデルの推定と解釈.html#cb226-16" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb226-17"><a href="プロビットモデルの推定と解釈.html#cb226-17" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&quot;std.error&quot;</span>,</span>
-<span id="cb226-18"><a href="プロビットモデルの推定と解釈.html#cb226-18" tabindex="-1"></a>         <span class="at">vcov =</span> <span class="st">&quot;robust&quot;</span>,</span>
-<span id="cb226-19"><a href="プロビットモデルの推定と解釈.html#cb226-19" tabindex="-1"></a>         <span class="at">gof_map =</span> <span class="st">&quot;nobs&quot;</span>) <span class="co">#適合度指標において、サンプルサイズ（&quot;nobs&quot;）のみ表示するという指示</span></span></code></pre></div>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="プロビットモデルの推定と解釈.html#cb230-1" tabindex="-1"></a><span class="fu">library</span>(modelsummary)</span>
+<span id="cb230-2"><a href="プロビットモデルの推定と解釈.html#cb230-2" tabindex="-1"></a>ols1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
+<span id="cb230-3"><a href="プロビットモデルの推定と解釈.html#cb230-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
+<span id="cb230-4"><a href="プロビットモデルの推定と解釈.html#cb230-4" tabindex="-1"></a></span>
+<span id="cb230-5"><a href="プロビットモデルの推定と解釈.html#cb230-5" tabindex="-1"></a>logit1 <span class="ot">&lt;-</span> <span class="fu">glm</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1, </span>
+<span id="cb230-6"><a href="プロビットモデルの推定と解釈.html#cb230-6" tabindex="-1"></a>               <span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> logit),</span>
+<span id="cb230-7"><a href="プロビットモデルの推定と解釈.html#cb230-7" tabindex="-1"></a>               <span class="at">data =</span> choice_df)</span>
+<span id="cb230-8"><a href="プロビットモデルの推定と解釈.html#cb230-8" tabindex="-1"></a>models <span class="ot">&lt;-</span> <span class="fu">list</span>() </span>
+<span id="cb230-9"><a href="プロビットモデルの推定と解釈.html#cb230-9" tabindex="-1"></a>models[[<span class="st">&quot;Linear probability model&quot;</span>]] <span class="ot">&lt;-</span> ols1</span>
+<span id="cb230-10"><a href="プロビットモデルの推定と解釈.html#cb230-10" tabindex="-1"></a>models[[<span class="st">&quot;Probit model&quot;</span>]] <span class="ot">&lt;-</span> probit1</span>
+<span id="cb230-11"><a href="プロビットモデルの推定と解釈.html#cb230-11" tabindex="-1"></a>models[[<span class="st">&quot;Logit model&quot;</span>]] <span class="ot">&lt;-</span> logit1</span>
+<span id="cb230-12"><a href="プロビットモデルの推定と解釈.html#cb230-12" tabindex="-1"></a></span>
+<span id="cb230-13"><a href="プロビットモデルの推定と解釈.html#cb230-13" tabindex="-1"></a><span class="fu">modelsummary</span>(models, </span>
+<span id="cb230-14"><a href="プロビットモデルの推定と解釈.html#cb230-14" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">&quot;モデル比較&quot;</span>,</span>
+<span id="cb230-15"><a href="プロビットモデルの推定と解釈.html#cb230-15" tabindex="-1"></a>         <span class="at">notes =</span> <span class="st">&quot;Values in [ ] show robust standard errors&quot;</span>,</span>
+<span id="cb230-16"><a href="プロビットモデルの推定と解釈.html#cb230-16" tabindex="-1"></a>         <span class="at">stars =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb230-17"><a href="プロビットモデルの推定と解釈.html#cb230-17" tabindex="-1"></a>         <span class="at">statistic =</span> <span class="st">&quot;std.error&quot;</span>,</span>
+<span id="cb230-18"><a href="プロビットモデルの推定と解釈.html#cb230-18" tabindex="-1"></a>         <span class="at">vcov =</span> <span class="st">&quot;robust&quot;</span>,</span>
+<span id="cb230-19"><a href="プロビットモデルの推定と解釈.html#cb230-19" tabindex="-1"></a>         <span class="at">gof_map =</span> <span class="st">&quot;nobs&quot;</span>) <span class="co">#適合度指標において、サンプルサイズ（&quot;nobs&quot;）のみ表示するという指示</span></span></code></pre></div>
 <!-- preamble start -->
 
     <script>
 
-      function styleCell_zo388zi3ysf2zjddw0yi(i, j, css_id) {
-          var table = document.getElementById("tinytable_zo388zi3ysf2zjddw0yi");
+      function styleCell_c48yvf9sfom685onv1ro(i, j, css_id) {
+          var table = document.getElementById("tinytable_c48yvf9sfom685onv1ro");
           var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
@@ -581,7 +581,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           }
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_zo388zi3ysf2zjddw0yi');
+        var table = document.getElementById('tinytable_c48yvf9sfom685onv1ro');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -589,8 +589,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_zo388zi3ysf2zjddw0yi(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_zo388zi3ysf2zjddw0yi");
+      function spanCell_c48yvf9sfom685onv1ro(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_c48yvf9sfom685onv1ro");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -620,20 +620,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: 7, j: 1 }, { i: 7, j: 2 }, { i: 7, j: 3 },  ], css_id: 'tinytable_css_2ahe2izeca74sswqlwzx',}, 
-          { positions: [ { i: 6, j: 1 }, { i: 6, j: 2 }, { i: 6, j: 3 },  ], css_id: 'tinytable_css_6rnptnrmse9yo8dipfuc',}, 
-          { positions: [ { i: 1, j: 1 }, { i: 2, j: 1 }, { i: 3, j: 1 }, { i: 5, j: 1 }, { i: 2, j: 2 }, { i: 3, j: 2 }, { i: 1, j: 2 }, { i: 2, j: 3 }, { i: 3, j: 3 }, { i: 4, j: 1 }, { i: 5, j: 2 }, { i: 4, j: 2 }, { i: 1, j: 3 }, { i: 4, j: 3 }, { i: 5, j: 3 },  ], css_id: 'tinytable_css_83phy0kdt0miq6dvdrj0',}, 
-          { positions: [ { i: 0, j: 1 }, { i: 0, j: 2 }, { i: 0, j: 3 },  ], css_id: 'tinytable_css_q03mvfj38fu9wgcoho9s',}, 
-          { positions: [ { i: 7, j: 0 },  ], css_id: 'tinytable_css_pv9akcj6sg7vn5m9a9df',}, 
-          { positions: [ { i: 6, j: 0 },  ], css_id: 'tinytable_css_dafoz4quq1vmj54ihxkj',}, 
-          { positions: [ { i: 1, j: 0 }, { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 4, j: 0 }, { i: 5, j: 0 },  ], css_id: 'tinytable_css_8wajjx8c42pg07ih1lz3',}, 
-          { positions: [ { i: 0, j: 0 },  ], css_id: 'tinytable_css_nam1jd9kwvrr63ottv9m',}, 
+          { positions: [ { i: 7, j: 1 }, { i: 7, j: 2 }, { i: 7, j: 3 },  ], css_id: 'tinytable_css_hxqw09n33mlz1cecwssu',}, 
+          { positions: [ { i: 6, j: 1 }, { i: 6, j: 2 }, { i: 6, j: 3 },  ], css_id: 'tinytable_css_lilp84mt4zuv4r0rkz7g',}, 
+          { positions: [ { i: 1, j: 1 }, { i: 2, j: 1 }, { i: 3, j: 1 }, { i: 5, j: 1 }, { i: 2, j: 2 }, { i: 3, j: 2 }, { i: 1, j: 2 }, { i: 2, j: 3 }, { i: 3, j: 3 }, { i: 4, j: 1 }, { i: 5, j: 2 }, { i: 4, j: 2 }, { i: 1, j: 3 }, { i: 4, j: 3 }, { i: 5, j: 3 },  ], css_id: 'tinytable_css_9jjtmntfhfnus74uptvk',}, 
+          { positions: [ { i: 0, j: 1 }, { i: 0, j: 2 }, { i: 0, j: 3 },  ], css_id: 'tinytable_css_m1rlcjsmev6udl5acatq',}, 
+          { positions: [ { i: 7, j: 0 },  ], css_id: 'tinytable_css_5ps97sdp5wab8o6tfxtk',}, 
+          { positions: [ { i: 6, j: 0 },  ], css_id: 'tinytable_css_6a3pvlnrv0tpx4puk8oc',}, 
+          { positions: [ { i: 1, j: 0 }, { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 4, j: 0 }, { i: 5, j: 0 },  ], css_id: 'tinytable_css_qyxp76j8qwshgqcsx3zt',}, 
+          { positions: [ { i: 0, j: 0 },  ], css_id: 'tinytable_css_od7o7337icg58j77q1t1',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_zo388zi3ysf2zjddw0yi(cell.i, cell.j, group.css_id);
+                  styleCell_c48yvf9sfom685onv1ro(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -641,17 +641,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
     <style>
       /* tinytable css entries after */
-      .table td.tinytable_css_2ahe2izeca74sswqlwzx, .table th.tinytable_css_2ahe2izeca74sswqlwzx { text-align: center; border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_6rnptnrmse9yo8dipfuc, .table th.tinytable_css_6rnptnrmse9yo8dipfuc { text-align: center; border-bottom: solid black 0.05em; }
-      .table td.tinytable_css_83phy0kdt0miq6dvdrj0, .table th.tinytable_css_83phy0kdt0miq6dvdrj0 { text-align: center; }
-      .table td.tinytable_css_q03mvfj38fu9wgcoho9s, .table th.tinytable_css_q03mvfj38fu9wgcoho9s { text-align: center; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
-      .table td.tinytable_css_pv9akcj6sg7vn5m9a9df, .table th.tinytable_css_pv9akcj6sg7vn5m9a9df { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_dafoz4quq1vmj54ihxkj, .table th.tinytable_css_dafoz4quq1vmj54ihxkj { text-align: left; border-bottom: solid black 0.05em; }
-      .table td.tinytable_css_8wajjx8c42pg07ih1lz3, .table th.tinytable_css_8wajjx8c42pg07ih1lz3 { text-align: left; }
-      .table td.tinytable_css_nam1jd9kwvrr63ottv9m, .table th.tinytable_css_nam1jd9kwvrr63ottv9m { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_hxqw09n33mlz1cecwssu, .table th.tinytable_css_hxqw09n33mlz1cecwssu { text-align: center; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_lilp84mt4zuv4r0rkz7g, .table th.tinytable_css_lilp84mt4zuv4r0rkz7g { text-align: center; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_9jjtmntfhfnus74uptvk, .table th.tinytable_css_9jjtmntfhfnus74uptvk { text-align: center; }
+      .table td.tinytable_css_m1rlcjsmev6udl5acatq, .table th.tinytable_css_m1rlcjsmev6udl5acatq { text-align: center; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_5ps97sdp5wab8o6tfxtk, .table th.tinytable_css_5ps97sdp5wab8o6tfxtk { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_6a3pvlnrv0tpx4puk8oc, .table th.tinytable_css_6a3pvlnrv0tpx4puk8oc { text-align: left; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_qyxp76j8qwshgqcsx3zt, .table th.tinytable_css_qyxp76j8qwshgqcsx3zt { text-align: left; }
+      .table td.tinytable_css_od7o7337icg58j77q1t1, .table th.tinytable_css_od7o7337icg58j77q1t1 { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
     </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_zo388zi3ysf2zjddw0yi" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
+      <table class="table table-borderless" id="tinytable_c48yvf9sfom685onv1ro" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
         <thead>
         <caption>モデル比較</caption>
               <tr>
@@ -716,13 +716,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3><span class="header-section-number">9.5.2</span> 限界効果の計算<a href="#%E9%99%90%E7%95%8C%E5%8A%B9%E6%9E%9C%E3%81%AE%E8%A8%88%E7%AE%97" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>プロビットモデルの分析には成功したが、非線形モデルで推定された係数の解釈には注意が必要である。特に、プロビットモデルによって推定されたある変数の係数値は、「他の変数の影響をコントロールした場合にその変数が選択確率に与える影響」を意味しない。そのため、OLSの分析結果のように、係数の推定値のみを見て変数の影響の程度を議論することはできず、そのような解釈を行うためには特定の変数が持つ「限界効果」を追加的に分析する必要がある。限界効果の必要性や、平均的な限界効果、個別限界効果の平均値については次節で説明を加えている。</p>
 <p>限界効果の計算には、<code>mfx::probitmfx()</code> を用いる<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>ため、以下のようにパッケージをインストールしてほしい。</p>
-<div class="sourceCode" id="cb227"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb227-1"><a href="プロビットモデルの推定と解釈.html#cb227-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;mfx&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb231"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb231-1"><a href="プロビットモデルの推定と解釈.html#cb231-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;mfx&quot;</span>)</span></code></pre></div>
 <p><code>mfx</code> パッケージを用いた限界効果の計算では、線形モデルやプロビットモデルの推定同様、以下のようにモデルを指定し、分析を行う。平均的な限界効果の計算方法については、<code>atmean</code> という引数で指定する。<code>atmean = FALSE</code> とすることで、個別限界効果の平均値を計算できる。個別限界効果の平均値とは、データ内の個人の個別限界効果を計算し、その平均値求める方法である。一方で、平均値における限界効果は<code>atmean = TRUE</code> と指示することで計算できる。平均値における限界効果は、モデル内の説明変数の値について、それぞれ平均値を計算し、そのうえで限界効果を求める方法である。</p>
-<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb228-1"><a href="プロビットモデルの推定と解釈.html#cb228-1" tabindex="-1"></a><span class="fu">library</span>(mfx)</span>
-<span id="cb228-2"><a href="プロビットモデルの推定と解釈.html#cb228-2" tabindex="-1"></a><span class="co">#Average Marginal Effects (限界効果の平均)</span></span>
-<span id="cb228-3"><a href="プロビットモデルの推定と解釈.html#cb228-3" tabindex="-1"></a>probit1_ame <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1,</span>
-<span id="cb228-4"><a href="プロビットモデルの推定と解釈.html#cb228-4" tabindex="-1"></a>               <span class="at">data =</span> choice_df, <span class="at">atmean =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb228-5"><a href="プロビットモデルの推定と解釈.html#cb228-5" tabindex="-1"></a>probit1_ame</span></code></pre></div>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="プロビットモデルの推定と解釈.html#cb232-1" tabindex="-1"></a><span class="fu">library</span>(mfx)</span>
+<span id="cb232-2"><a href="プロビットモデルの推定と解釈.html#cb232-2" tabindex="-1"></a><span class="co">#Average Marginal Effects (限界効果の平均)</span></span>
+<span id="cb232-3"><a href="プロビットモデルの推定と解釈.html#cb232-3" tabindex="-1"></a>probit1_ame <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1,</span>
+<span id="cb232-4"><a href="プロビットモデルの推定と解釈.html#cb232-4" tabindex="-1"></a>               <span class="at">data =</span> choice_df, <span class="at">atmean =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb232-5"><a href="プロビットモデルの推定と解釈.html#cb232-5" tabindex="-1"></a>probit1_ame</span></code></pre></div>
 <pre><code>## Call:
 ## probitmfx(formula = y1 ~ p1 + a1, data = choice_df, atmean = FALSE)
 ## 
@@ -736,10 +736,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## dF/dx is for discrete change for the following variables:
 ## 
 ## [1] &quot;a1&quot;</code></pre>
-<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb230-1"><a href="プロビットモデルの推定と解釈.html#cb230-1" tabindex="-1"></a><span class="co">#Marginal Effects at Mean（平均値における限界効果）</span></span>
-<span id="cb230-2"><a href="プロビットモデルの推定と解釈.html#cb230-2" tabindex="-1"></a>probit1_mem <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1,</span>
-<span id="cb230-3"><a href="プロビットモデルの推定と解釈.html#cb230-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df, <span class="at">atmean =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb230-4"><a href="プロビットモデルの推定と解釈.html#cb230-4" tabindex="-1"></a>probit1_mem</span></code></pre></div>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb234-1"><a href="プロビットモデルの推定と解釈.html#cb234-1" tabindex="-1"></a><span class="co">#Marginal Effects at Mean（平均値における限界効果）</span></span>
+<span id="cb234-2"><a href="プロビットモデルの推定と解釈.html#cb234-2" tabindex="-1"></a>probit1_mem <span class="ot">&lt;-</span> <span class="fu">probitmfx</span>(y1 <span class="sc">~</span> p1 <span class="sc">+</span> a1,</span>
+<span id="cb234-3"><a href="プロビットモデルの推定と解釈.html#cb234-3" tabindex="-1"></a>               <span class="at">data =</span> choice_df, <span class="at">atmean =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb234-4"><a href="プロビットモデルの推定と解釈.html#cb234-4" tabindex="-1"></a>probit1_mem</span></code></pre></div>
 <pre><code>## Call:
 ## probitmfx(formula = y1 ~ p1 + a1, data = choice_df, atmean = TRUE)
 ## 
@@ -755,37 +755,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [1] &quot;a1&quot;</code></pre>
 <p>分析結果を比較すると、多少計算結果は異なるものの、どちらの計算方法においても、価格は製品の選択確率に負に、クーポンは正に有意な影響を与えることが伺える。また影響の程度として、限界効果の平均値に着目すると、価格が1単位（千円）上昇すると、選択確率が約<span class="math inline">\(8.5\%\)</span>下がること、クーポンを受け取った人は受け取っていない人と比べて約<span class="math inline">\(21.9\%\)</span>選択確率が高いことが伺える。また、今回の結果の場合、OLSを用いたLPMの係数パラメータと似た値を得たことも伺える。なお、詳細については省略するが限界効果の標準誤差はデルタ法と呼ばれる方法で計算されている（Fernihough, 2019）。</p>
 <p>また、<code>mfx</code> による結果も以下のように整理して出力する事ができる。下表の(1) は限界効果の平均（Average Mean Effect）、(2) は平均的個人における限界効果（Marginal Effect at Mean）をそれぞれあらわしている。</p>
-<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb232-1"><a href="プロビットモデルの推定と解釈.html#cb232-1" tabindex="-1"></a>marginal <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb232-2"><a href="プロビットモデルの推定と解釈.html#cb232-2" tabindex="-1"></a>  <span class="st">&quot;p1 marginal&quot;</span> <span class="ot">=</span> <span class="st">&quot;p1&quot;</span>,</span>
-<span id="cb232-3"><a href="プロビットモデルの推定と解釈.html#cb232-3" tabindex="-1"></a>  <span class="st">&quot;a1 marginal&quot;</span> <span class="ot">=</span> <span class="st">&quot;a1&quot;</span></span>
-<span id="cb232-4"><a href="プロビットモデルの推定と解釈.html#cb232-4" tabindex="-1"></a>)</span>
-<span id="cb232-5"><a href="プロビットモデルの推定と解釈.html#cb232-5" tabindex="-1"></a></span>
-<span id="cb232-6"><a href="プロビットモデルの推定と解釈.html#cb232-6" tabindex="-1"></a>marg_model <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb232-7"><a href="プロビットモデルの推定と解釈.html#cb232-7" tabindex="-1"></a>  <span class="st">&quot;(1) Probit_AME&quot;</span> <span class="ot">&lt;-</span> probit1_ame,</span>
-<span id="cb232-8"><a href="プロビットモデルの推定と解釈.html#cb232-8" tabindex="-1"></a>  <span class="st">&quot;(2) Probit_MEM&quot;</span> <span class="ot">&lt;-</span> probit1_mem</span>
-<span id="cb232-9"><a href="プロビットモデルの推定と解釈.html#cb232-9" tabindex="-1"></a>)</span>
-<span id="cb232-10"><a href="プロビットモデルの推定と解釈.html#cb232-10" tabindex="-1"></a>marg_sum <span class="ot">&lt;-</span> <span class="fu">modelsummary</span>(</span>
-<span id="cb232-11"><a href="プロビットモデルの推定と解釈.html#cb232-11" tabindex="-1"></a>  <span class="co"># models to summarize side-by-side</span></span>
-<span id="cb232-12"><a href="プロビットモデルの推定と解釈.html#cb232-12" tabindex="-1"></a>  marg_model,</span>
-<span id="cb232-13"><a href="プロビットモデルの推定と解釈.html#cb232-13" tabindex="-1"></a>  <span class="co"># S.E. in parentheses</span></span>
-<span id="cb232-14"><a href="プロビットモデルの推定と解釈.html#cb232-14" tabindex="-1"></a>  <span class="at">statistic =</span> <span class="st">&quot;std.error&quot;</span>,</span>
-<span id="cb232-15"><a href="プロビットモデルの推定と解釈.html#cb232-15" tabindex="-1"></a>  <span class="co"># rename and select the coefficients</span></span>
-<span id="cb232-16"><a href="プロビットモデルの推定と解釈.html#cb232-16" tabindex="-1"></a>  <span class="at">coef_map =</span> marginal,</span>
-<span id="cb232-17"><a href="プロビットモデルの推定と解釈.html#cb232-17" tabindex="-1"></a>  <span class="co"># significance stars</span></span>
-<span id="cb232-18"><a href="プロビットモデルの推定と解釈.html#cb232-18" tabindex="-1"></a>  <span class="at">stars =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb232-19"><a href="プロビットモデルの推定と解釈.html#cb232-19" tabindex="-1"></a>  <span class="co"># term and component columns are combined</span></span>
-<span id="cb232-20"><a href="プロビットモデルの推定と解釈.html#cb232-20" tabindex="-1"></a>  <span class="at">shape =</span> term<span class="sc">:</span>component <span class="sc">~</span> model,</span>
-<span id="cb232-21"><a href="プロビットモデルの推定と解釈.html#cb232-21" tabindex="-1"></a>  <span class="at">add_rows =</span> <span class="fu">data.frame</span>(<span class="st">&quot;Marginal effect type&quot;</span>, <span class="st">&quot;Average Marginal Effect&quot;</span>, <span class="st">&quot;Marginal Effect at Mean&quot;</span>),</span>
-<span id="cb232-22"><a href="プロビットモデルの推定と解釈.html#cb232-22" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;限界効果サマリー&quot;</span>,</span>
-<span id="cb232-23"><a href="プロビットモデルの推定と解釈.html#cb232-23" tabindex="-1"></a>  <span class="co"># omit all goodness-of-fit statisitcs except # of observations</span></span>
-<span id="cb232-24"><a href="プロビットモデルの推定と解釈.html#cb232-24" tabindex="-1"></a>  <span class="at">gof_map =</span> <span class="st">&quot;nobs&quot;</span>)</span>
-<span id="cb232-25"><a href="プロビットモデルの推定と解釈.html#cb232-25" tabindex="-1"></a>marg_sum</span></code></pre></div>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb236-1"><a href="プロビットモデルの推定と解釈.html#cb236-1" tabindex="-1"></a>marginal <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb236-2"><a href="プロビットモデルの推定と解釈.html#cb236-2" tabindex="-1"></a>  <span class="st">&quot;p1 marginal&quot;</span> <span class="ot">=</span> <span class="st">&quot;p1&quot;</span>,</span>
+<span id="cb236-3"><a href="プロビットモデルの推定と解釈.html#cb236-3" tabindex="-1"></a>  <span class="st">&quot;a1 marginal&quot;</span> <span class="ot">=</span> <span class="st">&quot;a1&quot;</span></span>
+<span id="cb236-4"><a href="プロビットモデルの推定と解釈.html#cb236-4" tabindex="-1"></a>)</span>
+<span id="cb236-5"><a href="プロビットモデルの推定と解釈.html#cb236-5" tabindex="-1"></a></span>
+<span id="cb236-6"><a href="プロビットモデルの推定と解釈.html#cb236-6" tabindex="-1"></a>marg_model <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb236-7"><a href="プロビットモデルの推定と解釈.html#cb236-7" tabindex="-1"></a>  <span class="st">&quot;(1) Probit_AME&quot;</span> <span class="ot">&lt;-</span> probit1_ame,</span>
+<span id="cb236-8"><a href="プロビットモデルの推定と解釈.html#cb236-8" tabindex="-1"></a>  <span class="st">&quot;(2) Probit_MEM&quot;</span> <span class="ot">&lt;-</span> probit1_mem</span>
+<span id="cb236-9"><a href="プロビットモデルの推定と解釈.html#cb236-9" tabindex="-1"></a>)</span>
+<span id="cb236-10"><a href="プロビットモデルの推定と解釈.html#cb236-10" tabindex="-1"></a>marg_sum <span class="ot">&lt;-</span> <span class="fu">modelsummary</span>(</span>
+<span id="cb236-11"><a href="プロビットモデルの推定と解釈.html#cb236-11" tabindex="-1"></a>  <span class="co"># models to summarize side-by-side</span></span>
+<span id="cb236-12"><a href="プロビットモデルの推定と解釈.html#cb236-12" tabindex="-1"></a>  marg_model,</span>
+<span id="cb236-13"><a href="プロビットモデルの推定と解釈.html#cb236-13" tabindex="-1"></a>  <span class="co"># S.E. in parentheses</span></span>
+<span id="cb236-14"><a href="プロビットモデルの推定と解釈.html#cb236-14" tabindex="-1"></a>  <span class="at">statistic =</span> <span class="st">&quot;std.error&quot;</span>,</span>
+<span id="cb236-15"><a href="プロビットモデルの推定と解釈.html#cb236-15" tabindex="-1"></a>  <span class="co"># rename and select the coefficients</span></span>
+<span id="cb236-16"><a href="プロビットモデルの推定と解釈.html#cb236-16" tabindex="-1"></a>  <span class="at">coef_map =</span> marginal,</span>
+<span id="cb236-17"><a href="プロビットモデルの推定と解釈.html#cb236-17" tabindex="-1"></a>  <span class="co"># significance stars</span></span>
+<span id="cb236-18"><a href="プロビットモデルの推定と解釈.html#cb236-18" tabindex="-1"></a>  <span class="at">stars =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb236-19"><a href="プロビットモデルの推定と解釈.html#cb236-19" tabindex="-1"></a>  <span class="co"># term and component columns are combined</span></span>
+<span id="cb236-20"><a href="プロビットモデルの推定と解釈.html#cb236-20" tabindex="-1"></a>  <span class="at">shape =</span> term<span class="sc">:</span>component <span class="sc">~</span> model,</span>
+<span id="cb236-21"><a href="プロビットモデルの推定と解釈.html#cb236-21" tabindex="-1"></a>  <span class="at">add_rows =</span> <span class="fu">data.frame</span>(<span class="st">&quot;Marginal effect type&quot;</span>, <span class="st">&quot;Average Marginal Effect&quot;</span>, <span class="st">&quot;Marginal Effect at Mean&quot;</span>),</span>
+<span id="cb236-22"><a href="プロビットモデルの推定と解釈.html#cb236-22" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">&quot;限界効果サマリー&quot;</span>,</span>
+<span id="cb236-23"><a href="プロビットモデルの推定と解釈.html#cb236-23" tabindex="-1"></a>  <span class="co"># omit all goodness-of-fit statisitcs except # of observations</span></span>
+<span id="cb236-24"><a href="プロビットモデルの推定と解釈.html#cb236-24" tabindex="-1"></a>  <span class="at">gof_map =</span> <span class="st">&quot;nobs&quot;</span>)</span>
+<span id="cb236-25"><a href="プロビットモデルの推定と解釈.html#cb236-25" tabindex="-1"></a>marg_sum</span></code></pre></div>
 <!-- preamble start -->
 
     <script>
 
-      function styleCell_4z9dmmlsau139c1a4r6e(i, j, css_id) {
-          var table = document.getElementById("tinytable_4z9dmmlsau139c1a4r6e");
+      function styleCell_z92m4drta3e7hm2qe363(i, j, css_id) {
+          var table = document.getElementById("tinytable_z92m4drta3e7hm2qe363");
           var cell = table.rows[i]?.cells[j];  // Safe navigation to avoid errors
           if (cell) {
               console.log(`Styling cell at (${i}, ${j}) with class ${css_id}`);
@@ -795,7 +795,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           }
       }
       function insertSpanRow(i, colspan, content) {
-        var table = document.getElementById('tinytable_4z9dmmlsau139c1a4r6e');
+        var table = document.getElementById('tinytable_z92m4drta3e7hm2qe363');
         var newRow = table.insertRow(i);
         var newCell = newRow.insertCell(0);
         newCell.setAttribute("colspan", colspan);
@@ -803,8 +803,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         // this may be unsafe, but innerText does not interpret <br>
         newCell.innerHTML = content;
       }
-      function spanCell_4z9dmmlsau139c1a4r6e(i, j, rowspan, colspan) {
-        var table = document.getElementById("tinytable_4z9dmmlsau139c1a4r6e");
+      function spanCell_z92m4drta3e7hm2qe363(i, j, rowspan, colspan) {
+        var table = document.getElementById("tinytable_z92m4drta3e7hm2qe363");
         const targetRow = table.rows[i];
         const targetCell = targetRow.cells[j];
         for (let r = 0; r < rowspan; r++) {
@@ -834,20 +834,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       window.addEventListener('load', function () {
           var cellsToStyle = [
             // tinytable style arrays after
-          { positions: [ { i: 6, j: 1 }, { i: 6, j: 2 },  ], css_id: 'tinytable_css_2okx431ou7we7fnel41r',}, 
-          { positions: [ { i: 4, j: 2 }, { i: 4, j: 1 },  ], css_id: 'tinytable_css_wpt39q69ewzckv5pjmea',}, 
-          { positions: [ { i: 1, j: 1 }, { i: 2, j: 1 }, { i: 1, j: 2 }, { i: 5, j: 1 }, { i: 3, j: 2 }, { i: 3, j: 1 }, { i: 5, j: 2 }, { i: 2, j: 2 },  ], css_id: 'tinytable_css_a2eoxfcn5yqflh1zmmfu',}, 
-          { positions: [ { i: 0, j: 1 }, { i: 0, j: 2 },  ], css_id: 'tinytable_css_2jppvjval3qj7c88ldkg',}, 
-          { positions: [ { i: 6, j: 0 },  ], css_id: 'tinytable_css_rnu1t45hsof5abujl82l',}, 
-          { positions: [ { i: 4, j: 0 },  ], css_id: 'tinytable_css_gv0hna1aawvy16pjgq66',}, 
-          { positions: [ { i: 1, j: 0 }, { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 5, j: 0 },  ], css_id: 'tinytable_css_161ot5l1w4w25zkjyvf2',}, 
-          { positions: [ { i: 0, j: 0 },  ], css_id: 'tinytable_css_udug9725ocwb9o09rwu7',}, 
+          { positions: [ { i: 6, j: 1 }, { i: 6, j: 2 },  ], css_id: 'tinytable_css_oqm88yiy4apajfe30znw',}, 
+          { positions: [ { i: 4, j: 2 }, { i: 4, j: 1 },  ], css_id: 'tinytable_css_kbrd84u4c14d6kdgl1j4',}, 
+          { positions: [ { i: 1, j: 1 }, { i: 2, j: 1 }, { i: 1, j: 2 }, { i: 5, j: 1 }, { i: 3, j: 2 }, { i: 3, j: 1 }, { i: 5, j: 2 }, { i: 2, j: 2 },  ], css_id: 'tinytable_css_rf52v858i9qsw1cir56u',}, 
+          { positions: [ { i: 0, j: 1 }, { i: 0, j: 2 },  ], css_id: 'tinytable_css_6xjgfca8y8pdvh54g4z9',}, 
+          { positions: [ { i: 6, j: 0 },  ], css_id: 'tinytable_css_oy27dnb5f97tc3lhobwx',}, 
+          { positions: [ { i: 4, j: 0 },  ], css_id: 'tinytable_css_wv9g0p41umqycdzr73ja',}, 
+          { positions: [ { i: 1, j: 0 }, { i: 2, j: 0 }, { i: 3, j: 0 }, { i: 5, j: 0 },  ], css_id: 'tinytable_css_iwgcqanifca4xm30r5vk',}, 
+          { positions: [ { i: 0, j: 0 },  ], css_id: 'tinytable_css_tzav7tmrwd24atsyim3r',}, 
           ];
 
           // Loop over the arrays to style the cells
           cellsToStyle.forEach(function (group) {
               group.positions.forEach(function (cell) {
-                  styleCell_4z9dmmlsau139c1a4r6e(cell.i, cell.j, group.css_id);
+                  styleCell_z92m4drta3e7hm2qe363(cell.i, cell.j, group.css_id);
               });
           });
       });
@@ -855,17 +855,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
     <style>
       /* tinytable css entries after */
-      .table td.tinytable_css_2okx431ou7we7fnel41r, .table th.tinytable_css_2okx431ou7we7fnel41r { text-align: center; border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_wpt39q69ewzckv5pjmea, .table th.tinytable_css_wpt39q69ewzckv5pjmea { text-align: center; border-bottom: solid black 0.05em; }
-      .table td.tinytable_css_a2eoxfcn5yqflh1zmmfu, .table th.tinytable_css_a2eoxfcn5yqflh1zmmfu { text-align: center; }
-      .table td.tinytable_css_2jppvjval3qj7c88ldkg, .table th.tinytable_css_2jppvjval3qj7c88ldkg { text-align: center; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
-      .table td.tinytable_css_rnu1t45hsof5abujl82l, .table th.tinytable_css_rnu1t45hsof5abujl82l { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
-      .table td.tinytable_css_gv0hna1aawvy16pjgq66, .table th.tinytable_css_gv0hna1aawvy16pjgq66 { text-align: left; border-bottom: solid black 0.05em; }
-      .table td.tinytable_css_161ot5l1w4w25zkjyvf2, .table th.tinytable_css_161ot5l1w4w25zkjyvf2 { text-align: left; }
-      .table td.tinytable_css_udug9725ocwb9o09rwu7, .table th.tinytable_css_udug9725ocwb9o09rwu7 { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_oqm88yiy4apajfe30znw, .table th.tinytable_css_oqm88yiy4apajfe30znw { text-align: center; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_kbrd84u4c14d6kdgl1j4, .table th.tinytable_css_kbrd84u4c14d6kdgl1j4 { text-align: center; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_rf52v858i9qsw1cir56u, .table th.tinytable_css_rf52v858i9qsw1cir56u { text-align: center; }
+      .table td.tinytable_css_6xjgfca8y8pdvh54g4z9, .table th.tinytable_css_6xjgfca8y8pdvh54g4z9 { text-align: center; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
+      .table td.tinytable_css_oy27dnb5f97tc3lhobwx, .table th.tinytable_css_oy27dnb5f97tc3lhobwx { text-align: left; border-bottom: solid #d3d8dc 0.1em; }
+      .table td.tinytable_css_wv9g0p41umqycdzr73ja, .table th.tinytable_css_wv9g0p41umqycdzr73ja { text-align: left; border-bottom: solid black 0.05em; }
+      .table td.tinytable_css_iwgcqanifca4xm30r5vk, .table th.tinytable_css_iwgcqanifca4xm30r5vk { text-align: left; }
+      .table td.tinytable_css_tzav7tmrwd24atsyim3r, .table th.tinytable_css_tzav7tmrwd24atsyim3r { text-align: left; border-top: solid #d3d8dc 0.1em; border-bottom: solid #d3d8dc 0.05em; }
     </style>
     <div class="container">
-      <table class="table table-borderless" id="tinytable_4z9dmmlsau139c1a4r6e" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
+      <table class="table table-borderless" id="tinytable_z92m4drta3e7hm2qe363" style="width: auto; margin-left: auto; margin-right: auto;" data-quarto-disable-processing='true'>
         <thead>
         <caption>限界効果サマリー</caption>
               <tr>
@@ -911,7 +911,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     </div>
 <!-- hack to avoid NA insertion in last line -->
 <p>最後に、プロビットモデルのモデル評価指標について紹介する。プロビットモデルを最尤法で推定した場合、OLSにおける決定係数 <span class="math inline">\(R^2\)</span> を用いてモデルの当てはまりの良さを用いることはできない。そこで、通常疑似決定係数（Pseudo <span class="math inline">\(R^2\)</span>）を用いる事が多い<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>。疑似決定係数は0から1の間の値を取り、自身の立てたモデルの当てはまりが良いほど1に近づくという特徴を持っている。Rにおいては、<code>DescTools::PseudoR2()</code> を用いて計算可能である。<code>install.packages("DescTools")</code> でインストールしてほしい。</p>
-<div class="sourceCode" id="cb233"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb233-1"><a href="プロビットモデルの推定と解釈.html#cb233-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">PseudoR2</span>(probit1)</span></code></pre></div>
+<div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="プロビットモデルの推定と解釈.html#cb237-1" tabindex="-1"></a>DescTools<span class="sc">::</span><span class="fu">PseudoR2</span>(probit1)</span></code></pre></div>
 <pre><code>##  McFadden 
 ## 0.1293345</code></pre>
 </div>
